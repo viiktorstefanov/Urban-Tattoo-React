@@ -1,0 +1,109 @@
+@font-face {
+    font-family: 'Marker' ;
+    src: url('../fonts/PermanentMarker-Regular.ttf');
+}
+header{
+    height: 15vh;
+    background-color: black;
+    font-family: 'Marker';
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-logo{
+    display: inline-block;
+    width: 220px;
+    position: absolute;
+    margin-top: 0.2%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    left: 45.4%;
+}
+.nav-logo img{
+    width: 100%;
+    height: 100%;
+}
+.nav-bar{
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    text-decoration: none;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.nav-link{
+    font-size: 28px;
+    margin-top: 3.3%;
+}
+.gallery{
+    margin-right: 7%;
+}
+.booking{
+    margin-left: 7%;
+}
+.hero{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items:flex-end;
+    color: white;
+}
+.sub-menu-wrap{
+    position: absolute;
+    margin: 2.7% 0.5% 0 0 ;
+    font-family:'Roboto',sans-serif;
+    font-size: 20px;
+    
+    width: 8%;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.1s;
+}
+.sub-menu-wrap.open-menu{
+    max-height: 100vh;
+}
+.sub-menu{
+    border: white 2px solid;
+    padding: 10%;
+    margin: 10px;
+}
+.sub-menu hr {
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: white;
+    margin: 15px 0 10px;
+    margin-bottom: 20px;
+}
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    margin: 12px 0;
+}
+.sub-menu-link p{
+    width: 100%;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-info h4:hover{
+   color: #f3d22d;
+}
+.user-pic {
+    position: absolute;
+    font-size: 24px;
+    margin: 1% 1% 0 0;
+    width: 2%;
+    cursor: pointer;
+    padding: 12px;
+}
+.user-pic:hover {
+    color: #f3d22d;
+}

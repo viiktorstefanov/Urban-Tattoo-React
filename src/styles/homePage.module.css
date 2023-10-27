@@ -1,0 +1,54 @@
+.homePage{
+    display: block;
+    text-align: center;
+    margin-right: 23%;
+}
+.message{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.message>p{
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    font-size: 22px; 
+    width: 40vw;   
+    margin-bottom: 5%;
+}
+.artists {
+    display: flex;
+    gap: 10%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.artist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.artist h3{
+    text-transform: uppercase;
+    color: #f3d22d;
+}
+.artist-info{
+    font-size: 22px;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    height: 30vh;
+}
+.artists>div>img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10%;
+}

@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    background: black;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    color: #f3d22d;
+}

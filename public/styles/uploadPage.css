@@ -1,0 +1,16 @@
+.uploadForm {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    width: 350px;
+    height: 450px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: black;
+    justify-content: center;
+  }
+  .input-photo {
+    background: white;
+    color: black;
+  }
