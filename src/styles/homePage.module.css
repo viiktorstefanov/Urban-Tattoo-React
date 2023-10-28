@@ -1,7 +1,7 @@
 .homePage{
     display: block;
     text-align: center;
-    margin-right: 23%;
+    width: 60vw;
 }
 .message{
     text-align: center;
@@ -9,7 +9,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 .message>p{
     text-align: center;
