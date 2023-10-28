@@ -1,0 +1,12 @@
+.bookingPage {
+    font-family: 'Roboto', sans-serif;
+  }
+  .message{
+    font-size: 40px;
+  }
+  .calendar{
+    width: 20vw;
+  }
+  .bookingPage>.calendar{
+    border-radius: 20px;
+  }

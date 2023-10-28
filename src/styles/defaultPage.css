@@ -1,0 +1,18 @@
+.defaultPage {
+    text-align: center;
+    margin-bottom: 10%;
+    margin-top: 10%;
+    margin-right: 21%;
+}
+.nav-logo {
+    left: 45%;
+}
+.defaultPage>h1 {
+    color: #f3d22d;
+    text-align: center;
+    font-size: 100px;
+}
+.defaultPage>h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
