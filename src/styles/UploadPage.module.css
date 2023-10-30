@@ -1,3 +1,13 @@
+.uploadPage {
+  display: flex;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
 .uploadForm {
     display: inline-block;
     text-align: center;

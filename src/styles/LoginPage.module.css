@@ -1,19 +1,24 @@
-.registerForm {
+.loginPage {
+  display: flex;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2%;
+  align-items: center;
+  text-align: center;
+}
+
+.loginForm {
     display: inline-block;
     text-align: center;
     position: relative;
     width: 350px;
-    height: 680px;
+    height: 450px;
     border-radius: 20px;
     padding: 40px;
     box-sizing: border-box;
     background: black;
     justify-content: center;
-  }
-  
-  #loginPage {
-    display: block;
-    text-align: center;
   }
   
   .inputs {
@@ -35,6 +40,7 @@
   
   label {
     margin-bottom: 4px;
+    cursor: pointer;
   }
   
   label:nth-of-type(2) {
@@ -53,6 +59,9 @@
     font-size: 14px;
     border-radius: 50px;
   }
+  input:hover {
+    background: #f3d22d;
+  }
   
   button {
     font-family:'Roboto',sans-serif;
@@ -66,10 +75,13 @@
     transition: 0.5s;
   }
   
- button:hover {
+  button:hover {
     background: #f3d22d;
   }
-  .reg-btn{
+  .log-btn{
     color: #f3d22d;
     text-decoration: underline;
+  }
+  .field {
+    margin-top: 10%;
   }

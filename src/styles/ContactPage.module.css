@@ -2,6 +2,14 @@
     font-family:'Roboto',sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
+    display: flex;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 11%;
 }
 .contact-info{
     display: flex;

@@ -1,11 +1,12 @@
 .defaultPage {
+    display: flex;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     margin-bottom: 10%;
-    margin-top: 10%;
-    margin-right: 21%;
-}
-.nav-logo {
-    left: 45%;
+    margin-top: 5%;
 }
 .defaultPage>h1 {
     color: #f3d22d;
