@@ -9,10 +9,9 @@ import BookingPage from './components/main/BookingPage';
 import UploadPage from './components/main/UploadPage';
 import ContactPage from './components/main/ContactPage';
 
-
 function App() {
     return (
-        <div className="App">
+        <>
             <Header />
             <main>
                 <HomePage />
@@ -24,7 +23,7 @@ function App() {
                 <ContactPage />
             </main>
             <Footer />
-        </div>
+        </>
     );
 }
 
