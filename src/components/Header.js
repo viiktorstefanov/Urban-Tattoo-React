@@ -1,11 +1,36 @@
 import styles from '../styles/Header.module.css';
+import Profile from './Profile';
 
 export default function Header() {
     return (
         <header>
-        <nav>
-            {/* //if user */}
-            <div className={styles.hero} id="user-btns">
+            <nav>
+                <ul className={styles['nav-bar']}>
+                    <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']} ${styles.home}`}>
+                        <a href="/">HOME</a>
+                    </li>
+                    <li id="gallery" className={`${styles['nav-link']} ${styles.gallery} ${styles['nav-li']} ${styles['navigation']}`}>
+                        <a href="/gallery">GALLERY</a>
+                    </li>
+                    <li className={`${styles['nav-logo']} ${styles['nav-li']}`}>
+                            <a href="/"><img src="images/logo new 2023 transperant cutted.png" alt="logo" /></a>
+                    </li>
+                    <li className={`${styles['nav-link']} ${styles.booking} ${styles['nav-li']} ${styles['navigation']}`}>
+                        <a href="/booking">BOOKING</a>
+                    </li>
+                    <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
+                        <a href="/contact">CONTACT</a>
+                    </li>
+                    {/* //if user and user is admin */}
+                    {/* <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}}>
+                    <a href="/upload">UPLOAD</a>
+                </li> */}
+                    {/* //if user and no admin */}
+                </ul>
+            </nav>
+            <div className='user-wrap'>
+                {/* //if user */}
+                {/* <div className={styles.hero} id="user-btns">
                 <i className={`${styles['user-pic']} fa-regular`}></i>
     
                 <div className={styles['sub-menu-wrap']} id="subMenu">
@@ -19,10 +44,10 @@ export default function Header() {
                         </a>
                     </div>
                 </div>
-            </div>
-    
-            {/* //no-user */}
-            <div className={styles.hero} id="user-btns">
+            </div> */}
+
+                {/* //no-user */}
+                {/* <div className={styles.hero} id="user-btns">
                 <i className={`${styles['user-pic']} fa-regular fa-user`}></i>
     
                 <div className={styles['sub-menu-wrap']} id="subMenu">
@@ -39,32 +64,9 @@ export default function Header() {
                         </a>
                     </div>
                 </div>
-    
+            </div> */}
+                <Profile />
             </div>
-    
-            <div id="logo" className={styles['nav-logo']}>
-                <a href="/"><img src="images/logo new 2023 transperant cutted.png" alt="logo"/></a>
-            </div>
-            <ul className={styles['nav-bar']}>
-                <li className={styles['nav-link']}>
-                    <a href="/">HOME</a>
-                </li>
-                <li id="gallery" className={`${styles['nav-link']} ${styles.gallery}`}>
-                    <a href="/gallery">GALLERY</a>
-                </li>
-                <li className={`${styles['nav-link']} ${styles.booking}`}>
-                    <a href="/booking">BOOKING</a>
-                </li>
-                {/* //if user and user is admin */}
-                <li className={styles['nav-link']}>
-                    <a href="/upload">UPLOAD</a>
-                </li>
-                {/* //if user and no admin */}
-                <li className={styles['nav-link']}>
-                    <a href="/contact">CONTACT</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+        </header>
     );
 };

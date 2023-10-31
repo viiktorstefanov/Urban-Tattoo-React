@@ -16,7 +16,7 @@ export function createSubmitHandler(callback) {
 
       const files = document.getElementById('files');
       
-      if(files.files.length == 0) {
+      if(files.files.length === 0) {
         return alert('Img file is required !');
       }
 
@@ -32,4 +32,13 @@ export function createSubmitHandler(callback) {
   
       callback(formData);
     };
+  };
+
+  export function toggleMenu(e) {
+    const userMenuWrap = e.currentTarget.nextElementSibling;
+    if(userMenuWrap.style.display === 'none') {
+      userMenuWrap.style.display = 'flex';
+    } else {
+      userMenuWrap.style.display ='none';
+    }
   };

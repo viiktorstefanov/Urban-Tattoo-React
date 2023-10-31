@@ -1,9 +1,10 @@
+import register from '../../service/register';
 import styles from '../../styles/RegisterPage.module.css';
 
 export default function RegisterPage() {
     return (
         <section id="registerPage" className={styles.registerPage}>
-    <form  className={styles.registerForm}>
+    <form onSubmit={register} className={styles.registerForm}>
         <div>
             <label className={styles.label} htmlFor="email">Email:</label>
             <input className={styles.input} id="email" name="email" type="text" placeholder="viktor@abv.bg"/>
