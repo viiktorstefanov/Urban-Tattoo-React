@@ -9,7 +9,7 @@ export default function Profile() {
             <div className={styles['user-menu-wrap']} >
                 <div className={styles['user-menu']}>
                     <div className={styles['user-info']}>
-                        <h4>Guest</h4>
+                        <h3>Guest</h3>
                     </div>
                     <a href="/login" className={styles['sub-menu-link']}>
                         <p>Sign in</p>

@@ -31,6 +31,12 @@ color: white;
 .user-info{
     padding: 20px;
 }
+p{
+    font-size: 22px;
+}
+h3{
+    font-size: 34px;
+}
 
 /* 
 .sub-menu-wrap.open-menu{
