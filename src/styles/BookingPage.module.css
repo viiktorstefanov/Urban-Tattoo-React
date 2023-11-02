@@ -1,6 +1,6 @@
 .bookingPage {
   display: flex;
-  display: none;
+  /* display: none; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -8,14 +8,4 @@
   margin-top: 5%;
   margin-bottom: 0.5%;
   font-family: 'Roboto', sans-serif;
-  }
-  .message{
-    margin-bottom: 10%;
-    font-size: 2vmax;
-  }
-  .calendar{
-    width: 20vw;
-  }
-  .bookingPage>.calendar{
-    border-radius: 20px;
   }
