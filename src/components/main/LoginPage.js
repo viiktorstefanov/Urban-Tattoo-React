@@ -1,4 +1,4 @@
-import styles from '../../styles/LoginPage.module.css';
+import styles from '../../styles/views/LoginPage.module.css';
 import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
@@ -13,7 +13,7 @@ export default function LoginPage() {
             <label htmlFor="password">Password:</label>
             <input id="password" name="password" type="password" placeholder="********" />
         </div>
-        <button type="submit">Sign in</button>
+        <button className={styles.button} type="submit">Sign in</button>
         <p className={styles.field}>
             <span>Sign up <Link to={'/register'} className={styles['log-btn']}>here</Link></span>
         </p>

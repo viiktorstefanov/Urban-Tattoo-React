@@ -1,4 +1,4 @@
-import styles from '../styles/Header.module.css';
+import styles from '../styles/components/Header.module.css';
 import Profile from './Profile';
 import Navigation from './Navigation';
 

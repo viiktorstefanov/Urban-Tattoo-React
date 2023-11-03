@@ -11,7 +11,7 @@
   text-align: center;
   position: relative;
   width: 350px;
-  height: 680px;
+  height: 600px;
   border-radius: 20px;
   padding: 40px;
   box-sizing: border-box;
@@ -67,6 +67,9 @@ button {
 
 button:hover {
   background: #f3d22d;
+}
+.button{
+  margin-top: 15%;
 }
 
 .reg-btn {

@@ -1,5 +1,5 @@
 import register from '../../service/register';
-import styles from '../../styles/RegisterPage.module.css';
+import styles from '../../styles/views/RegisterPage.module.css';
 import { Link } from 'react-router-dom';
 
 export default function RegisterPage() {

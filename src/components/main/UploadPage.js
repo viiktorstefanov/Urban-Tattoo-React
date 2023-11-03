@@ -1,4 +1,4 @@
-import styles from '../../styles/UploadPage.module.css';
+import styles from '../../styles/views/UploadPage.module.css';
 
 export default function UploadPage() {
     return (

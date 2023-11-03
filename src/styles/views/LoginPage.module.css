@@ -77,6 +77,9 @@
   button:hover {
     background: #f3d22d;
   }
+  .button{
+    margin-top: 15%;
+  }
   .log-btn{
     color: #f3d22d;
     text-decoration: underline;
