@@ -34,11 +34,3 @@ export function createSubmitHandler(callback) {
     };
   };
 
-  export function toggleMenu(e) {
-    const userMenuWrap = e.currentTarget.nextElementSibling;
-    if(userMenuWrap.style.display === 'none') {
-      userMenuWrap.style.display = 'flex';
-    } else {
-      userMenuWrap.style.display ='none';
-    }
-  };

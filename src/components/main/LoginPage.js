@@ -1,4 +1,5 @@
 import styles from '../../styles/LoginPage.module.css';
+import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
     return (
@@ -14,7 +15,7 @@ export default function LoginPage() {
         </div>
         <button type="submit">Sign in</button>
         <p className={styles.field}>
-            <span>Sign up <a className={styles['log-btn']} href="/register">here</a></span>
+            <span>Sign up <Link to={'/register'} className={styles['log-btn']}>here</Link></span>
         </p>
     </form>
 </section>

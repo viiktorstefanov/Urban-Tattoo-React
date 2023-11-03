@@ -15,8 +15,8 @@ export default function Footer() {
                 </a>
             </div>
             <div className={styles.copyright}>
-                © 2023 Copyright:
-                <a className={styles['copyright-author']} href="https://www.linkedin.com/in/viktor-stefanov-953047263/">Viktor Stefanov</a>
+                © 2023 Copyright: 
+                <a className={styles['copyright-author']} href="https://www.linkedin.com/in/viktor-stefanov-953047263/"> Viktor Stefanov</a>
             </div>
         </footer>
     );

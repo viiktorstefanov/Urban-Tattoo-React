@@ -1,5 +1,6 @@
 import register from '../../service/register';
 import styles from '../../styles/RegisterPage.module.css';
+import { Link } from 'react-router-dom';
 
 export default function RegisterPage() {
     return (
@@ -34,7 +35,7 @@ export default function RegisterPage() {
         <button className={styles.button} type="submit">Sign up</button>
        
         <p className={styles.field}>
-            <span>Sign in <a className={styles['reg-btn']} href="/login">here</a></span>
+            <span>Sign in <Link to={'/login'} className={styles['reg-btn']} >here</Link></span>
         </p>
     </form>
 </section>
