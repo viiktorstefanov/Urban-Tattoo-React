@@ -1,6 +1,6 @@
 import styles from '../styles/components/Footer.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquareFacebook, faSquareGooglePlus, faInstagram  } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquareFacebook, faSquareGooglePlus, faInstagram  } from '@fortawesome/free-brands-svg-icons';
 
 
 export default function Footer() {

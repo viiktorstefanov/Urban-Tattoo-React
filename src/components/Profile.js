@@ -1,6 +1,8 @@
 import styles from '../styles/components/Profile.module.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 
 
 
@@ -18,7 +20,7 @@ export default function Profile() {
 
     return (
         <div onClick={toggleProfile} className={styles.profile} >
-            <i className={`fa-regular ${styles['fa-user']} fa-user`}></i>
+            <FontAwesomeIcon className={`fa-regular ${styles['fa-user']} fa-user`} icon={faUser} />
 
             {
                 showProfile ? (
