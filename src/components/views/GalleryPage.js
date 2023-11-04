@@ -16,8 +16,9 @@ export default function GalleryPage() {
 
     return (
         <section id="galleryPage" className={styles['galleryPage']}>
+            
             <FullScreenImage />
-            {tattoos.length > 0 ? <Tattoos tattoos={tattoos} /> : <Spinner/>}
+            {tattoos.length > 0 ? <Tattoos tattoos={tattoos} /> : <Spinner />}
         </section>
     );
 };
