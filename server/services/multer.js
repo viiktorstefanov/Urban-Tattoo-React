@@ -4,7 +4,7 @@ function fileTransfer() {
 
     const storage = multer.diskStorage({
         destination: function(req, file, callback) {
-            callback(null, "../src/assets/images/tattoos");
+            callback(null, "../public/assets/images/tattoos");
         },
         filename: function(req, file, callback) {
             const originalName = file.originalname;

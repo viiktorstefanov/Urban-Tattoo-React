@@ -11,8 +11,8 @@ dataController.get('/tattoos', async (req, res) => {
 const fileTransfer = require('../services/multer');
 const uploads = fileTransfer();
 
-dataController.post('/upload', isAdmin(), uploads.array("files"),async (req, res) => {
-    const imageUrl = '../' + req.files[0].destination + '/' + req.files[0].filename;
+dataController.post('/upload',uploads.array("files"),async (req, res) => {
+    const imageUrl = req.files[0].destination.split('../public')[1] + '/' + req.files[0].filename;
     const tattoo = await addTattoo(imageUrl);
     console.log(`image (file "${req.files[0].filename}") has been uploaded .`);
     res.json({ status: "files received"}).end();

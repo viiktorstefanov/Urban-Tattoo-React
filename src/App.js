@@ -1,14 +1,15 @@
-import './styles/App.css';
+import './App.css';
 import Header from "./components/Header";
 import Footer from './components/Footer';
-import HomePage from "./components/main/HomePage";
-import RegisterPage from './components/main/RegisterPage';
-import LoginPage from './components/main/LoginPage';
-import DefaultPage from './components/main/DefaultPage';
-import BookingPage from './components/main/BookingPage';
-import UploadPage from './components/main/UploadPage';
-import ContactPage from './components/main/ContactPage';
+import HomePage from "./components/views/HomePage";
+import RegisterPage from './components/views/RegisterPage';
+import LoginPage from './components/views/LoginPage';
+import DefaultPage from './components/views/DefaultPage';
+import BookingPage from './components/views/BookingPage';
+import UploadPage from './components/views/UploadPage';
+import ContactPage from './components/views/ContactPage';
 import { Routes, Route } from 'react-router-dom';
+import GalleryPage from './components/views/GalleryPage';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
             <main>
                 <Routes>
                     <Route path='/' element={<HomePage />} />
+                    <Route path='/gallery' element={<GalleryPage />} />
                     <Route path='/register' element={<RegisterPage />} />
                     <Route path='/login' element={<LoginPage />} />
                     <Route path='/booking' element={<BookingPage />} />
