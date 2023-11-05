@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import styles from '../../styles/views/GalleryPage.module.css'
 import Spinner from '../Spinner';
 import MissingTattoos from '../MissingTattoos';
-
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 export default function GalleryPage() {
     const [tattoos, setTattoos] = useState([]);
@@ -15,7 +14,14 @@ export default function GalleryPage() {
     function openFullImg(imageUrl) {
         setTempImgSrc(imageUrl);
         setModel(true);
-    }
+    };
+
+    function escHandler(e) {
+        if (e.code === "Escape") {
+            setModel(false)
+            document.removeEventListener('keydown', escHandler );
+          }
+    };
 
     useEffect(() => {
         fetch('http://localhost:5000/data/tattoos')
@@ -23,6 +29,9 @@ export default function GalleryPage() {
                 .then(data => setTattoos(data));
     }, []);
 
+    useEffect(() => {
+        document.addEventListener('keydown', escHandler);
+    });
 
     return (
         <section id="galleryPage" className={styles['galleryPage']}>
@@ -30,9 +39,9 @@ export default function GalleryPage() {
                     {model ? 
                     <>
                         <img  className={styles['model-open-img']} src={tempImgSrc} alt="tattoo" />
-                        <span className={styles['model-open-x']} onClick={() => setModel(false) }>X</span>
+                        <FontAwesomeIcon className={styles['model-open-x']} onClick={() => setModel(false) } icon={faCircleXmark} />
                         {user._role === 'admin' ? 
-                        <span className={styles['model-open-delete']} onClick={() => alert('are you sure?') }>Delete</span>
+                        <FontAwesomeIcon className={styles['model-open-delete']} onClick={() => alert('are you sure?') } icon={faTrashCan} />
                         :
                         null
                         }
@@ -40,7 +49,7 @@ export default function GalleryPage() {
                     </> 
                     : null}
             </div>
-            {tattoos.length > 0 
+            {tattoos.length > 0
             ? 
             <div className={styles['img-gallery']}>
                 {tattoos.length > 0 ?
