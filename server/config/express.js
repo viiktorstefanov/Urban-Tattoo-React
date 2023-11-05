@@ -9,5 +9,6 @@ module.exports = (app) => {
     app.use(express.json());
     app.use(cors());
     app.use(trimBody());
-    app.use(session());
+    // app.use(session());
+    //pusni isAdmin na upload i na delete kato slojish user v react
 }

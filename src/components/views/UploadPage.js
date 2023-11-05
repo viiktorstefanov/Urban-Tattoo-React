@@ -10,17 +10,17 @@ export default function UploadPage() {
 
     async function submitHandler(e) {
         e.preventDefault();
+        //validation if is .img 
         const formData = new FormData();
         formData.append('files', image);
         let data = formData;
 
         const options = {
             method: 'POST',
-            headers: {},
+            body: data
         };
-        options.body = data;
 
-        fetch('http://localhost:5000/data/upload', options)
+        await fetch('http://localhost:5000/data/upload', options);
     }
 
     return (

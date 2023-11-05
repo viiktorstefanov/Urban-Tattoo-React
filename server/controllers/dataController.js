@@ -18,13 +18,12 @@ dataController.post('/upload',uploads.array("files"),async (req, res) => {
     res.json({ status: "files received"}).end();
 });
 
-dataController.delete('/tattoos/:id', isAdmin(), async (req, res) => {
+dataController.delete('/tattoos/:id',async (req, res) => {
     try {
-        
         const id = req.params.id;
         const image = await getById(id);
         await deleteById(id);
-        console.log(`image (file "${image.imageUrl.split('../../src/assets/images/tattoos/')[1]}") has been deleted.`);
+        console.log(`image (file "${image.imageUrl.split('/assets/images/tattoos/')[1]}") has been deleted.`);
         res.status(204).end();
     } catch(error) {
         const message = parseError(error);
