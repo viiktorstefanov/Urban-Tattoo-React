@@ -11,8 +11,8 @@ export default function FullScreenImage() {
     // }
 
     return (
-        <div className={styles['full-img']} id="fullImgBox">
-            <img src="" alt="no-img" id="fullImg"/>
+        <div className={styles['model open']} >
+            <img src="" alt="no-img"/>
             <span onClick={closeFullImage}>X</span>
         
          {/* if have user and user role is admin */}
