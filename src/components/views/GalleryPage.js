@@ -16,26 +16,15 @@ export default function GalleryPage() {
         setModel(true);
     };
 
-    function escHandler(e) {
-        if (e.code === "Escape") {
-            setModel(false)
-            document.removeEventListener('keydown', escHandler);
-        }
-    };
-
     useEffect(() => {
         fetch('http://localhost:5000/data/tattoos')
             .then(res => res.json())
             .then(data => setTattoos(data));
     }, []);
 
-    useEffect(() => {
-        document.addEventListener('keydown', escHandler);
-    });
-
     return (
         <>
-            <section className={styles['galleryPage']}>
+            <section tabIndex="0" onKeyDown={() => model ? setModel(false) : null } className={styles['galleryPage']}>
                 <div className={model ? `${styles['model-open']}` : `${styles.model}`}>
                     {model ?
                         <>
@@ -56,7 +45,7 @@ export default function GalleryPage() {
                         {tattoos.length > 0 ?
                             tattoos.map(tattoo => 
                             <div key={tattoo._id} className={styles['pics']} onClick={() => openFullImg(tattoo.imageUrl)} >
-                                <img style={{width: '100%', borderRadius: '2%', objectFit: 'fill'}} 
+                                <img style={{width: '100%', borderRadius: '2%'}} 
                                 src={tattoo.imageUrl} alt="no-img" 
                                 data-id={tattoo._id} />
                             </div>)
