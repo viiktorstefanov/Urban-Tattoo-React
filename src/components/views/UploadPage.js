@@ -20,7 +20,7 @@ export default function UploadPage() {
         setImage(e.target.files[0])
     };
 
-     function submitHandler(e) {
+    function submitHandler(e) {
         e.preventDefault();
 
         const formData = new FormData();
@@ -40,8 +40,11 @@ export default function UploadPage() {
     return (
         <section id="uploadPage" className={styles.uploadPage}>
             <form className={styles.uploadForm} onSubmit={submitHandler} >
-                <label htmlFor="files">Photo:</label>
-                <input className={styles['input-photo']} id="files" name="files" type="file" onChange={uploadFileHandler} />
+                <div>
+                    <label htmlFor="files">Photo:</label>
+                    <input className={styles['input-photo']} id="files" name="files" type="file" onChange={uploadFileHandler} />
+
+                </div>
                 <button className={styles.btn} type="submit">Upload</button>
             </form>
         </section>
