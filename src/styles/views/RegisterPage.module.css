@@ -75,6 +75,9 @@ button:hover {
 .reg-btn {
   color: #f3d22d;
 }
+.reg-btn:hover {
+  text-decoration: underline;
+}
 
 .field {
   margin-top: 10%;

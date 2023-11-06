@@ -7,80 +7,30 @@ right: 1%;
 top: 2%;
 color: white;
 }
-.fa-user {
-    font-size: 24px;
+
+.icon-user {
+    font-size: 40px;
     cursor: pointer;
 }
-.fa-user:hover {
+
+.icon-user:hover {
     color: #f3d22d;
 }
-/* overflow -hidden usermenu wrap */
+
 .user-menu-wrap{
-    position: absolute;
-    top: 100%;
-    right: 50px;
-    width: 120px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    top: 10px;
+    right: 10px;
     color: white;
-    font-size: 20px;
     max-height: 0px;
     transition: max-height 0.1s;
 }
-.user-menu{
-    font-size: 26px;
-}
-.user-info{
-    padding: 20px;
-}
-p{
-    font-size: 22px;
-}
-h3{
-    font-size: 34px;
+
+.user-menu-link{
+    font-size: 28px;
 }
 
-/* 
-.sub-menu-wrap.open-menu{
-    max-height: 100vh;
-}
-.sub-menu{
-    border: white 2px solid;
-    padding: 10%;
-    margin: 10px;
-}
-.sub-menu hr {
-    border: 0;
-    height: 1px;
-    width: 100%;
-    background: white;
-    margin: 15px 0 10px;
-    margin-bottom: 20px;
-}
-.sub-menu-link{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    margin: 12px 0;
-}
-.sub-menu-link p{
-    width: 100%;
-}
-.user-info{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.user-info h4:hover{
-   color: #f3d22d;
-}
-.user-pic {
-    position: absolute;
-    font-size: 24px;
-    margin: 1% 1% 0 0;
-    width: 2%;
-    cursor: pointer;
-    padding: 12px;
-}
-.user-pic:hover {
-    color: #f3d22d;
-} */

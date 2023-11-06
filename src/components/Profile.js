@@ -1,14 +1,12 @@
 import styles from '../styles/components/Profile.module.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-regular-svg-icons';
-
-
+import { PiUserListBold } from 'react-icons/pi';
 
 export default function Profile() {
 
     const [showProfile, setShowProfile] = useState(false);
+    // const user = { _role: 'user', email: 'viktor-stefanov@mail.bg', name: 'Viktor' };
 
     const toggleProfile = () => {
         if (showProfile) {
@@ -20,23 +18,16 @@ export default function Profile() {
 
     return (
         <div onClick={toggleProfile} className={styles.profile} >
-            <FontAwesomeIcon className={`fa-regular ${styles['fa-user']} fa-user`} icon={faUser} />
-
+            <PiUserListBold className={styles['icon-user']}/>
+            
             {
-                showProfile ? (
+                showProfile ? 
                     <div className={styles['user-menu-wrap']} >
-                        <div className={styles['user-menu']}>
-                            <div className={styles['user-info']}>
-                                <h3>Guest</h3>
-                            </div>
-                            <Link to='/login' className={styles['sub-menu-link']}><p>Sign in</p></Link>
-                            <Link to='/register' className={styles['sub-menu-link']}><p>Sign up</p></Link>
-                        </div>
+                            <Link to='/login' className={styles['user-menu-link']}><p>Sign in</p></Link>
+                            <Link to='/register' className={styles['user-menu-link']}><p>Sign up</p></Link>
                     </div>
-                ) 
-                : null
+                            : null
             }
-
         </div>
     );
 };
