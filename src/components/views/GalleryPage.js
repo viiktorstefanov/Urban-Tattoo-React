@@ -57,7 +57,7 @@ export default function GalleryPage() {
                         {tattoos.length > 0 ?
                             tattoos.map(tattoo => 
                             <div key={tattoo._id} className={styles['pics']} onClick={() => openFullImg(tattoo.imageUrl, tattoo._id)} >
-                                <img style={{width: '100%', borderRadius: '2%'}} 
+                                <img style={{width: '100%', borderRadius: '2%', objectFit: 'cover'}} 
                                 src={tattoo.imageUrl} alt="tattoo"/>
                             </div>)
                             :

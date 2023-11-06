@@ -1,21 +1,19 @@
 .galleryPage {
     font-family: 'Roboto', sans-serif;
-    margin-top: 4%;
-    max-width: 88%;
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3;
-    -webkit-column-width: 33%;
-    -moz-column-width: 33%;
-    column-width: 33%;
-    padding: 0 40rem;
+    padding: 4% 0 4% 0;
+    max-width: 40%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    grid-gap: 1.5%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .pics{
     -webkit-transition: all 350ms ease;
     transition: all 350ms ease;
     cursor: pointer;
-    margin-bottom: 12px;
 }
 
 .pics:hover{
