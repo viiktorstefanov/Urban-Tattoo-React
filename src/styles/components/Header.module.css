@@ -3,14 +3,12 @@
     src: url('/public/assets/fonts/PermanentMarker-Regular.ttf');
 }
 header{
-    position: sticky;
     z-index: 100;
     top:0;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 22vh;
     background-color: black;
     font-family: 'Marker';
 }

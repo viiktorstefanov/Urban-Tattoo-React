@@ -19,7 +19,7 @@ export default function Profile() {
     };
 
     return (
-        <div onClick={toggleProfile} tabIndex="0" onKeyDown={() => showProfile ? setShowProfile(false) : null } className={styles.profile} >
+        <div onClick={toggleProfile} className={styles.profile} >
             <FontAwesomeIcon className={`fa-regular ${styles['fa-user']} fa-user`} icon={faUser} />
 
             {
