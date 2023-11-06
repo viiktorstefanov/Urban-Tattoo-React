@@ -1,14 +1,15 @@
-import register from '../../service/register';
+import { useState } from 'react';
 import styles from '../../styles/views/RegisterPage.module.css';
 import { Link } from 'react-router-dom';
 
 export default function RegisterPage() {
+    const [userInfo, setUserInfo ] = useState({});
     return (
         <section id="registerPage" className={styles.registerPage}>
-    <form onSubmit={register} className={styles.registerForm}>
+    <form onSubmit={(e) => { e.preventDefault(); console.log(userInfo)}} className={styles.registerForm}>
         <div>
             <label className={styles.label} htmlFor="email">Email:</label>
-            <input className={styles.input} id="email" name="email" type="text" placeholder="viktor@abv.bg"/>
+            <input onChange={(e) => (setUserInfo({ email: e.target.value}))} className={styles.input} id="email" name="email" type="text" value={userInfo.email} placeholder="viktor@abv.bg"/>
         </div>
         
         <div>
