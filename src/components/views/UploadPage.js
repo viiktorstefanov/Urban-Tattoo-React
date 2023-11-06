@@ -12,14 +12,11 @@ export default function UploadPage() {
             alert('Only images are allowed');
             return;
         }
-        if(e.target.files[0].size > 10000000) {
+        if(e.target.files[0].size > 5000000) {
             //should reset input 
-            alert('Images over 10MB are not allowed !');
+            alert('Images over 5MB are not allowed !');
             return;
         }
-
-        //validation if is .img
-        //validation if file is over 10mb
         setImage(e.target.files[0])
     };
 
