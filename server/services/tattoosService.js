@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 async function getAll() {
-    return Tattoos.find({}).sort({"_id": 1});
+    return Tattoos.find({});
 }
 
 async function getById(id) {
