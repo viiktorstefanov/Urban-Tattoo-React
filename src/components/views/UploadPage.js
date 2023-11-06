@@ -10,17 +10,15 @@ export default function UploadPage() {
 
     async function submitHandler(e) {
         e.preventDefault();
-        //validation if is .img 
+        //validation if is .img
+        //validation if file is over 15mb
         const formData = new FormData();
         formData.append('files', image);
-        let data = formData;
 
-        const options = {
+        await fetch('http://localhost:5000/data/upload', {
             method: 'POST',
-            body: data
-        };
-
-        await fetch('http://localhost:5000/data/upload', options);
+            body: formData
+        });
     }
 
     return (

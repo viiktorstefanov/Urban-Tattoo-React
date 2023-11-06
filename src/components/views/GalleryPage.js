@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import styles from '../../styles/views/GalleryPage.module.css'
 import Spinner from '../Spinner';
 import MissingTattoos from '../MissingTattoos';
@@ -21,11 +20,11 @@ export default function GalleryPage() {
     };
 
     async function deleteTattoo() {
-        let result = await fetch(`http://localhost:5000/data/tattoos/${id}`, {
+        await fetch(`http://localhost:5000/data/tattoos/${id}`, {
             method: 'DELETE',
             });
-
-        setTattoos(state => state.filter(x => x._id !== id));
+        
+        setTattoos(state => state.filter(x => x._id !== id));    
         setModel(false);
     };
 
@@ -69,3 +68,4 @@ export default function GalleryPage() {
         </>
     );
 };
+
