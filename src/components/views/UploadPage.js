@@ -7,13 +7,25 @@ export default function UploadPage() {
     const navigate = useNavigate();
 
     const uploadFileHandler = (e) => {
+        if(e.target.files[0].type !== "image/jpeg") {
+            //should reset input 
+            alert('Only images are allowed');
+            return;
+        }
+        if(e.target.files[0].size > 10000000) {
+            //should reset input 
+            alert('Images over 10MB are not allowed !');
+            return;
+        }
+
+        //validation if is .img
+        //validation if file is over 10mb
         setImage(e.target.files[0])
     };
 
     async function submitHandler(e) {
         e.preventDefault();
-        //validation if is .img
-        //validation if file is over 15mb
+        
         const formData = new FormData();
         formData.append('files', image);
 
