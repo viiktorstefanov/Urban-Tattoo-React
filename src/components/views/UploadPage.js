@@ -1,8 +1,10 @@
 import styles from '../../styles/views/UploadPage.module.css';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function UploadPage() {
     const [image, setImage] = useState();
+    const navigate = useNavigate();
 
     const uploadFileHandler = (e) => {
         setImage(e.target.files[0])
@@ -19,6 +21,8 @@ export default function UploadPage() {
             method: 'POST',
             body: formData
         });
+
+        navigate('/gallery');
     }
 
     return (
