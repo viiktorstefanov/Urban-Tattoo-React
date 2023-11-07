@@ -1,34 +1,27 @@
-import styles from '../styles/components/Profile.module.css';
-import { Link } from 'react-router-dom';
+import { BiSolidUserDetail } from 'react-icons/bi';
 import { useState } from 'react';
-import { PiUserListBold } from 'react-icons/pi';
+import styles from '../styles/components/Profile.module.css';
+import ProfileUser from './ProfileUser';
+import ProfileGuest from './ProfileGuest';
 
 export default function Profile() {
 
     const [showProfile, setShowProfile] = useState(false);
-    // const user = { _role: 'user', email: 'viktor-stefanov@mail.bg', name: 'Viktor' };
-
-    const toggleProfile = () => {
-        if (showProfile) {
-            setShowProfile(false);
-        } else {
-            setShowProfile(true);
-        }
-    };
+    const user = { _role: 'user', email: 'viktor-stefanov@mail.bg', name: 'Viktor' };
+    // const user = false;
 
     return (
-        <div onClick={toggleProfile} className={styles.profile} >
-            <PiUserListBold className={styles['icon-user']}/>
-            
-            {
-                showProfile ? 
-                    <div className={styles['user-menu-wrap']} >
-                            <Link to='/login' className={styles['user-menu-link']}><p>Sign in</p></Link>
-                            <Link to='/register' className={styles['user-menu-link']}><p>Sign up</p></Link>
-                    </div>
-                            : null
-            }
+        <div className={styles['profile-dropdown']}>
+            <div className='menu-container'>
+                <div className='menu-trigger' onClick={() => { setShowProfile(!showProfile) }}>
+                    <BiSolidUserDetail className={styles['menu-trigger-ico']} />
+                </div>
+
+                <div className={`${styles['dropdown-menu']} ${showProfile ? styles['active'] : styles['inactive']}`} >
+                    { user ? <ProfileUser /> : <ProfileGuest /> }
+                </div>
+            </div>
         </div>
     );
-};
+}
 
