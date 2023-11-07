@@ -14,7 +14,7 @@ export default function Navigation() {
                     <Link to="/gallery">GALLERY</Link>
                 </li>
                 <li className={`${styles['nav-logo']} ${styles['nav-li']}`}>
-                    <Link to="/"><img src="assets/images/logo new 2023 transperant cutted.png" alt="logo" /></Link>
+                    <Link to="/"><img src="/assets/images/logo new 2023 transperant cutted.png" alt="logo" /></Link>
                 </li>
                 <li className={`${styles['nav-link']} ${styles.booking} ${styles['nav-li']} ${styles['navigation']}`}>
                     <Link to="/booking">BOOKING</Link>

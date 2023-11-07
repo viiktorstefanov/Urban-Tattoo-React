@@ -10,6 +10,8 @@ import UploadPage from './components/views/UploadPage';
 import ContactPage from './components/views/ContactPage';
 import { Routes, Route } from 'react-router-dom';
 import GalleryPage from './components/views/GalleryPage';
+import EditProfilePage from './components/views/EditProfilePage';
+import ProfilePage from './components/views/ProfilePage';
 
 function App() {
     return (
@@ -24,6 +26,8 @@ function App() {
                     <Route path='/booking' element={<BookingPage />} />
                     <Route path='/upload' element={<UploadPage />} />
                     <Route path='/contact' element={<ContactPage />} />
+                    <Route path='/profile/:id' element={<ProfilePage />} />
+                    <Route path='/profile/edit/:id' element={<EditProfilePage />} />
                     <Route path='*' element={<DefaultPage />} />
                 </Routes>
             </main>

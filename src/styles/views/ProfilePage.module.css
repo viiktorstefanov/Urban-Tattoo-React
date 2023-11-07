@@ -1,0 +1,46 @@
+.profilePage{
+    margin-top: 2%;
+    margin-bottom: 5%;
+    width: 300px;
+    height: 350px;
+}
+.profile-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20px;
+}
+.user-logo-wrapper {
+    margin-top: 5%;
+    width: 100%;
+    border-radius: 20px;
+}
+.user-logo{
+    font-size: 80px;
+    color: white;
+    position: relative;
+    overflow: visible;
+    top: 0%;
+    left: 0%;
+    margin-bottom: 10%;
+}
+.user-info{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5%;
+    margin-bottom: 10%;
+    width: 80%;
+    border-bottom: 1px solid rgb(174, 171, 171, 0.1);
+}
+.user-info-category{
+    font-size: 16px;
+}
+.user-info-email, .user-info-name, .user-info-phone, .user-info-reservation {
+    color: white;
+    font-size: 14px;
+}

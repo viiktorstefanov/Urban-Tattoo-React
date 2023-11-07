@@ -13,7 +13,7 @@ export default function ProfileUser() {
             <ul>
                 <li className={styles['dropdownItem']}>
                     <CgProfile className={styles['dropdownItem-ico']} />
-                    <Link to='/profile' className={styles['dropdownItem-link']}>My Profile</Link>
+                    <Link to='/profile/:id' className={styles['dropdownItem-link']}>My Profile</Link>
                 </li>
                 <li className={styles['dropdownItem']}>
                     <FiEdit className={styles['dropdownItem-ico']} />
