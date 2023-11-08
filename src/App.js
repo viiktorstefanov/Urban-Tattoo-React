@@ -1,23 +1,23 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import Header from "./components/Header/Header";
 import Footer from './components/Footer/Footer';
+import ProfilePage from './components/ProfilePage/ProfilePage';
 import HomePage from "./components/HomePage/HomePage";
+import GalleryPage from './components/GalleryPage/GalleryPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import LoginPage from './components/LoginPage/LoginPage';
-import DefaultPage from './components/DefaultPage/DefaultPage';
 import BookingPage from './components/BookingPage/BookingPage';
 import UploadPage from './components/UploadPage/UploadPage';
 import ContactPage from './components/ContactPage/ContactPage';
-import { Routes, Route } from 'react-router-dom';
-import GalleryPage from './components/GalleryPage/GalleryPage';
 import EditProfilePage from './components/EditProfilePage/EditProfilePage';
-import ProfilePage from './components/ProfilePage/ProfilePage';
+import DefaultPage from './components/DefaultPage/DefaultPage';
 
 function App() {
     return (
         <>
             <Header />
-            <main>
+            <main className='pages'>
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/gallery' element={<GalleryPage />} />

@@ -16,7 +16,7 @@ a {
 a:hover {
     color: #f3d22d;
 }
-main {
+.pages {
     color: white;
     text-align: center;
     font-family:'Roboto',sans-serif;
