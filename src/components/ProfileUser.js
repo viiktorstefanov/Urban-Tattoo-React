@@ -13,11 +13,11 @@ export default function ProfileUser() {
             <ul>
                 <li className={styles['dropdownItem']}>
                     <CgProfile className={styles['dropdownItem-ico']} />
-                    <Link to='/profile/:id' className={styles['dropdownItem-link']}>My Profile</Link>
+                    <Link to='/users/:id' className={styles['dropdownItem-link']}>My Profile</Link>
                 </li>
                 <li className={styles['dropdownItem']}>
                     <FiEdit className={styles['dropdownItem-ico']} />
-                    <Link to='/profile/edit/:id' className={styles['dropdownItem-link']}>Edit Profile</Link>
+                    <Link to='/users/edit/:id' className={styles['dropdownItem-link']}>Edit Profile</Link>
                 </li>
                 <li className={styles['dropdownItem']}>
                     <CgLogOut className={styles['dropdownItem-ico']} />
