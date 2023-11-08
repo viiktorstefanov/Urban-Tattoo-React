@@ -18,8 +18,11 @@ Custom design.
 </p>
 
 Integrated user accounts for a personalized experience.
+
 Created an image gallery for showcasing tattoos.
+
 Developed RESTful APIs to handle user data, tattoo information, and studio details.
+
 Utilized MongoDB as the database to store and retrieve data efficiently.
 
 ABOUT THE SITE:
@@ -27,7 +30,9 @@ ABOUT THE SITE:
 HOW TO START APPLICATION:
 
 -install all dependecies with "npm i".
+
 -open new terminal ,run the server with "cd ./server" , install server-dependecies with "npm i",then use "npm run server".
+
 -use "npm start" to start the application.
 
 ## Available Scripts
