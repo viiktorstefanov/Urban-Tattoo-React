@@ -15,15 +15,15 @@ export default function EditProfilePage() {
 
                 <div>
                     <label className={styles.label} htmlFor="name">Name:</label>
-                    <input className={styles.input} id="name" name="name" type="text" placeholder="Viktor Stefanov" />
+                    <input className={styles.input} id="name" name="name" type="text" />
                 </div>
 
                 <div>
                     <label className={styles.label} htmlFor="phone">Phone:</label>
-                    <input className={styles.input} id="phone" name="phone" type="number" placeholder="+359886003010" />
+                    <input className={styles.input} id="phone" name="phone" type="number" />
                 </div>
                 
-                <Link to={`/profile/{id}`}>
+                <Link to={`/users/{id}`}>
                     <button className={styles.button} type="submit">Save</button>
                 </Link>
             </form>

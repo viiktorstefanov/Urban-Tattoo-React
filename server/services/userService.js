@@ -72,9 +72,31 @@ function parseToken(token) {
     return jwt.verify(token, secret);
 }
 
+async function updateUserById(userData, userId){
+    const user = await User.findById(userId);
+
+    const missing = Object.entries(userData).filter(([k, v]) => !v);
+    if (missing.length > 0) {
+        throw new Error(missing.map(([k, v]) => `${k} is required!`).join('\n'))
+    }
+
+    user.fullName = userData.name;
+    user.email = userData.email;
+    user.phone = userData.phone;
+
+    await user.save();
+    return user;
+};
+
+async function getUserById(id) {
+    return User.findById(id);
+}
+
 module.exports = {
     register, 
     login,
     logout,
     parseToken,
+    updateUserById,
+    getUserById
 }

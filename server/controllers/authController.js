@@ -1,4 +1,4 @@
-const { register, login, logout } = require('../services/userService');
+const { register, login, logout, updateUserById, getUserById } = require('../services/userService');
 const { body, validationResult } = require('express-validator');
 const { parseError } = require('../utils/parseError');
 const { isGuest, hasUser } = require('../middlewares/guards');
@@ -40,6 +40,29 @@ authController.get('/logout',hasUser(), async (req, res) => {
     const token = req.token;
     await logout(token);
     res.status(204).end();
+});
+
+authController.post('/edit/:id', isGuest(), async (req, res) => {
+    try {
+        const id = req.params.id;
+        const newUserInfo = req.body;
+        const currUser = await updateUserById(newUserInfo,id);
+
+        if(currUser) {
+            console.log(`user with email: ${req.body.email} has been edited`);
+        }else {
+            throw new Error('Problem with finding or editing this user');
+        }
+       res.status(204).end();
+    } catch(error) {
+        const message = parseError(error);
+        res.status(401).json({ message });
+    }
+});
+
+authController.get('/:id',hasUser(), async (req, res) => {
+        const id = req.params.id;
+        res.json(await getUserById(id));
 });
 
 module.exports = authController;

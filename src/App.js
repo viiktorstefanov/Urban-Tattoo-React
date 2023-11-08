@@ -26,8 +26,8 @@ function App() {
                     <Route path='/booking' element={<BookingPage />} />
                     <Route path='/upload' element={<UploadPage />} />
                     <Route path='/contact' element={<ContactPage />} />
-                    <Route path='/profile/:id' element={<ProfilePage />} />
-                    <Route path='/profile/edit/:id' element={<EditProfilePage />} />
+                    <Route path='/users/:id' element={<ProfilePage />} />
+                    <Route path='/users/edit/:id' element={<EditProfilePage />} />
                     <Route path='*' element={<DefaultPage />} />
                 </Routes>
             </main>
