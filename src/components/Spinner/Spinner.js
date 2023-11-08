@@ -1,5 +1,5 @@
 import { SpinnerCircular } from 'spinners-react';
-import styles from '../styles/components/Spinner.module.css'
+import styles from './Spinner.module.css'
 
 export default function Spinner() {
     return (

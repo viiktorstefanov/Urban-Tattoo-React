@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../../styles/views/EditProfilePage.module.css';
+import styles from './EditProfilePage.module.css';
 import { FiEdit } from 'react-icons/fi';
 
 export default function EditProfilePage() {

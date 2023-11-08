@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from '../../styles/views/RegisterPage.module.css';
+import styles from './RegisterPage.module.css';
 import { Link } from 'react-router-dom';
 
 export default function RegisterPage() {

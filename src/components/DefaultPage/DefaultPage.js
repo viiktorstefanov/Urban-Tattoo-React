@@ -1,4 +1,4 @@
-import styles from '../../styles/views/DefaultPage.module.css';
+import styles from './DefaultPage.module.css';
 
 export default function DefaultPage() {
     return (

@@ -1,4 +1,4 @@
-import styles from '../../styles/views/ProfilePage.module.css';
+import styles from './ProfilePage.module.css';
 import { BiUserPin } from 'react-icons/bi';
 
 export default function ProfilePage() {

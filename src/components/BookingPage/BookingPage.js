@@ -1,6 +1,6 @@
-import styles from '../../styles/views/BookingPage.module.css'
+import styles from './BookingPage.module.css'
 import Calendar from 'react-calendar';
-import '../../styles/components/customCalendar.css';
+import './customCalendar.css';
 
 export default function BookingPage() {
     return (

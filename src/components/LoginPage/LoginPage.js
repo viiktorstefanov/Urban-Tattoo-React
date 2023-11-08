@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from '../../styles/views/LoginPage.module.css';
+import styles from './LoginPage.module.css';
 import { Link } from 'react-router-dom';
 
 export default function LoginPage() {

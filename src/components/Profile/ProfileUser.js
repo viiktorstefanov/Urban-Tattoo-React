@@ -1,4 +1,4 @@
-import styles from '../styles/components/Profile.module.css';
+import styles from './Profile.module.css';
 import { FiEdit } from 'react-icons/fi';
 import { CgProfile, CgLogOut } from 'react-icons/cg';
 import { Link } from 'react-router-dom';

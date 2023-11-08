@@ -1,4 +1,4 @@
-import styles from '../../styles/views/UploadPage.module.css';
+import styles from './UploadPage.module.css';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 

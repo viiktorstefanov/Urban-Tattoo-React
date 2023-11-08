@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import styles from '../../styles/views/GalleryPage.module.css'
-import Spinner from '../Spinner';
-import MissingTattoos from '../MissingTattoos';
+import styles from './GalleryPage.module.css'
+import Spinner from '../Spinner/Spinner';
+import MissingTattoos from '../MissingTattoos/MissingTattoos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 

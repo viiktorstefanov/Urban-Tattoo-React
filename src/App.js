@@ -1,17 +1,17 @@
 import './App.css';
-import Header from "./components/Header";
-import Footer from './components/Footer';
-import HomePage from "./components/views/HomePage";
-import RegisterPage from './components/views/RegisterPage';
-import LoginPage from './components/views/LoginPage';
-import DefaultPage from './components/views/DefaultPage';
-import BookingPage from './components/views/BookingPage';
-import UploadPage from './components/views/UploadPage';
-import ContactPage from './components/views/ContactPage';
+import Header from "./components/Header/Header";
+import Footer from './components/Footer/Footer';
+import HomePage from "./components/HomePage/HomePage";
+import RegisterPage from './components/RegisterPage/RegisterPage';
+import LoginPage from './components/LoginPage/LoginPage';
+import DefaultPage from './components/DefaultPage/DefaultPage';
+import BookingPage from './components/BookingPage/BookingPage';
+import UploadPage from './components/UploadPage/UploadPage';
+import ContactPage from './components/ContactPage/ContactPage';
 import { Routes, Route } from 'react-router-dom';
-import GalleryPage from './components/views/GalleryPage';
-import EditProfilePage from './components/views/EditProfilePage';
-import ProfilePage from './components/views/ProfilePage';
+import GalleryPage from './components/GalleryPage/GalleryPage';
+import EditProfilePage from './components/EditProfilePage/EditProfilePage';
+import ProfilePage from './components/ProfilePage/ProfilePage';
 
 function App() {
     return (

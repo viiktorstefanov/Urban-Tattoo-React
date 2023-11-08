@@ -1,14 +1,14 @@
 import { BiSolidUserDetail } from 'react-icons/bi';
 import { useState } from 'react';
-import styles from '../styles/components/Profile.module.css';
+import styles from './Profile.module.css';
 import ProfileUser from './ProfileUser';
 import ProfileGuest from './ProfileGuest';
 
 export default function Profile() {
 
     const [showProfile, setShowProfile] = useState(false);
-    const user = { _role: 'user', email: 'viktor-stefanov@mail.bg', name: 'Viktor' };
-    // const user = false;
+    // const user = { _role: 'user', email: 'viktor-stefanov@mail.bg', name: 'Viktor' };
+    const user = false;
 
     return (
         <div className={styles['profile-dropdown']}>

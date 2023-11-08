@@ -1,6 +1,6 @@
-import styles from '../styles/components/Header.module.css';
-import Navigation from './Navigation';
-import Profile from './Profile';
+import styles from './Header.module.css';
+import Navigation from '../Navigation/Navigation';
+import Profile from '../Profile/Profile';
 
 export default function Header() {
     return (
