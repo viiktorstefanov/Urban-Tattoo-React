@@ -30,6 +30,9 @@ Custom design.
   <img align="left" src="https://github.com/viktor0110/urbanReact/blob/master/resume/table.jpg" />
   <br>
 </p>
+<br>
+<br>
+
 
 Integrated user accounts for a personalized experience.
 
