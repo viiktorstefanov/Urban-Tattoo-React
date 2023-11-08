@@ -4,7 +4,11 @@ Front-end: React/React-router-dom, HTML, CSS, JavaScript.
 Back-end: Express, Node.js, REST APIs.
 Database: MongoDB.
 Custom design.
-REACT, JavaScript, CSS, HTML , EXPRESS, PHOTOSHOP.(images);
+
+<p align="left">
+  <img align="left" src="https://github.com/viktor0110/urbanReact/blob/master/resume/stack.jpg" />
+  <br>
+</p>
 
 # Functionalities: table(image):
 
