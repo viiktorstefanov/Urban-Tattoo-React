@@ -1,6 +1,25 @@
-# Getting Started with Create React App
+# Urban Tattoo Sofia
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Front-end: React/React-router-dom, HTML, CSS, JavaScript.
+Back-end: Express, Node.js, REST APIs.
+Database: MongoDB.
+Custom design.
+REACT, JavaScript, CSS, HTML , EXPRESS, PHOTOSHOP.(images);
+
+# Functionalities: table(image):
+
+Integrated user accounts for a personalized experience.
+Created an image gallery for showcasing tattoos.
+Developed RESTful APIs to handle user data, tattoo information, and studio details.
+Utilized MongoDB as the database to store and retrieve data efficiently.
+
+ABOUT THE SITE:
+
+HOW TO START APPLICATION:
+
+-install all dependecies with "npm i".
+-open new terminal ,run the server with "cd ./server" , install server-dependecies with "npm i",then use "npm run server".
+-use "npm start" to start the application.
 
 ## Available Scripts
 
@@ -68,3 +87,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
