@@ -43,7 +43,6 @@ export default function UploadPage() {
                 <div>
                     <label htmlFor="files">Photo:</label>
                     <input className={styles['input-photo']} id="files" name="files" type="file" onChange={uploadFileHandler} />
-
                 </div>
                 <button className={styles.btn} type="submit">Upload</button>
             </form>

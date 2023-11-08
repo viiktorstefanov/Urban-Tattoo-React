@@ -7,8 +7,8 @@ import ProfileGuest from './ProfileGuest';
 export default function Profile() {
 
     const [showProfile, setShowProfile] = useState(false);
-    // const user = { _role: 'user', email: 'viktor-stefanov@mail.bg', name: 'Viktor' };
-    const user = false;
+    const user = { _role: 'user', email: 'viktor-stefanov@mail.bg', name: 'Viktor' };
+    // const user = false;
 
     return (
         <div className={styles['profile-dropdown']}>
