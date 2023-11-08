@@ -10,7 +10,12 @@ Custom design.
   <br>
 </p>
 
-# Functionalities: table(image):
+# Functionalities: 
+
+<p align="left">
+  <img align="left" src="https://github.com/viktor0110/urbanReact/blob/master/resume/table.jpg" />
+  <br>
+</p>
 
 Integrated user accounts for a personalized experience.
 Created an image gallery for showcasing tattoos.
