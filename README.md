@@ -1,8 +1,19 @@
 # Urban Tattoo Sofia
 
-Front-end: React/React-router-dom, HTML, CSS, JavaScript.
-Back-end: Express, Node.js, REST APIs.
-Database: MongoDB.
+Front-end: 
+React/React-router-dom 
+HTML
+CSS
+JavaScript
+
+Back-end: 
+Express
+Node.js
+REST APIs
+
+Database: 
+MongoDB
+
 Custom design.
 
 <p align="left">
