@@ -1,5 +1,5 @@
 const dataController = require('express').Router();
-const { isAdmin, as } = require('../middlewares/guards');
+const { isAdmin } = require('../middlewares/guards');
 const { getAll, deleteById, addTattoo, getById } = require('../services/tattoosService');
 const { parseError } = require('../utils/parseError');
 
@@ -42,8 +42,8 @@ dataController.post('/upload', uploads.array("files"), async (req, res) => {
             const message = parseError(error);
             res.status(413).json({ message });
         } else {
-            res.status(400).json({ message });
             const message = parseError(error);
+            res.status(400).json({ message });
         }
     }
 });
