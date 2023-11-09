@@ -22,7 +22,8 @@ async function deleteById(id) {
 async function addTattoo(imageUrl) {
     const tattoo = await Tattoos.create({
        imageUrl
-    });  
+    }); 
+    return tattoo; 
 }
 
 

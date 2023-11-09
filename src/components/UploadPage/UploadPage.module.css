@@ -6,19 +6,33 @@
   text-align: center;
   margin-bottom: 3%;
 }
+
 .uploadForm {
-    display: inline-block;
-    text-align: center;
-    position: relative;
-    width: 350px;
-    height: 450px;
-    border-radius: 20px;
-    padding: 40px;
-    box-sizing: border-box;
-    background: black;
-    justify-content: center;
-  }
-  .input-photo {
-    background: white;
-    color: black;
-  }
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  width: 350px;
+  height: 450px;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: black;
+  justify-content: center;
+}
+
+.input-photo {
+  background: white;
+  color: black;
+}
+
+.btn-submit {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 20px;
+  font-size: 15px;
+  background: white;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  transition: 0.5s;
+}

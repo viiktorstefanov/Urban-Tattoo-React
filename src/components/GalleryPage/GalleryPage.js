@@ -1,21 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './GalleryPage.module.css'
 import Spinner from '../Spinner/Spinner';
 import MissingTattoos from '../MissingTattoos/MissingTattoos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-export default function GalleryPage() {
-    const [tattoos, setTattoos] = useState([]);
+export default function GalleryPage({
+    tattoos, setTattoos
+}) {
+    
     const [model, setModel] = useState(false);
     const [tempImgSrc, setTempImgSrc] = useState('');
     const [id, setId] = useState('');
     const user = { _role: 'admin' };
-    const baseUrl = 'http://localhost:5000/data/tattoos';
+    
 
     function openFullImg(imageUrl, id) {
-        setTempImgSrc(imageUrl);
         setModel(true);
+        setTempImgSrc(imageUrl);
         setId(id);
     };
 
@@ -28,11 +30,7 @@ export default function GalleryPage() {
         setModel(false);
     };
 
-    useEffect(() => {
-        fetch(baseUrl)
-            .then(res => res.json())
-            .then(data => setTattoos(data));
-    }, []);
+    
 
     return (
         <>
