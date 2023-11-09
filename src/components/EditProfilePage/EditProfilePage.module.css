@@ -12,7 +12,7 @@
     text-align: center;
     position: relative;
     width: 350px;
-    height: 500px;
+    height: 550px;
     border-radius: 20px;
     padding: 40px;
     box-sizing: border-box;
@@ -76,5 +76,17 @@
   .dropdownItem-ico{
     font-size: 70px;
     margin-bottom: 10%;
+  }
+
+  .deleteProfileBtn{
+    color: rgb(214, 63, 63);
+  }
+
+  .deleteProfileBtn:hover{
+    color: rgb(214, 63, 63);
+    text-decoration: underline;
+  }
+  .deleteProfileDiv{
+    margin-top: 10%;
   }
 

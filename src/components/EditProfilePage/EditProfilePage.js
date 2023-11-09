@@ -38,6 +38,12 @@ export default function EditProfilePage() {
                     <label className={styles.label} htmlFor="phone">Phone:</label>
                     <input className={styles.input} id="phone" name="phone" type="number" value={userInfo.phone} onChange={onChangeHandler}/>
                 </div>
+
+                <div className={styles['deleteProfileDiv']}>
+                    <Link to={'/'}>
+                        <span className={styles['deleteProfileBtn']}>Delete profile</span>
+                    </Link>
+                </div>
                 
                 <Link to={`/users/{id}`}>
                     <button className={styles.button} type="submit">Save</button>
