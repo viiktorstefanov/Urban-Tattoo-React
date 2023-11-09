@@ -17,7 +17,7 @@ export default function LoginPage() {
             <form className={styles.loginForm} onSubmit={(e) => { e.preventDefault(); console.log(userInfo) }}>
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input onChange={onChangeHandler} id="email" name="email" type="text" placeholder="viktor@abv.bg" value={userInfo.email} />
+                    <input onChange={onChangeHandler} id="email" name="email" type="text" placeholder="example@email.com" value={userInfo.email} />
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>

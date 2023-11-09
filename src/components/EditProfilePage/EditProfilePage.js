@@ -5,9 +5,12 @@ import { FiEdit } from 'react-icons/fi';
 
 export default function EditProfilePage() {
     const [userInfo, setUserInfo] = useState({
-        name: '',
+        firstName: '',
+        lastName: '',
         phone: ''
     });
+
+    //use effect(get from server) => setUserInfo(result)
 
     const onChangeHandler = (e) => {
         setUserInfo(state => ({...state, [e.target.name] : e.target.value}));
@@ -22,8 +25,13 @@ export default function EditProfilePage() {
                 </div>
 
                 <div>
-                    <label className={styles.label} htmlFor="name">Name:</label>
-                    <input className={styles.input} id="name" name="name" type="text" value={userInfo.name} onChange={onChangeHandler}/>
+                    <label className={styles.label} htmlFor="name">First name:</label>
+                    <input className={styles.input} id="firstName" name="firstName" type="text" value={userInfo.firstName} onChange={onChangeHandler}/>
+                </div>
+
+                <div>
+                    <label className={styles.label} htmlFor="name">Last name:</label>
+                    <input className={styles.input} id="lastName" name="lastName" type="text" value={userInfo.lastName} onChange={onChangeHandler}/>
                 </div>
 
                 <div>

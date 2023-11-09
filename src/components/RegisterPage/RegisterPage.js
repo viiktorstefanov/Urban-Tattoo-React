@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 
 export default function RegisterPage() {
     const [userInfo, setUserInfo] = useState({
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
         repeatPassword: '',
-        name: '',
         phone: '',
     });
 
@@ -19,24 +20,31 @@ export default function RegisterPage() {
         <section id="registerPage" className={styles.registerPage}>
             <form onSubmit={(e) => { e.preventDefault(); console.log(userInfo) }} className={styles.registerForm}>
                 <div>
+                    <label className={styles.label} htmlFor="name">First name:</label>
+                    <input className={styles.input} onChange={onChangeHandler} id="firstName" name="firstName" type="text" placeholder="First name" value={userInfo.firstName}/>
+                </div>
+
+                <div>
+                    <label className={styles.label} htmlFor="name">Last name:</label>
+                    <input className={styles.input} onChange={onChangeHandler} id="lastName" name="lastName" type="text" placeholder="Last name" value={userInfo.lastName}/>
+                </div>
+
+                <div>
                     <label className={styles.label} htmlFor="email">Email:</label>
-                    <input onChange={onChangeHandler} className={styles.input} id="email" name="email" type="text" value={userInfo.email} placeholder="viktor@abv.bg" />
+                    {/* example mail placeholder */}
+                    <input onChange={onChangeHandler} className={styles.input} id="email" name="email" type="text" value={userInfo.email} placeholder="example@email.com" />
                 </div>
 
                 <div>
                     <label className={styles.label} htmlFor="password">Password:</label>
-                    <input className={styles.input} onChange={onChangeHandler} id="password" name="password" type="password" placeholder="********" value={userInfo.password}/>
+                    <input className={styles.input} onChange={onChangeHandler} id="password" name="password" type="password" placeholder="New password" value={userInfo.password}/>
                 </div>
 
                 <div>
                     <label className={styles.label} htmlFor="repeatPassword">Repeat Password:</label>
-                    <input className={styles.input} onChange={onChangeHandler} id="repeatPassword" name="repeatPassword" type="password" placeholder="********" value={userInfo.repeatPassword}/>
+                    <input className={styles.input} onChange={onChangeHandler} id="repeatPassword" name="repeatPassword" type="password" placeholder="Repeat Password" value={userInfo.repeatPassword}/>
                 </div>
 
-                <div>
-                    <label className={styles.label} htmlFor="name">Name:</label>
-                    <input className={styles.input} onChange={onChangeHandler} id="name" name="name" type="text" placeholder="Viktor Stefanov" value={userInfo.name}/>
-                </div>
 
                 <div>
                     <label className={styles.label} htmlFor="phone">Phone:</label>

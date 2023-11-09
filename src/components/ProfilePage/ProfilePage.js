@@ -12,8 +12,12 @@ export default function ProfilePage() {
                     <p className={styles['user-info-email']}>gosho@abv.bg</p>
                 </span>
                 <span className={styles['user-info']}>
-                    <p className={styles['user-info-category']}>Name: </p>
+                    <p className={styles['user-info-category']}>First name: </p>
                     <p className={styles['user-info-name']}>Gosho</p>
+                </span>
+                <span className={styles['user-info']}>
+                    <p className={styles['user-info-category']}>Last name: </p>
+                    <p className={styles['user-info-name']}>Petrov</p>
                 </span>
                 <span className={styles['user-info']}>
                     <p className={styles['user-info-category']}>Phone: </p>
