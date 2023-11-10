@@ -104,6 +104,7 @@
   max-width: 100px;
   margin-left: 10px;
   transition: 500ms;
+  cursor: pointer;
   color: black;
 }
 

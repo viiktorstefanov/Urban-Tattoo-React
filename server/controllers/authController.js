@@ -38,7 +38,8 @@ authController.post('/login', isGuest(), async (req, res) => {
 
 authController.get('/logout',hasUser(), async (req, res) => {
     const token = req.token;
-    await logout(token);
+    const userLogout = await logout(token);
+    console.log('User logout');
     res.status(204).end();
 });
 
