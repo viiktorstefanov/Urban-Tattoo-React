@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './RegisterPage.module.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function RegisterPage() {
     const [userInfo, setUserInfo] = useState({
@@ -14,11 +15,25 @@ export default function RegisterPage() {
 
     const onChangeHandler = (e) => {
         setUserInfo(state => ({...state, [e.target.name] : e.target.value}));
-    };    
+    }; 
+    
+    const onSubmitRegisterHandler = async (e) => {
+        try {
+            e.preventDefault();
+            const response = await axios.post('http://localhost:5000/users/register', userInfo);
+            console.log(response);
+            
+
+            
+        } catch(e) {
+            return {};
+        }
+        // navigate('/');
+    };
     
     return (
         <section id="registerPage" className={styles.registerPage}>
-            <form onSubmit={(e) => { e.preventDefault(); console.log(userInfo) }} className={styles.registerForm}>
+            <form onSubmit={onSubmitRegisterHandler} className={styles.registerForm}>
                 <div>
                     <label className={styles.label} htmlFor="name">First name:</label>
                     <input className={styles.input} onChange={onChangeHandler} id="firstName" name="firstName" type="text" placeholder="First name" value={userInfo.firstName}/>

@@ -44,13 +44,15 @@ function App() {
 
     const onSubmitUploadHandler = async (formData) => {
         try {
+            
             const response = await axios.post('http://localhost:5000/data/upload', formData);
             
             // const response = await fetch('http://localhost:5000/data/upload', {
             //     method: 'POST',
-            //     headers: { 'Content-Type' : 'application/json'},
+            //     headers: { 'Content-Type' : 'multipart/form-data'},
             //     body: formData
             // });
+
             if(response.status === 200) {
                 const tattoo = await response.json();
                 setTattoos(state => [...state, tattoo]);

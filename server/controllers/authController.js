@@ -15,7 +15,7 @@ async (req, res) => {
         if(errors.length > 0) {
             throw errors;
         } 
-        const token = await register(req.body.email, req.body.password, req.body.fullName, req.body.phone);
+        const token = await register(req.body.email, req.body.password, req.body.firstName, req.body.lastName, req.body.phone);
        res.json(token);
        console.log(`a new user has been registered with email: ${req.body.email}`);
     } catch(error) {

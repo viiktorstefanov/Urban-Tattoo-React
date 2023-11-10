@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const userSchema = new Schema({
     email: { type: String, required: true, minlength: 9, unique: true  }, 
     hashedPassword: { type: String, required: true },
-    fullName: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     phone: { type: Number, required: true },
     roles: { type: [{ type: String, enum: ['user', 'admin'] }], default: ['user'] }
 });

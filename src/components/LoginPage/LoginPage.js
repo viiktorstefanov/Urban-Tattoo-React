@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './LoginPage.module.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function LoginPage() {
     const [userInfo, setUserInfo ] = useState({
@@ -12,9 +13,23 @@ export default function LoginPage() {
         setUserInfo(state => ({...state, [e.target.name] : e.target.value}));
     };
 
+    const onSubmitLoginHandler = async (e) => {
+        try {
+            e.preventDefault();
+            const response = await axios.post('http://localhost:5000/users/login', userInfo);
+            console.log(response);
+            
+
+            
+        } catch(e) {
+            return {};
+        }
+        // navigate('/');
+    };
+
     return (
         <section id="loginPage" className={styles.loginPage}>
-            <form className={styles.loginForm} onSubmit={(e) => { e.preventDefault(); console.log(userInfo) }}>
+            <form className={styles.loginForm} onSubmit={onSubmitLoginHandler}>
                 <div>
                     <label htmlFor="email">Email:</label>
                     <input onChange={onChangeHandler} id="email" name="email" type="text" placeholder="example@email.com" value={userInfo.email} />

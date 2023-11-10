@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const secret = 'm0sTD@ng3rouSPa$$worD1995';
 const tokenBlackList = new Set();
 
-async function register(email, password, fullName, phone) {
+async function register(email, password, firstName, lastName, phone) {
     const existing = await User.findOne( { email }).collation( { locale: 'en', strength: 2 });
     
     if(existing) {
@@ -16,7 +16,8 @@ async function register(email, password, fullName, phone) {
     const user = await User.create({
         email,
         hashedPassword: await bcrypt.hash(password, 10),
-        fullName,
+        firstName,
+        lastName,
         phone
     }); 
     
