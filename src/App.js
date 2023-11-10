@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Footer from './components/Footer/Footer';
@@ -18,7 +18,7 @@ import EditProfilePage from './components/EditProfilePage/EditProfilePage';
 import DefaultPage from './components/DefaultPage/DefaultPage';
 
 function App() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [tattoos, setTattoos] = useState([]);
     const [image, setImage] = useState('');
 
@@ -44,25 +44,26 @@ function App() {
 
     const onSubmitUploadHandler = async (formData) => {
         try {
-            
             const response = await axios.post('http://localhost:5000/data/upload', formData);
+            if(response.status === 200) {
+                setTattoos(state => [...state, response.data]);
+                // navigate('/');
+            } else {
+                throw new Error('problem with server')
+            }
             
+
             // const response = await fetch('http://localhost:5000/data/upload', {
             //     method: 'POST',
             //     headers: { 'Content-Type' : 'multipart/form-data'},
             //     body: formData
             // });
 
-            if(response.status === 200) {
-                const tattoo = await response.json();
-                setTattoos(state => [...state, tattoo]);
-            } else {
-                throw new Error('problem with server')
-            }
-        } catch(e) {
-            return {};
+            
+        } catch(err) {
+            console.log(err);;
         }
-        // navigate('/gallery');
+       
     };
 
 

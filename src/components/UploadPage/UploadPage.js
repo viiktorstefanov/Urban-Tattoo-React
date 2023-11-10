@@ -5,7 +5,7 @@ import styles from './UploadPage.module.css';
 export default function UploadPage({
     onSubmitUploadHandler, image, setImage
 }) {
-    
+
 
 
     const fileHandler = (e) => {
@@ -31,16 +31,18 @@ export default function UploadPage({
         onSubmitUploadHandler(formData);
     };
 
-    
+
 
     return (
         <section id="uploadPage" className={styles.uploadPage}>
-            <form className={styles.uploadForm} onSubmit={onSubmit} >
+            <form className={styles.uploadForm} onSubmit={onSubmit}  >
+                {/* action='http://localhost:5000/data/upload' method='post'
+                encType="multipart/form-data" */}
                 <div>
                     <label htmlFor="files">Photo:</label>
                     <input className={styles['input-photo']} id="files" name="files" type="file" onChange={fileHandler} />
                 </div>
-                <input className={styles['btn-submit']} type="submit" value="Upload"/>
+                <input className={styles['btn-submit']} type="submit" value="Upload" />
             </form>
         </section>
     );

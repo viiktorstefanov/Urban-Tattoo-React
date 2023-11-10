@@ -3,8 +3,6 @@ const dataController = require('express').Router();
 const { getAll, deleteById, addTattoo, getById } = require('../services/tattoosService');
 const { parseError } = require('../utils/parseError');
 
-const fileTransfer = require('../services/multer');
-const uploads = fileTransfer();
 
 dataController.get('/tattoos', async (req, res) => {
     console.log('tattoos sended');
@@ -17,22 +15,32 @@ dataController.get('/tattoos', async (req, res) => {
     //   }, "10000");  
 });
 
-dataController.post('/upload', uploads.array("files"), async (req, res) => {
-    //before fileTransfer -> should  not save file when is not jpg/img
+dataController.post('/upload', async (req, res) => {
     // add middleware isadmin
-    const fileSize = req.files[0].size;
+
     try {
-        if (fileSize > 5000000) {
+        const file = req.files.files;
+        const imageName = "IMG0003" +`${(Math.random()* 10000000).toFixed(0).toString().slice(0,9)}.jpg`;
+        const uploadPath = '../public/assets/images/tattoos' + `/${imageName}`;
+        const imageUrl = uploadPath.split('../public')[1];
+
+        if (file.size > 5000000) {
             console.log('Cannot upload image bigger than 5MB');
             throw new Error('File should be less than 5MB !');
         }
-        if (req.files[0].mimetype !== 'image/jpeg') {
+        if (file.mimetype !== 'image/jpeg') {
             console.log('file is not a image/jpeg');
             throw new Error('Only images are allowed !');
         }
-        const imageUrl = req.files[0].destination.split('../public')[1] + '/' + req.files[0].filename;
+
+        file.mv(uploadPath, function(err) {
+            if(err) {
+                return res.status(500).send(err);
+            }
+        })
+       
         const tattoo = await addTattoo(imageUrl);
-        console.log(`(file "${req.files[0].filename}") has been uploaded .`);
+        console.log(`(file "${imageName}") has been uploaded .`);
         res.json(tattoo).end();
     } catch (error) {
         if(error == "Error: Only images are allowed !") {
