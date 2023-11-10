@@ -1,11 +1,14 @@
 const dataController = require('express').Router();
-const { isAdmin } = require('../middlewares/guards');
+// const { isAdmin } = require('../middlewares/guards');
 const { getAll, deleteById, addTattoo, getById } = require('../services/tattoosService');
 const { parseError } = require('../utils/parseError');
 
+const fileTransfer = require('../services/multer');
+const uploads = fileTransfer();
 
 dataController.get('/tattoos', async (req, res) => {
-    res.json(await getAll());
+    console.log('tattoos sended');
+    res.json(await getAll()).end();
 
     //FOR THROATING FROM SERVER
     // setTimeout(async () => {
@@ -13,9 +16,6 @@ dataController.get('/tattoos', async (req, res) => {
 
     //   }, "10000");  
 });
-
-const fileTransfer = require('../services/multer');
-const uploads = fileTransfer();
 
 dataController.post('/upload', uploads.array("files"), async (req, res) => {
     //before fileTransfer -> should  not save file when is not jpg/img
@@ -33,7 +33,7 @@ dataController.post('/upload', uploads.array("files"), async (req, res) => {
         const imageUrl = req.files[0].destination.split('../public')[1] + '/' + req.files[0].filename;
         const tattoo = await addTattoo(imageUrl);
         console.log(`(file "${req.files[0].filename}") has been uploaded .`);
-        res.json(tattoo);
+        res.json(tattoo).end();
     } catch (error) {
         if(error == "Error: Only images are allowed !") {
             const message = parseError(error);

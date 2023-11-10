@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import styles from './GalleryPage.module.css'
 import Spinner from '../Spinner/Spinner';
 import MissingTattoos from '../MissingTattoos/MissingTattoos';
@@ -22,12 +23,16 @@ export default function GalleryPage({
     };
 
     async function deleteTattoo() {
-        await fetch(`http://localhost:5000/data/tattoos/${id}`, {
-            method: 'DELETE',
-            });
-        
-        setTattoos(state => state.filter(x => x._id !== id));    
-        setModel(false);
+        try {
+            const deletePhoto = await axios.delete(`http://localhost:5000/data/tattoos/${id}`);
+            if(deletePhoto.status === 204) {
+                setTattoos(state => state.filter(x => x._id !== id));    
+                setModel(false);
+            }
+        } catch(error) {
+            console.log(error);
+        }
+       
     };
 
     

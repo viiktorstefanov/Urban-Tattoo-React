@@ -1,6 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 // import { useNavigate } from "react-router-dom";
 
 import Header from "./components/Header/Header";
@@ -20,28 +21,48 @@ function App() {
     // const navigate = useNavigate();
     const [tattoos, setTattoos] = useState([]);
     const [image, setImage] = useState('');
-    const baseUrl = 'http://localhost:5000/data/tattoos';
 
-    useEffect(() => {
-        fetch(baseUrl)
-            .then(res => res.json())
-            .then(data => setTattoos(data));
+    useEffect( () => {
+        try {
+            axios.get('http://localhost:5000/data/tattoos')
+            .then(res => {
+                if(res.status === 200) {
+                     setTattoos(res.data);
+                }else {
+                    throw new Error('problem from server');
+                }
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+        // .then(data  => setTattoos(data))
+        // fetch(baseUrl)
+        //     .then(res => res.json())
+        //     .then(data => setTattoos(data));
     }, [image]);
 
     const onSubmitUploadHandler = async (formData) => {
         try {
-            const response = await fetch('http://localhost:5000/data/upload', {
-                method: 'POST',
-                body: formData
-            });
-            const tattoo = await response.json();
-
-            setTattoos(state => [...state, tattoo]);
+            const response = await axios.post('http://localhost:5000/data/upload', formData);
+            
+            // const response = await fetch('http://localhost:5000/data/upload', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type' : 'application/json'},
+            //     body: formData
+            // });
+            if(response.status === 200) {
+                const tattoo = await response.json();
+                setTattoos(state => [...state, tattoo]);
+            } else {
+                throw new Error('problem with server')
+            }
         } catch(e) {
             return {};
         }
         // navigate('/gallery');
-    }
+    };
+
 
     return (
         <>
