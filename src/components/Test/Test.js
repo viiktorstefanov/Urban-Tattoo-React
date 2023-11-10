@@ -1,8 +1,12 @@
-import styles from './UploadPage.module.css';
+import styles from './Test.module.css';
+import { AiFillPlusCircle } from 'react-icons/ai';
 
-export default function UploadPage({
+
+export default function Test({
     onSubmitUploadHandler, image, setImage
 }) {
+
+
 
     const fileHandler = (e) => {
         if (e.target.files[0].type !== "image/jpeg") {
@@ -27,15 +31,23 @@ export default function UploadPage({
         onSubmitUploadHandler(formData);
     };
 
+
+
     return (
         <section id="uploadPage" className={styles.uploadPage}>
-            <form className={styles.uploadForm} onSubmit={onSubmit}  >
-                <div>
-                    <label htmlFor="files">Photo:</label>
-                    <input className={styles['input-photo']} id="files" name="files" type="file" onChange={fileHandler} />
+            <div className={styles['file-card']}>
+                <div className={styles['file-inputs']}>
+                    <input className={styles['file-input']} type="file" onChange={fileHandler} />
+                    <button className={styles['add-btn-wrap']} onClick={onSubmit}>
+                        <i className={styles['add-btn']}>
+                            <AiFillPlusCircle /> 
+                        </i>
+                        Upload
+                    </button>
                 </div>
-                <input className={styles['btn-submit']} type="submit" value="Upload" />
-            </form>
+
+                <p className={styles['supported-files']}>Supported files: JPG, PNG</p>
+            </div>
         </section>
     );
 };

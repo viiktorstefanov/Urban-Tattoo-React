@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './EditProfilePage.module.css';
 import { FiEdit } from 'react-icons/fi';
+import axios from 'axios';
 
 export default function EditProfilePage() {
     const [userInfo, setUserInfo] = useState({
@@ -9,6 +9,29 @@ export default function EditProfilePage() {
         lastName: '',
         phone: ''
     });
+    
+    async function deleteUserHandler() {
+        try {
+            // const deleteUser = await axios.delete(`http://localhost:5000/users/${id}`);
+           
+        } catch(error) {
+            console.log(error);
+        }
+       
+    };
+
+    async function editUserHandler(e) {
+        e.preventDefault();
+        //handle if any userInfo is missing
+
+        try {
+            // const editUser = await axios.put(`http://localhost:5000/users/${id}`,userInfo);
+           
+        } catch(error) {
+            console.log(error);
+        }
+       
+    };
 
     //use effect(get from server) => setUserInfo(result)
 
@@ -18,7 +41,7 @@ export default function EditProfilePage() {
 
     return (
         <section id="editProfilePage" className={styles.editProfilePage}>
-            <form onSubmit={(e) => { e.preventDefault(); console.log(userInfo) }} className={styles.editForm}>
+            <form onSubmit={editUserHandler} className={styles.editForm}>
 
                 <div>
                     <FiEdit className={styles['dropdownItem-ico']} />
@@ -40,14 +63,9 @@ export default function EditProfilePage() {
                 </div>
 
                 <div className={styles['deleteProfileDiv']}>
-                    <Link to={'/'}>
-                        <span className={styles['deleteProfileBtn']}>Delete profile</span>
-                    </Link>
+                        <span onClick={deleteUserHandler} className={styles['deleteProfileBtn']}>Delete profile</span>
                 </div>
-                
-                <Link to={`/users/{id}`}>
                     <button className={styles.button} type="submit">Save</button>
-                </Link>
             </form>
         </section>
     )

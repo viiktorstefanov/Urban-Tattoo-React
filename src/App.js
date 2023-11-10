@@ -16,6 +16,7 @@ import UploadPage from './components/UploadPage/UploadPage';
 import ContactPage from './components/ContactPage/ContactPage';
 import EditProfilePage from './components/EditProfilePage/EditProfilePage';
 import DefaultPage from './components/DefaultPage/DefaultPage';
+// import Test from './components/Test/Test'
 
 function App() {
     const navigate = useNavigate();
@@ -36,36 +37,21 @@ function App() {
         } catch (error) {
             console.log(error);
         }
-        // .then(data  => setTattoos(data))
-        // fetch(baseUrl)
-        //     .then(res => res.json())
-        //     .then(data => setTattoos(data));
-    }, [image]);
+    }, []);
 
     const onSubmitUploadHandler = async (formData) => {
         try {
             const response = await axios.post('http://localhost:5000/data/upload', formData);
             if(response.status === 200) {
                 setTattoos(state => [...state, response.data]);
-                // navigate('/');
+                navigate('/gallery');
             } else {
                 throw new Error('problem with server')
             }
-            
-
-            // const response = await fetch('http://localhost:5000/data/upload', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type' : 'multipart/form-data'},
-            //     body: formData
-            // });
-
-            
         } catch(err) {
             console.log(err);;
-        }
-       
+        }    
     };
-
 
     return (
         <>

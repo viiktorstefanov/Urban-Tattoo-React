@@ -2,7 +2,7 @@ import styles from './ProfilePage.module.css';
 import { BiUserPin } from 'react-icons/bi';
 
 export default function ProfilePage() {
-    
+    //change info dinamic
     return (
         <section className={styles.profilePage}>
             <div className={styles['profile-wrapper']}>

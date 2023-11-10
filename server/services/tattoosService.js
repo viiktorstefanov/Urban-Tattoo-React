@@ -12,10 +12,13 @@ async function getById(id) {
 
 async function deleteById(id) {
     let imageUrl = await Tattoos.findById(id).exec().then((photo) => { return photo.imageUrl });
-    let pathDelete = path.resolve(__dirname, 'D:/Github/urbanReact/public' + imageUrl);
-
-    fs.unlinkSync(pathDelete);
-
+    
+    const imageName = imageUrl.split('http://localhost:5000/')[1];
+    const path = `D:/Github/urbanReact/server/images/${imageName}`;
+    
+    
+    fs.unlinkSync(path);
+  
     return Tattoos.findByIdAndDelete(id);
 }
 

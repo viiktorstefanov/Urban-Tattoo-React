@@ -1,4 +1,4 @@
-const { register, login, logout, updateUserById, getUserById } = require('../services/userService');
+const { register, login, logout, updateUserById, getUserById, deleteUserById } = require('../services/userService');
 const { body, validationResult } = require('express-validator');
 const { parseError } = require('../utils/parseError');
 const { isGuest, hasUser } = require('../middlewares/guards');
@@ -42,11 +42,16 @@ authController.get('/logout',hasUser(), async (req, res) => {
     res.status(204).end();
 });
 
-authController.post('/edit/:id', isGuest(), async (req, res) => {
+authController.get('/:id',hasUser(), async (req, res) => {
+        const id = req.params.id;
+        res.json(await getUserById(id));
+});
+
+authController.put('/edit/:id', isGuest(), async (req, res) => {
     try {
         const id = req.params.id;
         const newUserInfo = req.body;
-        const currUser = await updateUserById(newUserInfo,id);
+        const currUser = await updateUserById(newUserInfo, id);
 
         if(currUser) {
             console.log(`user with email: ${req.body.email} has been edited`);
@@ -60,9 +65,16 @@ authController.post('/edit/:id', isGuest(), async (req, res) => {
     }
 });
 
-authController.get('/:id',hasUser(), async (req, res) => {
+authController.delete('/:id', async (req, res) => {
+    try {
         const id = req.params.id;
-        res.json(await getUserById(id));
+        const deletedUser = await deleteUserById(id);
+        console.log(`User with id: ${id} has been deleted.`);
+        res.status(204).end();
+    } catch (error) {
+        const message = parseError(error);
+        res.status(400).json({ message });
+    }
 });
 
 module.exports = authController;

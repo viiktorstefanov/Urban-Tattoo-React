@@ -81,8 +81,8 @@ async function updateUserById(userData, userId){
         throw new Error(missing.map(([k, v]) => `${k} is required!`).join('\n'))
     }
 
-    user.fullName = userData.name;
-    user.email = userData.email;
+    user.firstName = userData.firstName;
+    user.lastName = userData.lastName;
     user.phone = userData.phone;
 
     await user.save();
@@ -93,11 +93,16 @@ async function getUserById(id) {
     return User.findById(id);
 }
 
+async function deleteUserById(id) {
+    return User.findByIdAndDelete(id);
+}
+
 module.exports = {
     register, 
     login,
     logout,
     parseToken,
     updateUserById,
-    getUserById
+    getUserById,
+    deleteUserById,
 }
