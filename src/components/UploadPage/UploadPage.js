@@ -1,19 +1,30 @@
 import styles from './UploadPage.module.css';
 import { AiFillPlusCircle } from 'react-icons/ai';
-
+import { useState } from 'react';
 
 export default function Test({
     onSubmitUploadHandler, image, setImage
 }) {
+    const [ isImage, setIsImage] = useState(false);
+    const [ size, setSize] = useState(true);
+    const [ haveFile, setHaveFile] = useState(false);
+
     const fileHandler = (e) => {
+        setHaveFile(true);
         if (e.target.files[0].size > 5000000) {
             setImage('');
+            setSize(false);
             return;
+        } else{
+            setSize(true);
         }
         if (e.target.files[0].type === "image/jpeg" || e.target.files[0].type === "image/png") {
             setImage(e.target.files[0]);
+            setIsImage(false);
+            
         } else {
             setImage('');
+            setIsImage(true);
             return;
         }
     };
@@ -26,8 +37,6 @@ export default function Test({
         setImage('');
         onSubmitUploadHandler(formData);
     };
-
-
 
     return (
         <section id="uploadPage" className={styles.uploadPage}>
@@ -45,11 +54,11 @@ export default function Test({
                         </button>
                     </form>
                 </div>
-
-                {image ? 
-                <p style={{marginTop: '5%', color: 'black', fontWeight: 'bold', transition: '500ms ease'}}>File name: {image.name} </p> 
-                       : 
-                <p style={{ color: '#f1410b', transition: '500ms ease'}} className={styles['supported-files']}>Supported files: JPG or PNG <br/>Max-size: 5MB</p> }
+                {size ? null : <p style={{ color: '#f1410b', transition: '500ms ease'}} className={styles['supported-files']}>Max-size: 5MB</p>}
+                {!isImage ? null 
+                : <p style={{ color: '#f1410b', transition: '500ms ease'}} className={styles['supported-files']}>Supported files: JPG or PNG</p> }
+                {image !== '' ? <p style={{marginTop: '5%', color: 'black', fontWeight: 'bold', transition: '500ms ease'}}>File name: {image.name} </p> : null}
+                {haveFile ? null : <p style={{ color: '#f1410b', transition: '500ms ease'}} className={styles['supported-files']}>Please, select a file.</p>}
             </div>
         </section>
     );
