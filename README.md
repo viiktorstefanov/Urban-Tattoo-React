@@ -1,5 +1,7 @@
 # Urban Tattoo Sofia
 
+**Built with:**
+
 #### Frontend:
 <p align="left">
   <a href="https://skillicons.dev">
@@ -12,13 +14,6 @@
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
   </a>
-</p>
-
-**Built with:**
-
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=js,html,css,react,nodejs,express,mongodb" />
-  <br>
 </p>
 
 # Functionalities: 
