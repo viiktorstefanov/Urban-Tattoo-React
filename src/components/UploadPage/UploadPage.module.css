@@ -1,38 +1,98 @@
-.uploadPage {
+.uploadPage{
+  margin-top: 3%;
+}
+
+.file-card {
+  padding: 1em 1em 0 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  margin-bottom: 3%;
+  border: 4px dashed #9ca4ab;
+  background-color: #edf2f7;
+  border-radius: 8px;
+  min-width: 500px;
+  min-height: 350px;
 }
 
-.uploadForm {
-  display: inline-block;
-  text-align: center;
+.file-inputs {
   position: relative;
-  width: 350px;
-  height: 450px;
-  border-radius: 20px;
-  padding: 40px;
-  box-sizing: border-box;
-  background: black;
-  justify-content: center;
+  margin-bottom: 1.5em;
 }
 
-.input-photo {
-  background: white;
+.uploadForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.file-input{
+  position: relative;
+  right: 9px;
+  bottom: 12px;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+  height: 130px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+
+.add-btn-wrap{
+  position: absolute;
+            top: 0;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background-color: #edf2f7;
+            cursor: pointer;
+            border: none;
+            outline: none;
+}
+
+.add-btn{
+  width: 1.5em;
+  height: 1.5em;
+  padding: 0.4em;
+  background-color: #fff;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 5em;
+}
+
+.add-btn-wrap:hover{
+  background: unset;
+}
+
+.plus-icon{
+  cursor: pointer;
+}
+
+.submit-btn{
+  background: black;
+  color: white;
+  width: 60%;
+  margin-top: 25%;
+}
+
+.supported-files {
+  font-size: 0.8rem;
+  font-weight: bold;
   color: black;
 }
 
-.btn-submit {
-  font-family: 'Roboto', sans-serif;
-  margin-top: 20px;
-  font-size: 15px;
-  background: white;
-  height: 40px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 900;
-  transition: 0.5s;
-}
+
+

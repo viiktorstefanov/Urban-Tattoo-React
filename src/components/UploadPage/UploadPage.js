@@ -1,21 +1,23 @@
 import styles from './UploadPage.module.css';
+import { AiFillPlusCircle } from 'react-icons/ai';
 
-export default function UploadPage({
+
+export default function Test({
     onSubmitUploadHandler, image, setImage
 }) {
-
     const fileHandler = (e) => {
-        if (e.target.files[0].type !== "image/jpeg") {
-            //should reset input 
-            alert('Only images are allowed');
-            return;
-        }
         if (e.target.files[0].size > 5000000) {
-            //should reset input 
             alert('Images over 5MB are not allowed !');
+            setImage('');
             return;
         }
-        setImage(e.target.files[0]);
+        if (e.target.files[0].type === "image/jpeg" || e.target.files[0].type === "image/png") {
+            setImage(e.target.files[0]);
+        } else {
+            alert('ONLY JPG OR PNG FILES ARE ALLOWED !');
+            setImage('');
+            return;
+        }
     };
 
     const onSubmit = (e) => {
@@ -23,19 +25,35 @@ export default function UploadPage({
 
         const formData = new FormData();
         formData.append('files', image);
-
+        setImage('');
         onSubmitUploadHandler(formData);
     };
 
+
+
     return (
         <section id="uploadPage" className={styles.uploadPage}>
-            <form className={styles.uploadForm} onSubmit={onSubmit}  >
-                <div>
-                    <label htmlFor="files">Photo:</label>
-                    <input className={styles['input-photo']} id="files" name="files" type="file" onChange={fileHandler} />
+            <div className={styles['file-card']}>
+                <div className={styles['file-inputs']}>
+                    <form className={styles['uploadForm']} onSubmit={onSubmit}>
+                        <input className={styles['file-input']} type="file" onChange={fileHandler} />
+                        <span className={styles['add-btn-wrap']}>
+                            <i className={styles['add-btn']}>
+                                <AiFillPlusCircle className={styles['plus-icon']}/>
+                            </i>
+                        </span>
+                        <button className={styles['submit-btn']} type='submit'>
+                            Upload
+                        </button>
+                    </form>
                 </div>
-                <input className={styles['btn-submit']} type="submit" value="Upload" />
-            </form>
+
+                
+                {image ? 
+                <p style={{marginTop: '5%', color: 'black', fontWeight: 'bold'}}>File name: {image.name} </p> 
+                       : 
+                <p style={{ color: '#f1410b'}} className={styles['supported-files']}>Supported files: JPG, PNG !</p> }
+            </div>
         </section>
     );
 };

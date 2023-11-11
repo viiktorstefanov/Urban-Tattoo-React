@@ -16,7 +16,6 @@ import UploadPage from './components/UploadPage/UploadPage';
 import ContactPage from './components/ContactPage/ContactPage';
 import EditProfilePage from './components/EditProfilePage/EditProfilePage';
 import DefaultPage from './components/DefaultPage/DefaultPage';
-// import Test from './components/Test/Test'
 
 function App() {
     const navigate = useNavigate();
@@ -46,7 +45,8 @@ function App() {
                 setTattoos(state => [...state, response.data]);
                 navigate('/gallery');
             } else {
-                throw new Error('problem with server')
+                throw new Error('problem with server');
+                //should be the message from server
             }
         } catch(err) {
             console.log(err);;

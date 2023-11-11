@@ -29,21 +29,21 @@ dataController.post('/upload', async (req, res) => {
             console.log('Cannot upload image bigger than 5MB');
             throw new Error('File should be less than 5MB !');
         }
-        if (file.mimetype !== 'image/jpeg') {
+        if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+            file.mv(uploadPath, function(err) {
+                if(err) {
+                    const message = parseError(err);
+                    return res.status(500).json({message});
+                }
+            });
+           
+            const tattoo = await addTattoo(imageUrl);
+            console.log(`(file "${imageName}") has been uploaded .`);
+            res.json(tattoo).end();
+        } else {
             console.log('file is not a image/jpeg');
-            throw new Error('Only images are allowed !');
+            throw new Error('Only jpg or png files are allowed !');
         }
-
-        file.mv(uploadPath, function(err) {
-            if(err) {
-                const message = parseError(err);
-                return res.status(500).json({message});
-            }
-        });
-       
-        const tattoo = await addTattoo(imageUrl);
-        console.log(`(file "${imageName}") has been uploaded .`);
-        res.json(tattoo).end();
     } catch (error) {
         if(error == "Error: Only images are allowed !") {
             const message = parseError(error);

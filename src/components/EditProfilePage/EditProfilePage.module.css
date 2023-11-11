@@ -80,6 +80,7 @@
 
   .deleteProfileBtn{
     color: rgb(214, 63, 63);
+    cursor: pointer;
   }
 
   .deleteProfileBtn:hover{
