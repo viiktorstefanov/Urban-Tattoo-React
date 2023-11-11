@@ -2,7 +2,7 @@
 
 <p align="left">
   <a>
-    //site review png 
+    //site review gif 
   </a>
 </p>
 
