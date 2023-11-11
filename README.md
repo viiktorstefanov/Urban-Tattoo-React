@@ -16,6 +16,8 @@ MongoDB
 
 Custom design.
 
+**Built with:**
+
 <p align="left">
   <img align="left" src="https://github.com/viktor0110/urbanReact/blob/master/resume/stack.jpg" />
   <br>
