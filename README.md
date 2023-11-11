@@ -47,13 +47,11 @@ Utilized MongoDB as the database to store and retrieve data efficiently.
 
 # HOW TO START APPLICATION:
 
-First, type in the terminal
+Type in the terminal
 ```
 npm i
 ```
-Install all dependecies.
-
-and then go for 
+Install all dependecies and then go for:
 
 ```
 npm run start
