@@ -19,6 +19,7 @@ Custom design.
 **Built with:**
 
 <p align="left">
+  <img src="https://skillicons.dev/icons?i=js,html,css,react,nodejs" />
   <img align="left" src="https://github.com/viktor0110/urbanReact/blob/master/resume/stack.jpg" />
   <br>
 </p>
@@ -48,9 +49,7 @@ Developed RESTful APIs to handle user data, tattoo information, and studio detai
 
 Utilized MongoDB as the database to store and retrieve data efficiently.
 
-ABOUT THE SITE:
-
-HOW TO START APPLICATION:
+# HOW TO START APPLICATION:
 
 -install all dependecies with "npm i".
 
