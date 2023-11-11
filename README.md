@@ -1,13 +1,13 @@
 # Urban Tattoo Sofia
 
-#### Frontend:
+#### Front-end:
 <p align="left">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=html,css,js,react" />
   </a>
 </p>
 
-#### Backend:
+#### Back-end:
 <p align="left">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
