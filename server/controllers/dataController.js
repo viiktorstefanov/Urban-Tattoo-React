@@ -13,7 +13,7 @@ dataController.get('/tattoos', async (req, res) => {
     // setTimeout(async () => {
     //     res.json(await getAll()).end();
 
-    //   }, "10000");  
+    //   }, "5000");  
 });
 
 dataController.post('/upload', async (req, res) => {
