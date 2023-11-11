@@ -1,25 +1,23 @@
 # Urban Tattoo Sofia
 
-Front-end: 
-React/React-router-dom 
-HTML
-CSS
-JavaScript
+#### Frontend:
+<p align="left">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=html,css,js,react" />
+  </a>
+</p>
 
-Back-end: 
-Express
-Node.js
-REST APIs
-
-Database: 
-MongoDB
-
-Custom design.
+#### Backend:
+<p align="left">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
+  </a>
+</p>
 
 **Built with:**
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=js,html,css,react,nodejs,express,mongoose,mongodb" />
+  <img src="https://skillicons.dev/icons?i=js,html,css,react,nodejs,express,mongodb" />
   <br>
 </p>
 
@@ -52,9 +50,9 @@ Utilized MongoDB as the database to store and retrieve data efficiently.
 
 -install all dependecies with "npm i".
 
--open new terminal ,run the server with "cd ./server" , install server-dependecies with "npm i",then use "npm run server".
-
 -use "npm start" to start the application.
+
+-open new terminal ,run the server with "cd ./server" , install server-dependecies with "npm i",then use "npm run server".
 
 ## Available Scripts
 
