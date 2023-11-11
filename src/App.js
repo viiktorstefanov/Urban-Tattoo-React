@@ -19,7 +19,7 @@ import DefaultPage from './components/DefaultPage/DefaultPage';
 
 function App() {
     const navigate = useNavigate();
-    const [tattoos, setTattoos] = useState([]);
+    const [tattoos, setTattoos] = useState('');
     const [image, setImage] = useState('');
 
     useEffect( () => {

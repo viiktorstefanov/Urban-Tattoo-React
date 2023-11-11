@@ -6,8 +6,8 @@ const { parseError } = require('../utils/parseError');
 const path = require('path');
 
 dataController.get('/tattoos', async (req, res) => {
-    console.log('The images were sent.');
     res.json(await getAll()).end();
+    console.log('The images were sent.');
 
     //FOR THROATING FROM SERVER
     // setTimeout(async () => {
