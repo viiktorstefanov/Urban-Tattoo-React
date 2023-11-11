@@ -1,4 +1,5 @@
 const dataController = require('express').Router();
+const generateUniqueFileName = require('../services/generateUniqueFileName');
 // const { isAdmin } = require('../middlewares/guards');
 const { getAll, deleteById, addTattoo, getById } = require('../services/tattoosService');
 const { parseError } = require('../utils/parseError');
@@ -20,7 +21,8 @@ dataController.post('/upload', async (req, res) => {
 
     try {
         const file = req.files.files;
-        const imageName = "IMG0003" +`${(Math.random()* 10000000).toFixed(0).toString().slice(0,9)}.jpg`;
+        const extension = file.name.split('.')[1];
+        const imageName = generateUniqueFileName(extension);
         
         const uploadPath = path.join(path.resolve(__dirname, '..'), '/images', imageName);
         const imageUrl = `http://localhost:5000/${imageName}`;
@@ -41,7 +43,7 @@ dataController.post('/upload', async (req, res) => {
             console.log(`(file "${imageName}") has been uploaded .`);
             res.json(tattoo).end();
         } else {
-            console.log('file is not a image/jpeg');
+            console.log('file is not a jpeg/png');
             throw new Error('Only jpg or png files are allowed !');
         }
     } catch (error) {
