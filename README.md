@@ -2,7 +2,7 @@
 
 <p align="left">
   <a>
-    //site review gif 
+    <img src"https://github.com/viktor0110/Urban-Tattoo-React/blob/master/ezgif.com-gif-maker.gif" />
   </a>
 </p>
 
