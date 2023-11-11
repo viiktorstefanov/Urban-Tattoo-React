@@ -19,8 +19,7 @@ Custom design.
 **Built with:**
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=js,html,css,react,nodejs" />
-  <img align="left" src="https://github.com/viktor0110/urbanReact/blob/master/resume/stack.jpg" />
+  <img src="https://skillicons.dev/icons?i=js,html,css,react,nodejs,express" />
   <br>
 </p>
 
