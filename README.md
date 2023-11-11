@@ -41,13 +41,13 @@ Utilized MongoDB as the database to store and retrieve data efficiently.
 
 # HOW TO START APPLICATION:
 
--install all dependecies with "npm i".
+-Install all dependecies with "npm i".
 
--use "npm start" to start the application.
+-Use "npm start" to start the application.
 
--open new terminal ,type "cd ./server" , install server-dependecies with "npm i".
+-Open new terminal ,type "cd ./server" , install server-dependecies with "npm i".
 
--then use "npm run server".
+-Then use "npm run server".
 
 ## Available Scripts
 
