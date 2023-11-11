@@ -1,7 +1,5 @@
 # Urban Tattoo Sofia
 
-**Built with:**
-
 #### Frontend:
 <p align="left">
   <a href="https://skillicons.dev">
