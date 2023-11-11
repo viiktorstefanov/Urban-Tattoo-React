@@ -54,11 +54,11 @@ export default function Test({
                         </button>
                     </form>
                 </div>
-                {size ? null : <p style={{ color: '#f1410b', transition: '500ms ease'}} className={styles['supported-files']}>Max-size: 5MB</p>}
+                {size ? null : <p className={styles['supported-files']}>Max-size: 5MB</p>}
                 {!isImage ? null 
-                : <p style={{ color: '#f1410b', transition: '500ms ease'}} className={styles['supported-files']}>Supported files: JPG or PNG</p> }
-                {image !== '' ? <p style={{marginTop: '5%', color: 'black', fontWeight: 'bold', transition: '500ms ease'}}>File name: {image.name} </p> : null}
-                {haveFile ? null : <p style={{ color: '#f1410b', transition: '500ms ease'}} className={styles['supported-files']}>Please, select a file.</p>}
+                : <p className={styles['supported-files']}>Supported files: JPG or PNG</p> }
+                {image !== '' ? <p className={styles['file']}>File name: {image.name} </p> : null}
+                {haveFile ? null : <p className={styles['file']}>Please, select a file.</p>}
             </div>
         </section>
     );
