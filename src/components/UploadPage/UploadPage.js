@@ -7,14 +7,12 @@ export default function Test({
 }) {
     const fileHandler = (e) => {
         if (e.target.files[0].size > 5000000) {
-            alert('Images over 5MB are not allowed !');
             setImage('');
             return;
         }
         if (e.target.files[0].type === "image/jpeg" || e.target.files[0].type === "image/png") {
             setImage(e.target.files[0]);
         } else {
-            alert('ONLY JPG OR PNG FILES ARE ALLOWED !');
             setImage('');
             return;
         }
@@ -48,11 +46,10 @@ export default function Test({
                     </form>
                 </div>
 
-                
                 {image ? 
-                <p style={{marginTop: '5%', color: 'black', fontWeight: 'bold'}}>File name: {image.name} </p> 
+                <p style={{marginTop: '5%', color: 'black', fontWeight: 'bold', transition: '500ms ease'}}>File name: {image.name} </p> 
                        : 
-                <p style={{ color: '#f1410b'}} className={styles['supported-files']}>Supported files: JPG, PNG !</p> }
+                <p style={{ color: '#f1410b', transition: '500ms ease'}} className={styles['supported-files']}>Supported files: JPG or PNG <br/>Max-size: 5MB</p> }
             </div>
         </section>
     );

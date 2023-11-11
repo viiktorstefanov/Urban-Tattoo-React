@@ -10,7 +10,7 @@ export default function homePage() {
                     <div className={styles.artist}>
                         <img src="assets/images/artists/artist1.jpg" alt="artist" />
                         <h3>Stella</h3>
-                        <span className={styles['artist-info']}>Stella is very talanted artist, who graduated from the art academy! She has over 8 years of experience in tattooing and hers work is amazing.</span>
+                        <span className={styles['artist-info']}>Stella is very talanted artist, who graduated from the art academy. She has over 8 years of experience in tattooing and hers work is amazing.</span>
                     </div>
                     <div className={styles.artist}>
                         <img src="assets/images/artists/artist2.jpg" alt="artist" />

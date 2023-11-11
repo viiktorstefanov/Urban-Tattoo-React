@@ -15,7 +15,7 @@
     align-items: center;
 }
 .message>p{
-    text-align: center;
+    text-align: justify;
     letter-spacing: 2px;
     line-height: 1.8;
     font-size: 22px; 
@@ -42,11 +42,11 @@
 }
 .artist-info{
     font-size: 22px;
-    letter-spacing: 1px;
     line-height: 1.5;
     margin-top: 15%;
     margin-bottom: 15%;
     height: 30vh;
+    text-align: justify;
 }
 .artists>div>img {
     width: 250px;
