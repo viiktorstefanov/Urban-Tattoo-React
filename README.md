@@ -2,7 +2,7 @@
 
 <p align="left">
   <a>
-    //site img
+    //site review png 
   </a>
 </p>
 
