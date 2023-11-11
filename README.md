@@ -19,7 +19,7 @@ Custom design.
 **Built with:**
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=js,html,css,react,nodejs,express" />
+  <img src="https://skillicons.dev/icons?i=js,html,css,react,nodejs,express,mongoose,mongodb" />
   <br>
 </p>
 
