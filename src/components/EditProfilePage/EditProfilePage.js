@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './EditProfilePage.module.css';
 import { FiEdit } from 'react-icons/fi';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default function EditProfilePage() {
     const [userInfo, setUserInfo] = useState({
