@@ -2,7 +2,7 @@ import styles from './UploadPage.module.css';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { useState } from 'react';
 
-export default function Test({
+export default function UploadPage({
     onSubmitUploadHandler, image, setImage
 }) {
     const [ isImage, setIsImage] = useState(false);

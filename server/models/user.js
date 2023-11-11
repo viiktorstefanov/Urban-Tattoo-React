@@ -5,7 +5,7 @@ const userSchema = new Schema({
     hashedPassword: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    phone: { type: Number, required: true },
+    phone: { type:  String, required: true },
     roles: { type: [{ type: String, enum: ['user', 'admin'] }], default: ['user'] }
 });
 

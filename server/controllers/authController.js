@@ -17,7 +17,7 @@ async (req, res) => {
         } 
         const token = await register(req.body.email, req.body.password, req.body.firstName, req.body.lastName, req.body.phone);
        res.json(token);
-       console.log(`a new user has been registered with email: ${req.body.email}`);
+       console.log(`A user with email: ${req.body.email} was registered.`);
     } catch(error) {
         const message = parseError(error);
         res.status(400).json( { message } );
@@ -29,7 +29,7 @@ authController.post('/login', isGuest(), async (req, res) => {
     try {
         const token = await login(req.body.email, req.body.password);
        res.json(token);
-       console.log(`user with email: ${req.body.email} has logged in`);
+       console.log(`User with email: ${req.body.email} has logged in`);
     } catch(error) {
         const message = parseError(error);
         res.status(401).json({ message });
@@ -39,7 +39,7 @@ authController.post('/login', isGuest(), async (req, res) => {
 authController.get('/logout',hasUser(), async (req, res) => {
     const token = req.token;
     const userLogout = await logout(token);
-    console.log('User logout');
+    console.log(`User with email: ${token.email} has logout`);
     res.status(204).end();
 });
 
@@ -55,9 +55,9 @@ authController.put('/edit/:id', isGuest(), async (req, res) => {
         const currUser = await updateUserById(newUserInfo, id);
 
         if(currUser) {
-            console.log(`user with email: ${req.body.email} has been edited`);
+            console.log(`User with email: ${req.body.email} has been edited.`);
         }else {
-            throw new Error('Problem with finding or editing this user');
+            throw new Error('Problem with finding or editing this user.');
         }
        res.status(204).end();
     } catch(error) {
@@ -70,7 +70,7 @@ authController.delete('/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const deletedUser = await deleteUserById(id);
-        console.log(`User with id: ${id} has been deleted.`);
+        console.log(`User with email: ${deletedUser.email} has been deleted.`);
         res.status(204).end();
     } catch (error) {
         const message = parseError(error);
