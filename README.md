@@ -2,7 +2,7 @@
 
 <p align="left">
   <a>
-    //site review png 
+    <img src="https://github.com/viktor0110/Urban-Tattoo-React/blob/master/ezgif.com-gif-maker.gif" />
   </a>
 </p>
 
@@ -61,11 +61,11 @@ Open new terminal and type:
 ```
 cd ./server
 ```
-Install all dependecies for the server with: 
+Install all dependecies for the server: 
 ```
 npm i
 ```
-Then run the server with:
+Then run the server:
 
 ```
 npm run server
