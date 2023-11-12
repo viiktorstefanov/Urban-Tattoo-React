@@ -46,7 +46,6 @@ export default function RegisterPage() {
 
                 <div>
                     <label className={styles.label} htmlFor="email">Email:</label>
-                    {/* example mail placeholder */}
                     <input onChange={onChangeHandler} className={styles.input} id="email" name="email" type="text" value={userInfo.email} placeholder="example@email.com" />
                 </div>
 
