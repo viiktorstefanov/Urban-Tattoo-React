@@ -6,7 +6,8 @@ const userSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     phone: { type:  String, required: true },
-    roles: { type: [{ type: String, enum: ['user', 'admin'] }], default: ['user'] }
+    roles: { type: [{ type: String, enum: ['user', 'admin'] }], default: ['user'] },
+    reservations: { type: [{ type: String}] }
 });
 
 userSchema.index({ email: 1 }, {
