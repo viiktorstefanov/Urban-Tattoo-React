@@ -3,7 +3,7 @@
 <p align="left">
   <a>
     <!-- <img src="https://github.com/viktor0110/Urban-Tattoo-React/blob/master/ezgif.com-gif-maker.gif" /> -->
-    <img src="ezgif.com-gif-maker.gif" />
+    <img src="app-review.gif" />
   </a>
 </p>
 
