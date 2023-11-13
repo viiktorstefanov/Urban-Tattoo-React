@@ -58,9 +58,11 @@ function createToken(user) {
     return {
         _id: user._id,
         email: user.email,
-        fullName: user.fullName,
+        firstName: user.firstName,
+        lastName: user.lastName,
         phone: user.phone,
-        _role: user.roles[0],
+        reservations: user.reservations,
+        _role: user._role[0],
         accessToken: jwt.sign(payload, secret)
     } 
 };

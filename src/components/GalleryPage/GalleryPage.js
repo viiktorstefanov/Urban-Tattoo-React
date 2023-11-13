@@ -5,6 +5,7 @@ import Spinner from '../Spinner/Spinner';
 import MissingTattoos from '../MissingTattoos/MissingTattoos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { del } from '../../service/request';
 
 export default function GalleryPage({
     tattoos, setTattoos
@@ -24,11 +25,9 @@ export default function GalleryPage({
 
     async function deleteTattoo() {
         try {
-            const deletePhoto = await axios.delete(`http://localhost:5000/data/tattoos/${id}`);
-            if (deletePhoto.status === 204) {
+            const deletePhoto = await del(`/data/tattoos/${id}`);
                 setTattoos(state => state.filter(x => x._id !== id));
                 setModel(false);
-            }
         } catch (error) {
             console.log(error);
         }

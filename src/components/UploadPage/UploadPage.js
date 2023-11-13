@@ -35,7 +35,7 @@ export default function UploadPage({
         const formData = new FormData();
         formData.append('files', image);
         setImage('');
-        onSubmitUploadHandler(formData);
+        onSubmitUploadHandler({ files: formData });
     };
 
     return (

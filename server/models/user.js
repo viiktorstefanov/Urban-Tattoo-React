@@ -1,12 +1,13 @@
 const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
+    //validation here  todo
     email: { type: String, required: true, minlength: 9, unique: true  }, 
     hashedPassword: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     phone: { type:  String, required: true },
-    roles: { type: [{ type: String, enum: ['user', 'admin'] }], default: ['user'] },
+    _role: { type: [{ type: String, enum: ['user', 'admin'] }], default: ['user'] },
     reservations: { type: [{ type: String}] }
 });
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './RegisterPage.module.css';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { post } from '../../service/request';
 
 export default function RegisterPage() {
     const [userInfo, setUserInfo] = useState({
@@ -20,15 +20,17 @@ export default function RegisterPage() {
     const onSubmitRegisterHandler = async (e) => {
         try {
             e.preventDefault();
-            const response = await axios.post('http://localhost:5000/users/register', userInfo);
-            console.log(response);
+
+            const response = await post('/users/register', userInfo);
+            const token = await response.accessToken;
+            console.log(token);
             
 
             
+            // navigate('/');
         } catch(e) {
-            return {};
+            console.log(e);
         }
-        // navigate('/');
     };
     
     return (

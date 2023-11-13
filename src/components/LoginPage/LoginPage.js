@@ -1,42 +1,46 @@
-import { useState } from 'react';
 import styles from './LoginPage.module.css';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import  useForm  from '../../hooks/useForm';
+import { login } from '../../service/AuthService';
 
 export default function LoginPage() {
-    const [userInfo, setUserInfo ] = useState({
-        email: '',
-        password: ''
-    });
 
-    const onChangeHandler = (e) => {
-        setUserInfo(state => ({...state, [e.target.name] : e.target.value}));
-    };
-
-    const onSubmitLoginHandler = async (e) => {
+    const onSubmitHandler = async (data) => {
         try {
-            e.preventDefault();
-            const response = await axios.post('http://localhost:5000/users/login', userInfo);
-            console.log(response);
-            
-
-            
+            const response = await login(data);
+            const user = await response.data;
+            console.log(user); 
+            // if everythink is ok - > navigate('/');
         } catch(e) {
-            return {};
+           console.log(e.message)
         }
-        // navigate('/');
     };
+    const { values, changeHandler, onSubmit } = useForm({
+        email: '',
+        password: '',
+    }, onSubmitHandler)
 
     return (
         <section id="loginPage" className={styles.loginPage}>
-            <form className={styles.loginForm} onSubmit={onSubmitLoginHandler}>
+            <form className={styles.loginForm} onSubmit={onSubmit} method='POST'>
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input onChange={onChangeHandler} id="email" name="email" type="text" placeholder="example@email.com" value={userInfo.email} />
+                    <input 
+                        onChange={changeHandler} 
+                        id="email" name="email" 
+                        type="text" 
+                        placeholder="example@email.com" 
+                        value={values.email} 
+                    />
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input onChange={onChangeHandler} id="password" name="password" type="password" placeholder="********" value={userInfo.password}/>
+                    <input 
+                        onChange={changeHandler} 
+                        id="password" name="password" 
+                        type="password" placeholder="********" 
+                        value={values.password}
+                    />
                 </div>
                 <button className={styles.button} type="submit">Sign in</button>
                 <p className={styles.field}>
