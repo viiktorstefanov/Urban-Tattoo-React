@@ -8,7 +8,7 @@ function hasUser() {
         
     } 
 }
-
+//preraboti da poluchava token i da proverqva dali e admin
 function isAdmin() {
     return (req, res, next) => {
 

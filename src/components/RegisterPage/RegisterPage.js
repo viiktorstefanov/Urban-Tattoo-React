@@ -12,6 +12,7 @@ export default function RegisterPage() {
         repeatPassword: '',
         phone: '',
     });
+    const [errors, setErrors] = useState([]);
 
     const onChangeHandler = (e) => {
         setUserInfo(state => ({...state, [e.target.name] : e.target.value}));
@@ -29,12 +30,13 @@ export default function RegisterPage() {
             
             // navigate('/');
         } catch(e) {
-            console.log(e);
+            setErrors(e);
         }
     };
     
     return (
         <section id="registerPage" className={styles.registerPage}>
+            {errors ? <span>{errors['firstName']}</span> : null}
             <form onSubmit={onSubmitRegisterHandler} className={styles.registerForm}>
                 <div>
                     <label className={styles.label} htmlFor="name">First name:</label>

@@ -7,7 +7,7 @@ const authController = require('express').Router();
 
 authController.post('/register',
     body('email').isEmail().withMessage('Invalid email'),
-    body('password').isLength({ min: 5 }).withMessage('Password must be at least 5 characters long !'),
+    body('password').isLength({ min: 8 }).withMessage('Password must be at least 8 characters long !'),
     isGuest(),
     async (req, res) => {
         try {
@@ -51,8 +51,8 @@ authController.get('/:id', hasUser(), async (req, res) => {
 authController.put('/edit/:id', isGuest(), async (req, res) => {
     try {
         const id = req.params.id;
-        const newUserInfo = req.body;
-        const currUser = await updateUserById(newUserInfo, id);
+        const editedUserInfo = req.body;
+        const currUser = await updateUserById(editedUserInfo, id);
 
         if (currUser) {
             console.log(`User with email: ${req.body.email} has been edited.`);

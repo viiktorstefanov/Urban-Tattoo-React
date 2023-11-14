@@ -6,10 +6,8 @@ async function request(method, url, data) {
     headers: {},
   };
 
-  // const user = getUser();
-
-  // if (user) {
-  //   options.headers['X-Authorization'] = user.accessToken;
+  // if (token) {
+  //   options.headers['X-Authorization'] = token;
   //   options.headers.user = JSON.stringify(user);
   // }
   
