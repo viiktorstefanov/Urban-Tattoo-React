@@ -61,6 +61,7 @@ dataController.post('/upload', async (req, res) => {
 });
 
 dataController.delete('/tattoos/:id', async (req, res) => {
+    //should check is this admin
     try {
         const id = req.params.id;
         const image = await getById(id);

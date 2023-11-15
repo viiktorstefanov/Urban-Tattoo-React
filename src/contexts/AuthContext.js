@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { login, register, userLogout, userEdit, userDelete } from "../service/AuthService";
+import { login, register, userLogout, userEdit, userDelete } from "../service/authService";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 export const AuthContext = createContext();
@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser ] = useLocalStorage('userData', {});
     const navigate = useNavigate();
 
-
+    //user login handler
     const onLoginSubmit = async (data) => {
         try {
             const result = await login(data);
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
             console.log(e);
         }
     };
-
+    //user register handler
     const onRegisterSubmit = async (data) => {
         const { repeatPassword, ...registerData } = data;
         if(repeatPassword !== registerData.password) {
@@ -39,13 +39,13 @@ export const AuthProvider = ({ children }) => {
         }
 
     };
-
+    //user logout handler
     const onLogout = async () => {
         await userLogout(user.accessToken);
 
         setUser(undefined);
     };
-
+    //edit user handler
     const onEditSubmit = async (data) => {
         try {
             const result = await userEdit(data, user._id);
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
             console.log(e);
         }
     };
-
+    //delete user handler
     const onDelete = async () => {
         try {
             const result = await userDelete(user._id);

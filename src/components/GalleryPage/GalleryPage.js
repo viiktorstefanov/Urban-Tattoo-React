@@ -7,20 +7,20 @@ import { faTrashCan, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { TattooContext } from '../../contexts/TattooContext';
 
 export default function GalleryPage() {
-    const { tattoos, openFullImg, model, setModel, deleteTattoo, tempImgSrc  } = useContext(TattooContext);
+    const { tattoos, openFullImg, model, deleteHandler, tempImgSrc, onEscPress, onCloseIconClick  } = useContext(TattooContext);
    
     const user = { _role: 'admin' };
 
     return (
         <>
-            <section tabIndex="0" onKeyDown={() => model ? setModel(false) : null} className={styles['galleryPage']}>
+            <section tabIndex="0" onKeyDown={onEscPress} className={styles['galleryPage']}>
                 <div className={model ? `${styles['model-open']}` : `${styles.model}`}>
                     {model ?
                         <>
                             <img className={styles['model-open-img']} src={tempImgSrc} alt="tattoo" />
-                            <FontAwesomeIcon className={styles['model-open-x']} onClick={() => setModel(false)} icon={faCircleXmark} />
+                            <FontAwesomeIcon className={styles['model-open-x']} onClick={onCloseIconClick} icon={faCircleXmark} />
                             {user._role === 'admin' ?
-                                <FontAwesomeIcon className={styles['model-open-delete']} onClick={deleteTattoo} icon={faTrashCan} />
+                                <FontAwesomeIcon className={styles['model-open-delete']} onClick={deleteHandler} icon={faTrashCan} />
                                 :
                                 null
                             }

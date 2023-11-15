@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState,  } from "react";
-import { get, post, del } from "../service/request";
 import { useNavigate } from "react-router-dom";
+import { deleteTattoo, getAllTattoos, uploadTattoo } from "../service/tattooService";
+
 
 export const TattooContext = createContext();
 
@@ -15,9 +16,10 @@ export const TattoosProvider = ({ children }) => {
     const [ haveFile, setHaveFile] = useState(false);
     const [ size, setSize] = useState(true);
 
+    //get all tattoo images
     useEffect(() => {
         try {
-            get('/data/tattoos')
+            getAllTattoos()
                 .then(res => setTattoos(res));
 
         } catch (error) {
@@ -25,36 +27,27 @@ export const TattoosProvider = ({ children }) => {
         }
     }, []);
 
-    const onSubmitUploadHandler = async (formData) => {
+    //upload tattoo image
+    const uploadHandler = async (formData) => {
         try {
-            const response = await post('/data/upload', formData);
+            const result = uploadTattoo(formData);
 
-            setTattoos(state => [...state, response]);
+            setTattoos(state => [...state, result]);
             navigate('/gallery');
 
         } catch (err) {
             console.log(err);;
         }
     };
+    const onFileSubmit = (e) => {
+        e.preventDefault();
 
-    function openFullImg(imageUrl, id) {
-        setModel(true);
-        setTempImgSrc(imageUrl);
-        setId(id);
+        const formData = new FormData();
+        formData.append('files', image);
+        setImage('');
+        uploadHandler({ files: formData });
     };
-
-    async function deleteTattoo() {
-        try {
-            const deletePhoto = await del(`/data/tattoos/${id}`);
-                setTattoos(state => state.filter(x => x._id !== id));
-                setModel(false);
-        } catch (error) {
-            console.log(error);
-        }
-
-    };
-
-    const fileHandler = (e) => {
+    const onFileChange = (e) => {
         setHaveFile(true);
         if (e.target.files[0].size > 5000000) {
             setImage('');
@@ -74,29 +67,43 @@ export const TattoosProvider = ({ children }) => {
         }
     };
 
-    const onFileSubmit = (e) => {
-        e.preventDefault();
-
-        const formData = new FormData();
-        formData.append('files', image);
-        setImage('');
-        onSubmitUploadHandler({ files: formData });
+    //delete tattoo image
+    const deleteHandler = async () => {
+        try {
+            await deleteTattoo(id);
+            setTattoos(state => state.filter(x => x._id !== id));
+            setModel(false);
+    } catch (error) {
+        console.log(error);
+    }
     };
+    
+    //open image handler
+    const openFullImg = (imageUrl, id) => {
+        setModel(true);
+        setTempImgSrc(imageUrl);
+        setId(id);
+    };
+
+    //close image handlers
+    const onEscPress = () => model ? setModel(false) : null ;
+    const onCloseIconClick = () => setModel(false);
+
 
     const TattoosValues = {
         tattoos,
-        onSubmitUploadHandler,
         model,
         openFullImg,
         tempImgSrc,
-        deleteTattoo,
-        setModel,
+        deleteHandler,
         image,
         haveFile,
         isImage,
         size,
-        fileHandler,
+        onFileChange,
         onFileSubmit,
+        onEscPress,
+        onCloseIconClick
     };
 
     return (

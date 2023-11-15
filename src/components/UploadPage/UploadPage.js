@@ -4,14 +4,14 @@ import { useContext } from 'react';
 import { TattooContext } from '../../contexts/TattooContext';
 
 export default function UploadPage() {
-    const { size, isImage, haveFile, image, fileHandler, onFileSubmit } = useContext(TattooContext);
+    const { size, isImage, haveFile, image, onFileChange, onFileSubmit } = useContext(TattooContext);
 
     return (
         <section id="uploadPage" className={styles.uploadPage}>
             <div className={styles['file-card']}>
                 <div className={styles['file-inputs']}>
                     <form className={styles['uploadForm']} onSubmit={onFileSubmit}>
-                        <input className={styles['file-input']} type="file" onChange={fileHandler} />
+                        <input className={styles['file-input']} type="file" onChange={onFileChange} />
                         <span className={styles['add-btn-wrap']}>
                             <i className={styles['add-btn']}>
                                 <AiFillPlusCircle className={styles['plus-icon']}/>
