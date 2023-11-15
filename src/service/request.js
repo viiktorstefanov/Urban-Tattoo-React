@@ -6,6 +6,7 @@ async function request(method, url, data) {
     headers: {},
   };
 
+    // const user = getUser();
   // if (token) {
   //   options.headers['X-Authorization'] = token;
   //   options.headers.user = JSON.stringify(user);

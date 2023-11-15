@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
     //delete user handler
     const onDelete = async () => {
         try {
-            const result = await userDelete(user._id);
+           await userDelete(user._id);
 
             setUser(undefined);
             navigate('/');

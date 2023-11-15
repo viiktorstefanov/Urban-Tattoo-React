@@ -24,7 +24,7 @@ export default function UploadPage() {
                 </div>
                 {size ? null : <p className={styles['supported-files']}>Max-size: 5MB</p>}
                 {!isImage ? null 
-                : <p className={styles['supported-files']}>Supported files: JPG or PNG</p> }
+                : <p className={styles['supported-files']}>Supported files: JPG PNG</p> }
                 {image !== '' ? <p className={styles['file']}>File name: {image.name} </p> : null}
                 {haveFile ? null : <p className={styles['file']}>Please, select a file.</p>}
             </div>

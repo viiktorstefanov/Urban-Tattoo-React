@@ -30,9 +30,9 @@ export const TattoosProvider = ({ children }) => {
     //upload tattoo image
     const uploadHandler = async (formData) => {
         try {
-            const result = uploadTattoo(formData);
-
+            const result = await uploadTattoo(formData);
             setTattoos(state => [...state, result]);
+            setHaveFile(false);
             navigate('/gallery');
 
         } catch (err) {
