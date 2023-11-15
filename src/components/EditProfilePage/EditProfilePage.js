@@ -1,47 +1,24 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import styles from './EditProfilePage.module.css';
 import { FiEdit } from 'react-icons/fi';
-// import axios from 'axios';
+import { AuthContext } from '../../contexts/AuthContext';
+import useForm from '../../hooks/useForm';
 
 export default function EditProfilePage() {
-    const [userInfo, setUserInfo] = useState({
+    const { user, onDelete, onEditSubmit } = useContext(AuthContext);
+
+    const primaryValues = {
         firstName: '',
         lastName: '',
-        phone: ''
-    });
-    
-    async function deleteUserHandler() {
-        try {
-            // const deleteUser = await axios.delete(`http://localhost:5000/users/${id}`);
-           
-        } catch(error) {
-            console.log(error);
-        }
-       
+        phone: '',
     };
-
-    async function editUserHandler(e) {
-        e.preventDefault();
-        //handle if any userInfo is missing
-
-        try {
-            // const editUser = await axios.put(`http://localhost:5000/users/${id}`,userInfo);
-           
-        } catch(error) {
-            console.log(error);
-        }
-       
-    };
-
+   
+    const { values, onChange, onSubmit } = useForm(primaryValues, onEditSubmit);
     //use effect(get from server) => setUserInfo(result)
-
-    const onChangeHandler = (e) => {
-        setUserInfo(state => ({...state, [e.target.name] : e.target.value}));
-    };
 
     return (
         <section id="editProfilePage" className={styles.editProfilePage}>
-            <form onSubmit={editUserHandler} className={styles.editForm}>
+            <form onSubmit={onSubmit} className={styles.editForm}>
 
                 <div>
                     <FiEdit className={styles['dropdownItem-ico']} />
@@ -49,21 +26,21 @@ export default function EditProfilePage() {
 
                 <div>
                     <label className={styles.label} htmlFor="name">First name:</label>
-                    <input className={styles.input} id="firstName" name="firstName" type="text" value={userInfo.firstName} onChange={onChangeHandler}/>
+                    <input className={styles.input} id="firstName" name="firstName" type="text" value={values.firstName} onChange={onChange}/>
                 </div>
 
                 <div>
                     <label className={styles.label} htmlFor="name">Last name:</label>
-                    <input className={styles.input} id="lastName" name="lastName" type="text" value={userInfo.lastName} onChange={onChangeHandler}/>
+                    <input className={styles.input} id="lastName" name="lastName" type="text" value={values.lastName} onChange={onChange}/>
                 </div>
 
                 <div>
                     <label className={styles.label} htmlFor="phone">Phone:</label>
-                    <input className={styles.input} id="phone" name="phone" type="number" value={userInfo.phone} onChange={onChangeHandler}/>
+                    <input className={styles.input} id="phone" name="phone" type="number" value={values.phone} onChange={onChange}/>
                 </div>
 
                 <div className={styles['deleteProfileDiv']}>
-                        <span onClick={deleteUserHandler} className={styles['deleteProfileBtn']}>Delete profile</span>
+                        <span onClick={onDelete} className={styles['deleteProfileBtn']}>Delete profile</span>
                 </div>
                     <button className={styles.button} type="submit">Save</button>
             </form>

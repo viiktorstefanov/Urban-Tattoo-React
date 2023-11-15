@@ -15,7 +15,7 @@ export default function ProfileGuest() {
                 </li>
                 <li className={styles['dropdownItem']}>
                     <FiEdit className={styles['dropdownItem-ico']} />
-                    <Link to='register' className={styles['dropdownItem-link']}>Sign up</Link>
+                    <Link to='/register' className={styles['dropdownItem-link']}>Sign up</Link>
                 </li>
             </ul>
         </>

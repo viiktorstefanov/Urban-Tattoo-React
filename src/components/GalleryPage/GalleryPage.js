@@ -1,40 +1,15 @@
-import { useState } from 'react';
-import axios from 'axios';
+import { useContext } from 'react';
 import styles from './GalleryPage.module.css'
 import Spinner from '../Spinner/Spinner';
 import MissingTattoos from '../MissingTattoos/MissingTattoos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { del } from '../../service/request';
+import { TattooContext } from '../../contexts/TattooContext';
 
-export default function GalleryPage({
-    tattoos, setTattoos
-}) {
-
-    const [model, setModel] = useState(false);
-    const [tempImgSrc, setTempImgSrc] = useState('');
-    const [id, setId] = useState('');
+export default function GalleryPage() {
+    const { tattoos, openFullImg, model, setModel, deleteTattoo, tempImgSrc  } = useContext(TattooContext);
+   
     const user = { _role: 'admin' };
-
-
-    function openFullImg(imageUrl, id) {
-        setModel(true);
-        setTempImgSrc(imageUrl);
-        setId(id);
-    };
-
-    async function deleteTattoo() {
-        try {
-            const deletePhoto = await del(`/data/tattoos/${id}`);
-                setTattoos(state => state.filter(x => x._id !== id));
-                setModel(false);
-        } catch (error) {
-            console.log(error);
-        }
-
-    };
-
-
 
     return (
         <>

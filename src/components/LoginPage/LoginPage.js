@@ -1,24 +1,18 @@
 import styles from './LoginPage.module.css';
 import { Link } from 'react-router-dom';
 import  useForm  from '../../hooks/useForm';
-import { login } from '../../service/AuthService';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useContext } from 'react';
 
 export default function LoginPage() {
 
-    const onSubmitHandler = async (data) => {
-        try {
-            const response = await login(data);
-            const user = await response.data;
-            console.log(user); 
-            // if everythink is ok - > navigate('/');
-        } catch(e) {
-           console.log(e.message)
-        }
-    };
-    const { values, changeHandler, onSubmit } = useForm({
+    const { onLoginSubmit } = useContext(AuthContext);
+    const primaryValues = {
         email: '',
         password: '',
-    }, onSubmitHandler)
+    };
+
+    const { values, onChange, onSubmit } = useForm(primaryValues, onLoginSubmit);
 
     return (
         <section id="loginPage" className={styles.loginPage}>
@@ -26,7 +20,7 @@ export default function LoginPage() {
                 <div>
                     <label htmlFor="email">Email:</label>
                     <input 
-                        onChange={changeHandler} 
+                        onChange={onChange} 
                         id="email" name="email" 
                         type="text" 
                         placeholder="example@email.com" 
@@ -36,7 +30,7 @@ export default function LoginPage() {
                 <div>
                     <label htmlFor="password">Password:</label>
                     <input 
-                        onChange={changeHandler} 
+                        onChange={onChange} 
                         id="password" name="password" 
                         type="password" placeholder="********" 
                         value={values.password}

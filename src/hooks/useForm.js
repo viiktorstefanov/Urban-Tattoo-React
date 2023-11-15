@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function useForm(primaryValues, onSubmitHandler) {
     const [ values, setValues ] = useState(primaryValues);
 
-    const changeHandler = (e) => {
+    const onChange = (e) => {
         setValues(state => ({...state, [e.target.name] : e.target.value}));
     };
 
@@ -15,7 +15,7 @@ export default function useForm(primaryValues, onSubmitHandler) {
 
     return {
         values,
-        changeHandler,
+        onChange,
         onSubmit
     }
 };

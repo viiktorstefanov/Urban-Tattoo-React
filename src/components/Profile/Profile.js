@@ -1,14 +1,14 @@
 import { BiSolidUserDetail } from 'react-icons/bi';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styles from './Profile.module.css';
 import ProfileUser from './ProfileUser';
 import ProfileGuest from './ProfileGuest';
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Profile() {
 
     const [showProfile, setShowProfile] = useState(false);
-    // const user = { _role: 'user', email: 'viktor-stefanov@mail.bg', name: 'Viktor' };
-    const user = false;
+    const { user } = useContext(AuthContext);
 
     return (
         <div className={styles['profile-dropdown']}>
@@ -18,7 +18,8 @@ export default function Profile() {
                 </div>
 
                 <div className={`${styles['dropdown-menu']} ${showProfile ? styles['active'] : styles['inactive']}`} >
-                    { user ? <ProfileUser /> : <ProfileGuest /> }
+                    {!user && <ProfileGuest />}
+                    {user && <ProfileUser />}
                 </div>
             </div>
         </div>

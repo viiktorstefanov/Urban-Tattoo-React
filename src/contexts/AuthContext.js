@@ -1,19 +1,21 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { login, register, userLogout, userEdit, userDelete } from "../service/AuthService";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+    //useLocalStorage('userData')
+    const [user, setUser ] = useLocalStorage('userData', {});
     const navigate = useNavigate();
-    const [auth, setAuth ] = useState({});
-    const [user, setUser ] = useState({});
+
 
     const onLoginSubmit = async (data) => {
         try {
             const result = await login(data);
             
-            setAuth(result);
+            setUser(result);
             navigate('/')
         } catch(e) {
             console.log(e);
@@ -21,15 +23,15 @@ export const AuthProvider = ({ children }) => {
     };
 
     const onRegisterSubmit = async (data) => {
-        const { confirmPasword, ...registerData } = data;
-        if(confirmPasword !== registerData.password) {
+        const { repeatPassword, ...registerData } = data;
+        if(repeatPassword !== registerData.password) {
             return;
         }
 
         try {
             const result = await register(registerData);
 
-            setAuth(result);
+            setUser(result);
             
             navigate('/')
         } catch(e) {
@@ -41,15 +43,36 @@ export const AuthProvider = ({ children }) => {
     const onLogout = async () => {
         await userLogout(user.accessToken);
 
-        setAuth({});
+        setUser(undefined);
     };
 
-    const authorizationValues = {
+    const onEditSubmit = async (data) => {
+        try {
+            const result = await userEdit(data, user._id);
+            console.log(result);
+            navigate(`/users/${user._id}`);
+        } catch(e) {
+            console.log(e);
+        }
+    };
+
+    const onDelete = async () => {
+        try {
+            const result = await userDelete(user._id);
+
+            setUser(undefined);
+            navigate('/');
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    const AuthorizationValues = {
         onLoginSubmit,
         onRegisterSubmit,
         onLogout,
         onEditSubmit,
-        onDeleteSubmit,
+        onDelete,
         user,
     };
 
@@ -59,7 +82,7 @@ export const AuthProvider = ({ children }) => {
 
     return  (
     <>
-        <AuthContext.Provider value={authorizationValues}>
+        <AuthContext.Provider value={AuthorizationValues}>
             {children}
         </AuthContext.Provider>
     </>

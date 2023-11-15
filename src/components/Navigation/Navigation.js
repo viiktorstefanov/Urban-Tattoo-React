@@ -1,9 +1,10 @@
 import styles from './Navigation.module.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useContext } from 'react';
 
 export default function Navigation() {
-    const user = { _role: 'user', email: 'viktor-stefanov@mail.bg', name: 'Viktor' };
-    // const user = false;
+    const { user } = useContext(AuthContext);
     return (
         <nav>
             <ul className={styles['nav-bar']}>
@@ -20,14 +21,14 @@ export default function Navigation() {
                     <Link to="/booking">BOOKING</Link>
                 </li>
                 {
-                    user._role === 'user' ?
-                        <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
-                            <Link to="/contact">CONTACT</Link>
-                        </li>
-                        :
-                        <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
-                            <Link to="/upload">UPLOAD</Link>
-                        </li>
+                    !user &&   <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
+                    <Link to="/contact">CONTACT</Link>
+                </li>
+                } 
+                {     
+                  user && <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
+                  <Link to="/upload">UPLOAD</Link>
+              </li>                     
                 }
             </ul>
         </nav>
