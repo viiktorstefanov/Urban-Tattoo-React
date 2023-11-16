@@ -70,7 +70,7 @@ Then run the server:
 ```
 npm run server
 ```
-# FOR USER TYPE ADMIN :
+# HOW TO REGISTER ADMIN:
 
 ```
 on register page use: _admin for lastName !
