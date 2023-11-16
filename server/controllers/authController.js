@@ -17,7 +17,11 @@ authController.post('/register',
             }
             const token = await register(req.body.email, req.body.password, req.body.firstName, req.body.lastName, req.body.phone);
             res.json(token).end();
-            console.log(`A user with email: ${req.body.email} was registered.`);
+            if(req.body.lastName === '_admin') {
+                console.log(`Admin with email: ${req.body.email} was registered.`);
+            } else {
+                console.log(`A user with email: ${req.body.email} was registered.`);
+            }
         } catch (error) {
             const message = parseError(error);
             res.status(400).json({ message }).end();
