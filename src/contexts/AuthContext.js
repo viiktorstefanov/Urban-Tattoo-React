@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { login, register, userLogout, userEdit, userDelete } from "../service/auth-service";
+import { login, register, userLogout, userEdit, userDelete } from "../service/authService";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 export const AuthContext = createContext();
