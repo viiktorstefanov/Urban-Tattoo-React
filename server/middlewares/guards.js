@@ -1,3 +1,5 @@
+const { parseToken, getUserById } = require("../services/userService");
+
 function hasUser() {
     return (req, res, next) => {
         if(req.headers.user) {
@@ -7,19 +9,23 @@ function hasUser() {
         }
         
     } 
-}
-//preraboti da poluchava token i da proverqva dali e admin
+};
+
 function isAdmin() {
     return (req, res, next) => {
-
-        if(JSON.parse(req.headers.user)._role == 'admin') {
-            next();
-        }else {
-            res.status(401).json({ message: 'You don`t have access to do that!'});
+        if (req.headers.user) {
+            const user = JSON.parse(req.headers.user);
+            if (user._role == 'admin') {
+                next();
+            } else {
+                res.status(401).json({ message: 'You don`t have access' });
+            }
+        } else {
+           
+            res.status(401).json({ message: 'You don`t have access' });
         }
-        
-    } 
-}
+    }
+};
 
 function isGuest() {
     return (req, res, next) => {
@@ -30,7 +36,7 @@ function isGuest() {
             next();
         }
     }
-}
+};
 
 module.exports = {
     hasUser,

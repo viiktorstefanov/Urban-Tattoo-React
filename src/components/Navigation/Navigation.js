@@ -20,15 +20,13 @@ export default function Navigation() {
                 <li className={`${styles['nav-link']} ${styles.booking} ${styles['nav-li']} ${styles['navigation']}`}>
                     <Link to="/booking">BOOKING</Link>
                 </li>
-                {
-                    !user &&   <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
-                    <Link to="/contact">CONTACT</Link>
-                </li>
-                } 
+                {user && user._role === 'user' ? <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
+                    <Link to="/contact">CONTACT</Link></li> : null}
+                {!user && <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
+                    <Link to="/contact">CONTACT</Link></li>}
                 {     
-                  user && <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
-                  <Link to="/upload">UPLOAD</Link>
-              </li>                     
+                  user._role === 'admin' && <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
+                  <Link to="/upload">UPLOAD</Link></li>                     
                 }
             </ul>
         </nav>

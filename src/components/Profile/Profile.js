@@ -18,8 +18,8 @@ export default function Profile() {
                 </div>
 
                 <div className={`${styles['dropdown-menu']} ${showProfile ? styles['active'] : styles['inactive']}`} >
-                    {!user && <ProfileGuest />}
-                    {user && <ProfileUser />}
+                    {!user  && <ProfileGuest />}
+                    {user  && <ProfileUser />}
                 </div>
             </div>
         </div>

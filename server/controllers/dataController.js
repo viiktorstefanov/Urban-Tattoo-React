@@ -1,6 +1,6 @@
 const dataController = require('express').Router();
+const { isAdmin } = require('../middlewares/guards');
 const generateUniqueFileName = require('../services/generateUniqueFileName');
-// const { isAdmin } = require('../middlewares/guards');
 const { getAll, deleteById, addTattoo, getById } = require('../services/tattoosService');
 const { parseError } = require('../utils/parseError');
 const path = require('path');
@@ -16,9 +16,7 @@ dataController.get('/tattoos', async (req, res) => {
     //   }, "5000");  
 });
 
-dataController.post('/upload', async (req, res) => {
-    // add middleware isadmin
-
+dataController.post('/upload', isAdmin(), async (req, res) => {
     try {
         const file = req.files.files;
         const extension = file.name.split('.')[1];
@@ -60,8 +58,7 @@ dataController.post('/upload', async (req, res) => {
     }
 });
 
-dataController.delete('/tattoos/:id', async (req, res) => {
-    //should check is this admin
+dataController.delete('/tattoos/:id',isAdmin(), async (req, res) => {
     try {
         const id = req.params.id;
         const image = await getById(id);

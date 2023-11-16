@@ -8,9 +8,9 @@ const endpoints = {
 
 const getAllTattoos = async () => get(endpoints.allTattoos);
 
-const uploadTattoo = async (data) => post(endpoints.upload, data);
+const uploadTattoo = async (data, user) => post(endpoints.upload, data, user);
 
-const deleteTattoo = async (id) => del(endpoints.delete + id);
+const deleteTattoo = async (id, user) => del(endpoints.delete + id, null, user);
 
 export {
     getAllTattoos,

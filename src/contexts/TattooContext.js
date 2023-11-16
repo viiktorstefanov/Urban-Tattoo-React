@@ -1,12 +1,13 @@
-import { createContext, useEffect, useState,  } from "react";
+import { createContext, useContext, useEffect, useState,  } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteTattoo, getAllTattoos, uploadTattoo } from "../service/tattooService";
-
+import { AuthContext } from "../contexts/AuthContext";
 
 export const TattooContext = createContext();
 
 export const TattoosProvider = ({ children }) => {
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
     const [tattoos, setTattoos] = useState('');
     const [image, setImage] = useState('');
     const [model, setModel] = useState(false);
@@ -30,13 +31,13 @@ export const TattoosProvider = ({ children }) => {
     //upload tattoo image
     const uploadHandler = async (formData) => {
         try {
-            const result = await uploadTattoo(formData);
+            const result = await uploadTattoo(formData, user);
             setTattoos(state => [...state, result]);
             setHaveFile(false);
             navigate('/gallery');
 
         } catch (err) {
-            console.log(err);;
+            console.log(err.message);;
         }
     };
     const onFileSubmit = (e) => {
@@ -70,7 +71,7 @@ export const TattoosProvider = ({ children }) => {
     //delete tattoo image
     const deleteHandler = async () => {
         try {
-            await deleteTattoo(id);
+            await deleteTattoo(id, user);
             setTattoos(state => state.filter(x => x._id !== id));
             setModel(false);
     } catch (error) {

@@ -7,7 +7,7 @@ export default function useLocalStorage(key, initialValue) {
     });
 
     useEffect(() => {
-        if (value == undefined) {
+        if (value == false) {
             localStorage.removeItem(key);
         } else {
             localStorage.setItem(key, JSON.stringify(value));

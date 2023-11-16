@@ -12,11 +12,11 @@ const login = async (data) => await post(endpoints.login, data);
 
 const register = async (data) => await post(endpoints.register, data);
 
-const userLogout = async (token) => await get(endpoints.logout, token);
+const userLogout = async (user) => await get(endpoints.logout,null, user);
 
-const userEdit = async (data, userId) => await put(endpoints.edit + userId, data);
+const userEdit = async (data, user) => await put(endpoints.edit + user._id, data, user);
 
-const userDelete = async (userId) => await del(endpoints.delete + userId);
+const userDelete = async (user) => await del(endpoints.delete + user._id, null, user);
 
 export {
     login,

@@ -8,13 +8,12 @@ export default function EditProfilePage() {
     const { user, onDelete, onEditSubmit } = useContext(AuthContext);
 
     const primaryValues = {
-        firstName: '',
-        lastName: '',
-        phone: '',
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phone: user.phone,
     };
    
     const { values, onChange, onSubmit } = useForm(primaryValues, onEditSubmit);
-    //use effect(get from server) => setUserInfo(result)
 
     return (
         <section id="editProfilePage" className={styles.editProfilePage}>

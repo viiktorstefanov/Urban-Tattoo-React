@@ -5,7 +5,6 @@ import { AuthContext } from '../../contexts/AuthContext';
 
 export default function ProfilePage() {
     const { user } = useContext(AuthContext);
-    console.log(user);
     return (
         <section className={styles.profilePage}>
             <div className={styles['profile-wrapper']}>
@@ -28,8 +27,10 @@ export default function ProfilePage() {
                 </span>
                 <span className={styles['user-info']}>
                     <p className={styles['user-info-category']}>Reservation: </p>
-                    <p className={styles['user-info-reservation']}></p>
+                    <p className={styles['user-info-reservation']}>
+                        none
                     {/* {user !== undefined && user.reservations.length <= 0 ? 'none' : user.reservations} */}
+                    </p>
                 </span>
             </div>
         </section>

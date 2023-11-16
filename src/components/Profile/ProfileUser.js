@@ -7,18 +7,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export default function ProfileUser() {
     // const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
-
-    async function logoutHandler() {
-        try {
-            // const logoutUser = await axios.get(`http://localhost:5000/users/logout`);
-            //should send req.token;
-            // navigate('/');
-        } catch(error) {
-            console.log(error);
-        }
-       
-    };
+    const { user, onLogout } = useContext(AuthContext);
 
     return (
         <>
@@ -35,7 +24,7 @@ export default function ProfileUser() {
                     <FiEdit className={styles['dropdownItem-ico']} />
                     <Link to={`/profile/edit/${user._id}`} className={styles['dropdownItem-link']}>Edit Profile</Link>
                 </li>
-                <li onClick={logoutHandler} className={styles['dropdownItem']}>
+                <li onClick={onLogout} className={styles['dropdownItem']}>
                     <CgLogOut className={styles['dropdownItem-ico']} />
                     <Link className={styles['dropdownItem-link']}>Logout</Link>
                 </li>

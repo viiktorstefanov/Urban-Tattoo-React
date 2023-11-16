@@ -1,4 +1,4 @@
-const { register, login, logout, updateUserById, getUserById, deleteUserById } = require('../services/userService');
+const { register, login, logout, updateUserById, deleteUserById } = require('../services/userService');
 const { body, validationResult } = require('express-validator');
 const { parseError } = require('../utils/parseError');
 const { isGuest, hasUser } = require('../middlewares/guards');
@@ -37,36 +37,31 @@ authController.post('/login', isGuest(), async (req, res) => {
 });
 
 authController.get('/logout', hasUser(), async (req, res) => {
-    const token = req.token;
-    const userLogout = await logout(token);
-    console.log(`User with email: ${token.email} has logout`);
+    const user = JSON.parse(req.headers.user);
+    await logout(user.accessToken);
+    console.log(`User with email: ${user.email} has logout`);
     res.status(204).end();
 });
 
-authController.get('/:id', hasUser(), async (req, res) => {
-    const id = req.params.id;
-    res.json(await getUserById(id));
-});
-
-authController.put('/edit/:id', isGuest(), async (req, res) => {
+authController.put('/edit/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
-        const editedUserInfo = req.body;
-        const currUser = await updateUserById(editedUserInfo, id);
+        const newUserInfo = req.body;
+        const currUser = await updateUserById(newUserInfo, id);
 
         if (currUser) {
-            console.log(`User with email: ${req.body.email} has been edited.`);
+            console.log(`User with email: ${currUser.email} has been edited.`);
         } else {
             throw new Error('Problem with finding or editing this user.');
         }
-        res.status(204).end();
+        res.json(currUser).status(204).end();
     } catch (error) {
         const message = parseError(error);
         res.status(401).json({ message });
     }
 });
 
-authController.delete('/:id', async (req, res) => {
+authController.delete('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const deletedUser = await deleteUserById(id);

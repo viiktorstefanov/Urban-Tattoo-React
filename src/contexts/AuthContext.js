@@ -6,10 +6,10 @@ import useLocalStorage from "../hooks/useLocalStorage";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    //useLocalStorage('userData')
-    const [user, setUser ] = useLocalStorage('userData', {});
+    
+    const [user, setUser ] = useLocalStorage('userData', false);
     const navigate = useNavigate();
-
+    
     //user login handler
     const onLoginSubmit = async (data) => {
         try {
@@ -41,16 +41,17 @@ export const AuthProvider = ({ children }) => {
     };
     //user logout handler
     const onLogout = async () => {
-        await userLogout(user.accessToken);
+        await userLogout(user);
 
-        setUser(undefined);
+        setUser(false);
+        navigate('/');
     };
     //edit user handler
     const onEditSubmit = async (data) => {
         try {
-            const result = await userEdit(data, user._id);
-            console.log(result);
-            navigate(`/users/${user._id}`);
+            const result = await userEdit(data, user);
+            setUser(result);
+            navigate(`/profile/${user._id}`);
         } catch(e) {
             console.log(e);
         }
@@ -58,9 +59,9 @@ export const AuthProvider = ({ children }) => {
     //delete user handler
     const onDelete = async () => {
         try {
-           await userDelete(user._id);
+           await userDelete(user);
 
-            setUser(undefined);
+            setUser(false);
             navigate('/');
         } catch (e) {
             console.log(e);

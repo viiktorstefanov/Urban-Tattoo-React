@@ -1,17 +1,16 @@
 const host = 'http://localhost:5000';
 
-async function request(method, url, data) {
+async function request(method, url, data, user) {
   const options = {
     method,
     headers: {},
   };
 
-    // const user = getUser();
-  // if (token) {
-  //   options.headers['X-Authorization'] = token;
-  //   options.headers.user = JSON.stringify(user);
-  // }
-  
+  if(user) {
+    options.headers['Urban-Authorization'] = JSON.stringify(user.accessToken);
+    options.headers.user = JSON.stringify(user);
+  }
+
   if (data && !data.files) {
     options.headers['Content-Type'] = 'application/json';
     options.body = JSON.stringify(data);
@@ -35,7 +34,7 @@ async function request(method, url, data) {
 
       throw result;
     }
-
+    
     return result;
   } catch (error) {
     throw error;
