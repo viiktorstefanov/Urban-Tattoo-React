@@ -7,7 +7,6 @@ import Footer from './components/Footer/Footer';
 import { TattoosProvider } from './contexts/TattooContext';
 import RoutesWrapper from './routes/RoutesWrapper';
 
-
 function App() {
     return (
         <>

@@ -112,6 +112,15 @@ async function deleteUserById(id) {
     return User.findByIdAndDelete(id);
 }
 
+async function updateUserReservations(userId, reservation) {
+    const user = await User.findById(userId);
+    const newReservations = [...user.reservations, reservation.date];
+    user.reservations = newReservations;
+
+    await user.save();
+    return user;
+}
+
 module.exports = {
     register, 
     login,
@@ -120,4 +129,5 @@ module.exports = {
     updateUserById,
     getUserById,
     deleteUserById,
+    updateUserReservations,
 }

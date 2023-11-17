@@ -19,7 +19,6 @@
   justify-content: center;
 }
 
-
 label,
 input,
 button {
@@ -68,6 +67,7 @@ button {
 button:hover {
   background: #f3d22d;
 }
+
 .button{
   margin-top: 15%;
 }
@@ -75,6 +75,7 @@ button:hover {
 .reg-btn {
   color: #f3d22d;
 }
+
 .reg-btn:hover {
   text-decoration: underline;
 }

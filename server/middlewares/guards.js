@@ -1,5 +1,3 @@
-const { parseToken, getUserById } = require("../services/userService");
-
 function hasUser() {
     return (req, res, next) => {
         if(req.headers.user) {

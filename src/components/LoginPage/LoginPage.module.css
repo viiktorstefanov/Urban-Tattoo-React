@@ -77,15 +77,19 @@
   button:hover {
     background: #f3d22d;
   }
+
   .button{
     margin-top: 15%;
   }
+
   .log-btn{
     color: #f3d22d;
   }
+
   .log-btn:hover {
     text-decoration: underline;
   }
+  
   .field {
     margin-top: 10%;
     font-size: 16px;

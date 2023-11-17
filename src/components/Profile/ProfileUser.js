@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function ProfileUser() {
-    // const navigate = useNavigate();
+    
     const { user, onLogout } = useContext(AuthContext);
 
     return (

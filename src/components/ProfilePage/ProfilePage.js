@@ -4,7 +4,9 @@ import { BiUserPin } from 'react-icons/bi';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export default function ProfilePage() {
+
     const { user } = useContext(AuthContext);
+
     return (
         <section className={styles.profilePage}>
             <div className={styles['profile-wrapper']}>
@@ -26,13 +28,14 @@ export default function ProfilePage() {
                     <p className={styles['user-info-phone']}>{user.phone}</p>
                 </span>
                 <span className={styles['user-info']}>
-                    <p className={styles['user-info-category']}>Reservation: </p>
-                    <p className={styles['user-info-reservation']}>
-                        none
-                    {/* {user !== undefined && user.reservations.length <= 0 ? 'none' : user.reservations} */}
-                    </p>
+                    <p className={styles['user-info-category']}>Reservations: </p>
+                    <div className={styles['reservation-list']}>
+                        {user.reservations.length === 0 ? <p className={styles['user-info-reservation']}>none</p> : null }
+                        {user.reservations.length > 0 ? user.reservations.map(r => <span>{r}</span>) : null }
+                    </div>
+                    
                 </span>
             </div>
         </section>
-    )
-}
+    );
+};

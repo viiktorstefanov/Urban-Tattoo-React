@@ -4,7 +4,9 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
 
 export default function Navigation() {
+
     const { user } = useContext(AuthContext);
+    
     return (
         <nav>
             <ul className={styles['nav-bar']}>

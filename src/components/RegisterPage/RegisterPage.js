@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import styles from './RegisterPage.module.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -18,11 +18,8 @@ export default function RegisterPage() {
 
     const { values, onChange, onSubmit } = useForm(primaryValues, onRegisterSubmit);
 
-    const [errors, setErrors] = useState([]);
-
     return (
         <section id="registerPage" className={styles.registerPage}>
-            {errors ? <span>{errors['firstName']}</span> : null}
             <form onSubmit={onSubmit} className={styles.registerForm} method='POST'>
                 <div>
                     <label className={styles.label} htmlFor="name">First name:</label>

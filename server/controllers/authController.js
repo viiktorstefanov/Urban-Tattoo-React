@@ -1,4 +1,4 @@
-const { register, login, logout, updateUserById, deleteUserById } = require('../services/userService');
+const { register, login, logout, updateUserById, deleteUserById, updateUserReservations } = require('../services/userService');
 const { body, validationResult } = require('express-validator');
 const { parseError } = require('../utils/parseError');
 const { isGuest, hasUser } = require('../middlewares/guards');
@@ -76,5 +76,19 @@ authController.delete('/:id', hasUser(), async (req, res) => {
         res.status(400).json({ message });
     }
 });
+
+authController.post('/reservations/:id', hasUser(), async (req, res) => {
+    try {
+        const id = req.params.id;
+        const newReservations = req.body;
+        const user = await updateUserReservations(id, newReservations);
+        console.log(`User with email: ${user.email} has changed his reservations`);
+        res.json(user).status(204).end();
+    } catch (error) {
+        const message = parseError(error);
+        res.status(400).json({ message });
+    }
+});
+
 
 module.exports = authController;
