@@ -22,9 +22,10 @@ async function deleteById(id) {
     return Tattoos.findByIdAndDelete(id);
 }
 
-async function addTattoo(imageUrl) {
+async function addTattoo(imageUrl, ownerId) {
     const tattoo = await Tattoos.create({
-       imageUrl
+       imageUrl,
+       ownerId,
     }); 
     return tattoo; 
 }

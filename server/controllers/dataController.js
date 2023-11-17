@@ -36,8 +36,8 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
                     return res.status(500).json({message});
                 }
             });
-           
-            const tattoo = await addTattoo(imageUrl);
+            const user = JSON.parse(req.headers.user);
+            const tattoo = await addTattoo(imageUrl, user._id);
             console.log(`(file "${imageName}") has been uploaded .`);
             res.json(tattoo).end();
         } else {
@@ -62,9 +62,16 @@ dataController.delete('/tattoos/:id',isAdmin(), async (req, res) => {
     try {
         const id = req.params.id;
         const image = await getById(id);
-        await deleteById(id);
-        console.log(`(file "${image.imageUrl.split('http://localhost:5000/')[1]}") has been deleted.`);
-        res.status(204).end();
+        const user = JSON.parse(req.headers.user);
+        if(user._id == image.ownerId) {
+            await deleteById(id);
+            console.log(`(file "${image.imageUrl.split('http://localhost:5000/')[1]}") has been deleted.`);
+            res.status(204).end();
+        } else{
+            res.status(403);
+            console.log(`User with email: ${user.email} is not the owner of the image with id: ${image._id}`);
+            throw new Error(`You're not the owner of this image`);
+        }
     } catch (error) {
         const message = parseError(error);
         res.status(400).json({ message });
