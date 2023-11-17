@@ -74,6 +74,6 @@ npm run server
 # HOW TO REGISTER ADMIN:
 
 ```
-in register page use: _admin for lastName !
+on register form use: _admin for lastName !
 
 ```
