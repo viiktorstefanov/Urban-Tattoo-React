@@ -4,6 +4,7 @@
   <a>
     <img src="app-review.gif" />
   </a>
+  <a href="https://urban-tattoo-react.vercel.app/">DEPLOYED WITHOUT BACK-END</a>
 </p>
 
 #### Front-end:
