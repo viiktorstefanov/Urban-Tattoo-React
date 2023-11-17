@@ -69,7 +69,7 @@ dataController.delete('/tattoos/:id',isAdmin(), async (req, res) => {
             res.status(204).end();
         } else{
             res.status(403);
-            console.log(`User with email: ${user.email} is not the owner of the image with id: ${image._id}`);
+            console.log(`User with email: ${user.email} is trying to delete a image with id: ${image._id}`);
             throw new Error(`You're not the owner of this image`);
         }
     } catch (error) {
