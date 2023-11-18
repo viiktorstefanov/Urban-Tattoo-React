@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     
     const [user, setUser ] = useLocalStorage('userData', false);
     const navigate = useNavigate();
-    
+
     //user login handler
     const onLoginSubmit = async (data) => {
         try {
@@ -76,10 +76,6 @@ export const AuthProvider = ({ children }) => {
         onDelete,
         user,
     };
-
-
-
-
 
     return  (
     <>

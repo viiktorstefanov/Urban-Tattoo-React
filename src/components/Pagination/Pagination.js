@@ -1,68 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 import ReactPaginate from 'react-paginate';
+import styles from './Pagination.module.css';
+import Items from './Items';
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { BsThreeDots } from "react-icons/bs";
 
-export default function Pagination() {
-    return (
+export function PaginatedItems({ itemsPerPage, tattoos, openFullImg }) {
 
-    // Example items, to simulate fetching from another resources.
-    const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+  const items = tattoos;
+  const [itemOffset, setItemOffset] = useState(0);
 
-    function Items({ currentItems }) {
-        return (
-            <>
-                {currentItems &&
-                    currentItems.map((item) => (
-                        <div>
-                            <h3>Item #{item}</h3>
-                        </div>
-                    ))}
-            </>
-        );
-    }
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = items.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(items.length / itemsPerPage);
 
-    function PaginatedItems({ itemsPerPage }) {
-        // Here we use item offsets; we could also use page offsets
-        // following the API or data you're working with.
-        const [itemOffset, setItemOffset] = useState(0);
+  // handle of page number click.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    setItemOffset(newOffset);
+  };
 
-        // Simulate fetching items from another resources.
-        // (This could be items from props; or items loaded in a local state
-        // from an API endpoint with useEffect and useState)
-        const endOffset = itemOffset + itemsPerPage;
-        console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-        const currentItems = items.slice(itemOffset, endOffset);
-        const pageCount = Math.ceil(items.length / itemsPerPage);
-
-        // Invoke when user click to request another page.
-        const handlePageClick = (event) => {
-            const newOffset = (event.selected * itemsPerPage) % items.length;
-            console.log(
-                `User requested page number ${event.selected}, which is offset ${newOffset}`
-            );
-            setItemOffset(newOffset);
-        };
-
-        return (
-            <>
-                <Items currentItems={currentItems} />
-                <ReactPaginate
-                    breakLabel="..."
-                    nextLabel="next >"
-                    onPageChange={handlePageClick}
-                    pageRangeDisplayed={5}
-                    pageCount={pageCount}
-                    previousLabel="< previous"
-                    renderOnZeroPageCount={null}
-                />
-            </>
-        );
-    }
-
-    // Add a <div id="container"> to your HTML to see the component rendered.
-    ReactDOM.render(
-        <PaginatedItems itemsPerPage={4} />,
-        document.getElementById('container')
-    );
-    );
+  return (
+    <>
+      <Items currentItems={currentItems} openFullImg={openFullImg}/>
+      <ReactPaginate
+      className={styles.pagination}
+        breakLabel={<BsThreeDots className={styles['pagination-dots-break']} />}
+        nextLabel={<FaArrowRight className={styles['pagination-arrow-next']}/>}
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel={<FaArrowLeft className={styles['pagination-arrow-previous']} />}
+        renderOnZeroPageCount={null}
+        activeClassName={styles['activeClassName']}
+        activeLinkClassName={styles['activeLinkClassName']}
+        disabledClassName={styles['previous-next-disabled']}
+        disabledLinkClassName={styles['previous-next-link-disabled']}
+      />
+    </>
+  );
 };

@@ -1,0 +1,41 @@
+.pagination {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+}
+
+.pagination li a {
+    padding: 0.1rem 0.5rem;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.activeLinkClassName{
+    color: #f3d22d;
+    min-width: 32px;
+    border-color: transparent;
+}
+
+.activeLinkClassName:hover{
+    color: #f3d22d;
+    border-color: transparent;
+}
+
+.pagination-arrow-next{
+    padding-top: 3px;
+    font-size: 24px;
+}
+
+.pagination-arrow-previous{
+    padding-top: 3px;
+    font-size: 24px;
+}
+
+.pagination-dots-break{
+    padding-top: 3px;
+    font-size: 24px;
+}
+
