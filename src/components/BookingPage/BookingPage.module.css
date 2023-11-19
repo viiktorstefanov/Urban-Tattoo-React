@@ -3,8 +3,40 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   text-align: center;
   margin-top: 4%;
   margin-bottom: 5%;
   font-family: 'Roboto', sans-serif;
   }
+
+  .model {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .bookingForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0 15px 0;
+    background-color: white;
+    border-radius: 8px;
+    width: 30rem;
+    max-width: 100%;
+  }
+  .span-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    width: 100%;
+  }
+  .button {
+    width: 100px;
+  }
+
+ 

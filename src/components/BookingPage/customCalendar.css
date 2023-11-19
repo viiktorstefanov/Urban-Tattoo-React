@@ -1,11 +1,11 @@
 .react-calendar {
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
-    width: 45rem;
+    width: 30rem;
     max-width: 100%;
     background: whitesmoke;
     border: 1px solid black;
-    border-radius: 3%;
+    border-radius: 8px;
     font-family: 'Roboto', sans-serif;
     line-height: 1.125em;
   }
