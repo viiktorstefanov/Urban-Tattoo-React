@@ -51,7 +51,8 @@ authController.put('/edit/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const newUserInfo = req.body;
-        const currUser = await updateUserById(newUserInfo, id);
+        const accessToken = JSON.parse(req.headers.user).accessToken;
+        const currUser = await updateUserById(newUserInfo, id, accessToken);
 
         if (currUser) {
             console.log(`User with email: ${currUser.email} has been edited.`);
@@ -77,11 +78,12 @@ authController.delete('/:id', hasUser(), async (req, res) => {
     }
 });
 
-authController.post('/reservations/:id', hasUser(), async (req, res) => {
+authController.put('/reservations/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
+        const accessToken = JSON.parse(req.headers.user).accessToken;
         const newReservations = req.body;
-        const user = await updateUserReservations(id, newReservations);
+        const user = await updateUserReservations(id, newReservations, accessToken);
         console.log(`User with email: ${user.email} has changed his reservations`);
         res.json(user).status(204).end();
     } catch (error) {

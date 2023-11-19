@@ -19,7 +19,7 @@ const userEdit = async (data, user) => await put(endpoints.edit + user._id, data
 
 const userDelete = async (user) => await del(endpoints.delete + user._id, null, user);
 
-const updateUserReservations = async (id, reservation, user) => await post(endpoints.reservations + id, reservation, user);
+const userUpdateReservations = async (id, reservation, user) => await put(endpoints.reservations + id, reservation, user);
 
 export {
     login,
@@ -27,4 +27,5 @@ export {
     userLogout,
     userEdit,
     userDelete,
+    userUpdateReservations,
 }

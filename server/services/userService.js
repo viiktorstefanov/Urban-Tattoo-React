@@ -88,7 +88,7 @@ function parseToken(token) {
     return jwt.verify(token, secret);
 }
 
-async function updateUserById(userData, userId){
+async function updateUserById(userData, userId, accessToken){
     const user = await User.findById(userId);
 
     const missing = Object.entries(userData).filter(([k, v]) => !v);
@@ -101,7 +101,16 @@ async function updateUserById(userData, userId){
     user.phone = userData.phone;
 
     await user.save();
-    return user;
+    return {
+        _id: user._id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phone: user.phone,
+        reservations: user.reservations,
+        _role: user._role.join(''),
+        accessToken
+    };
 };
 
 async function getUserById(id) {
@@ -112,13 +121,25 @@ async function deleteUserById(id) {
     return User.findByIdAndDelete(id);
 }
 
-async function updateUserReservations(userId, reservation) {
+async function updateUserReservations(userId, reservation, accessToken) {
     const user = await User.findById(userId);
+    if(user.reservations.includes(reservation.date)) {
+        throw new Error('You already have a reservation for this day');
+    }
     const newReservations = [...user.reservations, reservation.date];
     user.reservations = newReservations;
 
     await user.save();
-    return user;
+    return {
+        _id: user._id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phone: user.phone,
+        reservations: user.reservations,
+        _role: user._role.join(''),
+        accessToken
+    };
 }
 
 module.exports = {
