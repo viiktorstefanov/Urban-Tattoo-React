@@ -34,15 +34,17 @@ Edit profile page        | ![alt](https://img.icons8.com/emoji/60/000000/cross-m
 Upload page    | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
 Register/Login page | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
 CRUD operations | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
+Create reservation | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png)
+Upload image | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
 <br>
 <br>
 
 
-Integrated user accounts for a personalized experience.
+Integrated user accounts for a personalized experience(making reservations and editing profile).
 
-Created an image gallery for showcasing tattoos.
+Created an image gallery with pagination for showcasing tattoos.
 
-Developed RESTful APIs to handle user data, tattoo information, and studio details.
+Developed RESTful APIs to handle user data, tattoos information and details.
 
 Utilized MongoDB as the database to store and retrieve data efficiently.
 
