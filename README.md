@@ -11,6 +11,7 @@
 <p align="left">
   <a>
     <img src="https://skillicons.dev/icons?i=html,css,js,react" />
+    <img src="https://skillicons.dev/icons?i=html,css,js,react,nodejs,express,mongodb,ps" />
   </a>
 </p>
 
