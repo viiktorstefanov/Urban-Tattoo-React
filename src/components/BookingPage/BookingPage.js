@@ -1,6 +1,6 @@
 import styles from './BookingPage.module.css'
 import Calendar from 'react-calendar';
-import './customCalendar.css';
+import './Calendar.css';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
