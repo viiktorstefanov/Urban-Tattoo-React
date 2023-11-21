@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState, } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteTattoo, getAllTattoos, uploadTattoo } from "../service/tattooService";
 import { AuthContext } from "../contexts/AuthContext";
-import { get } from "../service/request";
+import { get, del } from "../service/request";
 
 export const TattooContext = createContext();
 
@@ -19,7 +19,7 @@ export const TattoosProvider = ({ children }) => {
     const [size, setSize] = useState(true);
     const [isLiked, setIsLiked] = useState(false);
     const [isOwner, setIsOwner] = useState(false);
-    
+
 
     //get all tattoo images
     useEffect(() => {
@@ -90,9 +90,9 @@ export const TattoosProvider = ({ children }) => {
         } else {
             setIsLiked(false);
         }
-        if(ownerId === user._id) {
+        if (ownerId === user._id) {
             setIsOwner(true);
-        } 
+        }
         setModel(true);
         setTempImgSrc(imageUrl);
         setId(id);
@@ -103,7 +103,7 @@ export const TattoosProvider = ({ children }) => {
     const onCloseIconClick = () => setModel(false);
 
     //like tattoo
-    const getTattooLikes = async () => {
+    const likeTattoo = async () => {
         try {
             const response = await get(`/data/${id}/likes`, null, user);
             setTattoos(state => state.map(x => x._id === id
@@ -113,7 +113,24 @@ export const TattoosProvider = ({ children }) => {
         } catch (e) {
             console.log(e);
         }
-    }
+    };
+
+    //dislike tattoo
+    const dislikeTattoo = async () => {
+        try {
+            const response = await del(`/data/${id}/likes`, null, user);
+            setTattoos((state) =>
+                state.map((x) =>
+                    x._id === id
+                        ? { ...x, likes: x.likes.filter((like) => like !== user._id) }
+                        : x
+                )
+            );
+            setIsLiked(false);
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     const TattoosValues = {
         tattoos,
@@ -132,7 +149,8 @@ export const TattoosProvider = ({ children }) => {
         id,
         isLiked,
         isOwner,
-        getTattooLikes
+        likeTattoo,
+        dislikeTattoo
     };
 
     return (

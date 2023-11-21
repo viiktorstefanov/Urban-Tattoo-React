@@ -1,7 +1,7 @@
 const dataController = require('express').Router();
 const { isAdmin } = require('../middlewares/guards');
 const generateUniqueFileName = require('../services/generateUniqueFileName');
-const { getAll, deleteById, addTattoo, getById, addLikeToTattoo } = require('../services/tattoosService');
+const { getAll, deleteById, addTattoo, getById, addLikeToTattoo, removeLikeToTattoo } = require('../services/tattoosService');
 const { parseError } = require('../utils/parseError');
 const path = require('path');
 
@@ -81,11 +81,18 @@ dataController.delete('/tattoos/:id',isAdmin(), async (req, res) => {
 dataController.get('/:id/comments', async (req, res) => {
 
     const tattooId = req.params.id;
-    const userId = JSON.parse(req.headers.user)._id;
-    const data = req.body;
+    const tattoo = await getById(tattooId);
+    
+    const result = {
+        comments: tattoo.comments,
+        likes: tattoo.likes.length,
+        imageUrl: tattoo.imageUrl,
+    };
+    // const userId = JSON.parse(req.headers.user)._id;
+    // const data = req.body;
 
     // const comment = await addComment(tattooId, userId);
-
+    res.json(result);
    
 });
 
@@ -96,7 +103,23 @@ dataController.get('/:id/likes', async (req, res) => {
         const userId = JSON.parse(req.headers.user)._id;
     
         await addLikeToTattoo(tattooId, userId);
+        console.log(`user add like to image with id : ${tattooId}`);
+        res.status(204).end()
+    } catch(error) {
+        const message = parseError(error);
+        res.status(400).json({ message });
+    }
+    
+});
 
+dataController.delete('/:id/likes', async (req, res) => {
+    try {
+        const tattooId = req.params.id;
+
+        const userId = JSON.parse(req.headers.user)._id;
+    
+        await removeLikeToTattoo(tattooId, userId);
+        console.log(`user remove like from image with id : ${tattooId}`);
         res.status(204).end()
     } catch(error) {
         const message = parseError(error);

@@ -48,6 +48,15 @@
     border-radius: 2%;
 }
 
+.wrapper-dislike{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dislike{
+    font-size: 26px;
+}
 
 .model-open-actions{
     position: absolute;
@@ -62,27 +71,10 @@
     gap: 90%;
 }
 
-/* .model-open-delete {
-    font-size: 26px;
-    position: absolute;
-    top: 5.3%;
-    right: 9%;
-    color: white;
-    cursor: pointer;
-} */
-/* .model-open-x {
-    position: absolute;
-    top: 5.3%;
-    right: 5%;
-    font-size: 26px;
-    color: white;
-    cursor: pointer;
-} */
-
 .model-open-x:hover,
 .model-open-delete:hover,
 .model-open-comments:hover,
-.actions-like:hover {
+.actions-like:hover,
+.dislike:hover {
     color: #f3d22d;
 }
-

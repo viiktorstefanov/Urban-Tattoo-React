@@ -1,21 +1,30 @@
 import { useParams } from 'react-router-dom';
 import styles from './CommentsPage.module.css';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
-import { get } from '../../service/request';
+import { del, get } from '../../service/request';
 
 export default function CommentsPage() {
     const { id } = useParams();
-
- 
      const { user } = useContext(AuthContext);
+     const [ tattoo, setTattoo ] = useState('');
     
-    const likes = 5;
+     useEffect(() => {
+        try {
+            get(`/data/${id}/comments`)
+                .then(res => setTattoo(res));
+
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
+   
     return (
         <section className={styles['commentsPage']}>
-            <img className={styles['tattoo-img']} src={'http://localhost:5000/IMG1699741280066.jpg'} alt="tattoo" />
-            <span>Likes: {likes}</span>
-            <button onClick={() => getTattooLikes(id, user)}>aa</button>
+            <img className={styles['tattoo-img']} src={tattoo.imageUrl} alt="tattoo" />
+
+            <span>Likes: {tattoo.likes}</span>
             <div className={styles['wrap']}>Comments:
                 <p className={styles['comment']}>
                     'user': Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto optio nemo eos? Aut odit rem eum nemo? Omnis, iusto dolore. Quis aspernatur iusto laborum similique molestiae a repudiandae reprehenderit maxime.
@@ -42,20 +51,3 @@ export default function CommentsPage() {
     );
 };
 
-const getTattooLikes = async (id, user) => {
-    try {   
-        await get(`/data/${id}/likes`, null, user)
-
-    } catch (e) {
-        console.log(e);
-    }
-}
-
-const getTattooComments = async (id, user) => {
-    try {   
-        await get(`/data/${id}/comments`, null, user)
-
-    } catch (e) {
-        console.log(e);
-    }
-}

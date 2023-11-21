@@ -32,7 +32,15 @@ async function addTattoo(imageUrl, ownerId) {
 
 async function addLikeToTattoo(tattooId, userId) {
     return Tattoos.findByIdAndUpdate(tattooId, { $push: { likes: userId } });
-}
+};
+
+async function removeLikeToTattoo(tattooId, userId) {
+    return Tattoos.findByIdAndUpdate(
+        tattooId,
+        { $pull: { likes: userId } },
+        { new: true } // This option returns the modified document
+      );
+};
 
 
 module.exports = {
@@ -40,5 +48,6 @@ module.exports = {
     deleteById,
     addTattoo,
     getById,
-    addLikeToTattoo
+    addLikeToTattoo,
+    removeLikeToTattoo
 }
