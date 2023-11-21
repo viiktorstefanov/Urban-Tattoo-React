@@ -11,6 +11,7 @@ import UploadPage from '../components/UploadPage/UploadPage';
 import ContactPage from '../components/ContactPage/ContactPage';
 import EditProfilePage from '../components/EditProfilePage/EditProfilePage';
 import DefaultPage from '../components/DefaultPage/DefaultPage';
+import CommentsPage from "../components/CommentsPage/CommentsPage";
 
 
 export default function RoutesWrapper() {
@@ -18,6 +19,7 @@ export default function RoutesWrapper() {
         <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/gallery' element={<GalleryPage />} />
+            <Route path='/gallery/:id/comments' element={<CommentsPage />} />
             <Route path='/upload' element={<UploadPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />

@@ -30,10 +30,15 @@ async function addTattoo(imageUrl, ownerId) {
     return tattoo; 
 }
 
+async function addLikeToTattoo(tattooId, userId) {
+    return Tattoos.findByIdAndUpdate(tattooId, { $push: { likes: userId } });
+}
+
 
 module.exports = {
     getAll,
     deleteById,
     addTattoo,
-    getById
+    getById,
+    addLikeToTattoo
 }

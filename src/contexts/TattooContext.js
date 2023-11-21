@@ -1,7 +1,8 @@
-import { createContext, useContext, useEffect, useState,  } from "react";
+import { createContext, useContext, useEffect, useState, } from "react";
 import { useNavigate } from "react-router-dom";
 import { deleteTattoo, getAllTattoos, uploadTattoo } from "../service/tattooService";
 import { AuthContext } from "../contexts/AuthContext";
+import { get } from "../service/request";
 
 export const TattooContext = createContext();
 
@@ -13,9 +14,12 @@ export const TattoosProvider = ({ children }) => {
     const [model, setModel] = useState(false);
     const [tempImgSrc, setTempImgSrc] = useState('');
     const [id, setId] = useState('');
-    const [ isImage, setIsImage] = useState(false);
-    const [ haveFile, setHaveFile] = useState(false);
-    const [ size, setSize] = useState(true);
+    const [isImage, setIsImage] = useState(false);
+    const [haveFile, setHaveFile] = useState(false);
+    const [size, setSize] = useState(true);
+    const [isLiked, setIsLiked] = useState(false);
+    const [isOwner, setIsOwner] = useState(false);
+    
 
     //get all tattoo images
     useEffect(() => {
@@ -54,13 +58,13 @@ export const TattoosProvider = ({ children }) => {
             setImage('');
             setSize(false);
             return;
-        } else{
+        } else {
             setSize(true);
         }
         if (e.target.files[0].type === "image/jpeg" || e.target.files[0].type === "image/png") {
             setImage(e.target.files[0]);
             setIsImage(false);
-            
+
         } else {
             setImage('');
             setIsImage(true);
@@ -74,22 +78,42 @@ export const TattoosProvider = ({ children }) => {
             await deleteTattoo(id, user);
             setTattoos(state => state.filter(x => x._id !== id));
             setModel(false);
-    } catch (error) {
-        console.log(error);
-    }
+        } catch (error) {
+            console.log(error);
+        }
     };
-    
+
     //open image handler
-    const openFullImg = (imageUrl, id) => {
+    const openFullImg = (imageUrl, id, likes, ownerId) => {
+        if (likes.some(x => x === user._id)) {
+            setIsLiked(true);
+        } else {
+            setIsLiked(false);
+        }
+        if(ownerId === user._id) {
+            setIsOwner(true);
+        } 
         setModel(true);
         setTempImgSrc(imageUrl);
         setId(id);
     };
 
     //close image handlers
-    const onEscPress = () => model ? setModel(false) : null ;
+    const onEscPress = () => model ? setModel(false) : null;
     const onCloseIconClick = () => setModel(false);
 
+    //like tattoo
+    const getTattooLikes = async () => {
+        try {
+            const response = await get(`/data/${id}/likes`, null, user);
+            setTattoos(state => state.map(x => x._id === id
+                ? { ...x, likes: [...x.likes, user._id] }
+                : x));
+            setIsLiked(true);
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     const TattoosValues = {
         tattoos,
@@ -104,7 +128,11 @@ export const TattoosProvider = ({ children }) => {
         onFileChange,
         onFileSubmit,
         onEscPress,
-        onCloseIconClick
+        onCloseIconClick,
+        id,
+        isLiked,
+        isOwner,
+        getTattooLikes
     };
 
     return (

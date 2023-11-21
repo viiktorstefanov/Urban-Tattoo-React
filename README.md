@@ -37,6 +37,7 @@ Register/Login page | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.
 CRUD operations | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
 Create reservation | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png)
 Upload image | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
+Like image (only if is not a owner and is not liked already) | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
 <br>
 <br>
 

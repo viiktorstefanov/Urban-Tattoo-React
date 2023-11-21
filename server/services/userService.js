@@ -76,7 +76,8 @@ function createToken(user) {
         phone: user.phone,
         reservations: user.reservations,
         _role: user._role[0],
-        accessToken: jwt.sign(payload, secret)
+        accessToken: jwt.sign(payload, secret),
+        likes: user.likes,
     } 
 };
 
@@ -108,6 +109,7 @@ async function updateUserById(userData, userId, accessToken){
         lastName: user.lastName,
         phone: user.phone,
         reservations: user.reservations,
+        likes: user.likes,
         _role: user._role.join(''),
         accessToken
     };
@@ -137,6 +139,7 @@ async function updateUserReservations(userId, reservation, accessToken) {
         lastName: user.lastName,
         phone: user.phone,
         reservations: user.reservations,
+        likes: user.likes,
         _role: user._role.join(''),
         accessToken
     };

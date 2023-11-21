@@ -7,7 +7,7 @@ const userSchema = new Schema({
     lastName: { type: String, required: [true, 'Last name is required'] },
     phone: { type:  String, required: [true, 'Phone number is required'], minlength: [10, 'Phone number should be at least 10 characters'] },
     _role: { type: [{ type: String, enum: ['user', 'admin'] }], default: ['user'] },
-    reservations: { type: [{ type: String}] }
+    reservations: { type: [{ type: String}] },
 });
 
 userSchema.index({ email: 1 }, {

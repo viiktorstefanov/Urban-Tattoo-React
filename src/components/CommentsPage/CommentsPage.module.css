@@ -1,0 +1,38 @@
+.commentsPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 35px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.tattoo-img {
+    width: 15vw;
+    height: 50vh;
+    border-radius: 2%;
+    object-fit: cover;
+}
+
+.comment{
+    width: 10vw; /* set your desired width */
+    height: 10vh; /* set your desired height */
+    text-align: justify;
+    font-size: 10px;
+}
+
+.wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.comment-text{
+    width: 250px;
+    height: 150px;
+    border-radius: 8px;
+}

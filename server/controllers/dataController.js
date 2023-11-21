@@ -1,7 +1,7 @@
 const dataController = require('express').Router();
 const { isAdmin } = require('../middlewares/guards');
 const generateUniqueFileName = require('../services/generateUniqueFileName');
-const { getAll, deleteById, addTattoo, getById } = require('../services/tattoosService');
+const { getAll, deleteById, addTattoo, getById, addLikeToTattoo } = require('../services/tattoosService');
 const { parseError } = require('../utils/parseError');
 const path = require('path');
 
@@ -69,13 +69,40 @@ dataController.delete('/tattoos/:id',isAdmin(), async (req, res) => {
             res.status(204).end();
         } else{
             res.status(403);
-            console.log(`User with email: ${user.email} is trying to delete a image with id: ${image._id}`);
+            console.log(`Not an owner user with email: ${user.email} is trying to delete a image with id: ${image._id}`);
             throw new Error(`You're not the owner of this image`);
         }
     } catch (error) {
         const message = parseError(error);
         res.status(400).json({ message });
     }
+});
+
+dataController.get('/:id/comments', async (req, res) => {
+
+    const tattooId = req.params.id;
+    const userId = JSON.parse(req.headers.user)._id;
+    const data = req.body;
+
+    // const comment = await addComment(tattooId, userId);
+
+   
+});
+
+dataController.get('/:id/likes', async (req, res) => {
+    try {
+        const tattooId = req.params.id;
+
+        const userId = JSON.parse(req.headers.user)._id;
+    
+        await addLikeToTattoo(tattooId, userId);
+
+        res.status(204).end()
+    } catch(error) {
+        const message = parseError(error);
+        res.status(400).json({ message });
+    }
+    
 });
 
 module.exports = dataController;
