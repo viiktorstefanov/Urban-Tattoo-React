@@ -3,11 +3,27 @@ const fs = require('fs');
 const path = require('path');
 
 async function getAll() {
-    return Tattoos.find({});
+   return await Tattoos.find({}, '-comments');
 }
 
 async function getById(id) {
-    return Tattoos.findById(id);
+    return await Tattoos.findById(id);
+}
+
+async function getTattooByCommentId(commentId) {
+    return await Tattoos.findOne({ 'comments._id': commentId });
+}
+
+async function getTattooPropsById(id) {
+    return await Tattoos.findById(id, 'imageUrl likes comments');
+}
+
+async function getCommentById(commentId) {
+    const tattoo = await Tattoos.findOne(
+        { 'comments._id': commentId },
+        { 'comments.$': 1 } // Projection to include only the matching comment
+      ).lean();
+      return tattoo;
 }
 
 async function deleteById(id) {
@@ -19,7 +35,7 @@ async function deleteById(id) {
     
     fs.unlinkSync(path);
   
-    return Tattoos.findByIdAndDelete(id);
+    return await Tattoos.findByIdAndDelete(id);
 }
 
 async function addTattoo(imageUrl, ownerId) {
@@ -31,16 +47,29 @@ async function addTattoo(imageUrl, ownerId) {
 }
 
 async function addLikeToTattoo(tattooId, userId) {
-    return Tattoos.findByIdAndUpdate(tattooId, { $push: { likes: userId } });
+    return await Tattoos.findByIdAndUpdate(tattooId, { $push: { likes: userId } });
 };
 
 async function removeLikeToTattoo(tattooId, userId) {
-    return Tattoos.findByIdAndUpdate(
+    return await Tattoos.findByIdAndUpdate(
         tattooId,
         { $pull: { likes: userId } },
         { new: true } // This option returns the modified document
       );
 };
+
+async function addCommentToTattoo(tattooId, commentData) {
+    return await Tattoos.findByIdAndUpdate(tattooId, { $push: { comments: commentData } }, { new: true });
+};
+
+async function deleteCommentFromTattoo(commentId) {
+   return await Tattoos.findOneAndUpdate(
+        { 'comments._id': commentId },
+        { $pull: { comments: { _id: commentId } } },
+        { new: true }
+      );
+};
+
 
 
 module.exports = {
@@ -48,6 +77,11 @@ module.exports = {
     deleteById,
     addTattoo,
     getById,
+    getTattooPropsById,
     addLikeToTattoo,
-    removeLikeToTattoo
+    removeLikeToTattoo,
+    addCommentToTattoo,
+    getCommentById,
+    deleteCommentFromTattoo,
+    getTattooByCommentId
 }

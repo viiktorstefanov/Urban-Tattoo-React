@@ -5,8 +5,10 @@ const tattooSchema = new Schema({
     ownerId: {type: Types.ObjectId, ref: 'User', required: true},
     comments: [
         {
-            type: Types.ObjectId,
-            ref: 'User',
+            ownerId: { type: Types.ObjectId,
+            ref: 'User', required: true },
+            ownerfullName: { type: String, required: true },
+            comment: { type: String, required: [true, 'comment text missing'] },
         }
     ],
     likes: [

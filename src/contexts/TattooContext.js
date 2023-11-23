@@ -1,8 +1,7 @@
 import { createContext, useContext, useEffect, useState, } from "react";
 import { useNavigate } from "react-router-dom";
-import { deleteTattoo, getAllTattoos, uploadTattoo } from "../service/tattooService";
+import { addTattooCommentById, deleteTattoo, dislikeTattoo, getAllTattoos, likeTattoo, uploadTattoo } from "../service/tattooService";
 import { AuthContext } from "../contexts/AuthContext";
-import { get, del } from "../service/request";
 
 export const TattooContext = createContext();
 
@@ -103,9 +102,9 @@ export const TattoosProvider = ({ children }) => {
     const onCloseIconClick = () => setModel(false);
 
     //like tattoo
-    const likeTattoo = async () => {
+    const likeHandler = async () => {
         try {
-            const response = await get(`/data/${id}/likes`, null, user);
+            await likeTattoo(id, user);
             setTattoos(state => state.map(x => x._id === id
                 ? { ...x, likes: [...x.likes, user._id] }
                 : x));
@@ -116,9 +115,9 @@ export const TattoosProvider = ({ children }) => {
     };
 
     //dislike tattoo
-    const dislikeTattoo = async () => {
+    const dislikeHandler = async () => {
         try {
-            const response = await del(`/data/${id}/likes`, null, user);
+            await dislikeTattoo(id, user);
             setTattoos((state) =>
                 state.map((x) =>
                     x._id === id
@@ -127,6 +126,16 @@ export const TattoosProvider = ({ children }) => {
                 )
             );
             setIsLiked(false);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    //add comment 
+    const addCommentHandler = async (data, tattooId) => {
+        try {
+            const result = await addTattooCommentById(tattooId, data, user);
+            setTattoos(state => state.map(x => x._id === tattooId ?  result : x));
         } catch (e) {
             console.log(e);
         }
@@ -149,8 +158,10 @@ export const TattoosProvider = ({ children }) => {
         id,
         isLiked,
         isOwner,
-        likeTattoo,
-        dislikeTattoo
+        likeHandler,
+        dislikeHandler,
+        setTattoos,
+        addCommentHandler
     };
 
     return (
