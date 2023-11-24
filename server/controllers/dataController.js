@@ -1,7 +1,7 @@
 const dataController = require('express').Router();
 const { isAdmin } = require('../middlewares/guards');
 const generateUniqueFileName = require('../services/generateUniqueFileName');
-const { getAll, deleteById, addTattoo, getById, getTattooPropsById, addLikeToTattoo, removeLikeToTattoo, addCommentToTattoo, getCommentById, deleteCommentFromTattoo, getTattooByCommentId } = require('../services/tattoosService');
+const { getAll, deleteById, addTattoo, getById, getTattooPropsById, addLikeToTattoo, removeLikeToTattoo, addCommentToTattoo, getCommentById, deleteCommentFromTattoo, editCommentFromTattoo } = require('../services/tattoosService');
 const { parseError } = require('../utils/parseError');
 const path = require('path');
 
@@ -175,7 +175,13 @@ dataController.put('/:id/comments', async (req, res) => {
     try {
         const user = JSON.parse(req.headers.user);
         const commentId = req.params.id;
-        
+        if(!req.body || !req.body.comment || req.body.comment.length <= 0) {
+            throw new Error('Please, enter your new comment');
+        };
+        const editedComment = req.body; //{ comment: 'rthrhr' }
+        const updatedComment = await editCommentFromTattoo(commentId, editedComment);
+        res.json(updatedComment).end();
+        console.log(`User: ${user.email} edited his comment with id: ${commentId}`);
     } catch (error) {
         const message = parseError(error);
         res.status(400).json({ message });

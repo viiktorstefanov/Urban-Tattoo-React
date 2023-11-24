@@ -1,6 +1,5 @@
 const Tattoos = require('../models/tattoo');
 const fs = require('fs');
-const path = require('path');
 
 async function getAll() {
    return await Tattoos.find({}, '-comments');
@@ -70,7 +69,13 @@ async function deleteCommentFromTattoo(commentId) {
       );
 };
 
-
+async function editCommentFromTattoo(commentId, editedComment) {
+    return await Tattoos.findOneAndUpdate(
+        { 'comments._id': commentId },
+        { $set: { 'comments.$.comment': editedComment.comment } },
+        { new: true } // Return the updated document
+      );
+};
 
 module.exports = {
     getAll,
@@ -83,5 +88,6 @@ module.exports = {
     addCommentToTattoo,
     getCommentById,
     deleteCommentFromTattoo,
-    getTattooByCommentId
+    getTattooByCommentId,
+    editCommentFromTattoo
 }

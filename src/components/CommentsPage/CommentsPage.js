@@ -3,7 +3,7 @@ import styles from './CommentsPage.module.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import Spinner from '../Spinner/Spinner';
-import { addTattooCommentById, deleteTattooCommentById, getTattooPropsById } from '../../service/tattooService';
+import { addTattooCommentById, deleteTattooCommentById, editTattooCommentById, getTattooPropsById } from '../../service/tattooService';
 import useForm from '../../hooks/useForm';
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 
@@ -13,7 +13,8 @@ export default function CommentsPage() {
     const [currTattoo, setCurrTattoo] = useState(null);
     const [isEdit, setIsEdit] = useState(false);
     const [editValues, setEditValues] = useState('');
-
+    const [commentId, setCommentId ] = useState('');
+    
     const addCommentHandler = async (data) => {
         try {
             const result = await addTattooCommentById(id, data, user);
@@ -36,14 +37,17 @@ export default function CommentsPage() {
         setEditValues(state => ({ ...state, [e.target.name]: e.target.value }));
     };
 
-    const onSubmitEdit = (e) => {
+    const onSubmitEdit = async (e) => {
         e.preventDefault();
 
+        const editedCommentTattoo = await editTattooCommentById(commentId, editValues, user);
+        setCurrTattoo(editedCommentTattoo);
         setEditValues({ comment: '' });
         setIsEdit(false);
     };
 
     const onEditClick = async (commentId) => {
+        setCommentId(commentId);
         setEditValues({comment: currTattoo.comments.filter(x => x._id === commentId)[0].comment});
         setIsEdit(true);
     };
