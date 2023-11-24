@@ -142,7 +142,7 @@ dataController.post('/:id/comments', async (req, res) => {
         };
 
         const result = await addCommentToTattoo(tattooId, commentData);
-        res.json(result).end();
+        res.json(result.comments[0]).end();
         console.log(`User: ${user.email} added new comment to tattoo with id ${tattooId}`);
     } catch (error) {
         const message = parseError(error);
@@ -163,8 +163,8 @@ dataController.delete('/:id/comments', async (req, res) => {
             throw new Error(`You're not the owner of this comment`)
         };
         
-        const updatedTattoo = await deleteCommentFromTattoo(commentId);
-        res.json(updatedTattoo).end();
+        await deleteCommentFromTattoo(commentId);
+        res.status(204).end();
         console.log(`User: ${user.email} deleted his comment from tattoo with id ${tattoo._id}`)
     } catch (error) {
         const message = parseError(error);
@@ -181,7 +181,7 @@ dataController.put('/:id/comments', async (req, res) => {
         };
         const editedComment = req.body;
         const updatedComment = await editCommentFromTattoo(commentId, editedComment);
-        res.json(updatedComment).end();
+        res.json(updatedComment.comments[0]).end();
         console.log(`User: ${user.email} edited his comment with id: ${commentId}`);
     } catch (error) {
         const message = parseError(error);

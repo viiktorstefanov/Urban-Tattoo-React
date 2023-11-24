@@ -58,14 +58,17 @@ async function removeLikeToTattoo(tattooId, userId) {
 };
 
 async function addCommentToTattoo(tattooId, commentData) {
-    return await Tattoos.findByIdAndUpdate(tattooId, { $push: { comments: commentData } }, { new: true });
+    return await Tattoos.findOneAndUpdate(
+        { _id: tattooId },
+        { $push: { comments: commentData } },
+        { new: true, projection: { comments: { $slice: -1 } } }
+      );
 };
 
 async function deleteCommentFromTattoo(commentId) {
    return await Tattoos.findOneAndUpdate(
         { 'comments._id': commentId },
         { $pull: { comments: { _id: commentId } } },
-        { new: true }
       );
 };
 
@@ -73,7 +76,7 @@ async function editCommentFromTattoo(commentId, editedComment) {
     return await Tattoos.findOneAndUpdate(
         { 'comments._id': commentId },
         { $set: { 'comments.$.comment': editedComment.comment } },
-        { new: true } // Return the updated document
+        { new: true, projection: { comments: { $slice: -1 } } } // Return the updated document only with new comment
       );
 };
 

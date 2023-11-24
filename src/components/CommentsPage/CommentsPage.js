@@ -23,8 +23,11 @@ export default function CommentsPage() {
     //add comment
     const addCommentHandler = async (data) => {
         try {
-            const result = await addTattooCommentById(id, data, user);
-            setCurrTattoo(result);
+            const comment = await addTattooCommentById(id, data, user);
+            setCurrTattoo(state => ({
+                ...state,
+                comments: [...state.comments, comment],
+            }));
         } catch (e) {
             console.log(e);
         }
@@ -33,8 +36,11 @@ export default function CommentsPage() {
     //delete comment
     const deleteCommentHandler = async (commentId) => {
         try {
-            const result = await deleteTattooCommentById(commentId, user);
-            setCurrTattoo(result);
+            await deleteTattooCommentById(commentId, user);
+            setCurrTattoo(state => ({
+                ...state,
+                comments: state.comments.filter(comment => comment._id !== commentId)
+              }));
         } catch (e) {
             console.log(e);
         }
@@ -50,7 +56,10 @@ export default function CommentsPage() {
         e.preventDefault();
 
         const editedCommentTattoo = await editTattooCommentById(commentId, editValues, user);
-        setCurrTattoo(editedCommentTattoo);
+        setCurrTattoo(state => ({
+            ...state,
+            comments: state.comments.map(comment => comment._id === commentId ? editedCommentTattoo : comment)
+        }));
         setEditValues({ comment: '' });
         setIsEdit(false);
     };
