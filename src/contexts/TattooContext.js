@@ -82,22 +82,16 @@ export const TattoosProvider = ({ children }) => {
         }
     };
 
-    //open image handler
+    //open full-image-screen handler
     const openFullImg = (imageUrl, id, likes, ownerId) => {
-        if (likes.some(x => x === user._id)) {
-            setIsLiked(true);
-        } else {
-            setIsLiked(false);
-        }
-        if (ownerId === user._id) {
-            setIsOwner(true);
-        }
+        likes.some(x => x === user._id) ? setIsLiked(true) : setIsLiked(false);
+        ownerId === user._id ? setIsOwner(true) : setIsOwner(false);
         setModel(true);
         setTempImgSrc(imageUrl);
         setId(id);
     };
 
-    //close image handlers
+    //close full-image-screen handlers
     const onEscPress = () => model ? setModel(false) : null;
     const onCloseIconClick = () => setModel(false);
 
@@ -114,8 +108,8 @@ export const TattoosProvider = ({ children }) => {
         }
     };
 
-    //dislike tattoo
-    const dislikeHandler = async () => {
+    //unlike tattoo
+    const unlikeHandler = async () => {
         try {
             await dislikeTattoo(id, user);
             setTattoos((state) =>
@@ -159,7 +153,7 @@ export const TattoosProvider = ({ children }) => {
         isLiked,
         isOwner,
         likeHandler,
-        dislikeHandler,
+        unlikeHandler,
         setTattoos,
         addCommentHandler
     };

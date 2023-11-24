@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { IoIosHeartDislike  } from 'react-icons/io'
 
 export default function GalleryPage() {
-    const { tattoos, openFullImg, model, deleteHandler, tempImgSrc, onEscPress, onCloseIconClick, id, isLiked, isOwner, likeHandler, dislikeHandler } = useContext(TattooContext);
+    const { tattoos, openFullImg, model, deleteHandler, tempImgSrc, onEscPress, onCloseIconClick, id, isLiked, isOwner, likeHandler, unlikeHandler } = useContext(TattooContext);
 
     const { user } = useContext(AuthContext);
 
@@ -28,16 +28,14 @@ export default function GalleryPage() {
                                 <div className={styles['model-open-actions']}>  
                                     {user ?
                                         <>
-                                            {!isLiked && !isOwner ? <FontAwesomeIcon  className={styles['actions-like']} onClick={likeHandler} icon={faHeart} /> : null} 
-                                            {isLiked && !isOwner ? <div className={styles['wrapper-dislike']}>
-                                                <IoIosHeartDislike className={styles['dislike']} onClick={dislikeHandler} />
+                                            {!isLiked ? <FontAwesomeIcon  className={styles['actions-like']} onClick={likeHandler} icon={faHeart} /> : null} 
+                                            {isLiked ? <div className={styles['wrapper-dislike']}>
+                                                <IoIosHeartDislike className={styles['dislike']} onClick={unlikeHandler} />
                                             </div> : null}
                                             
                                             <Link to={`/gallery/${id}/comments`}>
                                                 <FontAwesomeIcon onClick={() => {onCloseIconClick()}} icon={faComment} />
                                             </Link>
-
-                                            
                                         </> 
                                           : null}
                                     {user._role === 'admin' && isOwner ?
