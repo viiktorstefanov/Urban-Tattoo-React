@@ -6,6 +6,7 @@
     padding-bottom: 1%;
     width: 100%;
 }
+
 .links-footer {
     display: flex;
     justify-content: center;
@@ -13,9 +14,11 @@
     color: white;
     margin-bottom: 0.7%;
 }
+
 .instagram-icon, .facebook-icon, .google-icon {
     font-size: 35px;
 }
+
 .copyright {
     font-family:'Roboto',sans-serif;
     display: block;

@@ -6,6 +6,7 @@ const { parseError } = require('../utils/parseError');
 const path = require('path');
 
 dataController.get('/tattoos', async (req, res) => {
+    //sending all tattoo images without their comments
     res.json(await getAll()).end();
     console.log('All tattoo images were sent.');
 
@@ -81,11 +82,11 @@ dataController.delete('/tattoos/:id', isAdmin(), async (req, res) => {
 dataController.get('/:id/likes', async (req, res) => {
     try {
         const tattooId = req.params.id;
-
-        const userId = JSON.parse(req.headers.user)._id;
+        const user = JSON.parse(req.headers.user);
+        const userId = user._id;
 
         await addLikeToTattoo(tattooId, userId);
-        console.log(`user add like to image with id : ${tattooId}`);
+        console.log(`user ${user.email} liked image with id : ${tattooId}`);
         res.status(204).end()
     } catch (error) {
         const message = parseError(error);
@@ -97,11 +98,11 @@ dataController.get('/:id/likes', async (req, res) => {
 dataController.delete('/:id/likes', async (req, res) => {
     try {
         const tattooId = req.params.id;
-
-        const userId = JSON.parse(req.headers.user)._id;
+        const user = JSON.parse(req.headers.user);
+        const userId = user._id;
 
         await removeLikeToTattoo(tattooId, userId);
-        console.log(`user remove like from image with id : ${tattooId}`);
+        console.log(`user ${user.email} unlike image with id : ${tattooId}`);
         res.status(204).end()
     } catch (error) {
         const message = parseError(error);
@@ -115,7 +116,7 @@ dataController.get('/:id/comments', async (req, res) => {
         const tattooId = req.params.id;
         const tattooProps = await getTattooPropsById(tattooId);
         res.json(tattooProps).end();
-        console.log(`sending imageUrl, likes, comments from tattoo with id:  ${tattooId}`);
+        console.log(`sending info about tattoo with id:  ${tattooId}`);
     } catch (error) {
         const message = parseError(error);
         res.status(400).json({ message });
@@ -164,7 +165,7 @@ dataController.delete('/:id/comments', async (req, res) => {
         
         const updatedTattoo = await deleteCommentFromTattoo(commentId);
         res.json(updatedTattoo).end();
-        console.log(`User: ${user.email} deleted his comment from imageId ${tattoo._id}`)
+        console.log(`User: ${user.email} deleted his comment from tattoo with id ${tattoo._id}`)
     } catch (error) {
         const message = parseError(error);
         res.status(400).json({ message });
@@ -178,7 +179,7 @@ dataController.put('/:id/comments', async (req, res) => {
         if(!req.body || !req.body.comment || req.body.comment.length <= 0) {
             throw new Error('Please, enter your new comment');
         };
-        const editedComment = req.body; //{ comment: 'rthrhr' }
+        const editedComment = req.body;
         const updatedComment = await editCommentFromTattoo(commentId, editedComment);
         res.json(updatedComment).end();
         console.log(`User: ${user.email} edited his comment with id: ${commentId}`);

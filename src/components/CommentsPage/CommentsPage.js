@@ -14,7 +14,13 @@ export default function CommentsPage() {
     const [isEdit, setIsEdit] = useState(false);
     const [editValues, setEditValues] = useState('');
     const [commentId, setCommentId ] = useState('');
-    
+
+    //getting tattoo information
+    useEffect(() => {
+        getTattooPropsById(id).then(res => setCurrTattoo(res));
+    }, [id]);
+
+    //add comment
     const addCommentHandler = async (data) => {
         try {
             const result = await addTattooCommentById(id, data, user);
@@ -24,6 +30,7 @@ export default function CommentsPage() {
         }
     };
 
+    //delete comment
     const deleteCommentHandler = async (commentId) => {
         try {
             const result = await deleteTattooCommentById(commentId, user);
@@ -33,10 +40,12 @@ export default function CommentsPage() {
         }
     };
 
+    //when user edit comment
     const onChangeEdit = (e) => {
         setEditValues(state => ({ ...state, [e.target.name]: e.target.value }));
     };
 
+     //when user submit edited comment
     const onSubmitEdit = async (e) => {
         e.preventDefault();
 
@@ -46,7 +55,8 @@ export default function CommentsPage() {
         setIsEdit(false);
     };
 
-    const onEditClick = async (commentId) => {
+    //when user click on edit icon
+    const onClickEdit = async (commentId) => {
         setCommentId(commentId);
         setEditValues({comment: currTattoo.comments.filter(x => x._id === commentId)[0].comment});
         setIsEdit(true);
@@ -55,10 +65,6 @@ export default function CommentsPage() {
     const primaryValues = { comment: '' };
 
     const { values, onChange, onSubmit } = useForm(primaryValues, addCommentHandler);
-
-    useEffect(() => {
-        getTattooPropsById(id).then(res => setCurrTattoo(res));
-    }, [id]);
 
     if (!currTattoo) {
         return <Spinner />;
@@ -81,7 +87,7 @@ export default function CommentsPage() {
                                     <span className={styles['user-comment']} >{x.comment}</span>
                                     {x.ownerId === user._id ?
                                         <span className={styles['owner-buttons']}>
-                                            <FaEdit onClick={() => onEditClick(x._id)} className={styles['owner-buttons-edit']} />
+                                            <FaEdit onClick={() => onClickEdit(x._id)} className={styles['owner-buttons-edit']} />
                                             <FaTrashAlt onClick={() => deleteCommentHandler(x._id)} className={styles['owner-buttons-delete']} />
                                         </span>
                                     : null

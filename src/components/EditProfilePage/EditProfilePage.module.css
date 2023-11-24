@@ -68,6 +68,7 @@
   button:hover {
     background: #f3d22d;
   }
+  
   .button{
     margin-top: 15%;
   }
@@ -86,6 +87,7 @@
     color: rgb(214, 63, 63);
     text-decoration: underline;
   }
+
   .deleteProfileDiv{
     margin-top: 10%;
   }

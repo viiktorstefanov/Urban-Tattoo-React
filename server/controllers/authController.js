@@ -18,9 +18,9 @@ authController.post('/register',
             const token = await register(req.body.email, req.body.password, req.body.firstName, req.body.lastName, req.body.phone);
             res.json(token).end();
             if(req.body.lastName === '_admin') {
-                console.log(`Admin with email: ${req.body.email} was registered.`);
+                console.log(`Admin ${req.body.email} was registered.`);
             } else {
-                console.log(`A user with email: ${req.body.email} was registered.`);
+                console.log(`User ${req.body.email} was registered.`);
             }
         } catch (error) {
             const message = parseError(error);
@@ -33,7 +33,7 @@ authController.post('/login', isGuest(), async (req, res) => {
     try {
         const token = await login(req.body.email, req.body.password);
         res.json(token).end();
-        console.log(`User with email: ${req.body.email} has logged in`);
+        console.log(`User ${req.body.email} has logged in`);
     } catch (error) {
         const message = parseError(error);
         res.status(401).json({ message }).end();
@@ -43,7 +43,7 @@ authController.post('/login', isGuest(), async (req, res) => {
 authController.get('/logout', hasUser(), async (req, res) => {
     const user = JSON.parse(req.headers.user);
     await logout(user.accessToken);
-    console.log(`User with email: ${user.email} has logout`);
+    console.log(`User ${user.email} has logout`);
     res.status(204).end();
 });
 
@@ -55,7 +55,7 @@ authController.put('/edit/:id', hasUser(), async (req, res) => {
         const currUser = await updateUserById(newUserInfo, id, accessToken);
 
         if (currUser) {
-            console.log(`User with email: ${currUser.email} has been edited.`);
+            console.log(`User ${currUser.email} has been edited.`);
         } else {
             throw new Error('Problem with finding or editing this user.');
         }
@@ -70,7 +70,7 @@ authController.delete('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const deletedUser = await deleteUserById(id);
-        console.log(`User with email: ${deletedUser.email} has been deleted.`);
+        console.log(`User ${deletedUser.email} has been deleted.`);
         res.status(204).end();
     } catch (error) {
         const message = parseError(error);
@@ -84,7 +84,7 @@ authController.put('/reservations/:id', hasUser(), async (req, res) => {
         const accessToken = JSON.parse(req.headers.user).accessToken;
         const newReservations = req.body;
         const user = await updateUserReservations(id, newReservations, accessToken);
-        console.log(`User with email: ${user.email} has changed his reservations`);
+        console.log(`User ${user.email} has changed his reservations`);
         res.json(user).status(204).end();
     } catch (error) {
         const message = parseError(error);

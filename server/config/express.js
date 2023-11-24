@@ -13,4 +13,5 @@ module.exports = (app) => {
     app.use(cors());
     app.use(trimBody());
     app.use(session());
+    
 }
