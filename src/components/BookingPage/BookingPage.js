@@ -33,7 +33,7 @@ export default function BookingPage() {
                 minDetail={'month'}
                 maxDetail={'month'}
                 onClickDay={(value, event) => {
-                if(user && user._role !== 'admin') {
+                if(user) {
                     setModel(true);
                     const datePicked = value.toLocaleDateString().split('/');
                     const reservationDate = `${datePicked[1]}.${datePicked[0]}.${datePicked[2]}`;

@@ -6,41 +6,16 @@ import Spinner from '../Spinner/Spinner';
 import { addTattooCommentById, deleteTattooCommentById, editTattooCommentById, getTattooPropsById } from '../../service/tattooService';
 import useForm from '../../hooks/useForm';
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import commentsReducer from '../../reducers/commentsReducer';
 
 
 export default function CommentsPage() {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
+    const [state, dispatch] = useReducer(commentsReducer, null);
     const [isEditClicked, setIsEditClicked] = useState(false);
     const [editValues, setEditValues] = useState('');
     const [commentId, setCommentId ] = useState('');
-
-    const commentsReducer = (state, action) => {
-        switch (action.type) {
-            case 'GET_TATTOO':
-                return action.tattoo;
-
-            case 'ADD_COMMENT':
-                return {
-                    ...state,
-                    comments: [...state.comments, action.comment],
-                };
-            case 'EDIT_COMMENT':
-                return {
-                    ...state,
-                    comments: state.comments.map(comment => comment._id === action.commentId ? action.editedCommentTattoo : comment)
-                };
-            case 'DELETE_COMMENT':
-                return {
-                    ...state,
-                    comments: state.comments.filter(comment => comment._id !== action.commentId)
-                  };       
-            default:
-                return state;
-        }
-    };
-
-    const [state, dispatch] = useReducer(commentsReducer, null);
 
     //getting tattoo information
     useEffect(() => {
