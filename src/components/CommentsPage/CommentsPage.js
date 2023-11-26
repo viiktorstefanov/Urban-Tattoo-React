@@ -11,6 +11,7 @@ import { FaTrashAlt, FaEdit } from "react-icons/fa";
 export default function CommentsPage() {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
+    const [isEditClicked, setIsEditClicked] = useState(false);
     const [editValues, setEditValues] = useState('');
     const [commentId, setCommentId ] = useState('');
 
@@ -33,11 +34,7 @@ export default function CommentsPage() {
                 return {
                     ...state,
                     comments: state.comments.filter(comment => comment._id !== action.commentId)
-                  }; 
-            case 'EDIT_CLICK_CHECK':
-                return {
-                    ...state,
-                    isEditClicked: action.isEditClicked };     
+                  };       
             default:
                 return state;
         }
@@ -85,14 +82,14 @@ export default function CommentsPage() {
 
         dispatch({ type: 'EDIT_COMMENT', editedCommentTattoo: editedCommentTattoo , commentId: commentId })
         setEditValues({ comment: '' });
-        dispatch({ type: 'EDIT_CLICK_CHECK', isEditClicked : false })
+        setIsEditClicked(false);
     };
 
     //when user click on edit icon
     const onClickEdit = async (commentId) => {
         setCommentId(commentId);
         setEditValues({comment: state.comments.filter(x => x._id === commentId)[0].comment});
-        dispatch({ type: 'EDIT_CLICK_CHECK', isEditClicked : true })
+        setIsEditClicked(true);
     };
 
     const primaryValues = { comment: '' };
@@ -108,7 +105,7 @@ export default function CommentsPage() {
             <img className={styles['tattoo-img']} src={state.imageUrl} alt="tattoo" />
 
             <span>Likes: {state.likes.length}</span>
-            {!state.isEditClicked ?
+            {!isEditClicked ?
                 <>
                     <div className={styles['wrap']}>
                         <span className={styles['comments-header']}>Comments:</span>
