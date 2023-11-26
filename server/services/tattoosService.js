@@ -76,7 +76,7 @@ async function editCommentFromTattoo(commentId, editedComment) {
     return await Tattoos.findOneAndUpdate(
         { 'comments._id': commentId },
         { $set: { 'comments.$.comment': editedComment.comment } },
-        { new: true, projection: { comments: { $slice: -1 } } } // Return the updated document only with new comment
+        { new: true,  }
       );
 };
 

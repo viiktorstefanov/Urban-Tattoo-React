@@ -86,6 +86,7 @@ dataController.get('/:id/likes', async (req, res) => {
         const userId = user._id;
 
         await addLikeToTattoo(tattooId, userId);
+
         console.log(`user ${user.email} liked image with id : ${tattooId}`);
         res.status(204).end()
     } catch (error) {
@@ -158,7 +159,7 @@ dataController.delete('/:id/comments', async (req, res) => {
         const tattoo = await getCommentById(commentId);
         const ownerId = tattoo.comments[0].ownerId.toString();
 
-        if(ownerId !== userId) {
+        if(ownerId !== userId && user._role !== 'admin') {
             res.status(403);
             throw new Error(`You're not the owner of this comment`)
         };
@@ -180,9 +181,10 @@ dataController.put('/:id/comments', async (req, res) => {
             throw new Error('Please, enter your new comment');
         };
         const editedComment = req.body;
+        
         const updatedComment = await editCommentFromTattoo(commentId, editedComment);
-        res.json(updatedComment.comments[0]).end();
-        console.log(`User: ${user.email} edited his comment with id: ${commentId}`);
+        res.json(updatedComment.comments.find(x => x._id.toString() === commentId)).end();
+        console.log(`User: ${user.email} edited comment with id: ${commentId}`);
     } catch (error) {
         const message = parseError(error);
         res.status(400).json({ message });

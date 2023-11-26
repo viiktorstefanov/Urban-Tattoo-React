@@ -1,33 +1,62 @@
 import { useParams } from 'react-router-dom';
 import styles from './CommentsPage.module.css';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useReducer, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import Spinner from '../Spinner/Spinner';
 import { addTattooCommentById, deleteTattooCommentById, editTattooCommentById, getTattooPropsById } from '../../service/tattooService';
 import useForm from '../../hooks/useForm';
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 
+
 export default function CommentsPage() {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
-    const [currTattoo, setCurrTattoo] = useState(null);
-    const [isEdit, setIsEdit] = useState(false);
     const [editValues, setEditValues] = useState('');
     const [commentId, setCommentId ] = useState('');
 
+    const commentsReducer = (state, action) => {
+        switch (action.type) {
+            case 'GET_TATTOO':
+                return action.tattoo;
+
+            case 'ADD_COMMENT':
+                return {
+                    ...state,
+                    comments: [...state.comments, action.comment],
+                };
+            case 'EDIT_COMMENT':
+                return {
+                    ...state,
+                    comments: state.comments.map(comment => comment._id === action.commentId ? action.editedCommentTattoo : comment)
+                };
+            case 'DELETE_COMMENT':
+                return {
+                    ...state,
+                    comments: state.comments.filter(comment => comment._id !== action.commentId)
+                  }; 
+            case 'EDIT_CLICK_CHECK':
+                return {
+                    ...state,
+                    isEditClicked: action.isEditClicked };     
+            default:
+                return state;
+        }
+    };
+
+    const [state, dispatch] = useReducer(commentsReducer, null);
+
     //getting tattoo information
     useEffect(() => {
-        getTattooPropsById(id).then(res => setCurrTattoo(res));
+        getTattooPropsById(id).then(res => {
+            dispatch({ type: 'GET_TATTOO', tattoo: res})
+        });
     }, [id]);
 
     //add comment
     const addCommentHandler = async (data) => {
         try {
             const comment = await addTattooCommentById(id, data, user);
-            setCurrTattoo(state => ({
-                ...state,
-                comments: [...state.comments, comment],
-            }));
+            dispatch({ type: 'ADD_COMMENT', comment: comment});
         } catch (e) {
             console.log(e);
         }
@@ -37,10 +66,7 @@ export default function CommentsPage() {
     const deleteCommentHandler = async (commentId) => {
         try {
             await deleteTattooCommentById(commentId, user);
-            setCurrTattoo(state => ({
-                ...state,
-                comments: state.comments.filter(comment => comment._id !== commentId)
-              }));
+            dispatch({ type: 'DELETE_COMMENT', commentId: commentId})
         } catch (e) {
             console.log(e);
         }
@@ -56,45 +82,43 @@ export default function CommentsPage() {
         e.preventDefault();
 
         const editedCommentTattoo = await editTattooCommentById(commentId, editValues, user);
-        setCurrTattoo(state => ({
-            ...state,
-            comments: state.comments.map(comment => comment._id === commentId ? editedCommentTattoo : comment)
-        }));
+
+        dispatch({ type: 'EDIT_COMMENT', editedCommentTattoo: editedCommentTattoo , commentId: commentId })
         setEditValues({ comment: '' });
-        setIsEdit(false);
+        dispatch({ type: 'EDIT_CLICK_CHECK', isEditClicked : false })
     };
 
     //when user click on edit icon
     const onClickEdit = async (commentId) => {
         setCommentId(commentId);
-        setEditValues({comment: currTattoo.comments.filter(x => x._id === commentId)[0].comment});
-        setIsEdit(true);
+        setEditValues({comment: state.comments.filter(x => x._id === commentId)[0].comment});
+        dispatch({ type: 'EDIT_CLICK_CHECK', isEditClicked : true })
     };
 
     const primaryValues = { comment: '' };
 
     const { values, onChange, onSubmit } = useForm(primaryValues, addCommentHandler);
 
-    if (!currTattoo) {
+    if (!state) {
         return <Spinner />;
     }
 
     return (
         <section className={styles['commentsPage']}>
-            <img className={styles['tattoo-img']} src={currTattoo.imageUrl} alt="tattoo" />
+            <img className={styles['tattoo-img']} src={state.imageUrl} alt="tattoo" />
 
-            <span>Likes: {currTattoo.likes.length}</span>
-            {!isEdit ?
+            <span>Likes: {state.likes.length}</span>
+            {!state.isEditClicked ?
                 <>
                     <div className={styles['wrap']}>
                         <span className={styles['comments-header']}>Comments:</span>
-                        {currTattoo.comments.length > 0 ?
+                        {state.comments.length > 0 ?
                             <>
-                                {currTattoo.comments && currTattoo.comments.map((x) =>
+                                {state.comments && state.comments.map((x) =>
                                 (<p className={styles['comment']} key={x._id}>
                                     <span className={styles['owner-fullName']}>{x.ownerfullName}</span>
                                     <span className={styles['user-comment']} >{x.comment}</span>
-                                    {x.ownerId === user._id ?
+                                    {x.ownerId === user._id || user._role === 'admin' ?
                                         <span className={styles['owner-buttons']}>
                                             <FaEdit onClick={() => onClickEdit(x._id)} className={styles['owner-buttons-edit']} />
                                             <FaTrashAlt onClick={() => deleteCommentHandler(x._id)} className={styles['owner-buttons-delete']} />
