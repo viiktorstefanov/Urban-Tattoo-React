@@ -25,9 +25,9 @@
     margin-top: 30px;
   }
   
-  label,
-  input,
-  button {
+  .loginForm label,
+  .loginForm input,
+  .loginForm button {
     display: block;
     width: 100%;
     padding: 0;
@@ -37,20 +37,20 @@
     box-sizing: border-box;
   }
   
-  label {
+  .loginForm label {
     margin-bottom: 4px;
     cursor: pointer;
   }
   
-  label:nth-of-type(2) {
+  .loginForm label:nth-of-type(2) {
     margin-top: 12px;
   }
   
-  input::placeholder {
+  .loginForm input::placeholder {
     color: gray;
   }
   
-  input {
+  .loginForm input {
     background: #ecf0f3;
     padding: 10px;
     padding-left: 20px;
@@ -59,11 +59,11 @@
     border-radius: 50px;
   }
   
-  input:hover {
+  .loginForm input:hover {
     background: #f3d22d;
   }
   
-  button {
+  .loginForm button {
     font-family:'Roboto',sans-serif;
     margin-top: 20px;
     font-size: 15px;
@@ -75,7 +75,7 @@
     transition: 0.5s;
   }
   
-  button:hover {
+  .loginForm button:hover {
     background: #f3d22d;
   }
 

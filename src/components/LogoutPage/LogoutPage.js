@@ -6,9 +6,9 @@ export default function LogoutPage() {
     const { onLogout } = useContext(AuthContext);
     
     useEffect(() => {
-         onLogout() 
+        onLogout();
     }, [onLogout]);
-
+    
     return <Navigate to='/'/>
 };
 

@@ -20,9 +20,9 @@
     justify-content: center;
   }
   
-  label,
-  input,
-  button {
+  .editForm label,
+  .editForm input,
+  .editForm button {
     display: block;
     width: 100%;
     padding: 0;
@@ -31,20 +31,24 @@
     outline: none;
     box-sizing: border-box;
   }
+
+  .editForm input:hover {
+    background: #f3d22d;
+  }
   
-  label {
+  .editForm label {
     margin-bottom: 4px;
   }
   
-  label:nth-of-type(2) {
+  .editForm label:nth-of-type(2) {
     margin-top: 12px;
   }
   
-  input::placeholder {
+  .editForm input::placeholder {
     color: gray;
   }
   
-  input {
+  .editForm input {
     background: #ecf0f3;
     padding: 10px;
     padding-left: 20px;
@@ -53,7 +57,7 @@
     border-radius: 50px;
   }
   
-  button {
+  .editForm button {
     font-family: 'Roboto', sans-serif;
     margin-top: 20px;
     font-size: 15px;
@@ -65,7 +69,7 @@
     transition: 0.5s;
   }
   
-  button:hover {
+  .editForm button:hover {
     background: #f3d22d;
   }
   

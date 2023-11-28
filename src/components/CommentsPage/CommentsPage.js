@@ -103,14 +103,14 @@ export default function CommentsPage() {
                         : null
                         }
                     </div>
-                    <form onSubmit={onSubmit}>
+                    <form className={styles['commentForm']} onSubmit={onSubmit}>
                         <label htmlFor="comment">Write a comment:</label>
                         <textarea className={styles['comment-text']} name='comment' value={values.comment} onChange={onChange} maxLength="100"></textarea>
                         <button type='submit'>Add</button>
                     </form>
                 </>
                 :
-                <form onSubmit={onSubmitEdit}>
+                <form className={styles['commentForm']} onSubmit={onSubmitEdit}>
                     <textarea className={styles['comment-text']} name='comment' value={editValues.comment} onChange={onChangeEdit} maxLength="100"></textarea>
                     <button type='submit'>Edit</button>
                 </form>}

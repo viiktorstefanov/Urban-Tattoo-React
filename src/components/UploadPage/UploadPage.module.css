@@ -82,10 +82,26 @@
 }
 
 .submit-btn{
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Roboto,sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  height: 40px;
+  transition: .5s;
+  border: none;
+  box-sizing: border-box;
+  display: block;
+  outline: none;
+  padding: 0;
   background: black;
   color: white;
   width: 60%;
   margin-top: 25%;
+}
+
+.submit-btn:hover{
+  background: #f3d22d;
 }
 
 .supported-files {

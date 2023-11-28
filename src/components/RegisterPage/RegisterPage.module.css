@@ -19,9 +19,9 @@
   justify-content: center;
 }
 
-label,
-input,
-button {
+.registerForm label,
+.registerForm input,
+.registerForm button {
   display: block;
   width: 100%;
   padding: 0;
@@ -31,19 +31,23 @@ button {
   box-sizing: border-box;
 }
 
-label {
+.registerForm input:hover {
+  background: #f3d22d;
+}
+
+.registerForm label {
   margin-bottom: 4px;
 }
 
-label:nth-of-type(2) {
+.registerForm label:nth-of-type(2) {
   margin-top: 12px;
 }
 
-input::placeholder {
+.registerForm input::placeholder {
   color: gray;
 }
 
-input {
+.registerForm input {
   background: #ecf0f3;
   padding: 10px;
   padding-left: 20px;
@@ -52,7 +56,7 @@ input {
   border-radius: 50px;
 }
 
-button {
+.registerForm button {
   font-family: 'Roboto', sans-serif;
   margin-top: 20px;
   font-size: 15px;
@@ -64,7 +68,7 @@ button {
   transition: 0.5s;
 }
 
-button:hover {
+.registerForm button:hover {
   background: #f3d22d;
 }
 

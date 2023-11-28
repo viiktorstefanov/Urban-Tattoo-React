@@ -2,6 +2,7 @@ import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { login, register, userLogout, userEdit, userDelete, userUpdateReservations } from "../service/authService";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { notifySuccess } from "../service/notificationService";
 
 export const AuthContext = createContext();
 
@@ -41,10 +42,17 @@ export const AuthProvider = ({ children }) => {
     };
     //user logout handler
     const onLogout = async () => {
-        await userLogout(user);
-
-        setUser(false);
-        navigate('/');
+        try {
+            await userLogout(user);
+    
+            setUser(false);
+           
+        } catch(e) {
+            console.log(e);
+        } finally {
+            notifySuccess('Logout', 1000);
+            navigate('/');
+        }
     };
     //edit user handler
     const onEditSubmit = async (data) => {
