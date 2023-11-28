@@ -12,15 +12,21 @@ import ContactPage from '../components/ContactPage/ContactPage';
 import EditProfilePage from '../components/EditProfilePage/EditProfilePage';
 import DefaultPage from '../components/DefaultPage/DefaultPage';
 import CommentsPage from "../components/CommentsPage/CommentsPage";
-
+import { TattoosProvider } from '../contexts/TattooContext';
 
 export default function RoutesWrapper() {
     return (
         <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/gallery' element={<GalleryPage />} />
+            <Route
+                path='/gallery'
+                element={<TattoosProvider><GalleryPage /></TattoosProvider>}
+            />
+            <Route
+                path='/upload'
+                element={<TattoosProvider><UploadPage /></TattoosProvider>}
+            />
             <Route path='/gallery/:id/comments' element={<CommentsPage />} />
-            <Route path='/upload' element={<UploadPage />} />
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/logout' element={<LogoutPage />} />
@@ -30,5 +36,5 @@ export default function RoutesWrapper() {
             <Route path='/profile/edit/:id' element={<EditProfilePage />} />
             <Route path='*' element={<DefaultPage />} />
         </Routes>
-    )
-}
+    );
+};

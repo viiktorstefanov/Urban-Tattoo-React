@@ -1,6 +1,7 @@
 import styles from './HomePage.module.css';
 
 export default function homePage() {
+
     return (
         <section id="homePage" className={styles.homePage} >
                 <div className={styles.message}>

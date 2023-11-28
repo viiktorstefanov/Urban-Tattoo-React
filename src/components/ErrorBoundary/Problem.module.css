@@ -1,0 +1,13 @@
+.problemPage{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.message-problem{
+    color: rgb(206, 38, 38);
+    margin-top: 20%;
+}

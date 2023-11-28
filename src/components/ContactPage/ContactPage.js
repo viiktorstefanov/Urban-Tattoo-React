@@ -1,6 +1,7 @@
 import styles from './ContactPage.module.css'
 
 export default function ContactPage() {
+
     return (
         <section id="contactPage" className={styles.contactPage}>
             <div className={styles['contact-info']}>
