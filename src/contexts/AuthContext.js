@@ -87,7 +87,8 @@ export const AuthProvider = ({ children }) => {
         onDelete,
         updateUserReservations,
         user,
-        isAuthenticated: !!user.accessToken
+        isAuthenticated: !!user.accessToken,
+        isAdmin: user._role === 'admin' ? true : false,
     };
 
     return (
