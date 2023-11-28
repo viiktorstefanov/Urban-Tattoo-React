@@ -9,5 +9,10 @@
 
 .message-problem{
     color: rgb(206, 38, 38);
-    margin-top: 20%;
+    margin-top: 10%;
+}
+
+.errors-problem{
+    color: white;
+    margin-top: 20px;
 }

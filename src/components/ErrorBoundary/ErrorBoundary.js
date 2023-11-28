@@ -1,8 +1,9 @@
 import { Component } from 'react';
+import Problem from './Problem';
 
 export default class ErrorBoundary extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
                 hasError: false,
@@ -30,7 +31,7 @@ export default class ErrorBoundary extends Component {
     render() {
 
         if(this.state.hasError) {
-            return this.props.FallbackComponent;
+            return <Problem errors={this.state} />;
         }
 
         return this.props.children;

@@ -6,11 +6,10 @@ import Footer from './components/Footer/Footer';
 
 import RoutesWrapper from './routes/RoutesWrapper';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
-import Problem from './components/ErrorBoundary/Problem';
 
 function App() {
     return (
-        <ErrorBoundary FallbackComponent={<Problem />} >
+        <ErrorBoundary >
             <AuthProvider>
                 <Header />
                 <main className='pages'>
