@@ -32,7 +32,7 @@ export default function RoutesWrapper() {
             <Route path='/register' element={<RegisterPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/booking' element={<BookingPage />} />
-            <Route path='/contact' element={<AuthGuard><ContactPage /></AuthGuard>} />
+            <Route path='/contact' element={<ContactPage />} />
             <Route path='*' element={<DefaultPage />} />
         </Routes>
     );
