@@ -13,8 +13,9 @@ import EditProfilePage from '../components/EditProfilePage/EditProfilePage';
 import DefaultPage from '../components/DefaultPage/DefaultPage';
 import CommentsPage from "../components/CommentsPage/CommentsPage";
 import { TattoosProvider } from '../contexts/TattooContext';
-import AuthGuard from "../components/guards/AuthGuard";
-import AdminGuard from "../components/guards/AdminGuard";
+
+import AuthGuard from "../components/Guards/AuthGuard";
+import AdminGuard from "../components/Guards/AdminGuard";
 
 export default function RoutesWrapper() {
     return (
