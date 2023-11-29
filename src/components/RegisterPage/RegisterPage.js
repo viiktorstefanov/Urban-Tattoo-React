@@ -3,12 +3,11 @@ import styles from './RegisterPage.module.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import useForm from '../../hooks/useForm';
-import { notifyInfo, notifyError, notifyWarning, notifySuccess, notifyLoading } from '../../service/notificationService';
 
 export default function RegisterPage() {
     const { onRegisterSubmit } = useContext(AuthContext);
-    const primaryValues =
-    {
+
+    const primaryValues = {
         firstName: '',
         lastName: '',
         email: '',
@@ -17,15 +16,13 @@ export default function RegisterPage() {
         phone: '',
     };
 
-   
-
     const { values, onChange, onSubmit } = useForm(primaryValues, onRegisterSubmit);
 
     return (
         <section id="registerPage" className={styles.registerPage}>
             <form onSubmit={onSubmit} className={styles.registerForm} method='POST'>
                 <div>
-                    <label onClick={() => {notifyInfo('should');notifyError('not allowed');notifyWarning('move');notifySuccess('logout'); notifyLoading('wating')}} className={styles.label} htmlFor="name">First name:</label>
+                    <label className={styles.label} htmlFor="name">First name:</label>
                     <input className={styles.input} onChange={onChange} id="firstName" name="firstName" type="text" placeholder="First name" value={values.firstName} />
                 </div>
 

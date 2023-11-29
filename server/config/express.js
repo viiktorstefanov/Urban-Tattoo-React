@@ -3,6 +3,7 @@ const cors = require('../middlewares/cors');
 const trimBody = require('../middlewares/trimBody');
 const session = require('../middlewares/session');
 const fileUpload = require('express-fileupload');
+const throating = require('../middlewares/throating');
 const path = require('path');
 
 module.exports = (app) => {
@@ -14,4 +15,6 @@ module.exports = (app) => {
     app.use(trimBody());
     app.use(session());
     
+    //FOR THROATING FROM SERVER
+    // app.use(throating());   
 }

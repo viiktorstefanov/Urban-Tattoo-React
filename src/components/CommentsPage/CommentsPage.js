@@ -7,6 +7,7 @@ import { addTattooCommentById, deleteTattooCommentById, editTattooCommentById, g
 import useForm from '../../hooks/useForm';
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import commentsReducer from '../../reducers/commentsReducer';
+import notification from '../../service/notification';
 
 
 export default function CommentsPage() {
@@ -27,37 +28,51 @@ export default function CommentsPage() {
     //add comment
     const addCommentHandler = async (data) => {
         try {
+            notification.loading('Please wait');
             const comment = await addTattooCommentById(id, data, user);
             dispatch({ type: 'ADD_COMMENT', comment: comment});
         } catch (e) {
             console.log(e);
+        } finally {
+            setValues(primaryValues);
+            notification.update('Comment added');
         }
     };
 
     //delete comment
     const deleteCommentHandler = async (commentId) => {
         try {
+            notification.loading('Please wait');
             await deleteTattooCommentById(commentId, user);
             dispatch({ type: 'DELETE_COMMENT', commentId: commentId})
         } catch (e) {
             console.log(e);
+        } finally {
+            notification.update('Comment was deleted');
         }
+    };
+
+      //when user submit edited comment
+      const onSubmitEdit = async (e) => {
+        e.preventDefault();
+        try {
+            notification.loading('Please wait');
+            const editedCommentTattoo = await editTattooCommentById(commentId, editValues, user);
+            
+            dispatch({ type: 'EDIT_COMMENT', editedCommentTattoo: editedCommentTattoo , commentId: commentId })
+            setEditValues({ comment: '' });
+            setIsEditClicked(false);
+        } catch(e) {
+
+        } finally {
+            notification.update('Comment was edited');
+        }
+       
     };
 
     //when user edit comment
     const onChangeEdit = (e) => {
         setEditValues(state => ({ ...state, [e.target.name]: e.target.value }));
-    };
-
-     //when user submit edited comment
-    const onSubmitEdit = async (e) => {
-        e.preventDefault();
-
-        const editedCommentTattoo = await editTattooCommentById(commentId, editValues, user);
-
-        dispatch({ type: 'EDIT_COMMENT', editedCommentTattoo: editedCommentTattoo , commentId: commentId })
-        setEditValues({ comment: '' });
-        setIsEditClicked(false);
     };
 
     //when user click on edit icon
@@ -69,7 +84,7 @@ export default function CommentsPage() {
 
     const primaryValues = { comment: '' };
 
-    const { values, onChange, onSubmit } = useForm(primaryValues, addCommentHandler);
+    const { values, onChange, onSubmit, setValues } = useForm(primaryValues, addCommentHandler);
 
     if (!state) {
         return <Spinner />;
@@ -118,3 +133,17 @@ export default function CommentsPage() {
         </section>
     );
 };
+
+
+    // //add comment 
+    // const addCommentHandler = async (data, tattooId) => {
+    //     try {
+    //         notification.loading('Please wait');
+    //         const result = await addTattooCommentById(tattooId, data, user);
+    //         setTattoos(state => state.map(x => x._id === tattooId ?  result : x));
+    //     } catch (e) {
+    //         console.log(e);
+    //     } finally {
+    //         notification.update('Comment added!');
+    //     }
+    // };

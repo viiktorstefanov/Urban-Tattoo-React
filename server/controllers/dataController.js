@@ -9,12 +9,6 @@ dataController.get('/tattoos', async (req, res) => {
     //sending all tattoo images without their comments
     res.json(await getAll()).end();
     console.log('All tattoo images were sent.');
-
-    //FOR THROATING FROM SERVER
-    // setTimeout(async () => {
-    //     res.json(await getAll()).end();
-
-    //   }, "5000");  
 });
 
 dataController.post('/upload', isAdmin(), async (req, res) => {

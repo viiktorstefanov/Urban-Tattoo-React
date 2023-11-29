@@ -12,12 +12,13 @@ export default function useForm(primaryValues, onSubmitHandler) {
 
         onSubmitHandler(values);
 
-        setValues(primaryValues);
+        // setValues(primaryValues);
     };
 
     return {
         values,
         onChange,
-        onSubmit
+        onSubmit,
+        setValues,
     }
 };

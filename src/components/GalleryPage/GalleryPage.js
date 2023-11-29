@@ -12,7 +12,6 @@ import { IoIosHeartDislike  } from 'react-icons/io'
 
 export default function GalleryPage() {
     const { tattoos, openFullImg, model, deleteHandler, tempImgSrc, onEscPress, onCloseIconClick, id, isLiked, isOwner, likeHandler, unlikeHandler } = useContext(TattooContext);
-
     const { user } = useContext(AuthContext);
 
     return (

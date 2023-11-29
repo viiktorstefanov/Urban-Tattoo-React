@@ -53,7 +53,7 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-  transition: 500ms ease;
+  transition: 900ms ease;
 }
 
 .dropdown-menu.inactive{

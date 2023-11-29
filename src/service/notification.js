@@ -1,6 +1,9 @@
 import { toast } from 'react-toastify';
 
-const notifyInfo = (message, autoClose) => toast.info(message, {
+let id;
+
+const notification = {
+     info : (message, autoClose) => toast.info(message, {
         position: "top-left",
         autoClose: autoClose || 3000,
         hideProgressBar: false,
@@ -9,9 +12,10 @@ const notifyInfo = (message, autoClose) => toast.info(message, {
         draggable: true,
         progress: undefined,
         theme: "light",
-});
+}),
 
-const notifySuccess = (message, autoClose) => toast.success(message, {
+success : (message, autoClose) => {
+    toast.success(message, {
     position: "top-left",
     autoClose: autoClose || 3000,
     hideProgressBar: true,
@@ -20,9 +24,9 @@ const notifySuccess = (message, autoClose) => toast.success(message, {
     draggable: true,
     progress: undefined,
     theme: "light",
-});
+})},
 
-const notifyWarning = (message, autoClose) => toast.warn(message, {
+ warning : (message, autoClose) => toast.warn(message, {
     position: "top-left",
     autoClose: autoClose || 3000,
     hideProgressBar: false,
@@ -31,9 +35,9 @@ const notifyWarning = (message, autoClose) => toast.warn(message, {
     draggable: true,
     progress: undefined,
     theme: "light",
-});
+}),
 
-const notifyError = (message, autoClose) => toast.error(message, {
+ error : (message, autoClose) => toast.error(message, {
     position: "top-left",
     autoClose: autoClose || 3000,
     hideProgressBar: false,
@@ -42,23 +46,16 @@ const notifyError = (message, autoClose) => toast.error(message, {
     draggable: true,
     progress: undefined,
     theme: "light",
-});
+}),
 
-const notifyLoading = (message) => toast.loading(message, {
-    position: "top-left",
-    autoClose: 0,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-});
+ loading : (message) => {
+    id = toast.loading(message);
+},
 
-export {
-    notifyInfo,
-    notifySuccess,
-    notifyWarning,
-    notifyError,
-    notifyLoading
-}
+ update : (newMessage, autoClose, type) => toast.update(id, { 
+    render: newMessage, type: type || 'success', isLoading: false , autoClose: autoClose || 2000, hideProgressBar: true
+}),
+
+};
+
+export default notification;

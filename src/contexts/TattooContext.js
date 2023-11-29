@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState, } from "react";
 import { useNavigate } from "react-router-dom";
-import { addTattooCommentById, deleteTattoo, dislikeTattoo, getAllTattoos, likeTattoo, uploadTattoo } from "../service/tattooService";
+import { deleteTattoo, dislikeTattoo, getAllTattoos, likeTattoo, uploadTattoo } from "../service/tattooService";
 import { AuthContext } from "../contexts/AuthContext";
+import notification from "../service/notification";
 
 export const TattooContext = createContext();
 
@@ -23,9 +24,7 @@ export const TattoosProvider = ({ children }) => {
     //get all tattoo images
     useEffect(() => {
         try {
-            getAllTattoos()
-                .then(res => setTattoos(res));
-
+            getAllTattoos().then(res => setTattoos(res));
         } catch (error) {
             console.log(error);
         }
@@ -34,6 +33,7 @@ export const TattoosProvider = ({ children }) => {
     //upload tattoo image
     const uploadHandler = async (formData) => {
         try {
+            notification.loading('Please wait');
             const result = await uploadTattoo(formData, user);
             setTattoos(state => [...state, result]);
             setHaveFile(false);
@@ -41,6 +41,9 @@ export const TattoosProvider = ({ children }) => {
 
         } catch (err) {
             console.log(err.message);;
+        } finally {
+            notification.update('Image uploaded');
+            setImage('');
         }
     };
     const onFileSubmit = (e) => {
@@ -48,7 +51,6 @@ export const TattoosProvider = ({ children }) => {
 
         const formData = new FormData();
         formData.append('files', image);
-        setImage('');
         uploadHandler({ files: formData });
     };
     const onFileChange = (e) => {
@@ -74,11 +76,14 @@ export const TattoosProvider = ({ children }) => {
     //delete tattoo image
     const deleteHandler = async () => {
         try {
+            notification.loading('Please wait');
             await deleteTattoo(id, user);
             setTattoos(state => state.filter(x => x._id !== id));
             setModel(false);
         } catch (error) {
             console.log(error);
+        } finally {
+            notification.update('Image was deleted');
         }
     };
 
@@ -98,6 +103,7 @@ export const TattoosProvider = ({ children }) => {
     //like tattoo
     const likeHandler = async () => {
         try {
+            notification.loading('Please wait');
             await likeTattoo(id, user);
             setTattoos(state => state.map(x => x._id === id
                 ? { ...x, likes: [...x.likes, user._id] }
@@ -105,12 +111,15 @@ export const TattoosProvider = ({ children }) => {
             setIsLiked(true);
         } catch (e) {
             console.log(e);
+        } finally {
+            notification.update('Liked');
         }
     };
 
     //unlike tattoo
     const unlikeHandler = async () => {
         try {
+            notification.loading('Please wait');
             await dislikeTattoo(id, user);
             setTattoos((state) =>
                 state.map((x) =>
@@ -122,16 +131,8 @@ export const TattoosProvider = ({ children }) => {
             setIsLiked(false);
         } catch (e) {
             console.log(e);
-        }
-    };
-
-    //add comment 
-    const addCommentHandler = async (data, tattooId) => {
-        try {
-            const result = await addTattooCommentById(tattooId, data, user);
-            setTattoos(state => state.map(x => x._id === tattooId ?  result : x));
-        } catch (e) {
-            console.log(e);
+        } finally {
+            notification.update('Unliked', 500, 'error');
         }
     };
 
@@ -155,7 +156,6 @@ export const TattoosProvider = ({ children }) => {
         likeHandler,
         unlikeHandler,
         setTattoos,
-        addCommentHandler
     };
 
     return (

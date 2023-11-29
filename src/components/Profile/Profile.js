@@ -11,7 +11,8 @@ export default function Profile() {
     const { user } = useContext(AuthContext);
 
     return (
-        <div className={styles['profile-dropdown']}>
+        <div className={styles['profile-dropdown']} onMouseEnter={() => showProfile ? null : setShowProfile(true)}
+        onMouseLeave={() => !showProfile ? null : setShowProfile(false)} >
             <div className='menu-container'>
                 <div className='menu-trigger' onClick={() => { setShowProfile(!showProfile) }}>
                     <BiSolidUserDetail className={styles['menu-trigger-ico']} />

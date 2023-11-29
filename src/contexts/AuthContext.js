@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { login, register, userLogout, userEdit, userDelete, userUpdateReservations } from "../service/authService";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { notifySuccess } from "../service/notificationService";
+import notification from "../service/notification";
 
 export const AuthContext = createContext();
 
@@ -14,14 +14,17 @@ export const AuthProvider = ({ children }) => {
     //user login handler
     const onLoginSubmit = async (data) => {
         try {
+            notification.loading('Please wait');
             const result = await login(data);
-
             setUser(result);
             navigate('/')
         } catch (e) {
             console.log(e);
+        } finally {
+            notification.update('Login Successful');
         }
     };
+    
     //user register handler
     const onRegisterSubmit = async (data) => {
         const { repeatPassword, ...registerData } = data;
@@ -30,60 +33,72 @@ export const AuthProvider = ({ children }) => {
         }
 
         try {
+            notification.loading('Please wait');
             const result = await register(registerData);
-
             setUser(result);
-
             navigate('/')
         } catch (e) {
             console.log(e);
+        } finally {
+            notification.update('The registration ends successfully');
         }
 
     };
+
     //user logout handler
     const onLogout = async () => {
         try {
+            notification.loading('Logging out');
             await userLogout(user);
-    
             setUser(false);
-           
-        } catch(e) {
+            navigate('/');
+        } catch (e) {
             console.log(e);
         } finally {
-            notifySuccess('Logout', 1000);
-            navigate('/');
+            notification.update('Logout successful');
+         
         }
     };
+
     //edit user handler
     const onEditSubmit = async (data) => {
         try {
+            notification.loading('Please wait');
             const result = await userEdit(data, user);
             setUser(result);
             navigate(`/profile/${user._id}`);
         } catch (e) {
             console.log(e);
+        } finally {
+            notification.update('Profile edited');
         }
     };
+
     //delete user handler
     const onDelete = async () => {
         try {
+            notification.loading('Please wait');
             await userDelete(user);
-
             setUser(false);
             navigate('/');
         } catch (e) {
             console.log(e);
+        } finally {
+            notification.update('Your profile was deleted');
         }
     };
 
     //add user reservation
     const updateUserReservations = async (data) => {
         try {
+            notification.loading('Please wait');
             const result = await userUpdateReservations(user._id, data, user);
             setUser(result);
             navigate(`/profile/${user._id}`);
         } catch (e) {
             console.log(e);
+        } finally {
+            notification.update('Reservation confirmed');
         }
     };
 

@@ -22,20 +22,17 @@ async function request(method, url, data, user) {
   try {
     const response = await fetch(`${host}${url}`, options);
 
-    let result;
-    if (response.status !== 204) {
-      result = await response.json();
+    if(response.status == 204 ) {
+      return response;
     }
 
-    if (!response.ok) {
-      if (response.status === 403) {
-        // clearUser();
-      }
-
-      throw result;
+    if(!response.ok) {
+      const error = await response.json();
+      error.status = response.status;
+      throw error;
     }
     
-    return result;
+    return response.json();
   } catch (error) {
     throw error;
   }
