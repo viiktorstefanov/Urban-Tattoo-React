@@ -13,9 +13,8 @@ export function PaginatedItems({ itemsPerPage, tattoos, openFullImg }) {
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    // Get the 'page' query parameter from the URL and set the currentPage state
     const page = parseInt(searchParams.get('page'), 10) || 1;
-    setCurrentPage(page - 1); // Adjust to 0-based index
+    setCurrentPage(page - 1); 
   }, [searchParams]);
 
   // handle of page number click.
@@ -23,13 +22,12 @@ export function PaginatedItems({ itemsPerPage, tattoos, openFullImg }) {
     const newOffset = (event.selected * itemsPerPage) % items.length;
     setItemOffset(newOffset);
 
-    // Use setSearchParams function to update the 'page' query parameter
+
     setSearchParams((prevSearchParams) => {
       prevSearchParams.set('page', (event.selected + 1).toString());
       return prevSearchParams;
     });
 
-    // Manually update the current page state for synchronous navigation
     setCurrentPage(event.selected);
   };
 
