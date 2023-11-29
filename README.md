@@ -1,7 +1,5 @@
 # Urban Tattoo Sofia
 
-bad guy
-
 <p align="left">
   <a>
     <img src="site-view.gif" />
@@ -50,7 +48,7 @@ Developed RESTful APIs to handle user data, tattoos information and details.
 
 Utilized MongoDB as the database to store and retrieve data efficiently.
 
-# HOW TO START APPLICATION:
+# How to start application:
 
 Type in the terminal
 ```
@@ -75,7 +73,7 @@ Then run the server:
 ```
 npm run server
 ```
-# HOW TO REGISTER ADMIN:
+# How to register admin:
 
 ```
 on register form use: _admin for lastName !
