@@ -79,3 +79,11 @@ npm run server
 on register form use: _admin for lastName !
 
 ```
+
+<br>
+<br>
+
+# Structure:
+<a>
+    <img src="Structure.png" />
+</a>
