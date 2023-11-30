@@ -8,27 +8,20 @@ import { useSearchParams } from 'react-router-dom';
 
 export function PaginatedItems({ itemsPerPage, tattoos, openFullImg }) {
   const items = tattoos;
+
   const [itemOffset, setItemOffset] = useState(0);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [currentPage, setCurrentPage] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
+  const page = Number(searchParams.get('page'));
 
+  // Update itemOffset when the page parameter changes
   useEffect(() => {
-    const page = parseInt(searchParams.get('page'), 10) || 1;
-    setCurrentPage(page - 1); 
-  }, [searchParams]);
-
-  // handle of page number click.
-  const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+    const newOffset = (page - 1) * itemsPerPage;
     setItemOffset(newOffset);
+  }, [page, itemsPerPage]);
 
-
-    setSearchParams((prevSearchParams) => {
-      prevSearchParams.set('page', (event.selected + 1).toString());
-      return prevSearchParams;
-    });
-
-    setCurrentPage(event.selected);
+  const handlePageClick = (event) => {
+    // Update the URL with the new page
+    setSearchParams({ page: event.selected + 1 });
   };
 
   return (
@@ -47,7 +40,7 @@ export function PaginatedItems({ itemsPerPage, tattoos, openFullImg }) {
         activeLinkClassName={styles['activeLinkClassName']}
         disabledClassName={styles['previous-next-disabled']}
         disabledLinkClassName={styles['previous-next-link-disabled']}
-        forcePage={currentPage}
+        forcePage={page-1}
       />
     </>
   );
