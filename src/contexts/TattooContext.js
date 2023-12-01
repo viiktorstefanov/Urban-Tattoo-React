@@ -8,7 +8,7 @@ export const TattooContext = createContext();
 
 export const TattoosProvider = ({ children }) => {
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
+    const { user, clearUser } = useContext(AuthContext);
     const [tattoos, setTattoos] = useState('');
     const [image, setImage] = useState('');
     const [model, setModel] = useState(false);
@@ -19,31 +19,39 @@ export const TattoosProvider = ({ children }) => {
     const [size, setSize] = useState(true);
     const [isLiked, setIsLiked] = useState(false);
     const [isOwner, setIsOwner] = useState(false);
-
+    const [isSubmit, setIsSubmit] = useState(false);
 
     //get all tattoo images
     useEffect(() => {
-        try {
-            getAllTattoos().then(res => setTattoos(res));
-        } catch (error) {
-            console.log(error);
-        }
+        getAllTattoos()
+        .then(res => setTattoos(res))
+        .catch((e) => {
+            if (e.status !== 404) {
+                return notification.error(e.message, 3000);
+            }else {
+               return navigate('*');
+            }
+        });
     }, []);
 
     //upload tattoo image
     const uploadHandler = async (formData) => {
         try {
-            notification.loading('Please wait');
+            setIsSubmit(true);
             const result = await uploadTattoo(formData, user);
+            notification.success('Image uploaded', 3000);
             setTattoos(state => [...state, result]);
             setHaveFile(false);
+            setImage('');
             navigate('/gallery');
 
-        } catch (err) {
-            console.log(err.message);;
+        } catch (e) {
+            if(e.status === 404) {
+                return navigate('*');
+            }
+            notification.error(e.message, 3000);
         } finally {
-            notification.update('Image uploaded');
-            setImage('');
+            setIsSubmit(false);
         }
     };
     const onFileSubmit = (e) => {
@@ -76,14 +84,19 @@ export const TattoosProvider = ({ children }) => {
     //delete tattoo image
     const deleteHandler = async () => {
         try {
-            notification.loading('Please wait');
             await deleteTattoo(id, user);
+            notification.success('Image was deleted', 3000);
             setTattoos(state => state.filter(x => x._id !== id));
             setModel(false);
-        } catch (error) {
-            console.log(error);
-        } finally {
-            notification.update('Image was deleted');
+        } catch (e) {
+            if (e.status === 401) {
+                clearUser();
+                navigate('/login');
+                notification.error(e.message, 3000);
+            } else if (e.status === 404) {
+                return navigate('*')
+            }
+            notification.error(e.message, 3000);
         }
     };
 
@@ -103,24 +116,27 @@ export const TattoosProvider = ({ children }) => {
     //like tattoo
     const likeHandler = async () => {
         try {
-            notification.loading('Please wait');
             await likeTattoo(id, user);
+            notification.success('Liked', 3000);
             setTattoos(state => state.map(x => x._id === id
                 ? { ...x, likes: [...x.likes, user._id] }
                 : x));
             setIsLiked(true);
         } catch (e) {
-            console.log(e);
-        } finally {
-            notification.update('Liked');
+            if (e.status === 401) {
+                clearUser();
+                navigate('/login');
+                return notification.error('Your login attempt failed. Please check your username and password, and try again', 3000);
+            }
+            notification.error(e.message, 3000);
         }
     };
 
     //unlike tattoo
     const unlikeHandler = async () => {
         try {
-            notification.loading('Please wait');
             await dislikeTattoo(id, user);
+            notification.success('Unliked', 3000);
             setTattoos((state) =>
                 state.map((x) =>
                     x._id === id
@@ -130,9 +146,12 @@ export const TattoosProvider = ({ children }) => {
             );
             setIsLiked(false);
         } catch (e) {
-            console.log(e);
-        } finally {
-            notification.update('Unliked', 500, 'error');
+            if (e.status === 401) {
+                clearUser();
+                navigate('/login');
+                return notification.error('Your login attempt failed. Please check your username and password, and try again', 3000);
+            }
+            notification.error(e.message, 3000);
         }
     };
 
@@ -156,6 +175,7 @@ export const TattoosProvider = ({ children }) => {
         likeHandler,
         unlikeHandler,
         setTattoos,
+        isSubmit,
     };
 
     return (

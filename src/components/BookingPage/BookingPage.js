@@ -7,7 +7,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function BookingPage() {
-    const { user, updateUserReservations } = useContext(AuthContext);
+    const { user, updateUserReservations, isSubmit } = useContext(AuthContext);
     const [model, setModel] = useState(false);
     const [ values, setValues ] = useState({
         date: '',
@@ -38,10 +38,7 @@ export default function BookingPage() {
                     const datePicked = value.toLocaleDateString().split('/');
                     const reservationDate = `${datePicked[1]}.${datePicked[0]}.${datePicked[2]}`;
                     setValues({date : reservationDate});
-                } else {
-                    console.log('only registed users can make reservations');
-                }
-                
+                }       
             }} />
             <form className={styles.model} onSubmit={onSubmit} method='POST'>
                 {model ?
@@ -51,7 +48,7 @@ export default function BookingPage() {
                         </span>
                     </div>
                     : null}
-                {model ? <button className={styles.button} type="submit">Confirm</button> : null}
+                {model ? <button className={styles.button} disabled={isSubmit ? true : false} type="submit">{isSubmit ? 'Loading...' : 'Confirm'}</button> : null}
             </form>
         </section>
     );

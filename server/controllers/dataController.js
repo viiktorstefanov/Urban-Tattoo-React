@@ -40,14 +40,12 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
             throw new Error('Only jpg or png files are allowed !');
         }
     } catch (error) {
+        const message = parseError(error);
         if (error == "Error: Only images are allowed !") {
-            const message = parseError(error);
             res.status(415).json({ message });
         } else if (error == "Error: File should be less than 5MB !") {
-            const message = parseError(error);
             res.status(413).json({ message });
         } else {
-            const message = parseError(error);
             res.status(400).json({ message });
         }
     }
@@ -74,20 +72,19 @@ dataController.delete('/tattoos/:id', isAdmin(), async (req, res) => {
 });
 
 dataController.get('/:id/likes', async (req, res) => {
-    try {
+    try { 
         const tattooId = req.params.id;
         const user = JSON.parse(req.headers.user);
+        
         const userId = user._id;
-
         await addLikeToTattoo(tattooId, userId);
 
         console.log(`user ${user.email} liked image with id : ${tattooId}`);
         res.status(204).end()
     } catch (error) {
         const message = parseError(error);
-        res.status(400).json({ message });
+        res.json({ message });
     }
-
 });
 
 dataController.delete('/:id/likes', async (req, res) => {
@@ -103,7 +100,6 @@ dataController.delete('/:id/likes', async (req, res) => {
         const message = parseError(error);
         res.status(400).json({ message });
     }
-
 });
 
 dataController.get('/:id/comments', async (req, res) => {
@@ -121,7 +117,8 @@ dataController.get('/:id/comments', async (req, res) => {
 dataController.post('/:id/comments', async (req, res) => {
     try {
         const tattooId = req.params.id;
-        const user = JSON.parse(req.headers.user);
+        let user = JSON.parse(req.headers.user);
+
         const ownerId = user._id;
         const ownerfullName = `${user.firstName} ${user.lastName}`;
         const comment = req.body;

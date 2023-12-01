@@ -3,10 +3,11 @@
     margin: 0px;
     padding: 0px;
 }
+
 body {
     background: black;
     text-align: center;
-    
+
 }
 
 a {
@@ -21,8 +22,16 @@ a:hover {
 .pages {
     color: white;
     text-align: center;
-    font-family:'Roboto',sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+textarea {
+    resize: none;
+}
+
+textarea:focus {
+    outline: none;
 }

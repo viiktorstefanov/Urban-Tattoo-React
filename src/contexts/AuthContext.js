@@ -3,44 +3,55 @@ import { useNavigate } from "react-router-dom";
 import { login, register, userLogout, userEdit, userDelete, userUpdateReservations } from "../service/authService";
 import useLocalStorage from "../hooks/useLocalStorage";
 import notification from "../service/notification";
+import { useState } from "react";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useLocalStorage('userData', false);
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [isDeleteSubmit, setIsDeleteSubmit] = useState(false);
     const navigate = useNavigate();
 
     //user login handler
     const onLoginSubmit = async (data) => {
         try {
-            notification.loading('Please wait');
+            setIsSubmit(true);
             const result = await login(data);
+            notification.success('Login Successful', 3000);
             setUser(result);
             navigate('/')
         } catch (e) {
-            console.log(e);
+            if (e.status === 403) {
+                return notification.error('Invalid email or password', 3000);
+            }
+            notification.error(e.message, 3000);
         } finally {
-            notification.update('Login Successful');
+            setIsSubmit(false);
         }
     };
     
     //user register handler
     const onRegisterSubmit = async (data) => {
         const { repeatPassword, ...registerData } = data;
-        if (repeatPassword !== registerData.password) {
-            return;
-        }
+        // if (repeatPassword !== registerData.password) {
+        //     return;
+        // }
 
         try {
-            notification.loading('Please wait');
+            setIsSubmit(true);
             const result = await register(registerData);
+            notification.success('Registration successful', 3000);
             setUser(result);
             navigate('/')
         } catch (e) {
-            console.log(e);
+            if(e.message.length > 0) {
+                e.message.map(e => notification.error(e, 3000));
+            }
+            notification.error(e.message, 3000);
         } finally {
-            notification.update('The registration ends successfully');
+            setIsSubmit(false);
         }
 
     };
@@ -48,59 +59,67 @@ export const AuthProvider = ({ children }) => {
     //user logout handler
     const onLogout = async () => {
         try {
-            notification.loading('Logging out');
+            setIsSubmit(true);
+            notification.loading('Please wait');
             await userLogout(user);
             setUser(false);
+            notification.update('Logout successful');
             navigate('/');
         } catch (e) {
-            console.log(e);
+            notification.update(e.message, 3000, 'error');
         } finally {
-            notification.update('Logout successful');
-         
+            setIsSubmit(false);
         }
     };
 
     //edit user handler
     const onEditSubmit = async (data) => {
         try {
-            notification.loading('Please wait');
+            setIsSubmit(true);
             const result = await userEdit(data, user);
             setUser(result);
+            notification.success('Profile edited', 3000);
             navigate(`/profile/${user._id}`);
         } catch (e) {
-            console.log(e);
+            notification.error(e.message, 3000);
         } finally {
-            notification.update('Profile edited');
+            setIsSubmit(false);
         }
     };
 
     //delete user handler
     const onDelete = async () => {
         try {
-            notification.loading('Please wait');
+            setIsSubmit(false);
+            setIsDeleteSubmit(true);
             await userDelete(user);
             setUser(false);
+            notification.success('Your profile was deleted', 3000);
             navigate('/');
         } catch (e) {
-            console.log(e);
+            notification.error(e.message, 3000);
         } finally {
-            notification.update('Your profile was deleted');
+            setIsDeleteSubmit(false);
         }
     };
 
     //add user reservation
     const updateUserReservations = async (data) => {
         try {
+            setIsSubmit(true);
             notification.loading('Please wait');
             const result = await userUpdateReservations(user._id, data, user);
             setUser(result);
+            notification.update('Reservation confirmed');
             navigate(`/profile/${user._id}`);
         } catch (e) {
-            console.log(e);
+            notification.update(e.message, 3000, 'error');
         } finally {
-            notification.update('Reservation confirmed');
+            setIsSubmit(false);
         }
     };
+
+    const clearUser = () => setUser(false);
 
     const AuthorizationValues = {
         onLoginSubmit,
@@ -112,6 +131,9 @@ export const AuthProvider = ({ children }) => {
         user,
         isAuthenticated: !!user.accessToken,
         isAdmin: user._role === 'admin' ? true : false,
+        isSubmit,
+        isDeleteSubmit,
+        clearUser
     };
 
     return (

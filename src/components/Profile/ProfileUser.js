@@ -6,8 +6,8 @@ import { useContext } from 'react';
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function ProfileUser() {
-    
-    const { user, onLogout } = useContext(AuthContext);
+
+    const { user, onLogout, isSubmit } = useContext(AuthContext);
 
     return (
         <>
@@ -24,10 +24,12 @@ export default function ProfileUser() {
                     <FiEdit className={styles['dropdownItem-ico']} />
                     <Link to={`/profile/edit/${user._id}`} className={styles['dropdownItem-link']}>Edit Profile</Link>
                 </li>
-                <li onClick={onLogout} className={styles['dropdownItem']}>
-                    <CgLogOut className={styles['dropdownItem-ico']} />
-                    <Link className={styles['dropdownItem-link']}>Logout</Link>
-                </li>
+                <fieldset className={styles.fieldset} onClick={onLogout} disabled={isSubmit ? true : false}>
+                    <li className={styles['dropdownItem']}>
+                        <CgLogOut className={styles['dropdownItem-ico']} />
+                        <Link className={styles['dropdownItem-link']}>{isSubmit ? 'Loading...' : 'Logout'}</Link>
+                    </li>
+                </fieldset>
             </ul>
         </>
     );

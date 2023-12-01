@@ -6,7 +6,7 @@ const notification = {
      info : (message, autoClose) => toast.info(message, {
         position: "top-left",
         autoClose: autoClose || 3000,
-        hideProgressBar: false,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
@@ -29,7 +29,7 @@ success : (message, autoClose) => {
  warning : (message, autoClose) => toast.warn(message, {
     position: "top-left",
     autoClose: autoClose || 3000,
-    hideProgressBar: false,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
@@ -40,7 +40,7 @@ success : (message, autoClose) => {
  error : (message, autoClose) => toast.error(message, {
     position: "top-left",
     autoClose: autoClose || 3000,
-    hideProgressBar: false,
+    hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,

@@ -22,7 +22,7 @@ async function request(method, url, data, user) {
   try {
     const response = await fetch(`${host}${url}`, options);
 
-    if(response.status == 204 ) {
+    if(response.status === 204 ) {
       return response;
     }
 

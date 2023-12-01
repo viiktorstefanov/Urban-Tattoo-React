@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 export default function LoginPage() {
 
-    const { onLoginSubmit } = useContext(AuthContext);
+    const { onLoginSubmit, isSubmit } = useContext(AuthContext);
     const primaryValues = {
         email: '',
         password: '',
@@ -36,7 +36,7 @@ export default function LoginPage() {
                         value={values.password}
                     />
                 </div>
-                <button className={styles.button} type="submit">Sign in</button>
+                <button className={styles.button} disabled={isSubmit ? true : false} type="submit">{isSubmit ? 'Loading...' : 'Sign in'}</button>
                 <p className={styles.field}>
                     <span>Sign up <Link to={'/register'} className={styles['log-btn']}>here</Link></span>
                 </p>

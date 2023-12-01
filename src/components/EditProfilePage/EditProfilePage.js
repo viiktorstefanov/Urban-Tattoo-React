@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import useForm from '../../hooks/useForm';
 
 export default function EditProfilePage() {
-    const { user, onDelete, onEditSubmit } = useContext(AuthContext);
+    const { user, onDelete, onEditSubmit, isSubmit, isDeleteSubmit } = useContext(AuthContext);
 
     const primaryValues = {
         firstName: user.firstName,
@@ -39,9 +39,9 @@ export default function EditProfilePage() {
                 </div>
 
                 <div className={styles['deleteProfileDiv']}>
-                        <span onClick={onDelete} className={styles['deleteProfileBtn']}>Delete profile</span>
+                        <button onClick={(e) => { e.preventDefault(); onDelete()}} disabled={isDeleteSubmit ? true : false} className={styles['deleteProfileBtn']}>Delete profile</button>
                 </div>
-                    <button className={styles.button} type="submit">Save</button>
+                    <button className={styles.button} disabled={isSubmit ? true : false} type="submit">{isSubmit ? 'Loading...' : 'Save'}</button>
             </form>
         </section>
     )

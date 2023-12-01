@@ -69,7 +69,7 @@
     transition: 0.5s;
   }
   
-  .editForm button:hover {
+  .editForm .button:hover {
     background: #f3d22d;
   }
   
@@ -82,13 +82,13 @@
     margin-bottom: 10%;
   }
 
-  .deleteProfileBtn{
+  .editForm .deleteProfileBtn{
     color: rgb(214, 63, 63);
     cursor: pointer;
+    background-color: black;
   }
 
   .deleteProfileBtn:hover{
-    color: rgb(214, 63, 63);
     text-decoration: underline;
   }
 

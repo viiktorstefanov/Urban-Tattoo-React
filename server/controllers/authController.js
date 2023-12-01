@@ -24,10 +24,14 @@ authController.post('/register',
             }
         } catch (error) {
             const message = parseError(error);
+            if(message.includes('\n')) {
+                const errors = message.split('\n')
+               return res.status(400).json({ message: errors }).end();
+            }
             res.status(400).json({ message }).end();
         }
 
-    });
+});
 
 authController.post('/login', isGuest(), async (req, res) => {
     try {
@@ -36,7 +40,7 @@ authController.post('/login', isGuest(), async (req, res) => {
         console.log(`User ${req.body.email} has logged in`);
     } catch (error) {
         const message = parseError(error);
-        res.status(401).json({ message }).end();
+        res.status(403).json({ message }).end();
     }
 });
 

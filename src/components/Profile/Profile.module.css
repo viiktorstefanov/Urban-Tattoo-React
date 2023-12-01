@@ -108,6 +108,11 @@
   color: black;
 }
 
+.fieldset{
+  outline: none;
+  border: none;
+}
+
 
 
 
