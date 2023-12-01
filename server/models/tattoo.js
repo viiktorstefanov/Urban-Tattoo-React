@@ -8,7 +8,7 @@ const tattooSchema = new Schema({
             ownerId: { type: Types.ObjectId,
             ref: 'User', required: true },
             ownerfullName: { type: String, required: true },
-            comment: { type: String, required: [true, 'comment text missing'] },
+            comment: { type: String, required: [true, 'comment text missing'], minlength: [4, 'min length is 5 charracters long'], maxlength: [100, 'max length is 100 charracters long']},
         }
     ],
     likes: [

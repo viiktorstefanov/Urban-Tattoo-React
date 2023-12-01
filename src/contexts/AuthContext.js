@@ -35,9 +35,6 @@ export const AuthProvider = ({ children }) => {
     //user register handler
     const onRegisterSubmit = async (data) => {
         const { repeatPassword, ...registerData } = data;
-        // if (repeatPassword !== registerData.password) {
-        //     return;
-        // }
 
         try {
             setIsSubmit(true);

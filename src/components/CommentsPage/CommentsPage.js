@@ -77,6 +77,11 @@ export default function CommentsPage() {
     //when user submit edited comment
     const onSubmitEdit = async (e) => {
         e.preventDefault();
+        const editCommentValidation = editValues.comment.trim() != "" && editValues.comment.length <= 100 && editValues.comment.length >= 4;
+        if(!editCommentValidation) {
+            notification.warning("Allowed comment length is between 4 and 100 characters long");
+            return;
+        } 
         try {
             setIsEditSubmit(true);
             const editedCommentTattoo = await editTattooCommentById(commentId, editValues, user);
@@ -94,12 +99,12 @@ export default function CommentsPage() {
         } finally {
             setIsEditSubmit(false);
         }
-
     };
 
     //when user is editing comment
     const onChangeEdit = (e) => {
         setEditValues(state => ({ ...state, [e.target.name]: e.target.value }));
+
     };
 
     //when user click on edit icon
