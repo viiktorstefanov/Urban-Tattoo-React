@@ -3,24 +3,39 @@ import { Link } from 'react-router-dom';
 import  useForm  from '../../hooks/useForm';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
+import useValidate from '../../hooks/useValidate';
+import { registerValidator } from '../../service/validation';
+import { loginMessages } from '../../service/validationMessages';
 
 export default function LoginPage() {
 
     const { onLoginSubmit, isSubmit } = useContext(AuthContext);
+
     const primaryValues = {
         email: '',
         password: '',
     };
 
+    const primaryValidationValues = {
+        email: false,
+        password: false,
+    };
+
     const { values, onChange, onSubmit } = useForm(primaryValues, onLoginSubmit);
+
+    const {
+        validationErrors,
+        onBlur
+    } = useValidate(primaryValidationValues, values, registerValidator, loginMessages);
 
     return (
         <section id="loginPage" className={styles.loginPage}>
             <form className={styles.loginForm} onSubmit={onSubmit} method='POST'>
                 <div>
-                    <label htmlFor="email">Email:</label>
+                    <label className={validationErrors.email ? styles.validationWarning : null} htmlFor="email">Email:</label>
                     <input 
-                        onChange={onChange} 
+                        onChange={onChange}
+                        onBlur={onBlur} 
                         id="email" name="email" 
                         type="text" 
                         placeholder="example@email.com" 
@@ -28,9 +43,10 @@ export default function LoginPage() {
                     />
                 </div>
                 <div>
-                    <label htmlFor="password">Password:</label>
+                    <label className={validationErrors.password ? styles.validationWarning : null} htmlFor="password">Password:</label>
                     <input 
-                        onChange={onChange} 
+                        onChange={onChange}
+                        onBlur={onBlur} 
                         id="password" name="password" 
                         type="password" placeholder="********" 
                         value={values.password}

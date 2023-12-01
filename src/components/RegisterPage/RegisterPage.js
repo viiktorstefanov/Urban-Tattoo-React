@@ -5,10 +5,11 @@ import { AuthContext } from '../../contexts/AuthContext';
 import useForm from '../../hooks/useForm';
 import useValidate from '../../hooks/useValidate';
 import { registerValidator } from '../../service/validation';
+import { registerMessages } from '../../service/validationMessages';
 
 export default function RegisterPage() {
     const { onRegisterSubmit, isSubmit } = useContext(AuthContext);
-
+    
     const primaryValues = {
         firstName: '',
         lastName: '',
@@ -18,44 +19,54 @@ export default function RegisterPage() {
         phone: '',
     };
 
+    const primaryValidationValues = {
+        firstName: false,
+        lastName: false,
+        email: false,
+        password: false,
+        repeatPassword: false,
+        phone: false,
+    };
+
     const { values, onChange, onSubmit } = useForm(primaryValues, onRegisterSubmit);
+    
     const {
         validationErrors,
         onBlur
-    } = useValidate(primaryValues, values, registerValidator);
+    } = useValidate(primaryValidationValues, values, registerValidator, registerMessages);
 
     return (
         <section id="registerPage" className={styles.registerPage}>
             <form onSubmit={onSubmit} className={styles.registerForm} method='POST'>
                 <div>
-                    <label className={styles.label} htmlFor="name">First name:</label>
-                    <input className={styles.input} onChange={onChange} onBlur={onBlur}  id="firstName" name="firstName" type="text" placeholder="First name" value={values.firstName} />
+                    <label className={validationErrors.firstName ? styles.validationWarning : null} htmlFor="name">First name:</label>
+                    <input className={styles.input} onChange={onChange} onBlur={onBlur} id="firstName" name="firstName" type="text" placeholder="First name" value={values.firstName} />
                 </div>
-
+              
                 <div>
-                    <label className={styles.label} htmlFor="name">Last name:</label>
+                    <label className={validationErrors.lastName ? styles.validationWarning : null} htmlFor="name">Last name:</label>
                     <input className={styles.input} onChange={onChange} onBlur={onBlur} id="lastName" name="lastName" type="text" placeholder="Last name" value={values.lastName} />
                 </div>
 
                 <div>
-                    <label className={styles.label} htmlFor="email">Email:</label>
+                    <label className={validationErrors.email ? styles.validationWarning : null} htmlFor="email">Email:</label>
                     <input onChange={onChange} className={styles.input} onBlur={onBlur} id="email" name="email" type="text" value={values.email} placeholder="example@email.com" />
                 </div>
 
                 <div>
-                    <label className={styles.label} htmlFor="password">Password:</label>
+                    <label className={validationErrors.password ? styles.validationWarning : null} htmlFor="password">Password:</label>
                     <input className={styles.input} onChange={onChange} onBlur={onBlur} id="password" name="password" type="password" placeholder="New password" value={values.password} />
                 </div>
 
                 <div>
-                    <label className={styles.label} htmlFor="repeatPassword">Repeat Password:</label>
+                    <label className={validationErrors.repeatPassword ? styles.validationWarning : null} htmlFor="repeatPassword">Repeat Password:</label>
                     <input className={styles.input} onChange={onChange} onBlur={onBlur} id="repeatPassword" name="repeatPassword" type="password" placeholder="Repeat Password" value={values.repeatPassword} />
                 </div>
 
 
                 <div>
-                    <label className={styles.label} htmlFor="phone">Phone:</label>
-                    <input className={styles.input} onChange={onChange} onBlur={onBlur} id="phone" name="phone" type="number" placeholder="+359886003010" value={values.phone} />
+                    <label className={validationErrors.phone ? styles.validationWarning : null} htmlFor="phone">Phone:</label>
+                    <input className={styles.input} onChange={onChange} onBlur={onBlur} id="phone" name="phone" type="text" placeholder="+359886003010" value={values.phone} />
                 </div>
 
 

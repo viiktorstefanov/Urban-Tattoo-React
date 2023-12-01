@@ -8,6 +8,9 @@ import useForm from '../../hooks/useForm';
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import commentsReducer from '../../reducers/commentsReducer';
 import notification from '../../service/notification';
+import useValidate from '../../hooks/useValidate';
+import { commentsValidator } from '../../service/validation';
+import { commentsMessages } from '../../service/validationMessages';
 
 
 export default function CommentsPage() {
@@ -108,7 +111,16 @@ export default function CommentsPage() {
 
     const primaryValues = { comment: '' };
 
+    const primaryValidationValues = {
+        comment: false,
+    };
+
     const { values, onChange, onSubmit, setValues } = useForm(primaryValues, addCommentHandler);
+
+    const {
+        validationErrors,
+        onBlur
+    } = useValidate(primaryValidationValues, values, commentsValidator, commentsMessages);
 
     if (!state) {
         return <Spinner />;
@@ -143,8 +155,8 @@ export default function CommentsPage() {
                         }
                     </div>
                     <form className={styles['commentForm']} onSubmit={onSubmit}>
-                        <label htmlFor="comment">Write a comment:</label>
-                        <textarea className={styles['comment-text']} name='comment' value={values.comment} onChange={onChange} maxLength="100"></textarea>
+                        <label className={validationErrors.comment ? styles.validationWarning : null} htmlFor="comment">Write a comment:</label>
+                        <textarea className={styles['comment-text']} name='comment' value={values.comment} onChange={onChange} onBlur={onBlur} maxLength="100" minLength="4"></textarea>
                         <button type='submit' disabled={isSubmit ? true : false}>{isSubmit ? 'Loading...' : 'Add'}</button>
                     </form>
                 </>

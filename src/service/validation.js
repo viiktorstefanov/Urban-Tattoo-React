@@ -15,7 +15,7 @@ const loginValidator = {
 };
 
 const commentsValidator = {
-    comment: (value) => value.trim() != "" && value.length <= 100,
+    comment: (value) => value.trim() != "" && value.length <= 100 && value.length >= 4,
 };
 
 const editProfileValidator = {
@@ -29,5 +29,7 @@ export {
     loginValidator,
     commentsValidator,
     editProfileValidator
-}
+};
+
+
 

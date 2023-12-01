@@ -95,3 +95,7 @@
     margin-top: 10%;
     font-size: 16px;
   }
+
+  .loginForm .validationWarning{
+    color:#f3d22d;
+  }

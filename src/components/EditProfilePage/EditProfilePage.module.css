@@ -96,3 +96,6 @@
     margin-top: 10%;
   }
 
+  .editForm .validationWarning{
+    color:#f3d22d;
+  }

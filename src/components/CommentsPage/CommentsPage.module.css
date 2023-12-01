@@ -128,3 +128,7 @@ padding: 10px;
    color: #f3d22d;
    cursor: pointer;
 }
+
+.commentForm .validationWarning{
+    color:#f3d22d;
+  }

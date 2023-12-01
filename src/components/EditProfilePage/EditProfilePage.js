@@ -3,6 +3,9 @@ import styles from './EditProfilePage.module.css';
 import { FiEdit } from 'react-icons/fi';
 import { AuthContext } from '../../contexts/AuthContext';
 import useForm from '../../hooks/useForm';
+import useValidate from '../../hooks/useValidate';
+import { editProfileValidator } from '../../service/validation';
+import { editProfileMessages } from '../../service/validationMessages';
 
 export default function EditProfilePage() {
     const { user, onDelete, onEditSubmit, isSubmit, isDeleteSubmit } = useContext(AuthContext);
@@ -12,8 +15,19 @@ export default function EditProfilePage() {
         lastName: user.lastName,
         phone: user.phone,
     };
+
+    const primaryValidationValues = {
+        firstName: false,
+        lastName: false,
+        phone: false,
+    };
    
     const { values, onChange, onSubmit } = useForm(primaryValues, onEditSubmit);
+
+    const {
+        validationErrors,
+        onBlur
+    } = useValidate(primaryValidationValues, values, editProfileValidator, editProfileMessages);
 
     return (
         <section id="editProfilePage" className={styles.editProfilePage}>
@@ -24,18 +38,18 @@ export default function EditProfilePage() {
                 </div>
 
                 <div>
-                    <label className={styles.label} htmlFor="name">First name:</label>
-                    <input className={styles.input} id="firstName" name="firstName" type="text" value={values.firstName} onChange={onChange}/>
+                    <label className={validationErrors.firstName ? styles.validationWarning : null} htmlFor="name">First name:</label>
+                    <input className={styles.input} id="firstName" name="firstName" type="text" value={values.firstName} onChange={onChange} onBlur={onBlur}/>
                 </div>
 
                 <div>
-                    <label className={styles.label} htmlFor="name">Last name:</label>
-                    <input className={styles.input} id="lastName" name="lastName" type="text" value={values.lastName} onChange={onChange}/>
+                    <label className={validationErrors.lastName ? styles.validationWarning : null} htmlFor="name">Last name:</label>
+                    <input className={styles.input} id="lastName" name="lastName" type="text" value={values.lastName} onChange={onChange} onBlur={onBlur}/>
                 </div>
 
                 <div>
-                    <label className={styles.label} htmlFor="phone">Phone:</label>
-                    <input className={styles.input} id="phone" name="phone" type="number" value={values.phone} onChange={onChange}/>
+                    <label className={validationErrors.phone ? styles.validationWarning : null} htmlFor="phone">Phone:</label>
+                    <input className={styles.input} id="phone" name="phone" type="number" value={values.phone} onChange={onChange} onBlur={onBlur}/>
                 </div>
 
                 <div className={styles['deleteProfileDiv']}>
