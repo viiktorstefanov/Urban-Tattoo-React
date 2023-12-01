@@ -43,7 +43,7 @@ export const TattoosProvider = ({ children }) => {
             setTattoos(state => [...state, result]);
             setHaveFile(false);
             setImage('');
-            navigate('/gallery');
+            navigate('/gallery?page=1');
 
         } catch (e) {
             if(e.status === 404) {
