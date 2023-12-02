@@ -60,3 +60,7 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.span-reservation {
+    font-size: 14px;
+}

@@ -31,7 +31,7 @@ export default function ProfilePage() {
                     <p className={styles['user-info-category']}>Reservations: </p>
                     <div className={styles['reservation-list']}>
                         {user.reservations.length === 0 ? <p className={styles['user-info-reservation']}>none</p> : null }
-                        {user.reservations.length > 0 ? user.reservations.map((r, index) => <span key={index}>{r}</span>) : null }
+                        {user.reservations.length > 0 ? user.reservations.map((r, index) => <span className={styles['span-reservation']} key={index}>{r}</span>) : null }
                     </div>
                     
                 </span>
