@@ -1,25 +1,29 @@
 import styles from './Footer.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquareFacebook, faSquareGooglePlus, faInstagram  } from '@fortawesome/free-brands-svg-icons';
+import { faSquareFacebook, faSquareGooglePlus, faInstagram, faGithub  } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 
 
 export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles['links-footer']}>
-                <a className={styles.instagram} href="https://www.instagram.com/urban.tattoo.sofia/">
-                    <FontAwesomeIcon className={`fa-brands fa-instagram ${styles['instagram-icon']}`} icon={faInstagram} />
-                </a>
-                <a className={styles.facebook} href="https://www.facebook.com/urban.tattoo.sofia/">
-                    <FontAwesomeIcon className={`fa-brands fa-square-facebook ${styles['facebook-icon']}`} icon={faSquareFacebook} />
-                </a>
-                <a className={styles.google} href="https://g.page/r/CbxBJYKl-n-wEB0">
-                    <FontAwesomeIcon className={`fa-brands fa-square-google-plus ${styles['google-icon']}`} icon={faSquareGooglePlus} />
-                </a>
+                <Link className={styles.instagram} to={'https://www.instagram.com/urban.tattoo.sofia/'} target='_blank'>
+                    <FontAwesomeIcon className={`${styles['instagram-icon']}`} icon={faInstagram} />
+                </Link>
+                <Link className={styles.facebook} to={"https://www.facebook.com/urban.tattoo.sofia/"} target='_blank'>
+                    <FontAwesomeIcon className={`${styles['facebook-icon']}`} icon={faSquareFacebook} />
+                </Link>
+                <Link className={styles.google} to={"https://g.page/r/CbxBJYKl-n-wEB0"} target='_blank'>
+                    <FontAwesomeIcon className={`${styles['google-icon']}`} icon={faSquareGooglePlus} />
+                </Link>
+                <Link className={styles.github} target='_blank' to={'https://github.com/ViiktorStefanov'}>
+                    <FontAwesomeIcon className={`${styles['github-icon']}`} icon={faGithub} />
+                </Link>
             </div>
             <div className={styles.copyright}>
-                © 2023 Copyright: 
-                <a className={styles['copyright-author']} href="https://www.linkedin.com/in/viktor-stefanov-953047263/"> Viktor Stefanov</a>
+                © 2024 Copyright: 
+                <Link className={styles['copyright-author']} target='_blank' to={"https://www.linkedin.com/in/viktorstefanov/"} > Viktor Stefanov</Link>
             </div>
         </footer>
     );
