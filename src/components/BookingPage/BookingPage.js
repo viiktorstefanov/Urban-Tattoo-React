@@ -12,7 +12,7 @@ export default function BookingPage() {
     const [ values, setValues ] = useState({
         date: '',
     });
-
+    
     const onSubmit = async (e) => {
         e.preventDefault();
 
