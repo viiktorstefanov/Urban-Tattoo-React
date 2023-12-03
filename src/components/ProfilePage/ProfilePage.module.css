@@ -61,6 +61,23 @@
     gap: 10px;
 }
 
-.span-reservation {
+.span-reservation{
     font-size: 14px;
+}
+
+.user-info-reservation{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+    margin-bottom: 10%;
+    gap: 20px;
+    width: 80%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.519);
+    border-top: 2px solid rgba(255, 255, 255, 0.519);
+    /* border-left: 2px solid rgba(255, 255, 255, 0.719); */
+    /* border-right: 2px solid rgba(255, 255, 255, 0.719); */
+    border-radius: 8px;
 }
