@@ -15,8 +15,12 @@
     margin-bottom: 0.7%;
 }
 
-.instagram-icon, .facebook-icon, .google-icon, .github-icon {
-    font-size: 35px;
+.instagram-icon, .facebook-icon, .location-icon{
+    font-size: 30px;
+}
+
+.location-icon{
+    font-size: 25px;
 }
 
 .copyright {
