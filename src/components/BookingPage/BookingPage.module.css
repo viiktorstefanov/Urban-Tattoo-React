@@ -44,32 +44,34 @@
   margin-top: 20px;
 }
 
-.wrapper-span-date {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  padding: 15px 0 15px 0;
-  background-color: white;
-  color: black;
-  border-radius: 8px;
-  width: 30rem;
-  max-width: 100%;
-}
-
-.span-date {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  width: 100%;
-}
-
 .button {
-  width: 30%;
+  width: 60%;
 }
 
 .bookingPage abbr{
   cursor: pointer;
+}
+
+.hours-message{
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+
+.hours-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  margin-bottom: 10%;
+}
+
+.hours-second-radio:checked, .hours-first-radio:checked{
+  accent-color: #f3d22d;
+}
+
+.hours-first-radio-wrapper, .hours-second-radio-wrapper{
+  display: flex;
+  gap: 10px;
 }
