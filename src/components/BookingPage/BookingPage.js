@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import notification from '../../service/notification';
 
 export default function BookingPage() {
     const { user, updateUserReservations, isSubmit } = useContext(AuthContext);
@@ -12,6 +13,10 @@ export default function BookingPage() {
     const [ values, setValues ] = useState({
         date: '',
     });
+
+    if(!user) {
+        notification.warning('Only registered users can book a consultation appointment.', 5000);
+    };
     
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -25,8 +30,8 @@ export default function BookingPage() {
     return (
         <section id="bookingPage" className={styles.bookingPage}>
             <Calendar 
-                nextLabel={<FaArrowRight />} 
-                prevLabel={<FaArrowLeft />} 
+                nextLabel={<FaArrowRight style={{fontSize: '25px'}}/>} 
+                prevLabel={<FaArrowLeft style={{fontSize: '25px'}}/>} 
                 prev2Label={null} 
                 next2Label={null}
                 value={new Date()}
