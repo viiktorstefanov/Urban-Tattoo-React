@@ -31,10 +31,10 @@ export default function ProfilePage() {
                     <p className={styles['user-info-category']}>Phone: </p>
                     <p className={styles['user-info-phone']}>{user.phone}</p>
                 </span>
-                <span className={styles['user-info-reservation']}>
+                <span className={user.reservations.length === 0 ? styles['span-user-info-reservation'] : styles['user-info-reservation']}>
                     <p className={styles['user-info-category']}>Reservations: </p>
                     <div className={styles['reservation-list']}>
-                        {user.reservations.length === 0 ? <p className={styles['user-info-reservation']}>none</p> : null}
+                        {user.reservations.length === 0 ? <p className={styles['user-info-reservation-p']}>none</p> : null}
                         {user.reservations.length > 0 ? sortedReservations.map((r, index) => <span className={styles['span-reservation']} key={index}>{r.date} - {r.hour}</span>) : null}
                     </div>
                 </span>
@@ -42,4 +42,3 @@ export default function ProfilePage() {
         </section>
     );
 };
-
