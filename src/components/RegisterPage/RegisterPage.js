@@ -150,9 +150,9 @@ export default function RegisterPage() {
 
                 <p className={styles.field}>
                     <span>
-                        Sign in
+                        Sign in 
                         <Link to={'/login'} className={styles['reg-btn']} >
-                            here
+                             here
                         </Link>
                     </span>
                 </p>
