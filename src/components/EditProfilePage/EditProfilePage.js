@@ -39,7 +39,6 @@ export default function EditProfilePage() {
 
                 <div>
                     <label
-                        className={validationErrors.firstName ? styles.validationWarning : null}
                         htmlFor="name">
                         First name:
                     </label>
@@ -56,7 +55,6 @@ export default function EditProfilePage() {
 
                 <div>
                     <label
-                        className={validationErrors.lastName ? styles.validationWarning : null}
                         htmlFor="name">
                         Last name:
                     </label>
@@ -73,7 +71,6 @@ export default function EditProfilePage() {
 
                 <div>
                     <label
-                        className={validationErrors.phone ? styles.validationWarning : null}
                         htmlFor="phone">
                         Phone:
                     </label>

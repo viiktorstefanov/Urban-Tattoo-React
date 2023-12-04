@@ -32,7 +32,7 @@ export default function LoginPage() {
         <section id="loginPage" className={styles.loginPage}>
             <form className={styles.loginForm} onSubmit={onSubmit} method='POST'>
                 <div>
-                    <label className={validationErrors.email ? styles.validationWarning : null}
+                    <label
                         htmlFor="email">
                         Email:
                     </label>
@@ -48,7 +48,6 @@ export default function LoginPage() {
                 </div>
                 <div>
                     <label
-                        className={validationErrors.password ? styles.validationWarning : null}
                         htmlFor="password">
                         Password:
                     </label>

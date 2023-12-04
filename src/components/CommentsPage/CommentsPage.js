@@ -165,8 +165,8 @@ export default function CommentsPage() {
                     </div>
                     <form className={styles['commentForm']} onSubmit={onSubmit}>
                         <label
-                            className={validationErrors.comment ? styles.validationWarning : null}
-                            htmlFor="comment">Write a comment:</label>
+                            htmlFor="comment">Write a comment:
+                        </label>
                         <textarea className={styles['comment-text']}
                             name='comment' value={values.comment}
                             onChange={onChange}

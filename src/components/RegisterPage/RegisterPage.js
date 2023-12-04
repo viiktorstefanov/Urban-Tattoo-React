@@ -31,7 +31,6 @@ export default function RegisterPage() {
     const { values, onChange, onSubmit } = useForm(primaryValues, onRegisterSubmit);
 
     const {
-        validationErrors,
         onBlur
     } = useValidate(primaryValidationValues, values, registerValidator, registerMessages);
 
@@ -39,8 +38,7 @@ export default function RegisterPage() {
         <section id="registerPage" className={styles.registerPage}>
             <form onSubmit={onSubmit} className={styles.registerForm} method='POST'>
                 <div>
-                    <label
-                        className={validationErrors.firstName ? styles.validationWarning : null}
+                    <label                        
                         htmlFor="name">
                         First name:
                     </label>
@@ -58,7 +56,6 @@ export default function RegisterPage() {
 
                 <div>
                     <label
-                        className={validationErrors.lastName ? styles.validationWarning : null}
                         htmlFor="name">
                         Last name:
                     </label>
@@ -76,7 +73,6 @@ export default function RegisterPage() {
 
                 <div>
                     <label
-                        className={validationErrors.email ? styles.validationWarning : null}
                         htmlFor="email">
                         Email:
                     </label>
@@ -94,7 +90,6 @@ export default function RegisterPage() {
 
                 <div>
                     <label
-                        className={validationErrors.password ? styles.validationWarning : null}
                         htmlFor="password">
                         Password:
                     </label>
@@ -112,7 +107,6 @@ export default function RegisterPage() {
 
                 <div>
                     <label
-                        className={validationErrors.repeatPassword ? styles.validationWarning : null}
                         htmlFor="repeatPassword">
                         Repeat Password:
                     </label>
@@ -131,7 +125,6 @@ export default function RegisterPage() {
 
                 <div>
                     <label
-                        className={validationErrors.phone ? styles.validationWarning : null}
                         htmlFor="phone">
                         Phone:
                     </label>
