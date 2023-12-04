@@ -21,9 +21,25 @@ export default function RoutesWrapper() {
     return (
         <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/gallery' element={<TattoosProvider><GalleryPage /></TattoosProvider>}/>
-            <Route path='/upload' element={<AdminGuard><TattoosProvider><UploadPage /></TattoosProvider></AdminGuard>}/>
-            <Route element={<AuthGuard/>}>
+            <Route
+                path='/gallery'
+                element={
+                    <TattoosProvider>
+                        <GalleryPage />
+                    </TattoosProvider>
+                }
+            />
+            <Route
+                path='/upload'
+                element={
+                    <AdminGuard>
+                        <TattoosProvider>
+                            <UploadPage />
+                        </TattoosProvider>
+                    </AdminGuard>
+                }
+            />
+            <Route element={<AuthGuard />}>
                 <Route path='/gallery/:id/comments' element={<CommentsPage />} />
                 <Route path='/logout' element={<LogoutPage />} />
                 <Route path='/profile/:id' element={<ProfilePage />} />

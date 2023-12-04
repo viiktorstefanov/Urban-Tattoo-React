@@ -14,7 +14,9 @@ export default function ProfilePage() {
     return (
         <section className={styles.profilePage}>
             <div className={styles['profile-wrapper']}>
-                <span className={styles['user-logo-wrapper']}><BiUserPin className={styles['user-logo']} /></span>
+                <span className={styles['user-logo-wrapper']}>
+                    <BiUserPin className={styles['user-logo']} />
+                </span>
                 <span className={styles['user-info']}>
                     <p className={styles['user-info-category']}>Email: </p>
                     <p className={styles['user-info-email']}>{user.email}</p>

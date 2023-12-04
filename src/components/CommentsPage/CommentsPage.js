@@ -78,10 +78,10 @@ export default function CommentsPage() {
     const onSubmitEdit = async (e) => {
         e.preventDefault();
         const editCommentValidation = editValues.comment.trim() != "" && editValues.comment.length <= 100 && editValues.comment.length >= 4;
-        if(!editCommentValidation) {
+        if (!editCommentValidation) {
             notification.warning("Allowed comment length is between 4 and 100 characters long");
             return;
-        } 
+        }
         try {
             setIsEditSubmit(true);
             const editedCommentTattoo = await editTattooCommentById(commentId, editValues, user);
@@ -133,7 +133,11 @@ export default function CommentsPage() {
 
     return (
         <section className={styles['commentsPage']}>
-            <img className={styles['tattoo-img']} src={state.imageUrl} alt="tattoo" />
+            <img
+                className={styles['tattoo-img']}
+                src={state.imageUrl}
+                alt="tattoo"
+            />
 
             <span>Likes: {state.likes.length}</span>
             {!isEditClicked ?
@@ -149,7 +153,7 @@ export default function CommentsPage() {
                                     {x.ownerId === user._id || user._role === 'admin' ?
                                         <span className={styles['owner-buttons']}>
                                             <FaEdit onClick={() => onClickEdit(x._id)} className={styles['owner-buttons-edit']} />
-                                                <FaTrashAlt onClick={() => deleteCommentHandler(x._id)} className={styles['owner-buttons-delete']} />
+                                            <FaTrashAlt onClick={() => deleteCommentHandler(x._id)} className={styles['owner-buttons-delete']} />
                                         </span>
                                         : null
                                     }
@@ -160,15 +164,33 @@ export default function CommentsPage() {
                         }
                     </div>
                     <form className={styles['commentForm']} onSubmit={onSubmit}>
-                        <label className={validationErrors.comment ? styles.validationWarning : null} htmlFor="comment">Write a comment:</label>
-                        <textarea className={styles['comment-text']} name='comment' value={values.comment} onChange={onChange} onBlur={onBlur} maxLength="100" minLength="4"></textarea>
-                        <button type='submit' disabled={isSubmit ? true : false}>{isSubmit ? 'Loading...' : 'Add'}</button>
+                        <label
+                            className={validationErrors.comment ? styles.validationWarning : null}
+                            htmlFor="comment">Write a comment:</label>
+                        <textarea className={styles['comment-text']}
+                            name='comment' value={values.comment}
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            maxLength="100"
+                            minLength="4">
+                        </textarea>
+                        <button type='submit' disabled={isSubmit ? true : false}>
+                            {isSubmit ? 'Loading...' : 'Add'}
+                        </button>
                     </form>
                 </>
                 :
                 <form className={styles['commentForm']} onSubmit={onSubmitEdit}>
-                    <textarea className={styles['comment-text']} name='comment' value={editValues.comment} onChange={onChangeEdit} maxLength="100"></textarea>
-                    <button type='submit' disabled={isEditSubmit ? true : false}>{isEditSubmit ? 'Loading...' : 'Edit'}</button>
+                    <textarea
+                        className={styles['comment-text']}
+                        name='comment'
+                        value={editValues.comment}
+                        onChange={onChangeEdit}
+                        maxLength="100">
+                    </textarea>
+                    <button type='submit' disabled={isEditSubmit ? true : false}>
+                        {isEditSubmit ? 'Loading...' : 'Edit'}
+                    </button>
                 </form>}
         </section>
     );

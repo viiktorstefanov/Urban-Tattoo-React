@@ -1,7 +1,7 @@
 import styles from './Footer.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faMapLocationDot  } from '@fortawesome/free-solid-svg-icons';
+import { faMapLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 
@@ -20,8 +20,10 @@ export default function Footer() {
                 </Link>
             </div>
             <div className={styles.copyright}>
-                © 2024 Copyright: 
-                <Link className={styles['copyright-author']} target='_blank' to={"https://www.linkedin.com/in/viktorstefanov/"} > Viktor Stefanov</Link>
+                © 2024 Copyright:
+                <Link className={styles['copyright-author']} target='_blank' to={"https://www.linkedin.com/in/viktorstefanov/"} >
+                    Viktor Stefanov
+                </Link>
             </div>
         </footer>
     );

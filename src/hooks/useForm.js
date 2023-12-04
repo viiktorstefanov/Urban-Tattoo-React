@@ -11,8 +11,6 @@ export default function useForm(primaryValues, onSubmitHandler) {
         e.preventDefault();
 
         onSubmitHandler(values);
-
-        // setValues(primaryValues);
     };
 
     return {

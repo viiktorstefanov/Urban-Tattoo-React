@@ -22,7 +22,7 @@ export default function BookingPage() {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        if(!values.hour || !values.date) {
+        if (!values.hour || !values.date) {
             return notification.warning('Please, choose a date and select an hour', 5000);
         }
 
@@ -32,7 +32,7 @@ export default function BookingPage() {
     };
 
     const onChange = (e) => {
-        setValues(state => ({...state, [e.target.name] : e.target.value}));
+        setValues(state => ({ ...state, [e.target.name]: e.target.value }));
     };
 
 
@@ -50,7 +50,7 @@ export default function BookingPage() {
                         setModel(true);
                         const datePicked = value.toLocaleDateString().split('/');
                         const reservationDate = `${datePicked[1]}.${datePicked[0]}.${datePicked[2]}`;
-                        setValues(state => ({...state, date: reservationDate}));
+                        setValues(state => ({ ...state, date: reservationDate }));
                     }
                 }} />
             <form className={styles.model} onSubmit={onSubmit} method='POST'>
@@ -59,12 +59,29 @@ export default function BookingPage() {
                         <p className={styles['hours-message']}>Choose a preferred time:</p>
                         <div className={styles['hours-wrapper']}>
                             <div className={styles['hours-first-radio-wrapper']} >
-                                <input className={styles['hours-first-radio']} type="radio" id="hour" name="hour" value="10:00 - 13:00" onChange={onChange}/>
-                                <label htmlFor="hour">10:00 - 13:00</label>
+                                <input
+                                    className={styles['hours-first-radio']}
+                                    type="radio"
+                                    id="hour"
+                                    name="hour"
+                                    value="10:00 - 13:00"
+                                    onChange={onChange} />
+                                <label htmlFor="hour">
+                                    10:00 - 13:00
+                                </label>
                             </div>
                             <div className={styles['hours-second-radio-wrapper']} >
-                                <input className={styles['hours-second-radio']} type="radio" id="hour2" name="hour" value="14:00 - 17:00" onChange={onChange}/>
-                                <label htmlFor="hour2">14:00 - 17:00</label>
+                                <input
+                                    className={styles['hours-second-radio']}
+                                    type="radio"
+                                    id="hour2"
+                                    name="hour"
+                                    value="14:00 - 17:00"
+                                    onChange={onChange}
+                                />
+                                <label htmlFor="hour2">
+                                    14:00 - 17:00
+                                </label>
                             </div>
                         </div>
                     </>
