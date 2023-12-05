@@ -5,7 +5,7 @@
     align-items: center;
     text-align: center;
     margin-top: 5%;
-    width: 60vw;
+    width: 100vw;
 }
 
 .message{
@@ -32,6 +32,7 @@
     justify-content: center;
     margin-top: 10%;
     margin-bottom: 10%;
+    width: 30vw;
 }
 
 .artist {
