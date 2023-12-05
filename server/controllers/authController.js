@@ -96,5 +96,4 @@ authController.put('/reservations/:id', hasUser(), async (req, res) => {
     }
 });
 
-
 module.exports = authController;
