@@ -24,7 +24,6 @@ export default function LoginPage() {
     const { values, onChange, onSubmit } = useForm(primaryValues, onLoginSubmit);
 
     const {
-        validationErrors,
         onBlur
     } = useValidate(primaryValidationValues, values, registerValidator, loginMessages);
 

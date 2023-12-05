@@ -25,7 +25,6 @@ export default function EditProfilePage() {
     const { values, onChange, onSubmit } = useForm(primaryValues, onEditSubmit);
 
     const {
-        validationErrors,
         onBlur
     } = useValidate(primaryValidationValues, values, editProfileValidator, editProfileMessages);
 

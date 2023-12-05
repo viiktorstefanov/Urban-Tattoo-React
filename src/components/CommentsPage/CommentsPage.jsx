@@ -123,7 +123,6 @@ export default function CommentsPage() {
     const { values, onChange, onSubmit, setValues } = useForm(primaryValues, addCommentHandler);
 
     const {
-        validationErrors,
         onBlur
     } = useValidate(primaryValidationValues, values, commentsValidator, commentsMessages);
 
