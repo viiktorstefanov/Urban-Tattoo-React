@@ -117,6 +117,11 @@ Then run the server:
 npm start
 ```
 
+```
+CHANGE HOST TO LOCAL FROM \src\service\request.js
+```
+
+
 ## Usage <a name="usage"></a>
 
 ### Gallery Page <a name="gallery-page"></a>
