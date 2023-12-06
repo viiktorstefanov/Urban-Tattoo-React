@@ -69,7 +69,7 @@ export default function BookingPage() {
 
     const onClickDay = async (value, event) => {
         if (user) {
-            setModel(state => !state);
+            setModel(true);
             const datePicked = value.toLocaleDateString().split('/');
             const reservationDate = `${datePicked[1]}.${datePicked[0]}.${datePicked[2]}`;
 
