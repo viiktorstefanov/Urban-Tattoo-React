@@ -6,7 +6,7 @@ const endpoints = {
     logout: '/users/logout',
     edit: '/users/edit/',
     delete: '/users/',
-    reservations: '/users/reservations/'
+    reservations: '/users/reservations/',
 };
 
 const login = async (data) => await post(endpoints.login, data);
@@ -21,6 +21,8 @@ const userDelete = async (user) => await del(endpoints.delete + user._id, null, 
 
 const userUpdateReservations = async (id, reservation, user) => await put(endpoints.reservations + id, reservation, user);
 
+const getAllUserReservations = async () => await get(endpoints.reservations);
+
 export {
     login,
     register,
@@ -28,4 +30,5 @@ export {
     userEdit,
     userDelete,
     userUpdateReservations,
+    getAllUserReservations,
 }

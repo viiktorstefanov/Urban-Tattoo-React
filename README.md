@@ -114,7 +114,7 @@ npm i
 Then run the server:
 
 ```
-npm run server
+npm start
 ```
 
 ## Usage <a name="usage"></a>

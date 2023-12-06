@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { login, register, userLogout, userEdit, userDelete, userUpdateReservations } from "../service/authService";
+import { login, register, userLogout, userEdit, userDelete, userUpdateReservations, getAllUserReservations } from "../service/authService";
 import useLocalStorage from "../hooks/useLocalStorage";
 import notification from "../service/notification";
 import { useState } from "react";
@@ -100,13 +100,26 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    //get all reservations 
+    const getAllReservations = async () => {
+        try {
+            return await getAllUserReservations();
+        } catch (e) {
+            notification.update(e.message, 3000, 'error');
+        }
+    };
+
     //add user reservation
     const updateUserReservations = async (data) => {
         try {
             setIsSubmit(true);
             notification.loading('Please wait');
             const result = await userUpdateReservations(user._id, data, user);
-            setUser(result);
+
+            setUser((state) => ({
+                ...state,
+                reservations: [...state.reservations, result]
+              }));
             notification.update('Reservation confirmed');
             navigate(`/profile/${user._id}`);
         } catch (e) {
@@ -116,6 +129,8 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+
+    //clear user
     const clearUser = () => setUser(false);
 
     const AuthorizationValues = {
@@ -125,6 +140,7 @@ export const AuthProvider = ({ children }) => {
         onEditSubmit,
         onDelete,
         updateUserReservations,
+        getAllReservations,
         user,
         isAuthenticated: !!user.accessToken,
         isAdmin: user._role === 'admin' ? true : false,

@@ -123,7 +123,7 @@ async function deleteUserById(id) {
     return User.findByIdAndDelete(id);
 }
 
-async function updateUserReservations(userId, reservation, accessToken) {
+async function updateUserReservations(userId, reservation) {
 
     const newDate = reservation.date;
     const newHour = reservation.hour.split(' ').join('');
@@ -150,23 +150,27 @@ async function updateUserReservations(userId, reservation, accessToken) {
         const user = await User.findById(userId);
 
         const newReservations = [...user.reservations, { date: newDate, hour: newHour }];
+        
         user.reservations = newReservations;
-
+        
         await user.save();
-        return {
-            _id: user._id,
-            email: user.email,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            phone: user.phone,
-            reservations: user.reservations,
-            likes: user.likes,
-            _role: user._role.join(''),
-            accessToken
-        };
+        
+        return user.reservations;
     } else{
         throw new Error('Sorry, the selected date and time are already booked.');
     }
+}
+
+async function getAllReservations() {
+
+    const result = await User.find({
+        'reservations': { $elemMatch: { $type: 'object' } }
+    }, 'reservations');
+
+    
+    const allObjectReservations = result.flatMap(user => user.reservations);
+    
+    return allObjectReservations;   
 }
 
 module.exports = {
@@ -178,4 +182,5 @@ module.exports = {
     getUserById,
     deleteUserById,
     updateUserReservations,
+    getAllReservations,
 }

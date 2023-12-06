@@ -1,16 +1,17 @@
 const host = 'https://urban-tattoo-server-production.up.railway.app';
 
+
 async function request(method, url, data, user) {
   const options = {
     method,
     headers: {},
   };
-
+  
   if(user) {
     options.headers['Urban-Authorization'] = JSON.stringify(user.accessToken);
     options.headers.user = JSON.stringify(user);
   }
-
+  
   if (data && !data.files) {
     options.headers['Content-Type'] = 'application/json';
     options.body = JSON.stringify(data);
@@ -31,7 +32,7 @@ async function request(method, url, data, user) {
       error.status = response.status;
       throw error;
     }
-    
+
     return response.json();
   } catch (error) {
     throw error;

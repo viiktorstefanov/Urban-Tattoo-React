@@ -1,10 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Footer from './Footer';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('Footer component', () => {
   test('renders social media links', () => {
-    render(<Footer />);
+    render(<BrowserRouter><Footer /></BrowserRouter>);
 
     const instagramLink = screen.getByTestId('instagram-link');
     const facebookLink = screen.getByTestId('facebook-link');

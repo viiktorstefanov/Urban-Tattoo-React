@@ -167,3 +167,15 @@ abbr:hover{
     color: #f3d22d;
   }
 }
+
+.react-calendar__month-view__days__day--notAvailable {
+  color: red;
+  background-color: red;
+}
+.react-calendar__month-view__days__day--notAvailable:hover{
+  color: red;
+  background-color: red;
+  abbr{
+    color: white;
+  }
+}

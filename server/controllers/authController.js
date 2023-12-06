@@ -1,4 +1,4 @@
-const { register, login, logout, updateUserById, deleteUserById, updateUserReservations } = require('../services/userService');
+const { register, login, logout, updateUserById, deleteUserById, updateUserReservations, getAllReservations} = require('../services/userService');
 const { body, validationResult } = require('express-validator');
 const { parseError } = require('../utils/parseError');
 const { isGuest, hasUser } = require('../middlewares/guards');
@@ -85,11 +85,24 @@ authController.delete('/:id', hasUser(), async (req, res) => {
 authController.put('/reservations/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
-        const accessToken = JSON.parse(req.headers.user).accessToken;
+        const user = JSON.parse(req.headers.user)
         const newReservations = req.body;
-        const user = await updateUserReservations(id, newReservations, accessToken);
+
+        const reservations = await updateUserReservations(id, newReservations);
+        const newReservation = reservations[reservations.length-1];
+
         console.log(`User ${user.email} has changed his reservations`);
-        res.json(user).status(204).end();
+        res.json(newReservation).status(204).end();
+    } catch (error) {
+        const message = parseError(error);
+        res.status(400).json({ message });
+    }
+});
+
+authController.get('/reservations', async (req, res) => {
+    try {
+        res.json(await getAllReservations()).end();
+        console.log('All reservations were sent');
     } catch (error) {
         const message = parseError(error);
         res.status(400).json({ message });
