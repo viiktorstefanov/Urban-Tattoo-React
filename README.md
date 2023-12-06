@@ -117,8 +117,9 @@ Then run the server:
 npm start
 ```
 
+WARNING!
 ```
-CHANGE HOST TO LOCAL FROM \src\service\request.js
+Do not forget to change host to local from \src\service\request.js
 ```
 
 
