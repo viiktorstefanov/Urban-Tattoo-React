@@ -13,7 +13,7 @@ export const registerMessages = {
 };
 
 export const commentsMessages = {
-    comment: "Allowed comment length is between 4 and 100 characters long",
+    comment: "Comment must be between 4 and 100 characters long",
 };
 
 export const editProfileMessages = {

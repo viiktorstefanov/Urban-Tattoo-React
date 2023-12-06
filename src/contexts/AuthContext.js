@@ -16,6 +16,11 @@ export const AuthProvider = ({ children }) => {
 
     //user login handler
     const onLoginSubmit = async (data) => {
+
+        if(!data.email || !data.password) {
+            return notification.warning('All fields are required');
+        };
+
         try {
             setIsSubmit(true);
             const result = await login(data);
@@ -40,10 +45,9 @@ export const AuthProvider = ({ children }) => {
             return notification.warning('All fields are required');
         };
 
-        if(data.password !== data.repeatPassword) {
+        if(data.password !== repeatPassword) {
             return notification.warning('Passwords do not match');
         };
-
 
         try {
             setIsSubmit(true);
@@ -80,6 +84,11 @@ export const AuthProvider = ({ children }) => {
 
     //edit user handler
     const onEditSubmit = async (data) => {
+
+        if(!data.firstName || !data.lastName || !data.phone) {
+            return notification.warning('All fields are required');
+        };
+
         try {
             setIsSubmit(true);
             const result = await userEdit(data, user);

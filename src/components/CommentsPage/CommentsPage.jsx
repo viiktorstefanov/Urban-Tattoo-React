@@ -10,8 +10,6 @@ import commentsReducer from '../../reducers/commentsReducer';
 import notification from '../../service/notification';
 import useValidate from '../../hooks/useValidate';
 import { commentsValidator } from '../../service/validation';
-import { commentsMessages } from '../../service/validationMessages';
-
 
 export default function CommentsPage() {
     const { id } = useParams();
@@ -40,6 +38,11 @@ export default function CommentsPage() {
 
     //add comment
     const addCommentHandler = async (data) => {
+
+        if(data.comment === '') {
+            return notification.warning('Type your comment');
+        };
+
         try {
             setIsSubmit(true);
             const comment = await addTattooCommentById(id, data, user);
@@ -77,11 +80,13 @@ export default function CommentsPage() {
     //when user submit edited comment
     const onSubmitEdit = async (e) => {
         e.preventDefault();
-        const editCommentValidation = editValues.comment.trim() != "" && editValues.comment.length <= 100 && editValues.comment.length >= 4;
+        const editCommentValidation = editValues.comment.trim() !== "" && editValues.comment.length <= 100 && editValues.comment.length >= 4;
+
         if (!editCommentValidation) {
-            notification.warning("Allowed comment length is between 4 and 100 characters long");
+            notification.warning("Comment must be between 4 and 100 characters long");
             return;
-        }
+        };
+
         try {
             setIsEditSubmit(true);
             const editedCommentTattoo = await editTattooCommentById(commentId, editValues, user);
@@ -124,7 +129,7 @@ export default function CommentsPage() {
 
     const {
         onBlur
-    } = useValidate(primaryValidationValues, values, commentsValidator, commentsMessages);
+    } = useValidate(primaryValidationValues, values, commentsValidator);
 
     if (!state) {
         return <Spinner />;

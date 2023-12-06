@@ -24,8 +24,8 @@ export default function LoginPage() {
     const { values, onChange, onSubmit } = useForm(primaryValues, onLoginSubmit);
 
     const {
-        onBlur
-    } = useValidate(primaryValidationValues, values, registerValidator, loginMessages);
+        onBlur, validationErrors
+    } = useValidate(primaryValidationValues, values, registerValidator);
 
     return (
         <section id="loginPage" className={styles.loginPage}>
@@ -38,12 +38,20 @@ export default function LoginPage() {
                     <input
                         onChange={onChange}
                         onBlur={onBlur}
+                        className={validationErrors.email ? styles.warning : null}
                         id="email"
                         name="email"
                         type="text"
                         placeholder="example@email.com"
                         value={values.email}
                     />
+                    {
+                        validationErrors.email ?
+                            <p className={styles['validation-message']}>
+                                {loginMessages.email}
+                            </p>
+                            : null
+                    }
                 </div>
                 <div>
                     <label
@@ -53,12 +61,20 @@ export default function LoginPage() {
                     <input
                         onChange={onChange}
                         onBlur={onBlur}
+                        className={validationErrors.password ? styles.warning : null}
                         id="password"
                         name="password"
                         type="password"
                         placeholder="********"
                         value={values.password}
                     />
+                      {
+                        validationErrors.password ?
+                            <p className={styles['validation-message']}>
+                                {loginMessages.password}
+                            </p>
+                            : null
+                    }
                 </div>
                 <button className={styles.button} disabled={isSubmit ? true : false} type="submit">{isSubmit ? 'Loading...' : 'Sign in'}</button>
                 <p className={styles.field}>

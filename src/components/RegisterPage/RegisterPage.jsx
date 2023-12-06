@@ -32,7 +32,7 @@ export default function RegisterPage() {
 
     const {
         onBlur, validationErrors
-    } = useValidate(primaryValidationValues, values, registerValidator, registerMessages);
+    } = useValidate(primaryValidationValues, values, registerValidator);
 
     return (
         <section id="registerPage" className={styles.registerPage}>

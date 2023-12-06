@@ -12,7 +12,6 @@
     text-align: center;
     position: relative;
     width: 350px;
-    height: 550px;
     border-radius: 20px;
     padding: 40px;
     box-sizing: border-box;
@@ -32,10 +31,6 @@
     box-sizing: border-box;
   }
 
-  .editForm input:hover {
-    background: #f3d22d;
-  }
-  
   .editForm label {
     margin-bottom: 4px;
   }
@@ -96,6 +91,13 @@
     margin-top: 10%;
   }
 
-  .editForm .validationWarning{
-    color:#f3d22d;
+  .editForm .warning {
+    border: 3px solid rgb(224, 71, 71);
+  }
+  
+  .editForm .validation-message {
+    margin-top: 10px;
+    color: rgb(224, 71, 71);
+    margin-bottom: 5%;
+    font-size: 13px;
   }

@@ -25,8 +25,8 @@ export default function EditProfilePage() {
     const { values, onChange, onSubmit } = useForm(primaryValues, onEditSubmit);
 
     const {
-        onBlur
-    } = useValidate(primaryValidationValues, values, editProfileValidator, editProfileMessages);
+        onBlur, validationErrors
+    } = useValidate(primaryValidationValues, values, editProfileValidator);
 
     return (
         <section id="editProfilePage" className={styles.editProfilePage}>
@@ -42,7 +42,7 @@ export default function EditProfilePage() {
                         First name:
                     </label>
                     <input
-                        className={styles.input}
+                        className={validationErrors.firstName ? styles.warning : null}
                         id="firstName"
                         name="firstName"
                         type="text"
@@ -50,6 +50,13 @@ export default function EditProfilePage() {
                         onChange={onChange}
                         onBlur={onBlur}
                     />
+                     {
+                        validationErrors.firstName ?
+                            <p className={styles['validation-message']}>
+                                {editProfileMessages.firstName}
+                            </p>
+                            : null
+                    }
                 </div>
 
                 <div>
@@ -58,7 +65,7 @@ export default function EditProfilePage() {
                         Last name:
                     </label>
                     <input
-                        className={styles.input}
+                        className={validationErrors.lastName ? styles.warning : null}
                         id="lastName"
                         name="lastName"
                         type="text"
@@ -66,6 +73,13 @@ export default function EditProfilePage() {
                         onChange={onChange}
                         onBlur={onBlur}
                     />
+                     {
+                        validationErrors.lastName ?
+                            <p className={styles['validation-message']}>
+                                {editProfileMessages.lastName}
+                            </p>
+                            : null
+                    }
                 </div>
 
                 <div>
@@ -74,7 +88,7 @@ export default function EditProfilePage() {
                         Phone:
                     </label>
                     <input
-                        className={styles.input}
+                        className={validationErrors.phone ? styles.warning : null}
                         id="phone"
                         name="phone"
                         type="number"
@@ -82,6 +96,13 @@ export default function EditProfilePage() {
                         onChange={onChange}
                         onBlur={onBlur}
                     />
+                     {
+                        validationErrors.phone ?
+                            <p className={styles['validation-message']}>
+                                {editProfileMessages.phone}
+                            </p>
+                            : null
+                    }
                 </div>
 
                 <div className={styles['deleteProfileDiv']}>
