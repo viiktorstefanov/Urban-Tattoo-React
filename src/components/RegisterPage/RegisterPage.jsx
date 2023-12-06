@@ -31,19 +31,19 @@ export default function RegisterPage() {
     const { values, onChange, onSubmit } = useForm(primaryValues, onRegisterSubmit);
 
     const {
-        onBlur
+        onBlur, validationErrors
     } = useValidate(primaryValidationValues, values, registerValidator, registerMessages);
 
     return (
         <section id="registerPage" className={styles.registerPage}>
             <form onSubmit={onSubmit} className={styles.registerForm} method='POST'>
                 <div>
-                    <label                        
+                    <label
                         htmlFor="name">
                         First name:
                     </label>
                     <input
-                        className={styles.input}
+                        className={validationErrors.firstName ? styles.warning : null}
                         onChange={onChange}
                         onBlur={onBlur}
                         id="firstName"
@@ -52,6 +52,13 @@ export default function RegisterPage() {
                         placeholder="First name"
                         value={values.firstName}
                     />
+                     {
+                        validationErrors.firstName ?
+                            <p className={styles['validation-message']}>
+                                {registerMessages.firstName}
+                            </p>
+                            : null
+                    }
                 </div>
 
                 <div>
@@ -60,7 +67,7 @@ export default function RegisterPage() {
                         Last name:
                     </label>
                     <input
-                        className={styles.input}
+                        className={validationErrors.lastName ? styles.warning : null}
                         onChange={onChange}
                         onBlur={onBlur}
                         id="lastName"
@@ -69,6 +76,13 @@ export default function RegisterPage() {
                         placeholder="Last name"
                         value={values.lastName}
                     />
+                    {
+                        validationErrors.lastName ?
+                            <p className={styles['validation-message']}>
+                                {registerMessages.lastName}
+                            </p>
+                            : null
+                    }
                 </div>
 
                 <div>
@@ -78,7 +92,7 @@ export default function RegisterPage() {
                     </label>
                     <input
                         onChange={onChange}
-                        className={styles.input}
+                        className={validationErrors.email ? styles.warning : null}
                         onBlur={onBlur}
                         id="email"
                         name="email"
@@ -86,6 +100,13 @@ export default function RegisterPage() {
                         value={values.email}
                         placeholder="example@email.com"
                     />
+                    {
+                        validationErrors.email ?
+                            <p className={styles['validation-message']}>
+                                {registerMessages.email}
+                            </p>
+                            : null
+                    }
                 </div>
 
                 <div>
@@ -94,7 +115,7 @@ export default function RegisterPage() {
                         Password:
                     </label>
                     <input
-                        className={styles.input}
+                        className={validationErrors.password ? styles.warning : null}
                         onChange={onChange}
                         onBlur={onBlur}
                         id="password"
@@ -103,6 +124,13 @@ export default function RegisterPage() {
                         placeholder="New password"
                         value={values.password}
                     />
+                    {
+                        validationErrors.password ?
+                            <p className={styles['validation-message']}>
+                                {registerMessages.password}
+                            </p>
+                            : null
+                    }
                 </div>
 
                 <div>
@@ -111,7 +139,7 @@ export default function RegisterPage() {
                         Repeat Password:
                     </label>
                     <input
-                        className={styles.input}
+                        className={validationErrors.repeatPassword ? styles.warning : null}
                         onChange={onChange}
                         onBlur={onBlur}
                         id="repeatPassword"
@@ -120,6 +148,13 @@ export default function RegisterPage() {
                         placeholder="Repeat Password"
                         value={values.repeatPassword}
                     />
+                    {
+                        validationErrors.repeatPassword ?
+                            <p className={styles['validation-message']}>
+                                {registerMessages.repeatPassword}
+                            </p>
+                            : null
+                    }
                 </div>
 
 
@@ -129,7 +164,7 @@ export default function RegisterPage() {
                         Phone:
                     </label>
                     <input
-                        className={styles.input}
+                        className={validationErrors.phone ? styles.warning : null}
                         onChange={onChange}
                         onBlur={onBlur}
                         id="phone"
@@ -138,6 +173,13 @@ export default function RegisterPage() {
                         placeholder="+359886003010"
                         value={values.phone}
                     />
+                    {
+                        validationErrors.phone ?
+                            <p className={styles['validation-message']}>
+                                {registerMessages.phone}
+                            </p>
+                            : null
+                    }
                 </div>
 
 
@@ -150,9 +192,9 @@ export default function RegisterPage() {
 
                 <p className={styles.field}>
                     <span>
-                        Sign in 
+                        Sign in
                         <Link to={'/login'} className={styles['reg-btn']} >
-                             here
+                            here
                         </Link>
                     </span>
                 </p>

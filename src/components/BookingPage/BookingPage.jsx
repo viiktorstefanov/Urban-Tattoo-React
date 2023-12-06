@@ -19,6 +19,11 @@ export default function BookingPage() {
     const [hours, setHours] = useState(false);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (!user) {
+            notification.warning('Only registered users can book an appointment', 5000);
+        };
+    }, [user]);
 
     useEffect(() => {
         getAllReservations()
@@ -44,12 +49,8 @@ export default function BookingPage() {
                     return navigate('*');
                 }
             });
-    }, [])
+    }, []);
 
-
-    if (!user) {
-        notification.warning('Only registered users can book an appointment', 5000);
-    };
 
     const onSubmit = async (e) => {
         e.preventDefault();

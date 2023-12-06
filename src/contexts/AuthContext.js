@@ -36,6 +36,15 @@ export const AuthProvider = ({ children }) => {
     const onRegisterSubmit = async (data) => {
         const { repeatPassword, ...registerData } = data;
 
+        if(!data.firstName || !data.lastName || !data.phone || !data.email || !data.password || !data.repeatPassword) {
+            return notification.warning('All fields are required');
+        };
+
+        if(data.password !== data.repeatPassword) {
+            return notification.warning('Passwords do not match');
+        };
+
+
         try {
             setIsSubmit(true);
             const result = await register(registerData);

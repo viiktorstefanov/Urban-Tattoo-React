@@ -7,7 +7,7 @@ export const registerMessages = {
         email: "Please enter a valid email",
         firstName: "First name must be at least 3 characters long",
         lastName: "Last name must be at least 3 characters long",
-        phone: "Phone number must be at least 10 characters long",
+        phone: "Enter a valid phone number",
         password: "Password must be at least 8 characters long",
         repeatPassword: 'Passwords do not match',
 };
@@ -19,5 +19,5 @@ export const commentsMessages = {
 export const editProfileMessages = {
     firstName: "First name must be at least 3 characters long",
     lastName: "Last name must be at least 3 characters long",
-    phone: "Phone number must be at least 10 characters long",
+    phone: "Enter a valid phone number",
 };
