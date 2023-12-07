@@ -9,10 +9,19 @@ import { TattooContext } from '../../contexts/TattooContext';
 import { PaginatedItems } from '../Pagination/Pagination';
 import { Link } from 'react-router-dom';
 import { IoIosHeartDislike  } from 'react-icons/io'
+import { useEffect } from 'react';
 
 export default function GalleryPage() {
     const { tattoos, openFullImg, model, deleteHandler, tempImgSrc, onEscPress, onCloseIconClick, id, isLiked, isOwner, likeHandler, unlikeHandler } = useContext(TattooContext);
     const { user } = useContext(AuthContext);
+
+    useEffect(() => {
+        if (model) {
+            document.body.style.overflow = 'hidden';
+        }else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [model]);
 
     return (
         <>
