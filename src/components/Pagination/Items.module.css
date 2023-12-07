@@ -26,3 +26,83 @@
     border-radius: 2%;
     object-fit: cover;
 }
+
+@media screen and (max-width: 480px) and (min-width: 360px) {
+    .wrapper-images {
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+        grid-gap: 1.5% 5%;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+    .wrapper-images {
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+        grid-gap: 1.5% 5%;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+    .wrapper-images {
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+        grid-gap: 1.5% 5%;
+    }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+    .wrapper-images {
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+        grid-gap: 1.5% 5%;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+    .wrapper-images {
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+        grid-gap: 1.5% 5%;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+    .wrapper-images {
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+        grid-gap: 1.5% 3%;
+    }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+    .wrapper-images {
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+        grid-gap: 5.5% 3%;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+    .wrapper-images {
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+        grid-gap: 5.5% 3%;
+    }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+    .wrapper-images {
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+        grid-gap: 5.5% 3%;
+    }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+    .wrapper-images {
+        max-width: 80%;
+        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+        grid-gap: 5.5% 3%;
+    }
+}

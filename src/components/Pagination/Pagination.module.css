@@ -5,6 +5,7 @@
     align-items: center;
     text-align: center;
     list-style: none;
+
 }
 
 .pagination li a {
@@ -13,29 +14,97 @@
     font-size: 20px;
 }
 
-.activeLinkClassName{
+.activeLinkClassName {
     color: #f3d22d;
     min-width: 32px;
     border-color: transparent;
 }
 
-.activeLinkClassName:hover{
+.activeLinkClassName:hover {
     color: #f3d22d;
     border-color: transparent;
 }
 
-.pagination-arrow-next{
+.pagination-arrow-next {
     padding-top: 3px;
     font-size: 24px;
 }
 
-.pagination-arrow-previous{
+.pagination-arrow-previous {
     padding-top: 3px;
     font-size: 24px;
 }
 
-.pagination-dots-break{
+.pagination-dots-break {
     padding-top: 3px;
     font-size: 24px;
 }
 
+@media screen and (max-width: 480px) and (min-width: 360px) {
+    .pagination {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+    .pagination {
+        margin-bottom: 50px;
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+    .pagination {
+        margin-bottom: 50px;
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+    .pagination {
+        margin-bottom: 50px;
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+    .pagination {
+        margin-bottom: 50px;
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+    .pagination {
+        margin-bottom: 50px;
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+    .pagination {
+        margin-bottom: 50px;
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+    .pagination {
+        margin-bottom: 50px;
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+    .pagination {
+        margin-bottom: 50px;
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+    .pagination {
+        margin-bottom: 50px;
+        margin-top: 40px;
+    }
+}
