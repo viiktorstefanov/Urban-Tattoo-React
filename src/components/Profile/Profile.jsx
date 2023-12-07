@@ -1,5 +1,5 @@
 import { BiSolidUserDetail } from 'react-icons/bi';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import styles from './Profile.module.css';
 import ProfileUser from './ProfileUser';
 import ProfileGuest from './ProfileGuest';

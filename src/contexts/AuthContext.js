@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
     const [isSubmit, setIsSubmit] = useState(false);
     const [isDeleteSubmit, setIsDeleteSubmit] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
+    const [showResponsive, setShowResponsive] = useState(false);
     const navigate = useNavigate();
 
     //user login handler
@@ -167,7 +168,9 @@ export const AuthProvider = ({ children }) => {
         isDeleteSubmit,
         clearUser,
         showProfile,
-        setShowProfile
+        setShowProfile,
+        showResponsive,
+        setShowResponsive
     };
 
     return (

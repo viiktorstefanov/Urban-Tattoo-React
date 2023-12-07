@@ -10,7 +10,7 @@ export default function Navigation() {
     return (
         <nav>
             <ul className={styles['nav-bar']}>
-                <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']} ${styles.home}`}>
+                <li className={`${styles['nav-link']} ${styles.home} ${styles['nav-li']} ${styles['navigation']} ${styles.home}`}>
                     <Link to="/">HOME</Link>
                 </li>
                 <li id="gallery" className={`${styles['nav-link']} ${styles.gallery} ${styles['nav-li']} ${styles['navigation']}`}>
@@ -22,12 +22,12 @@ export default function Navigation() {
                 <li className={`${styles['nav-link']} ${styles.booking} ${styles['nav-li']} ${styles['navigation']}`}>
                     <Link to="/booking">BOOKING</Link>
                 </li>
-                {user && user._role === 'user' ? <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
+                {user && user._role === 'user' ? <li className={`${styles['nav-link']} ${styles.contact} ${styles['nav-li']} ${styles['navigation']}`}>
                     <Link to="/contact">CONTACT</Link></li> : null}
-                {!user && <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
+                {!user && <li className={`${styles['nav-link']} ${styles.contact} ${styles['nav-li']} ${styles['navigation']}`}>
                     <Link to="/contact">CONTACT</Link></li>}
                 {     
-                  user._role === 'admin' && <li className={`${styles['nav-link']} ${styles['nav-li']} ${styles['navigation']}`}>
+                  user._role === 'admin' && <li className={`${styles['nav-link']} ${styles.upload} ${styles['nav-li']} ${styles['navigation']}`}>
                   <Link to="/upload">UPLOAD</Link></li>                     
                 }
             </ul>
