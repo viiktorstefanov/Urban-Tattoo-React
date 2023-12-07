@@ -32,30 +32,30 @@ export default function ResponsiveNavigation() {
                         <li className={`${styles['nav-logo']} ${styles['nav-li']}`}>
                             <img src="/assets/images/logo new 2023 transperant cutted.png" alt="logo" />
                         </li>
-                        <li className={styles['dropdown-navigation-dropdownItem']}>
+                        <li className={styles['dropdown-navigation-dropdownItem']} onClick={() => setShowResponsive(!showResponsive)}>
                             <Link to='/' className={styles['dropdown-navigation-dropdownItem-link']}>Home</Link>
                         </li>
-                        <li className={styles['dropdown-navigation-dropdownItem']}>
+                        <li className={styles['dropdown-navigation-dropdownItem']} onClick={() => setShowResponsive(!showResponsive)}>
                             <Link to='/gallery?page=1' className={styles['dropdown-navigation-dropdownItem-link']}>Gallery</Link>
                         </li>
-                        <li className={styles['dropdown-navigation-dropdownItem']}>
+                        <li className={styles['dropdown-navigation-dropdownItem']} onClick={() => setShowResponsive(!showResponsive)}>
                             <Link to='/booking' className={styles['dropdown-navigation-dropdownItem-link']}>Booking</Link>
                         </li>
                         {
                             user && user._role === 'user' ?
-                                <li className={styles['dropdown-navigation-dropdownItem']}>
+                                <li className={styles['dropdown-navigation-dropdownItem']} onClick={() => setShowResponsive(!showResponsive)}>
                                     <Link to='/contact' className={styles['dropdown-navigation-dropdownItem-link']}>Contact</Link>
                                 </li> : null
                         }
                         {
                             !user &&
-                            <li className={styles['dropdown-navigation-dropdownItem']}>
+                            <li className={styles['dropdown-navigation-dropdownItem']} onClick={() => setShowResponsive(!showResponsive)}>
                                 <Link to='/contact' className={styles['dropdown-navigation-dropdownItem-link']}>Contact</Link>
                             </li>
                         }
                         {
                             user._role === 'admin' &&
-                            <li className={styles['dropdown-navigation-dropdownItem']}>
+                            <li className={styles['dropdown-navigation-dropdownItem']} onClick={() => setShowResponsive(!showResponsive)}>
                                 <Link to='/upload' className={styles['dropdown-navigation-dropdownItem-link']}>UPLOAD</Link>
                             </li>
                         }
