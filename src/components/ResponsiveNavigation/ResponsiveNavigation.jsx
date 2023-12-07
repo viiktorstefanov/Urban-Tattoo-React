@@ -1,12 +1,19 @@
 import { AuthContext } from "../../contexts/AuthContext";
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { IoMenu } from "react-icons/io5";
 import styles from './ResponsiveNavigation.module.css';
 import { Link } from "react-router-dom";
 
 export default function ResponsiveNavigation() {
-    const { user } = useContext(AuthContext);
+    const { user, setShowProfile } = useContext(AuthContext);
     const [show, setshow] = useState(false);
+
+    //subscribe for profile menu
+    useEffect(() => {
+        if (show) {
+            setShowProfile(false);
+        }
+    }, [show])
 
     return (
         <div className={styles['responsive-navigation-dropdown']} onMouseEnter={() => show ? null : setshow(true)}

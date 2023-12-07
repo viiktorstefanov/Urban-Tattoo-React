@@ -5,8 +5,8 @@
 
 .responsive-navigation-dropdown {
     text-align: center;
-    font-family:'Roboto',sans-serif;
-    /* font-family: 'Marker'; */
+    font-family: 'Marker';
+    display: none;
   }
   
   .navigation-menu-trigger-ico{
@@ -49,6 +49,7 @@
     padding: 10px  0;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     font-size: 16px;
+    font-size: 28px;
   }
   .dropdown-navigation ul li:last-child{
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);

@@ -7,8 +7,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Profile() {
 
-    const [showProfile, setShowProfile] = useState(false);
-    const { user } = useContext(AuthContext);
+    const { user, showProfile, setShowProfile } = useContext(AuthContext);
 
     return (
         <div className={styles['profile-dropdown']} onMouseEnter={() => showProfile ? null : setShowProfile(true)}

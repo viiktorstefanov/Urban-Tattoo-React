@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useLocalStorage('userData', false);
     const [isSubmit, setIsSubmit] = useState(false);
     const [isDeleteSubmit, setIsDeleteSubmit] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
     const navigate = useNavigate();
 
     //user login handler
@@ -164,7 +165,9 @@ export const AuthProvider = ({ children }) => {
         isAdmin: user._role === 'admin' ? true : false,
         isSubmit,
         isDeleteSubmit,
-        clearUser
+        clearUser,
+        showProfile,
+        setShowProfile
     };
 
     return (
