@@ -121,3 +121,154 @@
 
 
 
+@media screen and (max-width: 480px) and (min-width: 360px) {
+    .uploadPage{
+      margin-top: 12%;
+      margin-bottom: 15%;
+    }
+   .file-card{
+    min-width: 320px;
+    min-height: 310px;
+    max-width: 320px;
+    max-height: 310px;
+   }
+   .file{
+    width: 100%;
+    overflow: auto;
+   }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+  .uploadPage{
+    margin-top: 10%;
+    margin-bottom: 9%;
+  }
+ .file-card{
+  min-width: 420px;
+  min-height: 300px;
+ }
+ .file{
+  width: 100%;
+  overflow: auto;
+ }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+  .uploadPage{
+    margin-top: 6%;
+    margin-bottom: 6%;
+  }
+ .file-card{
+  min-width: 430px;
+  min-height: 300px;
+ }
+ .file{
+  width: 100%;
+  overflow: auto;
+ }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+  .uploadPage{
+    margin-top: 4%;
+    margin-bottom: 5%;
+  }
+ .file-card{
+  min-width: 430px;
+  min-height: 300px;
+ }
+ .file{
+  width: 100%;
+  overflow: auto;
+ }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+  .uploadPage{
+    margin-top: 4%;
+    margin-bottom: 5%;
+  }
+ .file-card{
+  min-width: 430px;
+  min-height: 300px;
+ }
+ .file{
+  width: 100%;
+  overflow: auto;
+ }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+  .uploadPage{
+    margin-top: 6%;
+    margin-bottom: 4%;
+  }
+ .file-card{
+  min-width: 430px;
+  min-height: 300px;
+ }
+ .file{
+  width: 100%;
+  overflow: auto;
+ }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+  .uploadPage{
+    margin-top: 4%;
+    margin-bottom: 4%;
+  }
+ .file-card{
+  min-width: 430px;
+  min-height: 300px;
+ }
+ .file{
+  width: 100%;
+  overflow: auto;
+ }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+  .uploadPage{
+    margin-top: 4%;
+    margin-bottom: 2%;
+  }
+ .file-card{
+  min-width: 430px;
+  min-height: 300px;
+ }
+ .file{
+  width: 100%;
+  overflow: auto;
+ }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+  .uploadPage{
+    margin-top: 4%;
+    margin-bottom: 5%;
+  }
+ .file-card{
+  min-width: 430px;
+  min-height: 300px;
+ }
+ .file{
+  width: 100%;
+  overflow: auto;
+ }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+  .uploadPage{
+    margin-top: 4%;
+    margin-bottom: 7%;
+  }
+ .file-card{
+  min-width: 430px;
+  min-height: 300px;
+ }
+ .file{
+  width: 100%;
+  overflow: auto;
+ }
+}

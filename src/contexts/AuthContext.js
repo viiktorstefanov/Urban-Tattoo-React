@@ -28,6 +28,7 @@ export const AuthProvider = ({ children }) => {
             const result = await login(data);
             notification.success('Login Successful', 3000);
             setUser(result);
+            setShowProfile(false);
             navigate('/')
         } catch (e) {
             if (e.status === 403) {
@@ -56,6 +57,7 @@ export const AuthProvider = ({ children }) => {
             const result = await register(registerData);
             notification.success('Registration successful', 3000);
             setUser(result);
+            setShowProfile(false);
             navigate('/')
         } catch (e) {
             if(e.message.length > 0) {
@@ -75,6 +77,7 @@ export const AuthProvider = ({ children }) => {
             notification.loading('Please wait');
             await userLogout(user);
             setUser(false);
+            setShowProfile(false);
             notification.update('Logout successful');
             navigate('/');
         } catch (e) {

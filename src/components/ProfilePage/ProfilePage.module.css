@@ -109,3 +109,63 @@
     width: 80%;
     border-radius: 8px;
 }
+
+@media screen and (max-width: 480px) and (min-width: 360px) {
+   .profilePage{
+    margin-top: 7%;
+   }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+    .profilePage{
+        margin-top: 7%;
+       }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+    .profilePage{
+        margin-top: 5%;
+       }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+    .profilePage{
+        margin-top: 5%;
+       }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+    .profilePage{
+        margin-top: 4%;
+       }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+    .profilePage{
+        margin-top: 4%;
+       }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+    .profilePage{
+        margin-top: 4%;
+       }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+    .profilePage{
+        margin-top: 3%;
+       }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+    .profilePage{
+        margin-top: 2%;
+       }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+    .profilePage{
+        margin-top: 2%;
+       }
+}
