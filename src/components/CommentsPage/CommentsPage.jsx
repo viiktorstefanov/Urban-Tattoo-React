@@ -22,6 +22,8 @@ export default function CommentsPage() {
     const [isSubmit, setIsSubmit] = useState(false);
     const [isEditSubmit, setIsEditSubmit] = useState(false);
 
+    const body = document.body.style.overflow;
+
     //getting tattoo information
     useEffect(() => {
         getTattooPropsById(id)
@@ -35,6 +37,14 @@ export default function CommentsPage() {
                 return notification.error(e.message, 3000);
             });
     }, [id]);
+
+
+    //chech overflow for scrolling down
+    useEffect(() => {
+        if (body === 'hidden') {
+            document.body.style.overflow = 'unset';
+        } 
+    }, [body]);
 
     //add comment
     const addCommentHandler = async (data) => {
@@ -82,7 +92,7 @@ export default function CommentsPage() {
         e.preventDefault();
         const editCommentValidation = editValues.comment.trim() !== "" && editValues.comment.length <= 100 && editValues.comment.length >= 4;
 
-        if (!editCommentValidation) {
+        if (editCommentValidation) {
             notification.warning("Comment must be between 4 and 100 characters long");
             return;
         };

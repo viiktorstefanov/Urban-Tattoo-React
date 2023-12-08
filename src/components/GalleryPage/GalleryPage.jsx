@@ -43,7 +43,7 @@ export default function GalleryPage() {
                                                 </div> : null}
 
                                                 <Link to={`/gallery/${id}/comments`}>
-                                                    <FontAwesomeIcon onClick={() => { onCloseIconClick() }} icon={faComment} />
+                                                    <FontAwesomeIcon  icon={faComment} />
                                                 </Link>
                                             </>
                                             : null

@@ -172,10 +172,81 @@ abbr:hover{
   color: red;
   background-color: red;
 }
+
 .react-calendar__month-view__days__day--notAvailable:hover{
   color: red;
   background-color: red;
   abbr{
     color: white;
+  }
+}
+
+@media screen and (max-width: 480px) and (min-width: 360px) {
+  .react-calendar{
+    max-width: 71%;
+    margin-bottom: 2%;
+  }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+  .react-calendar{
+    max-width: 91%;
+    margin-bottom: 2%;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+  .react-calendar{
+    max-width: 100%;
+    margin-bottom: 2%;
+  }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+  .react-calendar{
+    max-width: 100%;
+    margin-bottom: 2%;
+  }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+  .react-calendar{
+    max-width: 100%;
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+  .react-calendar{
+    max-width: 100%;
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+  .react-calendar{
+    max-width: 100%;
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+  .react-calendar{
+    max-width: 100%;
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+  .react-calendar{
+    max-width: 100%;
+    margin-bottom: 10%;
+  }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+  .react-calendar{
+    max-width: 100%;
+    margin-bottom: 10%;
   }
 }

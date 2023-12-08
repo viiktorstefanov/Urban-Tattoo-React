@@ -75,3 +75,73 @@
   display: flex;
   gap: 10px;
 }
+
+@media screen and (max-width: 480px) and (min-width: 360px) {
+   .bookingPage{
+      margin-top: 10%;
+      margin-bottom: 15%;
+   }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+  .bookingPage{
+    margin-top: 10%;
+    margin-bottom: 15%;
+ }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+  .bookingPage{
+    margin-top: 10%;
+    margin-bottom: 12%;
+ }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+  .bookingPage{
+    margin-top: 10%;
+    margin-bottom: 10%;
+ }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+  .bookingPage{
+    margin-top: 7%;
+    margin-bottom: 10%;
+ }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+  .bookingPage{
+    margin-top: 7%;
+    margin-bottom: 10%;
+ }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+  .bookingPage{
+    margin-top: 7%;
+    margin-bottom: 10%;
+ }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+  .bookingPage{
+    margin-top: 7%;
+    margin-bottom: 10%;
+ }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+  .bookingPage{
+    margin-top: 7%;
+    margin-bottom: 5%;
+ }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+  .bookingPage{
+    margin-top: 5%;
+    margin-bottom: 3%;
+ }
+}
