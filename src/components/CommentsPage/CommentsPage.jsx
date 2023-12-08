@@ -92,7 +92,7 @@ export default function CommentsPage() {
         e.preventDefault();
         const editCommentValidation = editValues.comment.trim() !== "" && editValues.comment.length <= 100 && editValues.comment.length >= 4;
 
-        if (editCommentValidation) {
+        if (!editCommentValidation) {
             notification.warning("Comment must be between 4 and 100 characters long");
             return;
         };
