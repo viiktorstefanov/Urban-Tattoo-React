@@ -30,7 +30,7 @@
    - [Admin Privileges](#admin-privileges)
    - [User Profile](#user-profile)
    - [Contact Page](#contact-page)
-3. [Functionalities](#getting-started)
+3. [Functionalities](#functionalities)
 4. [Getting Started](#getting-started)
    - [Installation](#installation)
 5. [Usage](#usage)
@@ -88,6 +88,7 @@ Upload page/upload file    | ![alt](https://img.icons8.com/emoji/60/000000/cross
 Create reservation | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
 Like image | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
 Create/Read/Update/Delete comment | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
+Responsive design | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
 
 ## Getting Started <a name="getting-started"></a>
 
