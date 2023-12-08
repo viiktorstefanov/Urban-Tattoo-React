@@ -1,18 +1,79 @@
-.problemPage{
+.problemPage {
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
+    margin-top: 5%;
 }
 
-.message-problem{
+.message-problem {
     color: rgb(206, 38, 38);
     margin-top: 10%;
 }
 
-.errors-problem{
+.errors-problem {
     color: white;
     margin-top: 20px;
+}
+
+@media screen and (max-width: 480px) and (min-width: 360px) {
+    .message-problem {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+    .message-problem {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+    .message-problem {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+    .message-problem {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+    .message-problem {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+    .message-problem {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+    .message-problem {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+    .message-problem {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+    .message-problem {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+    .message-problem {
+        font-size: 26px;
+    }
 }
