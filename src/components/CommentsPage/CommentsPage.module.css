@@ -68,7 +68,6 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
-    width: 100%;
 }
 
 .comments-header{
@@ -135,110 +134,132 @@ padding: 10px;
 
   @media screen and (max-width: 480px) and (min-width: 360px) {
     .commentsPage{
-        margin-top: 12%;
+        margin-top: 10%;
         margin-bottom: 10%;
     }
     .tattoo-img{
-        width: 70vw;
-        height: 45vh;
+        width: 40vw;
+        height: 40vh;
+    }
+    .comments-header{
+        font-size: 18px;
+    }
+    .comment-text{
+        width: 190px;
+        height: 150px;
+        font-size: 16px;
+    }
+    .commentsPage .comment{
+        width: 180px;
     }
   }
   
   @media screen and (max-width: 600px) and (min-width: 481px) {
     .commentsPage{
-        margin-top: 12%;
+        margin-top: 9%;
         margin-bottom: 10%;
     }
     .tattoo-img{
-        width: 60vw;
-        height: 65vh;
+        width: 30vw;
+        height: 60vh;
     }
   }
   
   @media screen and (max-width: 768px) and (min-width: 601px) {
     .commentsPage{
-        margin-top: 12%;
+        margin-top: 9%;
         margin-bottom: 10%;
     }
     .tattoo-img{
-        width: 50vw;
-        height: 70vh;
+        width: 30vw;
+        height: 60vh;
     }
   }
   
   @media screen and (max-width: 900px) and (min-width: 769px) {
     .commentsPage{
-        margin-top: 12%;
+        margin-top: 8%;
         margin-bottom: 10%;
     }
     .tattoo-img{
-        width: 50vw;
-        height: 80vh;
+        width: 30vw;
+        height: 60vh;
     }
   }
   
   @media screen and (max-width: 1024px) and (min-width: 901px) {
     .commentsPage{
-        margin-top: 12%;
+        margin-top: 8%;
         margin-bottom: 10%;
     }
     .tattoo-img{
-        width: 45vw;
-        height: 90vh;
+        width: 30vw;
+        height: 60vh;
     }
   }
   
   @media screen and (max-width: 1200px) and (min-width: 1025px) {
     .commentsPage{
-        margin-top: 12%;
-        margin-bottom: 10%;
+        margin-top: 7%;
+        margin-bottom: 21%;
     }
     .tattoo-img{
-        width: 45vw;
-        height: 100vh;
+        width: 22%;
+        height: 100%;
     }
   }
   
   @media screen and (max-width: 1440px) and (min-width: 1201px) {
     .commentsPage{
-        margin-top: 12%;
-        margin-bottom: 10%;
+        margin-top: 5%;
+        margin-bottom: 21%;
     }
     .tattoo-img{
-        width: 45vw;
-        height: 120vh;
+        width: 17%;
+        height: 100%;
     }
   }
   
   @media screen and (max-width: 1600px) and (min-width: 1441px) {
     .commentsPage{
-        margin-top: 12%;
-        margin-bottom: 10%;
+        margin-top: 5%;
+        margin-bottom: 21%;
     }
     .tattoo-img{
-        width: 35vw;
-        height: 140vh;
+        width: 15%;
+        height: 100%;
     }
   }
   
   @media screen and (max-width: 1920px) and (min-width: 1601px) {
     .commentsPage{
-        margin-top: 12%;
-        margin-bottom: 10%;
+        margin-top: 5%;
+        margin-bottom: 21%;
     }
     .tattoo-img{
-        width: 30vw;
-        height: 140vh;
+        width: 15%;
+        height: 100%;
     }
   }
   
   @media screen and (max-width: 2560px) and (min-width: 1921px) {
     .commentsPage{
-        margin-top: 12%;
-        margin-bottom: 10%;
+        margin-top: 3%;
+        margin-bottom: 4%;
     }
     .tattoo-img{
-        width: 25vw;
-        height: 140vh;
+        width: 30%;
+        height: 50%;
+    }
+    .comments-header{
+        font-size: 18px;
+    }
+    .comment-text{
+        width: 300px;
+        height: 150px;
+        font-size: 16px;
+    }
+    .commentsPage .comment{
+        width: 290px;
     }
   }
