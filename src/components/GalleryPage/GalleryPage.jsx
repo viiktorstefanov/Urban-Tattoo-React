@@ -8,7 +8,7 @@ import { faTrashCan, faCircleXmark, faComment, faHeart } from '@fortawesome/free
 import { TattooContext } from '../../contexts/TattooContext';
 import { PaginatedItems } from '../Pagination/Pagination';
 import { Link } from 'react-router-dom';
-import { IoIosHeartDislike  } from 'react-icons/io'
+import { IoIosHeartDislike } from 'react-icons/io'
 import { useEffect } from 'react';
 
 export default function GalleryPage() {
@@ -18,7 +18,7 @@ export default function GalleryPage() {
     useEffect(() => {
         if (model) {
             document.body.style.overflow = 'hidden';
-        }else {
+        } else {
             document.body.style.overflow = 'unset';
         }
     }, [model]);
@@ -27,25 +27,27 @@ export default function GalleryPage() {
         <>
             <section tabIndex="0" onKeyDown={onEscPress} className={styles['galleryPage']}>
                 <>
-                
+
                     <div className={model ? `${styles['model-open']}` : `${styles.model}`}>
                         {model ?
                             <>
                                 <img className={styles['model-open-img']} src={tempImgSrc} alt="tattoo" />
-                                
-                                <div className={styles['model-open-actions']}>  
-                                    {user ?
-                                        <>
-                                            {!isLiked ? <FontAwesomeIcon  className={styles['actions-like']} onClick={likeHandler} icon={faHeart} /> : null} 
-                                            {isLiked ? <div className={styles['wrapper-dislike']}>
-                                                <IoIosHeartDislike className={styles['dislike']} onClick={unlikeHandler} />
-                                            </div> : null}
-                                            
-                                            <Link to={`/gallery/${id}/comments`}>
-                                                <FontAwesomeIcon onClick={() => {onCloseIconClick()}} icon={faComment} />
-                                            </Link>
-                                        </> 
-                                          : null}
+
+                                <div className={user ? styles['model-open-actions'] : styles['model-open-actions-guest']}>
+                                    {
+                                        user ?
+                                            <>
+                                                {!isLiked ? <FontAwesomeIcon className={styles['actions-like']} onClick={likeHandler} icon={faHeart} /> : null}
+                                                {isLiked ? <div className={styles['wrapper-dislike']}>
+                                                    <IoIosHeartDislike className={styles['dislike']} onClick={unlikeHandler} />
+                                                </div> : null}
+
+                                                <Link to={`/gallery/${id}/comments`}>
+                                                    <FontAwesomeIcon onClick={() => { onCloseIconClick() }} icon={faComment} />
+                                                </Link>
+                                            </>
+                                            : null
+                                    }
                                     {user._role === 'admin' && isOwner ?
                                         <FontAwesomeIcon className={styles['model-open-delete']} onClick={deleteHandler} icon={faTrashCan} />
                                         :

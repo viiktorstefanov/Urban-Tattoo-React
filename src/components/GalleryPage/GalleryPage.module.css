@@ -67,6 +67,17 @@
     align-items: center;
     gap: 90%;
 }
+.model-open-actions-guest{
+    position: absolute;
+    top: 2.3%;
+    right: 4%;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .model-open-x:hover,
 .model-open-delete:hover,
@@ -91,6 +102,10 @@
         right: 36%;
         gap: 50%;
     }
+    .model-open-actions-guest{
+        top: 3.3%;
+        right: 14%;
+    }
 }
 
 @media screen and (max-width: 600px) and (min-width: 481px) {
@@ -107,6 +122,10 @@
         top: 3.3%;
         right: 21%;
         gap: 50%;
+    }
+    .model-open-actions-guest{
+        top: 3.3%;
+        right: 12%;
     }
 }
 
@@ -125,6 +144,10 @@
         right: 13%;
         gap: 50%;
     }
+    .model-open-actions-guest{
+        top: 3.3%;
+        right: 10%;
+    }
 }
 
 @media screen and (max-width: 900px) and (min-width: 769px) {
@@ -141,6 +164,10 @@
         top: 2.3%;
         right: 11%;
         gap: 50%;
+    }
+    .model-open-actions-guest{
+        top: 3.3%;
+        right: 9%;
     }
 }
 
@@ -159,6 +186,10 @@
         right: 9%;
         gap: 50%;
     }
+    .model-open-actions-guest{
+        top: 3.3%;
+        right: 8%;
+    }
 }
 
 @media screen and (max-width: 1200px) and (min-width: 1025px) {
@@ -175,6 +206,10 @@
         top: 2.3%;
         right: 8%;
         gap: 50%;
+    }
+    .model-open-actions-guest{
+        top: 3.3%;
+        right: 7%;
     }
 }
 
@@ -193,6 +228,10 @@
         right: 7%;
         gap: 50%;
     }
+    .model-open-actions-guest{
+        top: 3.3%;
+        right: 6%;
+    }
 }
 
 @media screen and (max-width: 1600px) and (min-width: 1441px) {
@@ -209,6 +248,10 @@
         top: 2.3%;
         right: 6%;
         gap: 50%;
+    }
+    .model-open-actions-guest{
+        top: 3.3%;
+        right: 5%;
     }
 }
 
@@ -227,12 +270,20 @@
         right: 5%;
         gap: 50%;
     }
+    .model-open-actions-guest{
+        top: 3.3%;
+        right: 5%;
+    }
 }
 
 @media screen and (max-width: 2560px) and (min-width: 1921px) {
     .galleryPage{
         gap: 60px;
         margin-top: 40px;
+    }
+    .model-open-actions-guest{
+        top: 3.3%;
+        right: 5%;
     }
 }
 
