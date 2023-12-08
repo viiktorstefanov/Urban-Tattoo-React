@@ -157,6 +157,7 @@ Do not forget to change host to local from \src\service\request.js
 - Log in with admin credentials to access special privileges.
 - Upload new tattoo images to the Gallery.
 - Delete existing images from the Gallery.
+- Delete or edit comments.
 
 ### How to register admin <a name="admin-register"></a>
 
