@@ -131,7 +131,9 @@
 }
 
 /* currentDay */
-.react-calendar__tile--active {
+.react-calendar .react-calendar__tile--active {
+  border: 2px solid #f3d22d;
+  border-radius: 8px;
   color: #f3d22d;
 }
 
