@@ -24,7 +24,7 @@ export const TattoosProvider = ({ children }) => {
     //get all tattoo images
     useEffect(() => {
         getAllTattoos()
-        .then(res => setTattoos([]))
+        .then(res => setTattoos(res))
         .catch((e) => {
             if (e.status !== 404) {
                 return notification.error(e.message, 3000);

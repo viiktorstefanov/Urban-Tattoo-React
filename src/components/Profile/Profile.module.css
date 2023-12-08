@@ -54,6 +54,7 @@
   visibility: visible;
   transform: translateY(0);
   transition: 900ms ease;
+  z-index: 200;
 }
 
 .dropdown-menu.inactive{
@@ -61,6 +62,7 @@
   visibility: hidden;
   transform: translateY(-20px);
   transition: 500ms ease;
+  z-index: 200;
 }
 
 .dropdownItem-info{

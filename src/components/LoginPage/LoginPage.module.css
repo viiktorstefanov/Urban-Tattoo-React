@@ -101,3 +101,65 @@
   margin-bottom: 5%;
   font-size: 13px;
 }
+
+
+
+@media screen and (max-width: 480px) and (min-width: 360px) {
+   .loginPage{
+    margin-bottom: 10%;
+   }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+  .loginPage{
+    margin-bottom: 7%;
+   }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+  .loginPage{
+    margin-bottom: 4%;
+   }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+  .loginPage{
+    margin-bottom: 2%;
+   }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+  .loginPage{
+    margin-bottom: 1%;
+   }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+  .loginPage{
+    margin-bottom: 0%;
+   }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+  .loginPage{
+    margin-bottom: 1%;
+   }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+  .loginPage{
+    margin-bottom: 2%;
+   }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+  .loginPage{
+    margin-bottom: 4%;
+   }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+  .loginPage{
+    margin-bottom: 7%;
+   }
+}
