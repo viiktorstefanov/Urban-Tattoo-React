@@ -47,7 +47,7 @@
 
 ## Introduction <a name="introduction"></a>
 
-This application is my first project with React. Project is focused on providing potential clients with an accessible platform to view the artist's portfolio and easily book appointments.
+Application is built with React.Responsive design.Project is focused on providing potential clients with an accessible platform to view the artist's portfolio and easily book appointments.
 
 ## Features <a name="features"></a>
 
@@ -56,16 +56,16 @@ This application is my first project with React. Project is focused on providing
 The heart of the application, the Gallery page, displays all the tattoo images. Users can view images with pagination, like, and comment on them. Only registered users have the ability to interact with images.
 
 ### User Registration and Authentication <a name="user-registration-and-authentication"></a>
-
+There are 3 types of users: Visitor, User and Admin.
 Users can register on the platform to access additional features such as liking images, leaving comments,editing his comment, making reservations, and managing their profiles.
 
 ### Reservation <a name="reservation"></a>
 
-The Booking page allows users to make reservations for tattoos. This feature streamlines the appointment process, making it convenient for both the artist and the clients.
+The Booking page allows users to make reservations for tattoos. This feature optimize  the appointment process, making it convenient for both the artist and the clients.
 
 ### Admin Privileges <a name="admin-privileges"></a>
 
-An admin account is granted special privileges, including the ability to upload and delete images from the Gallery.Also can remove comments. This ensures control over the content displayed on the application.
+An admin account is granted special privileges, including the ability to upload and delete images from the Gallery.Also can remove or edit comments. This ensures control over the content displayed on the application.
 
 ### User Profile <a name="user-profile"></a>
 
@@ -79,16 +79,15 @@ The Contact page provides essential information for clients, including the studi
 
 ACCESS/FUNCIONALITY  | Visitor | User | Admin
 -------------  | ------------- | ------------- | ------------- |
-Gallery page(catalog)   | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
-Booking page   | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) 
-Contact page  | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
-Profile page   | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
-Edit profile page        | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
-Upload page/upload file    | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
-Create reservation | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
-Like image | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
-Create/Read/Update/Delete comment | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
-Responsive design | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
+Gallery   | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
+Booking   | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) 
+Contact  | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
+Profile/Edit profile   | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
+Upload   | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
+Booking | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
+Like/Comment image | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-emoji.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png) | ![alt](https://img.icons8.com/fluency/60/000000/checkmark.png)
+
+
 
 ## Getting Started <a name="getting-started"></a>
 
@@ -150,7 +149,7 @@ Do not forget to change host to local from \src\service\request.js
 
 ### Home Page <a name="homepage"></a>
 
-- Information about tattoo artists.
+- Information about studio and tattoo artists.
 
 ### Admin Actions <a name="admin-actions"></a>
 

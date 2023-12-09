@@ -60,10 +60,7 @@ export const AuthProvider = ({ children }) => {
             setShowProfile(false);
             navigate('/')
         } catch (e) {
-            if(e.message.length > 0) {
-                e.message.map(e => notification.error(e, 3000));
-            }
-            notification.error(e.message, 3000);
+            return notification.error(e.message, 3000);
         } finally {
             setIsSubmit(false);
         }
