@@ -53,7 +53,7 @@ Application is built with React.Responsive design.Project is focused on providin
 
 ### Gallery <a name="gallery"></a>
 
-The heart of the application, the Gallery page, displays all the tattoo images. Users can view images with pagination, like, and comment on them. Only registered users have the ability to interact with images.
+The heart of the application, the Gallery, displays all the tattoo images. Users can view images with pagination, like, and comment on them. Only registered users have the ability to interact with images.
 
 ### User Registration and Authentication <a name="user-registration-and-authentication"></a>
 There are 3 types of users: Visitor, User and Admin.
@@ -61,7 +61,7 @@ Users can register on the platform to access additional features such as liking 
 
 ### Reservation <a name="reservation"></a>
 
-The Booking page allows users to make reservations for tattoos. This feature optimize  the appointment process, making it convenient for both the artist and the clients.
+The Booking allows users to make reservations for tattoos. This feature optimize  the appointment process, making it convenient for both the artist and the clients.
 
 ### Admin Privileges <a name="admin-privileges"></a>
 
@@ -69,11 +69,11 @@ An admin account is granted special privileges, including the ability to upload 
 
 ### User Profile <a name="user-profile"></a>
 
-Each registered user has a dedicated profile page containing information about their reservations and other details. Users can edit their profile information or choose to delete their profiles.
+Each registered user has a dedicated Profile containing information about their reservations and other details. Users can edit their profile information or choose to delete their profiles.
 
-### Contact Page <a name="contacts"></a>
+### Contacts <a name="contacts"></a>
 
-The Contact page provides essential information for clients, including the studio's location on Google Maps, working hours, and address.
+The Contacts provides essential information for clients, including the studio's location on Google Maps, working hours, and address.
 
 ## Functionalities <a name="functionalities"></a> 
 
@@ -125,29 +125,29 @@ Do not forget to change host to local from \src\service\request.js
 
 ## Usage <a name="usage"></a>
 
-### Gallery Page <a name="gallery"></a>
+### Gallery <a name="gallery"></a>
 
-- Browse through the tattoo images listed on the Gallery page with pagination.
+- Browse through the tattoo images listed on the Gallery with pagination.
 - Registered users can like and comment on images.
 - Admin can upload new images and delete existing ones.
 
-### Booking Page <a name="booking"></a>
+### Booking <a name="booking"></a>
 
-- Make reservations for tattoos on the Booking page.
+- Make reservations for tattoos on the Booking.
 - Provide necessary details, such as preferred date and time.
 
-### User Profile Page <a name="user-profile"></a>
+### User Profile <a name="user-profile"></a>
 
 - View and edit user profile information.
 - Access information about past and upcoming reservations.
 - Delete the user profile if needed.
 
-### Contact Page <a name="contact-usage"></a>
+### Contacts <a name="contact-usage"></a>
 
 - Find information about the studio's location on Google Maps.
 - Check working hours and address details.
 
-### Home Page <a name="home"></a>
+### Home <a name="home"></a>
 
 - Information about studio and tattoo artists.
 
