@@ -29,16 +29,16 @@
    - [Reservation](#reservation)
    - [Admin Privileges](#admin-privileges)
    - [User Profile](#user-profile)
-   - [Contact Page](#contact-page)
+   - [Contacts](#contacts)
 3. [Functionalities](#functionalities)
 4. [Getting Started](#getting-started)
    - [Installation](#installation)
 5. [Usage](#usage)
-   - [Gallery Page](#gallery-page)
-   - [Booking Page](#booking-page)
-   - [User Profile Page](#user-profile-page)
-   - [Contact Page](#contact-page-usage)
-   - [Home page](#homepage)
+   - [Gallery](#gallery)
+   - [Booking](#booking)
+   - [User Profile](#user-profile)
+   - [Contacts](#contact-usage)
+   - [Home](#home)
    - [Admin Actions](#admin-actions)
    - [Admin Register](#admin-register)
 6. [Host](#host)
@@ -71,7 +71,7 @@ An admin account is granted special privileges, including the ability to upload 
 
 Each registered user has a dedicated profile page containing information about their reservations and other details. Users can edit their profile information or choose to delete their profiles.
 
-### Contact Page <a name="contact-page"></a>
+### Contact Page <a name="contacts"></a>
 
 The Contact page provides essential information for clients, including the studio's location on Google Maps, working hours, and address.
 
@@ -125,29 +125,29 @@ Do not forget to change host to local from \src\service\request.js
 
 ## Usage <a name="usage"></a>
 
-### Gallery Page <a name="gallery-page"></a>
+### Gallery Page <a name="gallery"></a>
 
 - Browse through the tattoo images listed on the Gallery page with pagination.
 - Registered users can like and comment on images.
 - Admin can upload new images and delete existing ones.
 
-### Booking Page <a name="booking-page"></a>
+### Booking Page <a name="booking"></a>
 
 - Make reservations for tattoos on the Booking page.
 - Provide necessary details, such as preferred date and time.
 
-### User Profile Page <a name="user-profile-page"></a>
+### User Profile Page <a name="user-profile"></a>
 
 - View and edit user profile information.
 - Access information about past and upcoming reservations.
 - Delete the user profile if needed.
 
-### Contact Page <a name="contact-page-usage"></a>
+### Contact Page <a name="contact-usage"></a>
 
 - Find information about the studio's location on Google Maps.
 - Check working hours and address details.
 
-### Home Page <a name="homepage"></a>
+### Home Page <a name="home"></a>
 
 - Information about studio and tattoo artists.
 
