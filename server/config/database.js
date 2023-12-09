@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const connectionString = 'mongodb://127.0.0.1:27017/urban';
+const connectionString = 'mongodb://mongo:3a2BEagEECfb-dgAebB5h-1fbA6E-faF@viaduct.proxy.rlwy.net:21131';
 
 const databaseConfig = async () => {
     try {

@@ -18,11 +18,11 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
         const imageName = generateUniqueFileName(extension);
 
         const uploadPath = path.join(path.resolve(__dirname, '..'), '/images', imageName);
-        const imageUrl = `http://localhost:5000/${imageName}`;
-
+        const imageUrl = `https://urban-tattoo-server-production.up.railway.app/${imageName}`;
+    
         if (file.size > 5000000) {
             console.log('Cannot upload image bigger than 5MB');
-            throw new Error('File should be less than 5MB !');
+            throw new Error('File should be less than 5MB');
         }
         if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
             file.mv(uploadPath, function (err) {
@@ -33,17 +33,17 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
             });
             const user = JSON.parse(req.headers.user);
             const tattoo = await addTattoo(imageUrl, user._id);
-            console.log(`(file "${imageName}") has been uploaded .`);
+            console.log(`(file "${imageName}") has been uploaded`);
             res.json(tattoo).end();
         } else {
             console.log('file is not a jpeg/png');
-            throw new Error('Only jpg or png files are allowed !');
+            throw new Error('Only jpg or png files are allowed');
         }
     } catch (error) {
         const message = parseError(error);
-        if (error == "Error: Only images are allowed !") {
+        if (error == "Error: Only images are allowed") {
             res.status(415).json({ message });
-        } else if (error == "Error: File should be less than 5MB !") {
+        } else if (error == "Error: File should be less than 5MB") {
             res.status(413).json({ message });
         } else {
             res.status(400).json({ message });
@@ -58,7 +58,7 @@ dataController.delete('/tattoos/:id', isAdmin(), async (req, res) => {
         const user = JSON.parse(req.headers.user);
         if (user._id == image.ownerId) {
             await deleteById(id);
-            console.log(`(file "${image.imageUrl.split('http://localhost:5000/')[1]}") has been deleted.`);
+            console.log(`(file "${image.imageUrl.split('https://urban-tattoo-server-production.up.railway.app/')[1]}") has been deleted`);
             res.status(204).end();
         } else {
             res.status(403);

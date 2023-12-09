@@ -18,6 +18,7 @@ export default function BookingPage() {
     const [reservations, setReservations] = useState([]);
     const [hours, setHours] = useState(false);
     const navigate = useNavigate();
+    
 
     useEffect(() => {
         if (!user) {
@@ -87,27 +88,52 @@ export default function BookingPage() {
     };
 
     const tileDisabled = ({ activeStartDate, date, view }) => {
+        const today = new Date();
+        const formattedToday = `${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear()}`;
+
+        const parseDate = (dateString) => {
+            const [day, month, year] = dateString.split('.').map(Number);
+            return new Date(year, month - 1, day);
+        };
+
         const day = date.toLocaleDateString().split('/');
         const formatDay = `${day[1]}.${day[0]}.${day[2]}`;
-        let isNotAvailable;
 
+        let isNotAvailable = false;
 
-        reservations.forEach(reservation => {
+        reservations.forEach((reservation) => {
             if (reservation.date === formatDay) {
-                if (reservation.hour === '14:00-17:00, 10:00-13:00' || reservation.hour === '10:00-13:00, 14:00-17:00') {
+                if (
+                    reservation.hour === '14:00-17:00, 10:00-13:00' ||
+                    reservation.hour === '10:00-13:00, 14:00-17:00'
+                ) {
                     isNotAvailable = true;
                 }
             }
         });
 
-        if (isNotAvailable) {
-            return true;
+        //disabled past dates
+        if (parseDate(formatDay) <= parseDate(formattedToday)) {
+            return true; // Disable dates before today
         }
+
+        return isNotAvailable;
     };
 
     const tileClassName = ({ activeStartDate, date, view }) => {
         const day = date.toLocaleDateString().split('/');
         const formatDay = `${day[1]}.${day[0]}.${day[2]}`;
+
+        const today = new Date();
+        const formattedToday = `${today.getDate()}.${today.getMonth() + 1}.${today.getFullYear()}`;
+
+        const parseDate = (dateString) => {
+            const [day, month, year] = dateString.split('.').map(Number);
+            return new Date(year, month - 1, day);
+        };
+
+
+
         let isNotAvailable = false;
 
         reservations.forEach(reservation => {
@@ -117,6 +143,11 @@ export default function BookingPage() {
                 }
             }
         });
+
+        //disabled past dates
+        if (parseDate(formatDay) <= parseDate(formattedToday)) {
+            return 'react-calendar__month-view__days__day--neighboringMonth' // Disable dates before today
+        }
 
         if (isNotAvailable) {
             return 'react-calendar__month-view__days__day--notAvailable'

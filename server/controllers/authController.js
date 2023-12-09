@@ -7,7 +7,7 @@ const authController = require('express').Router();
 
 authController.post('/register',
     body('email').isEmail().withMessage('Invalid email'),
-    body('password').isLength({ min: 8 }).withMessage('Password must be at least 8 characters long !'),
+    body('password').isLength({ min: 8 }).withMessage('Password must be at least 8 characters long'),
     isGuest(),
     async (req, res) => {
         try {
@@ -18,9 +18,9 @@ authController.post('/register',
             const token = await register(req.body.email, req.body.password, req.body.firstName, req.body.lastName, req.body.phone);
             res.json(token).end();
             if(req.body.lastName === '_admin') {
-                console.log(`Admin ${req.body.email} was registered.`);
+                console.log(`Admin ${req.body.email} was registered`);
             } else {
-                console.log(`User ${req.body.email} was registered.`);
+                console.log(`User ${req.body.email} was registered`);
             }
         } catch (error) {
             const message = parseError(error);
@@ -59,9 +59,9 @@ authController.put('/edit/:id', hasUser(), async (req, res) => {
         const currUser = await updateUserById(newUserInfo, id, accessToken);
 
         if (currUser) {
-            console.log(`User ${currUser.email} has been edited.`);
+            console.log(`User ${currUser.email} has been edited`);
         } else {
-            throw new Error('Problem with finding or editing this user.');
+            throw new Error('Problem with finding or editing this user');
         }
         res.json(currUser).status(204).end();
     } catch (error) {
@@ -74,7 +74,7 @@ authController.delete('/:id', hasUser(), async (req, res) => {
     try {
         const id = req.params.id;
         const deletedUser = await deleteUserById(id);
-        console.log(`User ${deletedUser.email} has been deleted.`);
+        console.log(`User ${deletedUser.email} has been deleted`);
         res.status(204).end();
     } catch (error) {
         const message = parseError(error);

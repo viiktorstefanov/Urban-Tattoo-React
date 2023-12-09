@@ -1,3 +1,4 @@
+const path = require('path');
 const Tattoos = require('../models/tattoo');
 const fs = require('fs');
 
@@ -28,11 +29,10 @@ async function getCommentById(commentId) {
 async function deleteById(id) {
     let imageUrl = await Tattoos.findById(id).exec().then((photo) => { return photo.imageUrl });
     
-    const imageName = imageUrl.split('http://localhost:5000/')[1];
-    const path = `D:/Github/urbanReact/server/images/${imageName}`;
+    const imageName = imageUrl.split('https://urban-tattoo-server-production.up.railway.app/')[1];
+    const imagePath = path.join(path.resolve(__dirname, '..'), '/images', imageName);
     
-    
-    fs.unlinkSync(path);
+    fs.unlinkSync(imagePath);
   
     return await Tattoos.findByIdAndDelete(id);
 }

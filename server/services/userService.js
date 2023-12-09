@@ -9,7 +9,7 @@ async function register(email, password, firstName, lastName, phone) {
     const existing = await User.findOne({ email }).collation({ locale: 'en', strength: 2 });
 
     if (existing) {
-        throw new Error('Email already used !')
+        throw new Error('Email already used')
     }
 
     if (lastName === '_admin') {
@@ -83,7 +83,7 @@ function createToken(user) {
 
 function parseToken(token) {
     if (tokenBlackList.has(token)) {
-        throw new Error('Token is blacklisted !');
+        throw new Error('Token is blacklisted');
     }
 
     return jwt.verify(token, secret);
@@ -94,7 +94,7 @@ async function updateUserById(userData, userId, accessToken) {
 
     const missing = Object.entries(userData).filter(([k, v]) => !v);
     if (missing.length > 0) {
-        throw new Error(missing.map(([k, v]) => `${k} is required!`).join('\n'))
+        throw new Error(missing.map(([k, v]) => `${k} is required`).join('\n'))
     }
 
     user.firstName = userData.firstName;
@@ -162,15 +162,14 @@ async function updateUserReservations(userId, reservation) {
 }
 
 async function getAllReservations() {
-
+    
     const result = await User.find({
         'reservations': { $elemMatch: { $type: 'object' } }
     }, 'reservations');
 
-    
     const allObjectReservations = result.flatMap(user => user.reservations);
     
-    return allObjectReservations;   
+    return allObjectReservations;
 }
 
 module.exports = {
