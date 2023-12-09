@@ -28,6 +28,9 @@ export default function EditProfilePage() {
         onBlur, validationErrors
     } = useValidate(primaryValidationValues, values, editProfileValidator);
 
+    const disabled = Object.values(validationErrors).some(x => x) ||
+    Object.values(validationErrors).some(x => x === "") || isSubmit;
+
     return (
         <section id="editProfilePage" className={styles.editProfilePage}>
             <form onSubmit={onSubmit} className={styles.editForm}>
@@ -115,7 +118,7 @@ export default function EditProfilePage() {
                 </div>
                 <button
                     className={styles.button}
-                    disabled={isSubmit ? true : false}
+                    disabled={disabled}
                     type="submit">
                     {isSubmit ? 'Loading...' : 'Save'}
                 </button>

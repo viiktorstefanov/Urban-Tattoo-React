@@ -10,6 +10,7 @@ import commentsReducer from '../../reducers/commentsReducer';
 import notification from '../../service/notification';
 import useValidate from '../../hooks/useValidate';
 import { commentsValidator } from '../../service/validation';
+import { commentsMessages } from '../../service/validationMessages';
 
 export default function CommentsPage() {
     const { id } = useParams();
@@ -129,6 +130,32 @@ export default function CommentsPage() {
         setIsEditClicked(true);
     };
 
+    //validation edit comment 
+     function useValidateEdit(primaryValues, values, validator) {
+        const [validationErrorsEdit, setEditValidationErrors] = useState(primaryValues);
+    
+        function onBlurEdit(e) {
+            const validation = validator[e.target.name];
+    
+            if (!validation(e.target.value, values)) {
+                setEditValidationErrors(state => ({ ...state, [e.target.name]: true }));
+            } else {
+                setEditValidationErrors(state => ({ ...state, [e.target.name]: false }));
+            }
+    
+            if (primaryValues.hasOwnProperty('repeatPassword')) {
+                if (e.target.name === "password") {
+                    if (e.target.value !== values.repeatPassword && values.repeatPassword !== "") {
+                        setEditValidationErrors(state => ({ ...state, repeatPassword: true }))
+                    } else {
+                        setEditValidationErrors(state => ({ ...state, repeatPassword: false }))
+                    }
+                }
+            } 
+        }
+        return {validationErrorsEdit, onBlurEdit}
+    };
+
     const primaryValues = { comment: '' };
 
     const primaryValidationValues = {
@@ -138,12 +165,21 @@ export default function CommentsPage() {
     const { values, onChange, onSubmit, setValues } = useForm(primaryValues, addCommentHandler);
 
     const {
-        onBlur
+        onBlur, validationErrors
     } = useValidate(primaryValidationValues, values, commentsValidator);
+
+    const { onBlurEdit, validationErrorsEdit } = useValidateEdit(primaryValidationValues, editValues, commentsValidator);
+
+    const disabled = Object.values(validationErrors).some(x => x) ||
+    Object.values(validationErrors).some(x => x === "") || isSubmit;
+
+    const disabledEdit = Object.values(validationErrorsEdit).some(x => x) ||
+    Object.values(validationErrorsEdit).some(x => x === "") || isSubmit;
 
     if (!state) {
         return <Spinner />;
     }
+    
 
     return (
         <section className={styles['commentsPage']}>
@@ -166,7 +202,7 @@ export default function CommentsPage() {
                                     <span className={styles['user-comment']} >{x.comment}</span>
                                     {x.ownerId === user._id || user._role === 'admin' ?
                                         <span className={styles['owner-buttons']}>
-                                            <FaEdit onClick={() => onClickEdit(x._id)} className={styles['owner-buttons-edit']} />
+                                            <FaEdit onClick={() => onClickEdit(x._id) } className={styles['owner-buttons-edit']} />
                                             <FaTrashAlt onClick={() => deleteCommentHandler(x._id)} className={styles['owner-buttons-delete']} />
                                         </span>
                                         : null
@@ -181,14 +217,21 @@ export default function CommentsPage() {
                         <label
                             htmlFor="comment">Write a comment:
                         </label>
-                        <textarea className={styles['comment-text']}
+                        <textarea className={`${styles['comment-text']} ${validationErrors.comment ? styles.warning : null}`}
                             name='comment' value={values.comment}
                             onChange={onChange}
                             onBlur={onBlur}
                             maxLength="100"
                             minLength="4">
                         </textarea>
-                        <button type='submit' disabled={isSubmit ? true : false}>
+                        {
+                        validationErrors.comment ?
+                            <p className={styles['validation-message']}>
+                                {commentsMessages.comment}
+                            </p>
+                            : null
+                    }
+                        <button type='submit' disabled={disabled}>
                             {isSubmit ? 'Loading...' : 'Add'}
                         </button>
                     </form>
@@ -196,13 +239,21 @@ export default function CommentsPage() {
                 :
                 <form className={styles['commentForm']} onSubmit={onSubmitEdit}>
                     <textarea
-                        className={styles['comment-text']}
+                        className={`${styles['comment-text']} ${validationErrorsEdit.comment ? styles.warning : null}`}
                         name='comment'
                         value={editValues.comment}
                         onChange={onChangeEdit}
+                        onBlur={onBlurEdit}
                         maxLength="100">
                     </textarea>
-                    <button type='submit' disabled={isEditSubmit ? true : false}>
+                    {
+                        validationErrorsEdit.comment ?
+                            <p className={styles['validation-message']}>
+                                {commentsMessages.comment}
+                            </p>
+                            : null
+                    }
+                    <button type='submit' disabled={disabledEdit}>
                         {isEditSubmit ? 'Loading...' : 'Edit'}
                     </button>
                 </form>}

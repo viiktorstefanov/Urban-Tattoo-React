@@ -14,10 +14,10 @@ export default function useValidate(primaryValues, values, validator) {
 
         if (primaryValues.hasOwnProperty('repeatPassword')) {
             if (e.target.name === "password") {
-                if (e.target.value !== values.confirmPassword && values.confirmPassword !== "") {
-                    setValidationErrors(state => ({ ...state, confirmPassword: true }))
+                if (e.target.value !== values.repeatPassword && values.repeatPassword !== "") {
+                    setValidationErrors(state => ({ ...state, repeatPassword: true }))
                 } else {
-                    setValidationErrors(state => ({ ...state, confirmPassword: false }))
+                    setValidationErrors(state => ({ ...state, repeatPassword: false }))
                 }
             }
         } 

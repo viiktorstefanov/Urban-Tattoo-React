@@ -34,6 +34,9 @@ export default function RegisterPage() {
         onBlur, validationErrors
     } = useValidate(primaryValidationValues, values, registerValidator);
 
+    const disabled = Object.values(validationErrors).some(x => x) ||
+    Object.values(validationErrors).some(x => x === "") || isSubmit;
+
     return (
         <section id="registerPage" className={styles.registerPage}>
             <form onSubmit={onSubmit} className={styles.registerForm} method='POST'>
@@ -185,7 +188,7 @@ export default function RegisterPage() {
 
                 <button
                     className={styles.button}
-                    disabled={isSubmit ? true : false}
+                    disabled={ disabled }
                     type="submit">
                     {isSubmit ? 'Loading...' : 'Sign up'}
                 </button>
