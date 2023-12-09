@@ -47,7 +47,7 @@
 
 ## Introduction <a name="introduction"></a>
 
-This application is my first project with React. Project is  focused on providing potential clients with an accessible platform to view the artist's portfolio and easily book appointments.
+This application is my first project with React. Project is focused on providing potential clients with an accessible platform to view the artist's portfolio and easily book appointments.
 
 ## Features <a name="features"></a>
 
