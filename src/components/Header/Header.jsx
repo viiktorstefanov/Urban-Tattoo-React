@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 import Navigation from '../Navigation/Navigation';
-import Profile from '../Profile/Profile';
+import ProfileMenu from '../ProfileMenu/ProfileMenu';
 import ResponsiveNavigation from '../ResponsiveNavigation/ResponsiveNavigation';
 
 export default function Header() {
@@ -8,7 +8,7 @@ export default function Header() {
         <header className={styles.header}>
             <ResponsiveNavigation />
             <Navigation />
-            <Profile />
+            <ProfileMenu />
         </header>
     );
 };

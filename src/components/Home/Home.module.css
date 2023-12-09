@@ -1,0 +1,178 @@
+.homePage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 5%;
+    width: 100vw;
+}
+
+.message{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message>p{
+    text-align: justify;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    font-size: 22px; 
+    width: 40vw;   
+    margin-bottom: 5%;
+}
+
+.artists {
+    display: flex;
+    gap: 10%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6%;
+    width: 30vw;
+}
+
+.artist {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.artist h3{
+    text-transform: uppercase;
+    color: #f3d22d;
+}
+
+.artist-info{
+    font-size: 22px;
+    line-height: 1.5;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    height: 50vh;
+    text-align: justify;
+}
+
+.artists>div>img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10%;
+}
+
+@media screen and (max-width: 800px) and (min-width: 360px) {
+    .artists{
+        flex-direction: column;
+        margin-top: 15%;
+    }
+    .message{
+        margin-top: 7%;
+    }
+    .message>p{
+        width: 80vw;
+    }
+    .artist-info{
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 801px) {
+    .artists{
+        flex-direction: column;
+        margin-top: 15%;
+    }
+    .message{
+        margin-top: 7%;
+    }
+    .message>p{
+        width: 80vw;
+    }
+    .artist-info{
+        width: 70vw;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+    .homePage{
+        margin-top: 8%;
+    }
+    .message>p{
+        width: 70vw;
+    }
+    .artists{
+        gap: 25%;
+    }
+    .artist-info{
+        height: 70vh;
+        width: 123%;
+    }
+    .artists>div>img{
+        width: 170px;
+        height: 170px;
+    }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+    .homePage{
+        margin-top: 8%;
+    }
+    .message>p{
+        width: 70vw;
+    }
+    .artists{
+        gap: 30%;
+    }
+    .artist-info{
+        height: 55vh;
+        width: 135%;
+    }
+    .artists>div>img{
+        width: 170px;
+        height: 170px;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+    .homePage{
+        margin-top: 8%;
+    }
+    .message>p{
+        width: 70vw;
+    }
+    .artists{
+        gap: 30%;
+    }
+    .artist-info{
+        height: 55vh;
+        width: 135%;
+    }
+    .artists>div>img{
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+    .homePage{
+        margin-top: 8%;
+    }
+    .message>p{
+        width: 55vw;
+    }
+    .artists{
+        gap: 30%;
+        width: 18vw;
+    }
+    .artist-info{
+        height: 40vh;
+        width: 105%;
+    }
+    .artists>div>img{
+        width: 250px;
+        height: 250px;
+    }
+}

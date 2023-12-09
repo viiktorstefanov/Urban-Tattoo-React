@@ -1,28 +1,46 @@
-import { BiSolidUserDetail } from 'react-icons/bi';
 import { useContext } from 'react';
 import styles from './Profile.module.css';
-import ProfileUser from './ProfileUser';
-import ProfileGuest from './ProfileGuest';
-import { AuthContext } from "../../contexts/AuthContext";
+import { BiUserPin } from 'react-icons/bi';
+import { AuthContext } from '../../contexts/AuthContext';
+import { customComparator } from '../../service/customComparator';
 
 export default function Profile() {
 
-    const { user, showProfile, setShowProfile } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
+
+      const reservationsArray = user.reservations.slice(0);
+      const sortedReservations = reservationsArray.sort(customComparator);
 
     return (
-        <div className={styles['profile-dropdown']} onMouseEnter={() => showProfile ? null : setShowProfile(true)}
-        onMouseLeave={() => !showProfile ? null : setShowProfile(false)} >
-            <div className='menu-container'>
-                <div className='menu-trigger' onClick={() => { setShowProfile(!showProfile) }}>
-                    <BiSolidUserDetail className={styles['menu-trigger-ico']} />
-                </div>
-
-                <div className={`${styles['dropdown-menu']} ${showProfile ? styles['active'] : styles['inactive']}`} >
-                    {!user  && <ProfileGuest />}
-                    {user  && <ProfileUser />}
-                </div>
+        <section className={styles.profilePage}>
+            <div className={styles['profile-wrapper']}>
+                <span className={styles['user-logo-wrapper']}>
+                    <BiUserPin className={styles['user-logo']} />
+                </span>
+                <span className={styles['user-info']}>
+                    <p className={styles['user-info-category']}>Email: </p>
+                    <p className={styles['user-info-email']}>{user.email}</p>
+                </span>
+                <span className={styles['user-info']}>
+                    <p className={styles['user-info-category']}>First name: </p>
+                    <p className={styles['user-info-name']}>{user.firstName}</p>
+                </span>
+                <span className={styles['user-info']}>
+                    <p className={styles['user-info-category']}>Last name: </p>
+                    <p className={styles['user-info-name']}>{user.lastName}</p>
+                </span>
+                <span className={styles['user-info']}>
+                    <p className={styles['user-info-category']}>Phone: </p>
+                    <p className={styles['user-info-phone']}>{user.phone}</p>
+                </span>
+                <span className={user.reservations.length === 0 ? styles['span-user-info-reservation'] : styles['user-info-reservation']}>
+                    <p className={styles['user-info-category']}>Reservations: </p>
+                    <div className={styles['reservation-list']}>
+                        {user.reservations.length === 0 ? <p className={styles['user-info-reservation-p']}>none</p> : null}
+                        {user.reservations.length > 0 ? sortedReservations.map((r, index) => <span className={styles['span-reservation']} key={index}>{r.date} - {r.hour}</span>) : null}
+                    </div>
+                </span>
             </div>
-        </div>
+        </section>
     );
-}
-
+};

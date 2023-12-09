@@ -26,7 +26,7 @@ function App() {
                     pauseOnHover
                     theme="light"
                 />
-                <main className='pages'>
+                <main className='views'>
                     <RoutesWrapper />
                 </main>
             </AuthProvider>

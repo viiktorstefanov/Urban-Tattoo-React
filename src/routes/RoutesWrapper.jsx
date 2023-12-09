@@ -1,17 +1,17 @@
 import { Route, Routes } from "react-router-dom";
 
-import ProfilePage from '../components/ProfilePage/ProfilePage';
-import HomePage from "../components/HomePage/HomePage";
-import GalleryPage from '../components/GalleryPage/GalleryPage';
-import RegisterPage from '../components/RegisterPage/RegisterPage';
-import LoginPage from '../components/LoginPage/LoginPage';
-import LogoutPage from '../components/LogoutPage/LogoutPage';
-import BookingPage from '../components/BookingPage/BookingPage';
-import UploadPage from '../components/UploadPage/UploadPage';
-import ContactPage from '../components/ContactPage/ContactPage';
-import EditProfilePage from '../components/EditProfilePage/EditProfilePage';
-import DefaultPage from '../components/DefaultPage/DefaultPage';
-import CommentsPage from "../components/CommentsPage/CommentsPage";
+import Profile from '../components/Profile/Profile';
+import Home from "../components/Home/Home";
+import Gallery from '../components/Gallery/Gallery';
+import Register from '../components/Register/Register';
+import Login from '../components/Login/Login';
+import Logout from '../components/Logout/Logout';
+import Booking from '../components/Booking/Booking';
+import Upload from '../components/Upload/Upload';
+import Contact from '../components/Contact/Contact';
+import EditProfile from '../components/EditProfile/EditProfile';
+import Default from '../components/Default/Default';
+import Comments from "../components/Comments/Comments";
 import { TattoosProvider } from '../contexts/TattooContext';
 
 import AuthGuard from "../components/Guards/AuthGuard";
@@ -20,12 +20,12 @@ import AdminGuard from "../components/Guards/AdminGuard";
 export default function RoutesWrapper() {
     return (
         <Routes>
-            <Route path='/' element={<HomePage />} />
+            <Route path='/' element={<Home />} />
             <Route
                 path='/gallery'
                 element={
                     <TattoosProvider>
-                        <GalleryPage />
+                        <Gallery />
                     </TattoosProvider>
                 }
             />
@@ -34,22 +34,22 @@ export default function RoutesWrapper() {
                 element={
                     <AdminGuard>
                         <TattoosProvider>
-                            <UploadPage />
+                            <Upload />
                         </TattoosProvider>
                     </AdminGuard>
                 }
             />
             <Route element={<AuthGuard />}>
-                <Route path='/gallery/:id/comments' element={<CommentsPage />} />
-                <Route path='/logout' element={<LogoutPage />} />
-                <Route path='/profile/:id' element={<ProfilePage />} />
-                <Route path='/profile/edit/:id' element={<EditProfilePage />} />
+                <Route path='/gallery/:id/comments' element={<Comments />} />
+                <Route path='/logout' element={<Logout />} />
+                <Route path='/profile/:id' element={<Profile />} />
+                <Route path='/profile/edit/:id' element={<EditProfile />} />
             </Route>
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/booking' element={<BookingPage />} />
-            <Route path='/contact' element={<ContactPage />} />
-            <Route path='*' element={<DefaultPage />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/booking' element={<Booking />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='*' element={<Default />} />
         </Routes>
     );
 };

@@ -1,0 +1,297 @@
+.commentsPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 35px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tattoo-img {
+    width: 15vw;
+    height: 50vh;
+    border-radius: 2%;
+    object-fit: cover;
+}
+
+.commentForm button,
+.commentForm input,
+.commentForm label {
+    border: none;
+    box-sizing: border-box;
+    display: block;
+    margin-top: 10px;
+    outline: none;
+    padding: 0;
+    width: 100%;
+}
+
+.commentForm button {
+    background: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    height: 40px;
+    margin-top: 20px;
+    transition: .5s;
+}
+
+.commentForm button,
+.commentForm input,
+.commentForm label {
+    border: none;
+    box-sizing: border-box;
+    display: block;
+    margin-top: 10px;
+    outline: none;
+    padding: 0;
+    width: 100%;
+}
+
+.commentForm label {
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.commentForm button {
+    margin-top: 10%;
+}
+
+.commentForm button:hover {
+    background: #f3d22d;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.comments-header {
+    margin-bottom: 5%;
+    font-size: 24px;
+}
+
+.comment-text {
+    font-family: 'Roboto', sans-serif;
+    width: 250px;
+    height: 150px;
+    border-radius: 8px;
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+    text-align: center;
+    outline: 1px solid white;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.owner-fullName {
+    text-align: center;
+    font-size: 14px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+.user-comment {
+    text-align: justify;
+    font-size: 14px;
+}
+
+.owner-buttons {
+    display: flex;
+    gap: 10px;
+    align-self: flex-end;
+    padding: 10px;
+}
+
+.owner-buttons-edit,
+.owner-buttons-delete {
+    border-radius: 3px;
+    font-size: 16px;
+    color: white;
+}
+
+.owner-buttons-edit:hover,
+.owner-buttons-delete:hover {
+    color: #f3d22d;
+    cursor: pointer;
+}
+
+.commentForm .validationWarning {
+    color: #f3d22d;
+}
+
+.commentForm .warning {
+    border: 3px solid rgb(224, 71, 71);
+}
+
+.commentForm .validation-message {
+    margin-top: 10px;
+    color: rgb(224, 71, 71);
+    margin-bottom: 5%;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 480px) and (min-width: 360px) {
+    .commentsPage {
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+
+    .tattoo-img {
+        width: 40vw;
+        height: 40vh;
+    }
+
+    .comments-header {
+        font-size: 18px;
+    }
+
+    .comment-text {
+        width: 190px;
+        height: 150px;
+        font-size: 16px;
+    }
+
+    .commentsPage .comment {
+        width: 180px;
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+    .commentsPage {
+        margin-top: 9%;
+        margin-bottom: 10%;
+    }
+
+    .tattoo-img {
+        width: 30vw;
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+    .commentsPage {
+        margin-top: 9%;
+        margin-bottom: 10%;
+    }
+
+    .tattoo-img {
+        width: 30vw;
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+    .commentsPage {
+        margin-top: 8%;
+        margin-bottom: 10%;
+    }
+
+    .tattoo-img {
+        width: 30vw;
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+    .commentsPage {
+        margin-top: 8%;
+        margin-bottom: 10%;
+    }
+
+    .tattoo-img {
+        width: 30vw;
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+    .commentsPage {
+        margin-top: 7%;
+        margin-bottom: 21%;
+    }
+
+    .tattoo-img {
+        width: 22%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+    .commentsPage {
+        margin-top: 5%;
+        margin-bottom: 21%;
+    }
+
+    .tattoo-img {
+        width: 17%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+    .commentsPage {
+        margin-top: 5%;
+        margin-bottom: 21%;
+    }
+
+    .tattoo-img {
+        width: 15%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+    .commentsPage {
+        margin-top: 5%;
+        margin-bottom: 21%;
+    }
+
+    .tattoo-img {
+        width: 15%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+    .commentsPage {
+        margin-top: 3%;
+        margin-bottom: 4%;
+    }
+
+    .tattoo-img {
+        width: 15%;
+        height: 50%;
+    }
+
+    .comments-header {
+        font-size: 18px;
+    }
+
+    .comment-text {
+        width: 300px;
+        height: 150px;
+        font-size: 16px;
+    }
+
+    .commentsPage .comment {
+        width: 290px;
+    }
+}

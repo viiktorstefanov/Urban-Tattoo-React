@@ -1,0 +1,165 @@
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2%;
+  align-items: center;
+  text-align: center;
+}
+
+.loginForm {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  width: 350px;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: black;
+  justify-content: center;
+}
+
+.inputs {
+  text-align: left;
+  margin-top: 30px;
+}
+
+.loginForm label,
+.loginForm input,
+.loginForm button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-top: 10px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.loginForm label {
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.loginForm label:nth-of-type(2) {
+  margin-top: 12px;
+}
+
+.loginForm input::placeholder {
+  color: gray;
+}
+
+.loginForm input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+}
+
+.loginForm button {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 20px;
+  font-size: 15px;
+  background: white;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  transition: 0.5s;
+}
+
+.loginForm button:hover {
+  background: #f3d22d;
+}
+
+.button {
+  margin-top: 15%;
+}
+
+.log-btn {
+  color: #f3d22d;
+}
+
+.log-btn:hover {
+  text-decoration: underline;
+}
+
+.field {
+  margin-top: 10%;
+  font-size: 16px;
+}
+
+.loginForm .warning {
+  border: 3px solid rgb(224, 71, 71);
+}
+
+.loginForm .validation-message {
+  margin-top: 10px;
+  color: rgb(224, 71, 71);
+  margin-bottom: 5%;
+  font-size: 13px;
+}
+
+
+
+@media screen and (max-width: 480px) and (min-width: 360px) {
+   .loginPage{
+    margin-bottom: 10%;
+   }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+  .loginPage{
+    margin-bottom: 7%;
+   }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+  .loginPage{
+    margin-bottom: 4%;
+   }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+  .loginPage{
+    margin-bottom: 2%;
+   }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+  .loginPage{
+    margin-bottom: 1%;
+   }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+  .loginPage{
+    margin-bottom: 0%;
+   }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+  .loginPage{
+    margin-bottom: 1%;
+   }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+  .loginPage{
+    margin-bottom: 2%;
+   }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+  .loginPage{
+    margin-bottom: 4%;
+   }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+  .loginPage{
+    margin-bottom: 7%;
+   }
+}

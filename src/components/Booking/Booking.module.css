@@ -1,0 +1,147 @@
+.bookingPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 2%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.model {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.model button:hover {
+  background: #f3d22d;
+}
+
+.model button,
+.model input,
+.model label {
+  border: none;
+  box-sizing: border-box;
+  display: block;
+  margin-top: 10px;
+  outline: none;
+  padding: 0;
+}
+
+.model button {
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  height: 40px;
+  transition: .5s;
+  margin-top: 20px;
+}
+
+.button {
+  width: 60%;
+}
+
+.bookingPage abbr{
+  cursor: pointer;
+}
+
+.hours-message{
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+
+.hours-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  margin-bottom: 10%;
+}
+
+.hours-second-radio:checked, .hours-first-radio:checked{
+  accent-color: #f3d22d;
+}
+
+.hours-first-radio-wrapper, .hours-second-radio-wrapper{
+  display: flex;
+  gap: 10px;
+}
+
+@media screen and (max-width: 480px) and (min-width: 360px) {
+   .bookingPage{
+      margin-top: 10%;
+      margin-bottom: 15%;
+   }
+}
+
+@media screen and (max-width: 600px) and (min-width: 481px) {
+  .bookingPage{
+    margin-top: 10%;
+    margin-bottom: 15%;
+ }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+  .bookingPage{
+    margin-top: 10%;
+    margin-bottom: 12%;
+ }
+}
+
+@media screen and (max-width: 900px) and (min-width: 769px) {
+  .bookingPage{
+    margin-top: 10%;
+    margin-bottom: 10%;
+ }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 901px) {
+  .bookingPage{
+    margin-top: 7%;
+    margin-bottom: 10%;
+ }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 1025px) {
+  .bookingPage{
+    margin-top: 7%;
+    margin-bottom: 10%;
+ }
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1201px) {
+  .bookingPage{
+    margin-top: 7%;
+    margin-bottom: 10%;
+ }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1441px) {
+  .bookingPage{
+    margin-top: 7%;
+    margin-bottom: 10%;
+ }
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1601px) {
+  .bookingPage{
+    margin-top: 7%;
+    margin-bottom: 5%;
+ }
+}
+
+@media screen and (max-width: 2560px) and (min-width: 1921px) {
+  .bookingPage{
+    margin-top: 3%;
+    margin-bottom: 3%;
+ }
+}
