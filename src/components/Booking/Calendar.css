@@ -235,20 +235,20 @@ abbr:hover{
 @media screen and (max-width: 1600px) and (min-width: 1441px) {
   .react-calendar{
     max-width: 100%;
-    margin-bottom: 10%;
+    margin-bottom: 3%;
   }
 }
 
 @media screen and (max-width: 1920px) and (min-width: 1601px) {
   .react-calendar{
     max-width: 100%;
-    margin-bottom: 10%;
+    margin-bottom: 3%;
   }
 }
 
 @media screen and (max-width: 2560px) and (min-width: 1921px) {
   .react-calendar{
     max-width: 100%;
-    margin-bottom: 10%;
+    margin-bottom: 3%;
   }
 }
