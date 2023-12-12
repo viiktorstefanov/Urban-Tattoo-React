@@ -188,11 +188,6 @@ abbr:hover{
     max-width: 93%;
     margin-bottom: 2%;
   }
-  
-  /* neighborMonth */
-  .react-calendar__month-view__days__day--neighboringMonth {
-    opacity: 0.5;
-  }
 }
 
 @media screen and (max-width: 600px) and (min-width: 481px) {
