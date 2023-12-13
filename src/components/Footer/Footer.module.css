@@ -29,6 +29,10 @@
     font-size: 15px;
 }
 
+.copyright-author{
+    margin-left: 5px;
+}
+
 @media screen and (max-width: 480px) and (min-width: 360px) {
     .links-footer {
         gap: 5%;

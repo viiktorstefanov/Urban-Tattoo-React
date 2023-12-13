@@ -3,7 +3,7 @@ import { AiFillPlusCircle } from 'react-icons/ai';
 import { useContext } from 'react';
 import { TattooContext } from '../../contexts/TattooContext';
 
-export default function UploadPage() {
+export default function Upload() {
     const { size, isImage, haveFile, image, onFileChange, onFileSubmit, isSubmit } = useContext(TattooContext);
 
     return (

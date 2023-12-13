@@ -1,21 +1,21 @@
 import { Route, Routes } from "react-router-dom";
 
-import Profile from '../components/Profile/Profile';
-import Home from "../components/Home/Home";
-import Gallery from '../components/Gallery/Gallery';
-import Register from '../components/Register/Register';
-import Login from '../components/Login/Login';
-import Logout from '../components/Logout/Logout';
-import Booking from '../components/Booking/Booking';
-import Upload from '../components/Upload/Upload';
-import Contact from '../components/Contact/Contact';
-import EditProfile from '../components/EditProfile/EditProfile';
-import Default from '../components/Default/Default';
-import Comments from "../components/Comments/Comments";
-import { TattoosProvider } from '../contexts/TattooContext';
+import Profile from '../components/Profile/Profile.jsx';
+import Home from "../components/Home/Home.jsx";
+import Gallery from '../components/Gallery/Gallery.jsx';
+import Register from '../components/Register/Register.jsx';
+import Login from '../components/Login/Login.jsx';
+import Logout from '../components/Logout/Logout.jsx';
+import Booking from '../components/Booking/Booking.jsx';
+import Upload from '../components/Upload/Upload.jsx';
+import Contact from '../components/Contact/Contact.jsx';
+import EditProfile from '../components/EditProfile/EditProfile.jsx';
+import Default from '../components/Default/Default.jsx';
+import Comments from "../components/Comments/Comments.jsx";
+import { TattoosProvider } from '../contexts/TattooContext.js';
 
-import AuthGuard from "../components/Guards/AuthGuard";
-import AdminGuard from "../components/Guards/AdminGuard";
+import AuthGuard from "../components/Guards/AuthGuard.jsx";
+import AdminGuard from "../components/Guards/AdminGuard.jsx";
 
 export default function RoutesWrapper() {
     return (
