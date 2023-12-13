@@ -222,7 +222,9 @@ export default function Comments() {
                             onChange={onChange}
                             onBlur={onBlur}
                             maxLength="100"
-                            minLength="4">
+                            minLength="4"
+                            placeholder=' Leave a comment'
+                        >
                         </textarea>
                         {
                         validationErrors.comment ?
@@ -244,7 +246,9 @@ export default function Comments() {
                         value={editValues.comment}
                         onChange={onChangeEdit}
                         onBlur={onBlurEdit}
-                        maxLength="100">
+                        maxLength="100"
+                        placeholder=' Leave a comment'
+                    >
                     </textarea>
                     {
                         validationErrorsEdit.comment ?
