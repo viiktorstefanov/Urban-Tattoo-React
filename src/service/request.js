@@ -1,4 +1,5 @@
 const host = 'https://urban-tattoo-server-production.up.railway.app';
+// const host = 'http://localhost:5000';
 
 
 async function request(method, url, data, user) {
