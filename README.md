@@ -92,7 +92,10 @@ Like/Comment image | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-em
 ## Getting Started <a name="getting-started"></a>
 
 ### Installation <a name="installation"></a>
-
+clone repository
+```
+git clone https://github.com/your_username/project_name.git
+```
 Type in the terminal
 ```
 npm i
