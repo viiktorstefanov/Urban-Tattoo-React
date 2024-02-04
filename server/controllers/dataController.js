@@ -7,7 +7,7 @@ const path = require('path');
 
 dataController.get('/tattoos', async (req, res) => {
     //sending all tattoo images without their comments
-    res.json(await getAll()).end();
+    res.json(await getAll());
     console.log('All tattoo images were sent.');
 });
 
@@ -18,7 +18,7 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
         const imageName = generateUniqueFileName(extension);
 
         const uploadPath = path.join(path.resolve(__dirname, '..'), '/images', imageName);
-        const imageUrl = `https://urban-tattoo-server-production.up.railway.app/${imageName}`;
+        const imageUrl = `http://localhost:5000/${imageName}`;
     
         if (file.size > 5000000) {
             console.log('Cannot upload image bigger than 5MB');
@@ -59,6 +59,7 @@ dataController.delete('/tattoos/:id', isAdmin(), async (req, res) => {
         if (user._id == image.ownerId) {
             await deleteById(id);
             console.log(`(file "${image.imageUrl.split('https://urban-tattoo-server-production.up.railway.app/')[1]}") has been deleted`);
+            // console.log(`(file "${image.imageUrl.split('http://localhost:5000/')[1]}") has been deleted.`);
             res.status(204).end();
         } else {
             res.status(403);
@@ -80,7 +81,7 @@ dataController.get('/:id/likes', async (req, res) => {
         await addLikeToTattoo(tattooId, userId);
 
         console.log(`user ${user.email} liked image with id : ${tattooId}`);
-        res.status(204).end()
+        res.status(204).end();
     } catch (error) {
         const message = parseError(error);
         res.json({ message });
@@ -95,7 +96,7 @@ dataController.delete('/:id/likes', async (req, res) => {
 
         await removeLikeToTattoo(tattooId, userId);
         console.log(`user ${user.email} unlike image with id : ${tattooId}`);
-        res.status(204).end()
+        res.status(204).end();
     } catch (error) {
         const message = parseError(error);
         res.status(400).json({ message });

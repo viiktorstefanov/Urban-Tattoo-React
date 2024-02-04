@@ -1,8 +1,7 @@
-const host = 'https://urban-tattoo-server-production.up.railway.app';
-// const host = 'http://localhost:5000';
-
+const apiUrl = 'http://localhost:5000';
 
 async function request(method, url, data, user) {
+  console.log(process.env);
   const options = {
     method,
     headers: {},
@@ -22,7 +21,7 @@ async function request(method, url, data, user) {
   }
 
   try {
-    const response = await fetch(`${host}${url}`, options);
+    const response = await fetch(`${apiUrl}${url}`, options);
 
     if(response.status === 204 ) {
       return response;

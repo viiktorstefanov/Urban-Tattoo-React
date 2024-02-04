@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-const connectionString = 'mongodb://mongo:3a2BEagEECfb-dgAebB5h-1fbA6E-faF@viaduct.proxy.rlwy.net:21131';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 const databaseConfig = async () => {
     try {
-        await mongoose.connect(connectionString, {
+        await mongoose.connect(MONGODB_URI, {
             useUnifiedTopology: true,
             useNewUrlParser: true
         });
