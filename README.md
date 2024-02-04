@@ -96,6 +96,10 @@ clone repository
 ```
 git clone https://github.com/viiktorstefanov/Urban-Tattoo-React.git
 ```
+navigate to the "client" folder:
+```
+cd client
+```
 Type in the terminal
 ```
 npm i
