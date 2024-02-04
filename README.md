@@ -2,7 +2,7 @@
 
 <p align="left">
   <a>
-    <img src="site-view.gif" />
+    <img src="./client/site-view.gif" />
   </a>
 </p>
 
@@ -174,5 +174,5 @@ You can check it here <a href="https://urban-tattoo-react.web.app/">Urban Tattoo
 
 ## Structure <a name="structure"></a>
 <a>
-    <img src="Structure.png" />
+    <img src="./client/Structure.png" />
 </a>
