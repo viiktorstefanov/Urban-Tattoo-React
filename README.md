@@ -94,7 +94,7 @@ Like/Comment image | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-em
 ### Installation <a name="installation"></a>
 clone repository
 ```
-git clone https://github.com/your_username/project_name.git
+git clone https://github.com/viiktorstefanov/Urban-Tattoo-React.git
 ```
 Type in the terminal
 ```
