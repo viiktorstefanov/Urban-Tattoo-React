@@ -112,6 +112,9 @@ npm run start
 
 Open new terminal and type:
 ```
+cd ../
+```
+```
 cd server
 ```
 Install all dependecies for the server: 
