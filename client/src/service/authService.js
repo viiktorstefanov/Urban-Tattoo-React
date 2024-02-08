@@ -1,12 +1,12 @@
 import { get, post, del, put } from './request';
 
 const endpoints = {
-    register: 'users/register',
-    login: 'users/login',
-    logout: 'users/logout',
-    edit: 'users/edit/',
-    delete: 'users/',
-    reservations: 'users/reservations/',
+    register: '/users/register',
+    login: '/users/login',
+    logout: '/users/logout',
+    edit: '/users/edit/',
+    delete: '/users/',
+    reservations: '/users/reservations/',
 };
 
 const login = async (data) => await post(endpoints.login, data);

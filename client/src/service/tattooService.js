@@ -1,9 +1,9 @@
 import  { get, post, del, put }  from './request'
 
 const endpoints = {
-    allTattoos: 'data/tattoos',
-    upload: 'data/upload',
-    delete: 'data/tattoos/',
+    allTattoos: '/data/tattoos',
+    upload: '/data/upload',
+    delete: '/data/tattoos/',
 }
 
 const getAllTattoos = async () => get(endpoints.allTattoos);
