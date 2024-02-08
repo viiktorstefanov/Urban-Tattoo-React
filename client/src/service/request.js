@@ -1,4 +1,4 @@
-const apiUrl = process.env.API_URL;
+const apiUrl = 'https://urban-eell.onrender.com';
 
 async function request(method, url, data, user) {
   const options = {
@@ -20,7 +20,6 @@ async function request(method, url, data, user) {
   }
 
   try {
-    console.log(apiUrl, url);
     const response = await fetch(`${apiUrl}${url}`, options);
 
     if(response.status === 204 ) {
