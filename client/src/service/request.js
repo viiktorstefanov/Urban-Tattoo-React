@@ -1,7 +1,6 @@
-const apiUrl = 'http://localhost:5000';
+const apiUrl = process.env.API_URL;
 
 async function request(method, url, data, user) {
-  console.log(process.env);
   const options = {
     method,
     headers: {},
