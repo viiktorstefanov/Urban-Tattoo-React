@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js --omit=dev"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

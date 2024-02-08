@@ -2,7 +2,7 @@ const User = require("../models/user");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const secret = 'm0sTD@ng3rouSPa$$worD1995';
+const secret = process.env.SECRET;
 const tokenBlackList = new Set();
 
 async function register(email, password, firstName, lastName, phone) {
