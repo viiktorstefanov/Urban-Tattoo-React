@@ -18,9 +18,10 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
         const extension = file.name.split('.')[1];
         const imageName = generateUniqueFileName(extension);
 
-        const uploadPath = path.join(path.resolve(__dirname, '..'), '/images', imageName);
-        console.log(uploadPath);
-        const imageUrl = `https://urban-eell.onrender.com/${imageName}`;
+        // const uploadPath = path.join(path.resolve(__dirname, '..'), '/images', imageName);
+        const uploadDirectory = path.resolve(__dirname, 'images'); 
+        const uploadPath = path.join(uploadDirectory, imageName);
+        // const imageUrl = `https://urban-eell.onrender.com/${imageName}`;
     
         if (file.size > 5000000) {
             console.log('Cannot upload image bigger than 5MB');
