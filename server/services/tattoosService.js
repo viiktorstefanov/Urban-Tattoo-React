@@ -21,7 +21,7 @@ async function getTattooPropsById(id) {
 async function getCommentById(commentId) {
     const tattoo = await Tattoos.findOne(
         { 'comments._id': commentId },
-        { 'comments.$': 1 } // Projection to include only the matching comment
+        { 'comments.$': 1 }
       ).lean();
       return tattoo;
 }
@@ -53,7 +53,7 @@ async function removeLikeToTattoo(tattooId, userId) {
     return await Tattoos.findByIdAndUpdate(
         tattooId,
         { $pull: { likes: userId } },
-        { new: true } // This option returns the modified document
+        { new: true } 
       );
 };
 

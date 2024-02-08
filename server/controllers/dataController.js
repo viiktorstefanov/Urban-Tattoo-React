@@ -18,7 +18,7 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
         const imageName = generateUniqueFileName(extension);
 
         const uploadPath = path.join(path.resolve(__dirname, '..'), '/images', imageName);
-        const imageUrl = `http://localhost:5000/${imageName}`;
+        const imageUrl = `https://urban-eell.onrender.com/${imageName}`;
     
         if (file.size > 5000000) {
             console.log('Cannot upload image bigger than 5MB');
@@ -58,7 +58,7 @@ dataController.delete('/tattoos/:id', isAdmin(), async (req, res) => {
         const user = JSON.parse(req.headers.user);
         if (user._id == image.ownerId) {
             await deleteById(id);
-            console.log(`(file "${image.imageUrl.split('https://urban-tattoo-server-production.up.railway.app/')[1]}") has been deleted`);
+            console.log(`(file "${image.imageUrl.split('https://urban-eell.onrender.com/')[1]}") has been deleted`);
             // console.log(`(file "${image.imageUrl.split('http://localhost:5000/')[1]}") has been deleted.`);
             res.status(204).end();
         } else {
