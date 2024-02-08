@@ -47,7 +47,7 @@
 
 ## Introduction <a name="introduction"></a>
 
-Application is built with React.Responsive design.Project is focused on providing potential clients with an accessible platform to view the artist's portfolio and easily book appointments.
+Application is built with React.Project is focused on providing potential clients with an accessible platform to view the artist's portfolio and easily book appointments.
 
 ## Features <a name="features"></a>
 
@@ -92,7 +92,14 @@ Like/Comment image | ![alt](https://img.icons8.com/emoji/60/000000/cross-mark-em
 ## Getting Started <a name="getting-started"></a>
 
 ### Installation <a name="installation"></a>
-
+clone repository
+```
+git clone https://github.com/viiktorstefanov/Urban-Tattoo-React.git
+```
+navigate to the "client" folder:
+```
+cd client
+```
 Type in the terminal
 ```
 npm i
@@ -105,7 +112,10 @@ npm run start
 
 Open new terminal and type:
 ```
-cd ./server
+cd ../
+```
+```
+cd server
 ```
 Install all dependecies for the server: 
 ```
