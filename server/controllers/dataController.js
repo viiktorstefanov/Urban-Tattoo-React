@@ -1,4 +1,5 @@
 const dataController = require('express').Router();
+const { log } = require('console');
 const { isAdmin } = require('../middlewares/guards');
 const generateUniqueFileName = require('../services/generateUniqueFileName');
 const { getAll, deleteById, addTattoo, getById, getTattooPropsById, addLikeToTattoo, removeLikeToTattoo, addCommentToTattoo, getCommentById, deleteCommentFromTattoo, editCommentFromTattoo } = require('../services/tattoosService');
@@ -18,6 +19,7 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
         const imageName = generateUniqueFileName(extension);
 
         const uploadPath = path.join(path.resolve(__dirname, '..'), '/images', imageName);
+        console.log(uploadPath);
         const imageUrl = `https://urban-eell.onrender.com/${imageName}`;
     
         if (file.size > 5000000) {
