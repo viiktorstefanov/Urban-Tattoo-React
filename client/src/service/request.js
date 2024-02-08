@@ -20,7 +20,6 @@ async function request(method, url, data, user) {
   }
 
   try {
-    console.log(`${apiUrl}${url}`);
     const response = await fetch(`${apiUrl}${url}`, options);
 
     if(response.status === 204 ) {
