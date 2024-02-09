@@ -17,7 +17,10 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
         const extension = file.name.split('.')[1];
         const imageName = generateUniqueFileName(extension);
 
-        const uploadPath = path.join(path.resolve(__dirname, '../'), '/images', imageName);
+        const imagesDir = path.resolve(__dirname, '../images');
+        const uploadPath = path.join(imagesDir, imageName);
+
+        // const uploadPath = path.join(path.resolve(__dirname, '../'), '/images', imageName);
         console.log(uploadPath);
         const imageUrl = `https://urban-eell.onrender.com/${imageName}`;
     
