@@ -1,6 +1,5 @@
 .wrapper-images {
     padding-top: 4%;
-    max-width: 40%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
     grid-gap: 1.5%;
@@ -93,7 +92,6 @@
 
 @media screen and (max-width: 1920px) and (min-width: 1601px) {
     .wrapper-images {
-        max-width: 40%;
         grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
         grid-gap: 5.5% 3%;
     }
@@ -101,7 +99,6 @@
 
 @media screen and (max-width: 2560px) and (min-width: 1921px) {
     .wrapper-images {
-        max-width: 40%;
         grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
         grid-gap: 5.5% 3%;
     }

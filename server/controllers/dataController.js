@@ -31,10 +31,8 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
             throw new Error('File should be less than 5MB');
         }
         if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-            // Resize the image using sharp
             sharp(file.data)
                 .resize(width, height, {
-                    // Options, if needed (e.g., fit: 'inside' to preserve aspect ratio)
                     fit: 'cover',
                     withoutEnlargement: true // this ensures that the image isn't enlarged
                 })
