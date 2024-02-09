@@ -32,6 +32,7 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
         }
         if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
             sharp(file.data)
+                .rotate()
                 .resize(width, height, {
                     fit: 'cover',
                     withoutEnlargement: true // this ensures that the image isn't enlarged
