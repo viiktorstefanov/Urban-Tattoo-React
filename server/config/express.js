@@ -7,6 +7,7 @@ const throating = require('../middlewares/throating');
 const path = require('path');
 
 module.exports = (app) => {
+    console.log(path.join(__dirname, 'images'));
     app.use('/images', express.static(path.join(__dirname, 'images')));
     // app.use(express.static(path.join(__dirname, '../', 'images/')));
     app.use(fileUpload());
