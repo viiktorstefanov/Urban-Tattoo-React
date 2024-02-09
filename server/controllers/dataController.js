@@ -4,6 +4,7 @@ const generateUniqueFileName = require('../services/generateUniqueFileName');
 const { getAll, deleteById, addTattoo, getById, getTattooPropsById, addLikeToTattoo, removeLikeToTattoo, addCommentToTattoo, getCommentById, deleteCommentFromTattoo, editCommentFromTattoo } = require('../services/tattoosService');
 const { parseError } = require('../utils/parseError');
 const path = require('path');
+const sharp = require('sharp');
 
 dataController.get('/tattoos', async (req, res) => {
     //sending all tattoo images without their comments
@@ -20,25 +21,34 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
         const imagesDir = path.resolve(__dirname, '../images');
         const uploadPath = path.join(imagesDir, imageName);
 
-        // const uploadPath = path.join(path.resolve(__dirname, '../'), '/images', imageName);
-   
         const imageUrl = `https://urban-eell.onrender.com/${imageName}`;
+
+        const width = 1024; 
+        const height = 768;
     
         if (file.size > 5000000) {
             console.log('Cannot upload image bigger than 5MB');
             throw new Error('File should be less than 5MB');
         }
         if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-            file.mv(uploadPath, function (err) {
-                if (err) {
-                    const message = parseError(err);
-                    return res.status(500).json({ message });
-                }
-            });
-            const user = JSON.parse(req.headers.user);
-            const tattoo = await addTattoo(imageUrl, user._id);
-            console.log(`(file "${imageName}") has been uploaded`);
-            res.json(tattoo).end();
+            // Resize the image using sharp
+            sharp(file.data)
+                .resize(width, height, {
+                    // Options, if needed (e.g., fit: 'inside' to preserve aspect ratio)
+                    fit: 'cover',
+                    withoutEnlargement: true // this ensures that the image isn't enlarged
+                })
+                .toFile(uploadPath, async function(err) {
+                    if (err) {
+                        const message = parseError(err);
+                        return res.status(500).json({ message });
+                    } else {
+                        const user = JSON.parse(req.headers.user);
+                        const tattoo = await addTattoo(imageUrl, user._id);
+                        console.log(`(file "${imageName}") has been uploaded and resized.`);
+                        res.json(tattoo).end();
+                    }
+                });
         } else {
             console.log('file is not a jpeg/png');
             throw new Error('Only jpg or png files are allowed');
@@ -63,7 +73,6 @@ dataController.delete('/tattoos/:id', isAdmin(), async (req, res) => {
         if (user._id == image.ownerId) {
             await deleteById(id);
             console.log(`(file "${image.imageUrl.split('https://urban-eell.onrender.com/')[1]}") has been deleted`);
-            // console.log(`(file "${image.imageUrl.split('http://localhost:5000/')[1]}") has been deleted.`);
             res.status(204).end();
         } else {
             res.status(403);
