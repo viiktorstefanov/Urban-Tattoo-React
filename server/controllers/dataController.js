@@ -1,5 +1,4 @@
 const dataController = require('express').Router();
-const { log } = require('console');
 const { isAdmin } = require('../middlewares/guards');
 const generateUniqueFileName = require('../services/generateUniqueFileName');
 const { getAll, deleteById, addTattoo, getById, getTattooPropsById, addLikeToTattoo, removeLikeToTattoo, addCommentToTattoo, getCommentById, deleteCommentFromTattoo, editCommentFromTattoo } = require('../services/tattoosService');
@@ -18,9 +17,7 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
         const extension = file.name.split('.')[1];
         const imageName = generateUniqueFileName(extension);
 
-        // const uploadPath = path.join(path.resolve(__dirname, '..'), '/images', imageName);
-        const uploadDirectory = path.resolve(__dirname, 'images'); 
-        const uploadPath = path.join(uploadDirectory, imageName);
+        const uploadPath = path.join(path.resolve(__dirname, '../'), '/images', imageName);
         console.log(uploadPath);
         const imageUrl = `https://urban-eell.onrender.com/${imageName}`;
     
@@ -31,7 +28,6 @@ dataController.post('/upload', isAdmin(), async (req, res) => {
         if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
             file.mv(uploadPath, function (err) {
                 if (err) {
-                    console.log('aa');
                     const message = parseError(err);
                     return res.status(500).json({ message });
                 }
