@@ -1,5 +1,4 @@
-const apiUrl = process.env.REACT_APP_API_URL;
-// const apiUrl = 'http://localhost:5000'
+const apiUrl = 'https://urban-eell.onrender.com';
 
 async function request(method, url, data, user) {
   const options = {
@@ -16,8 +15,7 @@ async function request(method, url, data, user) {
     options.headers['Content-Type'] = 'application/json';
     options.body = JSON.stringify(data);
   }
-
-  if (data && data.files) {
+  if(data && data.files) {
     options.body = data.files;
   }
 
