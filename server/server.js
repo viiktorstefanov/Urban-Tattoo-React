@@ -3,7 +3,7 @@ const express = require("express");
 const { databaseConfig } = require("./config/database");
 const expressConfig = require("./config/express");
 const routesConfig = require("./config/routes");
-const functions = require("firebase-functions");
+// const functions = require("firebase-functions");
 
 
 async function startServer() {
@@ -20,4 +20,4 @@ async function startServer() {
 
 startServer();
 
-exports.api = functions.https.onRequest(app);
+// exports.api = functions.https.onRequest(app);
