@@ -10,8 +10,8 @@ export default function Upload() {
         <section id="uploadPage" className={styles.uploadPage}>
             <div className={styles['file-card']}>
                 <div className={styles['file-inputs']}>
-                    <form className={styles['uploadForm']} onSubmit={onFileSubmit}>
-                        <input className={styles['file-input']} type="file" onChange={onFileChange} />
+                    <form className={styles['uploadForm']} onSubmit={onFileSubmit} encType='multipart/form-data' method='post'>
+                        <input className={styles['file-input']} type="file" name='files' onChange={onFileChange} />
                         <span className={styles['add-btn-wrap']}>
                             <i className={styles['add-btn']}>
                                 <AiFillPlusCircle className={styles['plus-icon']}/>

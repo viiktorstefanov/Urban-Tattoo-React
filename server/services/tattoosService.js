@@ -29,7 +29,7 @@ async function getCommentById(commentId) {
 async function deleteById(id) {
     let imageUrl = await Tattoos.findById(id).exec().then((photo) => { return photo.imageUrl });
 
-    const imageName = imageUrl.split('https://urban-eell.onrender.com/')[1];
+    const imageName = imageUrl.split('https://us-central1-urban-tattoo-api.cloudfunctions.net/api/')[1];
     const imagePath = path.join(path.resolve(__dirname, '..'), '/images', imageName);
     
     fs.unlinkSync(imagePath);
