@@ -4,8 +4,7 @@
   "description": "express api",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "deploy": "firebase deploy --only functions:api"
+    "start": "node server.js"
   },
   "engines": {
     "node": "18"

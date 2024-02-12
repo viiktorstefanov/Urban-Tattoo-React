@@ -15,8 +15,11 @@ async function startServer() {
   routesConfig(app);
   
   app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
+
 }
 
 startServer();
 
+
+export default app;
 // exports.api = functions.https.onRequest(app);
