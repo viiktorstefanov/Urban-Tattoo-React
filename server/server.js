@@ -1,9 +1,7 @@
-require("dotenv").config();
 const express = require("express");
 const { databaseConfig } = require("./config/database");
 const expressConfig = require("./config/express");
 const routesConfig = require("./config/routes");
-// const functions = require("firebase-functions");
 
 
 async function startServer() {
