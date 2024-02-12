@@ -4,18 +4,12 @@ const { databaseConfig } = require("./config/database");
 const expressConfig = require("./config/express");
 const routesConfig = require("./config/routes");
 
+const app = express();
+const PORT = process.env.OUT_PORT || 5000;
 
-async function startServer() {
-  const app = express();
-  const PORT = process.env.OUT_PORT || 5000;
+await databaseConfig(app);
 
-  await databaseConfig(app);
+expressConfig(app);
+routesConfig(app);
 
-  expressConfig(app);
-  routesConfig(app);
-  
-  app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
-
-}
-
-startServer();
+app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
