@@ -21,4 +21,4 @@ async function startServer() {
 startServer();
 
 
-exports.app = app;
+exports.app = startServer;
