@@ -21,5 +21,4 @@ async function startServer() {
 startServer();
 
 
-export default app;
-// exports.api = functions.https.onRequest(app);
+exports.app = app;
