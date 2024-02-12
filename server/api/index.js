@@ -1,5 +1,5 @@
-const app = require("../server");
+const startServer = require("../server");
 
-app();
+startServer();
 
-modules.exports = app;
+module.exports = startServer;
